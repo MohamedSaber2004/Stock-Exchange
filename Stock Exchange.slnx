@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Stock Exchange/Stock-Exchange.API.csproj" />
+  <Project Path="Stock-Exchange.Application/Stock-Exchange.Application.csproj" />
+  <Project Path="Stock-Exchange.Domain/Stock-Exchange.Domain.csproj" />
+  <Project Path="Stock-Exchange.Infrastructure/Stock-Exchange.Infrastructure.csproj" />
+  <Project Path="Stock-Exchange.Persistance/Stock-Exchange.Persistance.csproj" />
+</Solution>
