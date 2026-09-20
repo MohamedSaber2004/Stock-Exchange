@@ -14,6 +14,36 @@ public static class SwaggerGenExtensions
         return options;
     }
 
+    public static SwaggerGenOptions AddJwtBearerSecurity(this SwaggerGenOptions options)
+    {
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            In = ParameterLocation.Header,
+            Description = "Enter JWT Bearer token."
+        });
+
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
+
+        return options;
+    }
+
     public static SwaggerGenOptions IncludeApiXmlComments(this SwaggerGenOptions options)
     {
         var assemblyName = Assembly.GetExecutingAssembly().GetName().Name?.Replace('.', '-') ?? "Stock-Exchange";

@@ -28,38 +28,45 @@ public abstract class BaseController : ControllerBase
         if (result is null)
             return InternalError<T>(LocalizationKeys.ExceptionMessages.UnknownException);
 
+        var apiResponse = result.ToApiResponse();
+        return StatusCode(apiResponse.StatusCode, apiResponse);
+    }
+
+    protected ActionResult FromResult<T>(ApiResponse<T>? result)
+    {
+        if (result is null)
+            return InternalError<T>(LocalizationKeys.ExceptionMessages.UnknownException);
+
         return StatusCode(result.StatusCode, result);
     }
 
     protected ActionResult OkResult<T>(T? data, string localizationKey, params object[] args) =>
         StatusCode(
             StatusCodes.Status200OK,
-            Result<T>.Success(data, Localize(localizationKey, args)));
+            ApiResponse<T>.Ok(data, Localize(localizationKey, args)));
 
     protected ActionResult CreatedResult<T>(T? data, string localizationKey, params object[] args) =>
         StatusCode(
             StatusCodes.Status201Created,
-            Result<T>.Success(data, Localize(localizationKey, args), StatusCodes.Status201Created));
+            ApiResponse<T>.Ok(data, Localize(localizationKey, args), StatusCodes.Status201Created));
 
     protected ActionResult AcceptedResult<T>(T? data, string localizationKey, params object[] args) =>
         StatusCode(
             StatusCodes.Status202Accepted,
-            Result<T>.Success(data, Localize(localizationKey, args), StatusCodes.Status202Accepted));
+            ApiResponse<T>.Ok(data, Localize(localizationKey, args), StatusCodes.Status202Accepted));
 
     protected ActionResult NoContentResult() => NoContent();
 
     protected ActionResult NotFoundResult<T>(
         string localizationKey,
-        List<string>? errors = null,
+        IDictionary<string, string[]>? errors = null,
         params object[] args) =>
         StatusCode(
             StatusCodes.Status404NotFound,
-            Result<T>.Failure(Localize(localizationKey, args), StatusCodes.Status404NotFound, errors));
+            ApiResponse<T>.Error(errors, Localize(localizationKey, args), StatusCodes.Status404NotFound));
 
     private ActionResult InternalError<T>(string localizationKey, params object[] args) =>
         StatusCode(
             StatusCodes.Status500InternalServerError,
-            Result<T>.Failure(
-                Localize(localizationKey, args),
-                StatusCodes.Status500InternalServerError));
+            ApiResponse<T>.Error(Localize(localizationKey, args), StatusCodes.Status500InternalServerError));
 }

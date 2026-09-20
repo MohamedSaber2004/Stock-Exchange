@@ -25,6 +25,8 @@ namespace Stock_Exchange.Application
             services.Configure<RequestLimitsOptions>(configuration.GetSection("Security:RequestLimits"));
             services.Configure<HstsOptions>(configuration.GetSection("Security:Hsts"));
             services.Configure<IpRateLimitingOptions>(configuration.GetSection(IpRateLimitingOptions.SectionName));
+            services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
+            services.Configure<IdentityOptions>(configuration.GetSection(nameof(IdentityOptions)));
 
             services.AddMediatR(typeof(DependencyInjection).Assembly);
 

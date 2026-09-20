@@ -52,7 +52,7 @@ namespace Stock_Exchange
                 .Enrich.FromLogContext());
 
             builder.Services.AddApplicationServices(builder.Configuration);
-            builder.Services.AddInfrastructureServices();
+            builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
 
             if (builder.Environment.IsProduction())
@@ -125,7 +125,7 @@ namespace Stock_Exchange
 
             builder.Services.AddSwaggerGen(options =>
             {
-                options.AddAcceptLanguageHeader().IncludeApiXmlComments();
+                options.AddAcceptLanguageHeader().IncludeApiXmlComments().AddJwtBearerSecurity();
             });
 
             builder.Services.AddOptions<SwaggerGenOptions>().Configure<IApiVersionDescriptionProvider>((options, provider) =>

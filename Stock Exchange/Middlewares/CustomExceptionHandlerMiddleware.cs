@@ -71,7 +71,7 @@ namespace Stock_Exchange.Middlewares
 
             int statusCode;
             string message;
-            List<string> errors = new();
+            IDictionary<string, string[]> errorsDict = new Dictionary<string, string[]>();
 
             switch (exception)
             {
@@ -82,15 +82,13 @@ namespace Stock_Exchange.Middlewares
                     {
                         foreach (var kvp in customValEx.Errors)
                         {
-                            foreach (var err in kvp.Value)
-                            {
-                                errors.Add(Localize(err));
-                            }
+                            var key = string.IsNullOrWhiteSpace(kvp.Key) ? "General" : kvp.Key;
+                            errorsDict[key] = kvp.Value.Select(e => Localize(e)).ToArray();
                         }
                     }
                     else
                     {
-                        errors.Add(message);
+                        errorsDict["General"] = new[] { message };
                     }
                     break;
 
@@ -99,14 +97,15 @@ namespace Stock_Exchange.Middlewares
                     message = Localize(LocalizationKeys.ExceptionMessages.Validation);
                     if (fvEx.Errors.Any())
                     {
-                        foreach (var err in fvEx.Errors)
-                        {
-                            errors.Add(Localize(err.ErrorMessage));
-                        }
+                        errorsDict = fvEx.Errors
+                            .GroupBy(e => e.PropertyName)
+                            .ToDictionary(
+                                g => string.IsNullOrWhiteSpace(g.Key) ? "General" : g.Key,
+                                g => g.Select(e => Localize(e.ErrorMessage)).ToArray());
                     }
                     else
                     {
-                        errors.Add(message);
+                        errorsDict["General"] = new[] { message };
                     }
                     break;
 
@@ -117,131 +116,129 @@ namespace Stock_Exchange.Middlewares
                     {
                         foreach (var kvp in badRequestEx.Errors)
                         {
-                            foreach (var err in kvp.Value)
-                            {
-                                errors.Add(Localize(err));
-                            }
+                            var key = string.IsNullOrWhiteSpace(kvp.Key) ? "General" : kvp.Key;
+                            errorsDict[key] = kvp.Value.Select(e => Localize(e)).ToArray();
                         }
                     }
                     else
                     {
-                        errors.Add(message);
+                        errorsDict["General"] = new[] { message };
                     }
                     break;
 
                 case NotFoundException notFoundEx:
                     statusCode = notFoundEx.StatusCode;
                     message = Localize(notFoundEx.LocalizationKey, notFoundEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case KeyNotFoundException keyNotFoundEx:
                     statusCode = StatusCodes.Status404NotFound;
-                    message = Localize(LocalizationKeys.ExceptionMessages.NotFound);
-                    errors.Add(!string.IsNullOrWhiteSpace(keyNotFoundEx.Message) ? keyNotFoundEx.Message : message);
+                    message = !string.IsNullOrWhiteSpace(keyNotFoundEx.Message) ? keyNotFoundEx.Message : Localize(LocalizationKeys.ExceptionMessages.NotFound);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case UnAuthorizedException unAuthEx:
                     statusCode = unAuthEx.StatusCode;
                     message = Localize(unAuthEx.LocalizationKey, unAuthEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case UnauthorizedAccessException unAuthAccessEx:
                     statusCode = StatusCodes.Status401Unauthorized;
-                    message = Localize(LocalizationKeys.ExceptionMessages.Unauthorized);
-                    errors.Add(!string.IsNullOrWhiteSpace(unAuthAccessEx.Message) ? unAuthAccessEx.Message : message);
+                    message = !string.IsNullOrWhiteSpace(unAuthAccessEx.Message) ? unAuthAccessEx.Message : Localize(LocalizationKeys.ExceptionMessages.Unauthorized);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case ForbiddenException forbiddenEx:
                     statusCode = forbiddenEx.StatusCode;
                     message = Localize(forbiddenEx.LocalizationKey, forbiddenEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case ConflictException conflictEx:
                     statusCode = conflictEx.StatusCode;
                     message = Localize(conflictEx.LocalizationKey, conflictEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case TooManyRequestsException tooManyRequestsEx:
                     statusCode = tooManyRequestsEx.StatusCode;
                     message = Localize(tooManyRequestsEx.LocalizationKey, tooManyRequestsEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case PayloadTooLargeException payloadTooLargeEx:
                     statusCode = payloadTooLargeEx.StatusCode;
                     message = Localize(payloadTooLargeEx.LocalizationKey, payloadTooLargeEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case UnprocessableEntityException unprocessableEntityEx:
                     statusCode = unprocessableEntityEx.StatusCode;
                     message = Localize(unprocessableEntityEx.LocalizationKey, unprocessableEntityEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case ServiceUnavailableException serviceUnavailableEx:
                     statusCode = serviceUnavailableEx.StatusCode;
                     message = Localize(serviceUnavailableEx.LocalizationKey, serviceUnavailableEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case NotAcceptableException notAcceptableEx:
                     statusCode = notAcceptableEx.StatusCode;
                     message = Localize(notAcceptableEx.LocalizationKey, notAcceptableEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case GoneException goneEx:
                     statusCode = goneEx.StatusCode;
                     message = Localize(goneEx.LocalizationKey, goneEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case MethodNotAllowedException methodNotAllowedEx:
                     statusCode = methodNotAllowedEx.StatusCode;
                     message = Localize(methodNotAllowedEx.LocalizationKey, methodNotAllowedEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case UnsupportedMediaTypeException unsupportedMediaTypeEx:
                     statusCode = unsupportedMediaTypeEx.StatusCode;
                     message = Localize(unsupportedMediaTypeEx.LocalizationKey, unsupportedMediaTypeEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case RequestTimeoutException requestTimeoutEx:
                     statusCode = requestTimeoutEx.StatusCode;
                     message = Localize(requestTimeoutEx.LocalizationKey, requestTimeoutEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case ArgumentException argEx:
                     statusCode = StatusCodes.Status400BadRequest;
-                    message = Localize(LocalizationKeys.ExceptionMessages.BadRequest);
-                    errors.Add(!string.IsNullOrWhiteSpace(argEx.Message) ? argEx.Message : message);
+                    message = !string.IsNullOrWhiteSpace(argEx.Message) ? argEx.Message : Localize(LocalizationKeys.ExceptionMessages.BadRequest);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case DomainException domainEx:
                     statusCode = StatusCodes.Status400BadRequest;
                     var domainKey = !string.IsNullOrWhiteSpace(domainEx.LocalizationKey) ? domainEx.LocalizationKey : domainEx.Message;
                     message = Localize(domainKey, domainEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 case ILocalizedException localizedEx:
                     statusCode = localizedEx.StatusCode;
                     message = Localize(localizedEx.LocalizationKey, localizedEx.Args);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
 
                 default:
                     statusCode = StatusCodes.Status500InternalServerError;
                     message = Localize(LocalizationKeys.ExceptionMessages.InternalServerError);
-                    errors.Add(message);
+                    errorsDict["General"] = new[] { message };
                     break;
             }
 
@@ -251,18 +248,13 @@ namespace Stock_Exchange.Middlewares
             }
             else
             {
-                _logger.LogWarning(exception, "Handled exception occurred with status {StatusCode}: {Message} | Errors: {Errors}", statusCode, message, string.Join("; ", errors));
+                _logger.LogWarning(exception, "Handled exception occurred with status {StatusCode}: {Message} | Errors: {Errors}", statusCode, message, string.Join("; ", errorsDict.Select(kv => $"{kv.Key}: [{string.Join(", ", kv.Value)}]")));
             }
 
             context.Response.ContentType = MediaTypeNames.Application.Json;
             context.Response.StatusCode = statusCode;
 
-            var response = new Result<object?>(
-                isSuccess: false,
-                statusCode: statusCode,
-                message: message,
-                data: null,
-                errors: errors);
+            var response = ApiResponse<object?>.Error(errorsDict, message, statusCode);
 
             var jsonOptions = new JsonSerializerOptions
             {

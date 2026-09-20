@@ -8,12 +8,14 @@ using Stock_Exchange.Application.Features.Attachments.Commands.UploadFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadMultipleFiles;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Enums;
+using Stock_Exchange.Filters;
 using Stock_Exchange.Routes.V1;
 
 namespace Stock_Exchange.Controllers.V1;
 
 [ApiVersion("1.0")]
 [Route(ApiRoutes.Attachments.Base)]
+[RoleAuthorize]
 public class AttachmentsController : BaseController
 {
     /// <summary>
@@ -26,8 +28,8 @@ public class AttachmentsController : BaseController
     [HttpPost]
     [Route(ApiRoutes.Attachments.Upload)]
     [Consumes("multipart/form-data")]
-    [ProducesResponseType(typeof(Result<string>), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(Result<string>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Upload([FromForm] UploadFileCommand command)
     {
         var result = await Mediator.Send(command);
@@ -48,8 +50,8 @@ public class AttachmentsController : BaseController
     [HttpPost]
     [Route(ApiRoutes.Attachments.UploadMultiple)]
     [Consumes("multipart/form-data")]
-    [ProducesResponseType(typeof(Result<string>), StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(Result<string>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> UploadMultiple([FromForm] UploadMultipleFilesCommand command)
     {
         var result = await Mediator.Send(command);
@@ -70,7 +72,7 @@ public class AttachmentsController : BaseController
     [HttpGet]
     [Route(ApiRoutes.Attachments.Download)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(Result<string>), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Download([FromQuery] DownloadFileCommand command)
     {
         var result = await Mediator.Send(command);
@@ -93,8 +95,8 @@ public class AttachmentsController : BaseController
     [HttpPut]
     [Route(ApiRoutes.Attachments.Update)]
     [Consumes("multipart/form-data")]
-    [ProducesResponseType(typeof(Result<string>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(Result<string>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Update([FromForm] UpdateFileCommand command)
     {
         var result = await Mediator.Send(command);

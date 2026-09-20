@@ -11,7 +11,7 @@ namespace Stock_Exchange.Persistance
         {
             services.AddDbContext<StockExchangeDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("CareClinicHubDb"));
+                options.UseSqlServer(configuration.GetConnectionString("StockExchangeConnectionString") ?? configuration.GetConnectionString("CareClinicHubDb"));
             });
 
             services.AddScoped<IStockExchangeDbContext>(provider => provider.GetRequiredService<StockExchangeDbContext>());
