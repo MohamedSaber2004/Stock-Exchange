@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -7,9 +7,9 @@ using Stock_Exchange.Domain.Entities;
 
 namespace Stock_Exchange.Persistance
 {
-    public class StockExchangeDbContext: IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid,
+    public class StockExchangeDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid,
         IdentityUserClaim<Guid>, IdentityUserRole<Guid>, IdentityUserLogin<Guid>,
-        IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
+        IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>, IStockExchangeDbContext
     {
 
         private readonly ICurrentUserService _currentUserService;

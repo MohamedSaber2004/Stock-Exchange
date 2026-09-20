@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using Stock_Exchange.Application;
 using Stock_Exchange.Application.Common.Interfaces;
+using Stock_Exchange.Application.Common.Options;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Infrastructure;
 using Stock_Exchange.Middlewares;
@@ -52,7 +53,35 @@ namespace Stock_Exchange
 
             builder.Services.AddApplicationServices(builder.Configuration);
             builder.Services.AddInfrastructureServices();
-            builder.Services.AddPersistenceServices();
+            builder.Services.AddPersistenceServices(builder.Configuration);
+
+            var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
+            if (corsConfig?.Enabled == true)
+            {
+                builder.Services.AddCors(options =>
+                {
+                    options.AddPolicy(corsConfig.PolicyName, policy =>
+                    {
+                        if (corsConfig.AllowedOrigins != null && corsConfig.AllowedOrigins.Count > 0)
+                            policy.WithOrigins(corsConfig.AllowedOrigins.ToArray());
+                        else
+                            policy.SetIsOriginAllowed(_ => true);
+
+                        if (corsConfig.AllowedMethods != null && corsConfig.AllowedMethods.Count > 0)
+                            policy.WithMethods(corsConfig.AllowedMethods.ToArray());
+                        else
+                            policy.AllowAnyMethod();
+
+                        if (corsConfig.AllowedHeaders != null && corsConfig.AllowedHeaders.Count > 0)
+                            policy.WithHeaders(corsConfig.AllowedHeaders.ToArray());
+                        else
+                            policy.AllowAnyHeader();
+
+                        if (corsConfig.AllowCredentials)
+                            policy.AllowCredentials();
+                    });
+                });
+            }
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -114,6 +143,7 @@ namespace Stock_Exchange
             var app = builder.Build();
 
             app.UseCustomExceptionHandler();
+            app.UseSecurityHeaders();
 
             app.UseRequestLocalization();
 
@@ -123,7 +153,15 @@ namespace Stock_Exchange
             }
 
             app.UseRouting();
+
+            var corsSettings = app.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
+            if (corsSettings?.Enabled == true)
+            {
+                app.UseCors(corsSettings.PolicyName);
+            }
+
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseStaticFiles();

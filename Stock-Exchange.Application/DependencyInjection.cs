@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +19,11 @@ namespace Stock_Exchange.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<SecurityOptions>(configuration.GetSection(SecurityOptions.SectionName));
+            services.Configure<SecurityHeadersOptions>(configuration.GetSection("Security:Headers"));
+            services.Configure<CorsOptions>(configuration.GetSection("Security:Cors"));
+            services.Configure<AntiforgeryOptions>(configuration.GetSection("Security:Antiforgery"));
+            services.Configure<RequestLimitsOptions>(configuration.GetSection("Security:RequestLimits"));
+            services.Configure<HstsOptions>(configuration.GetSection("Security:Hsts"));
             services.Configure<IpRateLimitingOptions>(configuration.GetSection(IpRateLimitingOptions.SectionName));
 
             services.AddMediatR(typeof(DependencyInjection).Assembly);

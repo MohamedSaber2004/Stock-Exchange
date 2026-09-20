@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Stock_Exchange.Application.Common.Interfaces
 {
-    public interface IClinicHubContext : IAsyncDisposable
+    public interface IStockExchangeDbContext : IAsyncDisposable
     {
         DbSet<IdentityUserRole<Guid>> UserRoles { get; }
         DbSet<IdentityRole<Guid>> Roles { get; }
