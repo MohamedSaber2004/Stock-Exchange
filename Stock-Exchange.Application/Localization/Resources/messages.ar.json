@@ -36,5 +36,15 @@
     "MethodNotAllowed": "الطريقة المحددة غير مسموح بها لهذا المورد.",
     "UnsupportedMediaType": "يحتوي الطلب على نوع وسائط غير مدعوم.",
     "RequestTimeout": "انتهت صلاحية الطلب. يرجى المحاولة لاحقاً."
+  },
+  "Users": {
+    "FullNameEmpty": "الاسم الكامل لا يمكن أن يكون فارغاً.",
+    "PasswordResetTokenEmpty": "رمز إعادة تعيين كلمة المرور لا يمكن أن يكون فارغاً.",
+    "VerificationCodeEmpty": "رمز التحقق لا يمكن أن يكون فارغاً."
+  },
+  "Errors": {
+    "FullNameEmpty": "الاسم الكامل لا يمكن أن يكون فارغاً.",
+    "PasswordResetTokenEmpty": "رمز إعادة تعيين كلمة المرور لا يمكن أن يكون فارغاً.",
+    "VerificationCodeEmpty": "رمز التحقق لا يمكن أن يكون فارغاً."
   }
 }

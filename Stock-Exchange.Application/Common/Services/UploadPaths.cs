@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Stock_Exchange.Application.Common.Options;
 
 namespace Stock_Exchange.Application.Common.Services
@@ -12,7 +12,7 @@ namespace Stock_Exchange.Application.Common.Services
             Options = configuration.GetSection("UploadPaths").Get<UploadPathsOptions>();
         }
 
-        public static string? General => Options?.General;
+        public static string General => Options?.General ?? "General";
 
         public static string? GetPath(int place)
         {

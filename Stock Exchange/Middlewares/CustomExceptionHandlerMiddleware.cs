@@ -1,8 +1,9 @@
-﻿using Stock_Exchange.Application.Common.Exceptions;
+using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Extensions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Localization;
+using Stock_Exchange.Domain.Common.Exceptions;
 using System.Net.Mime;
 using System.Text.Json;
 
@@ -224,6 +225,13 @@ namespace Stock_Exchange.Middlewares
                     errors.Add(!string.IsNullOrWhiteSpace(argEx.Message) ? argEx.Message : message);
                     break;
 
+                case DomainException domainEx:
+                    statusCode = StatusCodes.Status400BadRequest;
+                    var domainKey = !string.IsNullOrWhiteSpace(domainEx.LocalizationKey) ? domainEx.LocalizationKey : domainEx.Message;
+                    message = Localize(domainKey, domainEx.Args);
+                    errors.Add(message);
+                    break;
+
                 case ILocalizedException localizedEx:
                     statusCode = localizedEx.StatusCode;
                     message = Localize(localizedEx.LocalizationKey, localizedEx.Args);
@@ -231,11 +239,19 @@ namespace Stock_Exchange.Middlewares
                     break;
 
                 default:
-                    _logger.LogError(exception, "An unhandled exception occurred: {Message}", exception.Message);
                     statusCode = StatusCodes.Status500InternalServerError;
                     message = Localize(LocalizationKeys.ExceptionMessages.InternalServerError);
                     errors.Add(message);
                     break;
+            }
+
+            if (statusCode >= StatusCodes.Status500InternalServerError)
+            {
+                _logger.LogError(exception, "Server exception occurred with status {StatusCode}: {Message}", statusCode, message);
+            }
+            else
+            {
+                _logger.LogWarning(exception, "Handled exception occurred with status {StatusCode}: {Message} | Errors: {Errors}", statusCode, message, string.Join("; ", errors));
             }
 
             context.Response.ContentType = MediaTypeNames.Application.Json;

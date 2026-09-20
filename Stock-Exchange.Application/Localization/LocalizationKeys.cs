@@ -1,4 +1,4 @@
-﻿namespace Stock_Exchange.Application.Localization
+namespace Stock_Exchange.Application.Localization
 {
     public static class LocalizationKeys
     {
@@ -44,6 +44,27 @@
             public const string MethodNotAllowed = "ExceptionMessages.MethodNotAllowed";
             public const string UnsupportedMediaType = "ExceptionMessages.UnsupportedMediaType";
             public const string RequestTimeout = "ExceptionMessages.RequestTimeout";
+        }
+
+        public static class Users
+        {
+            public const string FullNameEmpty = "Users.FullNameEmpty";
+            public const string PasswordResetTokenEmpty = "Users.PasswordResetTokenEmpty";
+            public const string VerificationCodeEmpty = "Users.VerificationCodeEmpty";
+        }
+
+        public static class Errors
+        {
+            public const string FullNameEmpty = "Users.FullNameEmpty";
+            public const string PasswordResetTokenEmpty = "Users.PasswordResetTokenEmpty";
+            public const string VerificationCodeEmpty = "Users.VerificationCodeEmpty";
+
+            public static class User
+            {
+                public const string FullNameEmpty = "Users.FullNameEmpty";
+                public const string PasswordResetTokenEmpty = "Users.PasswordResetTokenEmpty";
+                public const string VerificationCodeEmpty = "Users.VerificationCodeEmpty";
+            }
         }
     }
 }

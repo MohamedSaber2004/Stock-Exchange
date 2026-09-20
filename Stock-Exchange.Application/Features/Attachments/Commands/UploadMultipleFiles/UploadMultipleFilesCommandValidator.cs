@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Stock_Exchange.Application.Common.Interfaces;
+using Stock_Exchange.Application.Common.Services;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Enums;
 
@@ -31,6 +32,7 @@ namespace Stock_Exchange.Application.Features.Attachments.Commands.UploadMultipl
 
             RuleFor(x => x.Place)
                 .GreaterThanOrEqualTo(0)
+                .Must(place => !string.IsNullOrWhiteSpace(UploadPaths.GetPath(place)))
                 .WithMessage(LocalizationKeys.ExceptionMessages.BadRequest);
 
             RuleForEach(x => x.Files)

@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Localization;
 
@@ -10,13 +11,18 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IStringLocalizer<Messages> _localizer;
+        private readonly ILogger<BaseFileService> _logger;
 
         private string WebRootPath => _webHostEnvironment.WebRootPath ?? Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot");
 
-        public BaseFileService(IWebHostEnvironment webHostEnvironment, IStringLocalizer<Messages> localizer)
+        public BaseFileService(
+            IWebHostEnvironment webHostEnvironment,
+            IStringLocalizer<Messages> localizer,
+            ILogger<BaseFileService> logger)
         {
             _webHostEnvironment = webHostEnvironment;
             _localizer = localizer;
+            _logger = logger;
         }
 
         public async Task<(bool Uploaded, string Result)> UploadFileAsync(IFormFile? file, string folderPath)
@@ -25,7 +31,10 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
                 return (false, _localizer[LocalizationKeys.Attachments.FileEmpty].Value);
 
             if (string.IsNullOrWhiteSpace(folderPath))
+            {
+                _logger.LogWarning("Upload file failed: folderPath is null or empty. Please check the requested place parameter or UploadPaths configuration.");
                 return (false, _localizer[LocalizationKeys.Attachments.UploadFailed].Value);
+            }
 
             try
             {
@@ -47,7 +56,7 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Upload failed: {ex.Message}");
+                _logger.LogError(ex, "Upload file failed due to exception: {Message}", ex.Message);
                 return (false, _localizer[LocalizationKeys.Attachments.UploadFailed].Value);
             }
         }

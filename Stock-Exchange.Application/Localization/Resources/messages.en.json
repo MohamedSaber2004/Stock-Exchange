@@ -36,5 +36,15 @@
     "MethodNotAllowed": "The specified method is not allowed for this resource.",
     "UnsupportedMediaType": "The request contains an unsupported media type.",
     "RequestTimeout": "The request timed out. Please try again later."
+  },
+  "Users": {
+    "FullNameEmpty": "Full name cannot be empty.",
+    "PasswordResetTokenEmpty": "Password reset token cannot be empty.",
+    "VerificationCodeEmpty": "Verification code cannot be empty."
+  },
+  "Errors": {
+    "FullNameEmpty": "Full name cannot be empty.",
+    "PasswordResetTokenEmpty": "Password reset token cannot be empty.",
+    "VerificationCodeEmpty": "Verification code cannot be empty."
   }
 }

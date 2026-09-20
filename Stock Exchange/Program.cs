@@ -45,7 +45,10 @@ namespace Stock_Exchange
                 .ReadFrom.Configuration(builder.Configuration)
                 .CreateBootstrapLogger();
 
-            builder.Host.UseSerilog();
+            builder.Host.UseSerilog((context, services, configuration) => configuration
+                .ReadFrom.Configuration(context.Configuration)
+                .ReadFrom.Services(services)
+                .Enrich.FromLogContext());
 
             builder.Services.AddApplicationServices(builder.Configuration);
             builder.Services.AddInfrastructureServices();
@@ -98,6 +101,7 @@ namespace Stock_Exchange
                 options.AddVersionedSwaggerDocs(provider);
             });
 
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             builder.Services.AddHsts(options =>
@@ -140,17 +144,20 @@ namespace Stock_Exchange
                 }
             });
 
-            // Direct route for /swagger/index.html
-            //app.MapGet("/swagger/index.html", () => Results.Redirect("/swagger/"));
-
-            // Redirect root to swagger
             app.MapGet("/", () => Results.Redirect("/swagger/"));
 
             app.UseIpRateLimiting();
 
             app.MapControllers();
 
-            app.Run();
+            try
+            {
+                app.Run();
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
     }
 }
