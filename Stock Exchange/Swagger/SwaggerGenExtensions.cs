@@ -2,6 +2,7 @@ using Asp.Versioning.ApiExplorer;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
+using System.IO;
 
 namespace Stock_Exchange.Swagger;
 
@@ -15,11 +16,16 @@ public static class SwaggerGenExtensions
 
     public static SwaggerGenOptions IncludeApiXmlComments(this SwaggerGenOptions options)
     {
-        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        var assemblyName = Assembly.GetExecutingAssembly().GetName().Name.Replace('.', '-');
+        var xmlFiles = Directory.GetFiles(AppContext.BaseDirectory, "*.xml")
+            .Where(f => Path.GetFileNameWithoutExtension(f).Contains(assemblyName, StringComparison.OrdinalIgnoreCase) ||
+                        Path.GetFileNameWithoutExtension(f).Contains("Stock_Exchange", StringComparison.OrdinalIgnoreCase))
+            .ToList();
 
-        if (File.Exists(xmlPath))
+        foreach (var xmlPath in xmlFiles)
+        {
             options.IncludeXmlComments(xmlPath);
+        }
 
         return options;
     }

@@ -115,18 +115,15 @@ namespace Stock_Exchange
                 app.UseHsts();
             }
 
-            if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Test")
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
+                var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+                foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
                 {
-                    var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-                    foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
-                    {
-                        c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName);
-                    }
-                });
-            }
+                    c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName);
+                }
+            });
 
             app.UseIpRateLimiting();
 
