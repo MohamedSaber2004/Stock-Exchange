@@ -115,6 +115,17 @@ namespace Stock_Exchange
                 app.UseHsts();
             }
 
+            // Direct route for /swagger/index.html
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.Equals("/swagger/index.html", StringComparison.OrdinalIgnoreCase))
+                {
+                    context.Response.Redirect("/swagger/");
+                    return;
+                }
+                await next();
+            });
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -142,8 +153,6 @@ namespace Stock_Exchange
             }); ;
 
             app.MapControllers();
-
-            app.MapGet("/swagger/index.html", () => Results.Redirect("/swagger/"));
 
             app.Run();
         }
