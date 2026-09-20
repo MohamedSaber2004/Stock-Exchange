@@ -115,16 +115,17 @@ namespace Stock_Exchange
                 app.UseHsts();
             }
 
-            // Direct route for /swagger/index.html
-            app.Use(async (context, next) =>
+            app.UseRouting();
+            app.UseHttpsRedirection();
+            app.UseAuthorization();
+
+            app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions()
             {
-                if (context.Request.Path.Equals("/swagger/index.html", StringComparison.OrdinalIgnoreCase))
-                {
-                    context.Response.Redirect("/swagger/");
-                    return;
-                }
-                await next();
-            });
+                FileProvider = new CustomFileProvider(app.Environment.WebRootPath),
+                RequestPath = "/files"
+            }); ;
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -136,21 +137,10 @@ namespace Stock_Exchange
                 }
             });
 
+            // Direct route for /swagger/index.html
+            app.MapGet("/swagger/index.html", () => Results.Redirect("/swagger/"));
+
             app.UseIpRateLimiting();
-
-            app.UseRouting();
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-            app.UseStaticFiles();
-
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new CustomFileProvider(app.Environment.WebRootPath),
-                RequestPath = "/files"
-            }); ;
 
             app.MapControllers();
 
