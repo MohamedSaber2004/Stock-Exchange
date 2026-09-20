@@ -143,6 +143,8 @@ namespace Stock_Exchange
 
             app.MapControllers();
 
+            app.MapGet("/swagger/index.html", () => Results.Redirect("/swagger/"));
+
             app.Run();
         }
     }
