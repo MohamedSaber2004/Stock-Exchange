@@ -31,7 +31,6 @@
     <Folder Include="Filters\" />
     <Folder Include="Firebase\" />
     <Folder Include="Swagger\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

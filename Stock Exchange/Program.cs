@@ -7,6 +7,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Stock_Exchange.Application;
+using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Infrastructure;
 using Stock_Exchange.Middlewares;
@@ -96,6 +97,8 @@ namespace Stock_Exchange
             {
                 options.AddVersionedSwaggerDocs(provider);
             });
+
+            builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             builder.Services.AddHsts(options =>
             {

@@ -45,8 +45,9 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
 
                 return (true, Path.Combine(sanitizedFolder, uniqueFileName).Replace("\\", "/"));
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Upload failed: {ex.Message}");
                 return (false, _localizer[LocalizationKeys.Attachments.UploadFailed].Value);
             }
         }
