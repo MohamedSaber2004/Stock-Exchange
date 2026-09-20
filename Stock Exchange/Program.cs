@@ -138,7 +138,7 @@ namespace Stock_Exchange
             });
 
             // Direct route for /swagger/index.html
-            app.MapGet("/swagger/index.html", () => Results.Redirect("/swagger/"));
+            //app.MapGet("/swagger/index.html", () => Results.Redirect("/swagger/"));
 
             // Redirect root to swagger
             app.MapGet("/", () => Results.Redirect("/swagger/"));
