@@ -28,6 +28,7 @@ namespace Stock_Exchange.Domain.Entities
         public string? VerificationCode { get; private set; }
         public DateTime? VerificationCodeExpiry { get; private set; }
         public string? GoogleUserId { get; private set; }
+        public virtual ICollection<UserRefreshToken> RefreshTokens { get; private set; } = new List<UserRefreshToken>();
 
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
@@ -43,7 +44,7 @@ namespace Stock_Exchange.Domain.Entities
 
         public void MarkAsCreated(string createdBy)
         {
-            CreatedAt = DateTime.UtcNow;
+            CreatedAt = DateTime.Now;
             CreatedBy = createdBy ?? string.Empty;
             IsActive = true;
             IsDeleted = false;
@@ -51,13 +52,13 @@ namespace Stock_Exchange.Domain.Entities
 
         public void MarkAsUpdated(string updatedBy)
         {
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
             UpdatedBy = updatedBy ?? string.Empty;
         }
 
         public void MarkAsDeleted(string deletedBy)
         {
-            DeletedAt = DateTime.UtcNow;
+            DeletedAt = DateTime.Now;
             DeletedBy = deletedBy ?? string.Empty;
             IsDeleted = true;
             IsActive = false;

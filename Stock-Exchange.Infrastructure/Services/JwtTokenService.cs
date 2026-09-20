@@ -1,0 +1,80 @@
+﻿using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using Stock_Exchange.Application.Common.Interfaces;
+using Stock_Exchange.Application.Common.Options;
+using Stock_Exchange.Domain.Entities;
+using Stock_Exchange.Domain.Enums;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace Stock_Exchange.Infrastructure.Services
+{
+    public class JwtTokenService : IJwtTokenService
+    {
+        private readonly JwtSettings _settings;
+
+        public JwtTokenService(IOptions<JwtSettings> settings)
+        {
+            _settings = settings.Value;
+        }
+
+        public string GenerateAccessToken(ApplicationUser user, IList<string> roles, Guid? clinicId = null, bool hasActiveSubscription = false)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email!),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("FullName", user.FullName)
+            };
+
+            var userTypesMask = roles
+                .Select(r => Enum.TryParse<UserType>(r, ignoreCase: true, out var ut) ? (int)ut : 0)
+                .Aggregate(0, (acc, val) => acc | val);
+
+            claims.Add(new Claim("UserTypes", userTypesMask.ToString()));
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim("role", role));
+            }
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Secret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expiry = DateTime.Now.AddDays(_settings.ExpiryInDays);
+
+            var token = new JwtSecurityToken(
+                _settings.Issuer,
+                _settings.Audience,
+                claims,
+                expires: expiry,
+                signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public string GenerateRefreshToken(ApplicationUser user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("TokenType", "RefreshToken")
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Secret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expiry = DateTime.Now.AddDays(_settings.RefreshTokenExpiryDays);
+
+            var token = new JwtSecurityToken(
+                _settings.Issuer,
+                _settings.Audience,
+                claims,
+                expires: expiry,
+                signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+    }
+}

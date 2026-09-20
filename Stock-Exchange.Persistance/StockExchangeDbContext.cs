@@ -11,8 +11,10 @@ namespace Stock_Exchange.Persistance
         IdentityUserClaim<Guid>, IdentityUserRole<Guid>, IdentityUserLogin<Guid>,
         IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>, IStockExchangeDbContext
     {
-
         private readonly ICurrentUserService _currentUserService;
+
+        public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
+
         public StockExchangeDbContext(ICurrentUserService currentUserService, DbContextOptions<StockExchangeDbContext> options)
             : base(options)
         {

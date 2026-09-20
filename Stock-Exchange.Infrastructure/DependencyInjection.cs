@@ -9,6 +9,11 @@ using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Common.Options;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Entities;
+using Stock_Exchange.Domain.Repositories.Interfaces;
+using Stock_Exchange.Domain.Repositories.Interfaces.Base;
+using Stock_Exchange.Infrastructure.Repositories.Implementations;
+using Stock_Exchange.Infrastructure.Repositories.Implementations.Base;
+using Stock_Exchange.Infrastructure.Services;
 using Stock_Exchange.Infrastructure.Services.Attachment;
 using Stock_Exchange.Infrastructure.Services.Security;
 using Stock_Exchange.Persistance;
@@ -32,6 +37,11 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<IFileValidator, FileValidator>();
             services.AddScoped<IImageValidator, ImageValidator>();
             services.AddScoped<IVideoValidator, VideoValidator>();
+            services.AddScoped<IJwtTokenService, JwtTokenService>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
+            services.AddScoped<IUserRefreshTokenRepository, UserRefreshTokenRepository>();
 
             services.Configure<Application.Common.Options.IdentityOptions>(configuration.GetSection("IdentityOptions"));
             var identityOptionsConfig = configuration.GetSection("IdentityOptions").Get<Application.Common.Options.IdentityOptions>()
