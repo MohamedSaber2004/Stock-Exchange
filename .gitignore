@@ -39,7 +39,7 @@ bld/
 wwwroot/
 
 # Don't upload docs/plans to github
-Stock-Exchange/docs
+docs/
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
