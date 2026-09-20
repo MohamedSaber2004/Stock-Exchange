@@ -16,7 +16,7 @@ public static class SwaggerGenExtensions
 
     public static SwaggerGenOptions IncludeApiXmlComments(this SwaggerGenOptions options)
     {
-        var assemblyName = Assembly.GetExecutingAssembly().GetName().Name.Replace('.', '-');
+        var assemblyName = Assembly.GetExecutingAssembly().GetName().Name?.Replace('.', '-') ?? "Stock-Exchange";
         var xmlFiles = Directory.GetFiles(AppContext.BaseDirectory, "*.xml")
             .Where(f => Path.GetFileNameWithoutExtension(f).Contains(assemblyName, StringComparison.OrdinalIgnoreCase) ||
                         Path.GetFileNameWithoutExtension(f).Contains("Stock_Exchange", StringComparison.OrdinalIgnoreCase))

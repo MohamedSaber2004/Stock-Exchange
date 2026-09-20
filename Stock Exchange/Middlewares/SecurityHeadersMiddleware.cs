@@ -31,6 +31,13 @@ namespace Stock_Exchange.Middlewares
                 return;
             }
 
+            // Exclude Swagger endpoints from security headers to prevent CSP from blocking Swagger UI inline scripts and styles
+            if (context.Request.Path.StartsWithSegments("/swagger"))
+            {
+                await _next(context);
+                return;
+            }
+
             try
             {
                 AddSecurityHeaders(context);

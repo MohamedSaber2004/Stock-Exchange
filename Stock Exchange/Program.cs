@@ -55,32 +55,35 @@ namespace Stock_Exchange
             builder.Services.AddInfrastructureServices();
             builder.Services.AddPersistenceServices(builder.Configuration);
 
-            var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
-            if (corsConfig?.Enabled == true)
+            if (builder.Environment.IsProduction())
             {
-                builder.Services.AddCors(options =>
+                var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
+                if (corsConfig?.Enabled == true)
                 {
-                    options.AddPolicy(corsConfig.PolicyName, policy =>
+                    builder.Services.AddCors(options =>
                     {
-                        if (corsConfig.AllowedOrigins != null && corsConfig.AllowedOrigins.Count > 0)
-                            policy.WithOrigins(corsConfig.AllowedOrigins.ToArray());
-                        else
-                            policy.SetIsOriginAllowed(_ => true);
+                        options.AddPolicy(corsConfig.PolicyName, policy =>
+                        {
+                            if (corsConfig.AllowedOrigins != null && corsConfig.AllowedOrigins.Count > 0)
+                                policy.WithOrigins(corsConfig.AllowedOrigins.ToArray());
+                            else
+                                policy.SetIsOriginAllowed(_ => true);
 
-                        if (corsConfig.AllowedMethods != null && corsConfig.AllowedMethods.Count > 0)
-                            policy.WithMethods(corsConfig.AllowedMethods.ToArray());
-                        else
-                            policy.AllowAnyMethod();
+                            if (corsConfig.AllowedMethods != null && corsConfig.AllowedMethods.Count > 0)
+                                policy.WithMethods(corsConfig.AllowedMethods.ToArray());
+                            else
+                                policy.AllowAnyMethod();
 
-                        if (corsConfig.AllowedHeaders != null && corsConfig.AllowedHeaders.Count > 0)
-                            policy.WithHeaders(corsConfig.AllowedHeaders.ToArray());
-                        else
-                            policy.AllowAnyHeader();
+                            if (corsConfig.AllowedHeaders != null && corsConfig.AllowedHeaders.Count > 0)
+                                policy.WithHeaders(corsConfig.AllowedHeaders.ToArray());
+                            else
+                                policy.AllowAnyHeader();
 
-                        if (corsConfig.AllowCredentials)
-                            policy.AllowCredentials();
+                            if (corsConfig.AllowCredentials)
+                                policy.AllowCredentials();
+                        });
                     });
-                });
+                }
             }
 
             builder.Services.AddControllers();
@@ -154,10 +157,13 @@ namespace Stock_Exchange
 
             app.UseRouting();
 
-            var corsSettings = app.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
-            if (corsSettings?.Enabled == true)
+            if (app.Environment.IsProduction())
             {
-                app.UseCors(corsSettings.PolicyName);
+                var corsSettings = app.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
+                if (corsSettings?.Enabled == true)
+                {
+                    app.UseCors(corsSettings.PolicyName);
+                }
             }
 
             app.UseHttpsRedirection();
