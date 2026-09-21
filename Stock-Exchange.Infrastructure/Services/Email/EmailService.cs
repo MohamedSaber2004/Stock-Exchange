@@ -38,7 +38,8 @@ namespace Stock_Exchange.Infrastructure.Services.Email
             if (string.IsNullOrWhiteSpace(toEmail))
                 throw new ArgumentException("Recipient email address cannot be empty.", nameof(toEmail));
 
-            var fromEmail = !string.IsNullOrWhiteSpace(_emailSettings.Email) ? _emailSettings.Email.Trim() : "mohamed7saber10tech@gmail.com";
+            var fromEmail = !string.IsNullOrWhiteSpace(_emailSettings.Email) ? _emailSettings.Email.Trim() : "dev.mohamed104saber@gmail.com";
+
             var fromName = string.IsNullOrWhiteSpace(_emailSettings.Name) ? "StockExchange@Team" : _emailSettings.Name;
 
             var message = new MimeMessage();
@@ -70,16 +71,16 @@ namespace Stock_Exchange.Infrastructure.Services.Email
             }
             catch (Exception)
             {
-                // Fallback to alternate port (587 <-> 465) if the primary port is blocked by hosting firewall
                 var fallbackPort = port == 587 ? 465 : 587;
                 var fallbackOptions = fallbackPort == 465 ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls;
                 await client.ConnectAsync(host, fallbackPort, fallbackOptions, cancellationToken);
             }
 
             var username = !string.IsNullOrWhiteSpace(_emailSettings.Username) ? _emailSettings.Username.Trim() : fromEmail;
-            var password = !string.IsNullOrWhiteSpace(_emailSettings.Password)
+
+            var password = !string.IsNullOrWhiteSpace(_emailSettings.Password) && username != "dev.mohamed104saber@gmail.com"
                 ? _emailSettings.Password.Trim()
-                : "crdmcmajlrbxgfru";
+                : "yxnucokntgvujogk";
 
             try
             {
@@ -88,8 +89,13 @@ namespace Stock_Exchange.Infrastructure.Services.Email
                     await client.AuthenticateAsync(username, password, cancellationToken);
                 }
 
+                _logger?.LogInformation("EmailService: Sending email to {ToEmail} from {FromEmail} via {Host}:{Port} (User: {Username})...",
+                    toEmail, fromEmail, host, port, username);
+
                 await client.SendAsync(message, cancellationToken);
                 await client.DisconnectAsync(true, cancellationToken);
+
+                _logger?.LogInformation("EmailService: Email successfully delivered to {ToEmail}.", toEmail);
             }
             catch (SmtpCommandException smtpEx) when (_environment != null && !_environment.IsProduction())
             {
