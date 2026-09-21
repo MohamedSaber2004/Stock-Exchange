@@ -40,13 +40,20 @@ namespace Stock_Exchange.Infrastructure.Services
                 claims.Add(new Claim("role", role));
             }
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Secret));
+            var secret = !string.IsNullOrWhiteSpace(_settings.Secret)
+                ? _settings.Secret
+                : "n]:#J:?,{%9SvotDc^+/FMs7XHl$R1D2c^,Sf7_6vGJ>L8^!WvK1$$BqjVjD}rHGp}[fxYa90K1%4l3yf;sx5:";
+            var issuer = !string.IsNullOrWhiteSpace(_settings.Issuer) ? _settings.Issuer : "StockExchangeAPI";
+            var audience = !string.IsNullOrWhiteSpace(_settings.Audience) ? _settings.Audience : "StockExchangeMobile,StockExchangeDashboard";
+            var expiryDays = _settings.ExpiryInDays > 0 ? _settings.ExpiryInDays : 30;
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expiry = DateTime.Now.AddDays(_settings.ExpiryInDays);
+            var expiry = DateTime.Now.AddDays(expiryDays);
 
             var token = new JwtSecurityToken(
-                _settings.Issuer,
-                _settings.Audience,
+                issuer,
+                audience,
                 claims,
                 expires: expiry,
                 signingCredentials: creds);
@@ -63,13 +70,20 @@ namespace Stock_Exchange.Infrastructure.Services
                 new Claim("TokenType", "RefreshToken")
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Secret));
+            var secret = !string.IsNullOrWhiteSpace(_settings.Secret)
+                ? _settings.Secret
+                : "n]:#J:?,{%9SvotDc^+/FMs7XHl$R1D2c^,Sf7_6vGJ>L8^!WvK1$$BqjVjD}rHGp}[fxYa90K1%4l3yf;sx5:";
+            var issuer = !string.IsNullOrWhiteSpace(_settings.Issuer) ? _settings.Issuer : "StockExchangeAPI";
+            var audience = !string.IsNullOrWhiteSpace(_settings.Audience) ? _settings.Audience : "StockExchangeMobile,StockExchangeDashboard";
+            var refreshDays = _settings.RefreshTokenExpiryDays > 0 ? _settings.RefreshTokenExpiryDays : 30;
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expiry = DateTime.Now.AddDays(_settings.RefreshTokenExpiryDays);
+            var expiry = DateTime.Now.AddDays(refreshDays);
 
             var token = new JwtSecurityToken(
-                _settings.Issuer,
-                _settings.Audience,
+                issuer,
+                audience,
                 claims,
                 expires: expiry,
                 signingCredentials: creds);

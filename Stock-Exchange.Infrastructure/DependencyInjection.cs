@@ -78,7 +78,7 @@ namespace Stock_Exchange.Infrastructure
 
             var secretKey = !string.IsNullOrWhiteSpace(jwtSettings.Secret)
                 ? Encoding.UTF8.GetBytes(jwtSettings.Secret)
-                : Encoding.UTF8.GetBytes("StockExchangeSuperSecretKey1234567890!");
+                : Encoding.UTF8.GetBytes("n]:#J:?,{%9SvotDc^+/FMs7XHl$R1D2c^,Sf7_6vGJ>L8^!WvK1$$BqjVjD}rHGp}[fxYa90K1%4l3yf;sx5:");
 
             var audiences = !string.IsNullOrWhiteSpace(jwtSettings.Audience)
                 ? jwtSettings.Audience.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
