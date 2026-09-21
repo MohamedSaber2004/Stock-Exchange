@@ -38,6 +38,15 @@ namespace Stock_Exchange
                 Directory.CreateDirectory(logsPath);
             }
 
+            Serilog.Debugging.SelfLog.Enable(msg =>
+            {
+                try
+                {
+                    File.AppendAllText(Path.Combine(logsPath, "serilog-selflog.txt"), $"{DateTime.UtcNow:O} {msg}\n");
+                }
+                catch { }
+            });
+
             builder.Configuration.Sources.Clear();
             builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);

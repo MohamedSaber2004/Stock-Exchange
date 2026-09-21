@@ -69,6 +69,7 @@ def deploy():
             f.write("<!DOCTYPE html><html><body><h2>Deploying update...</h2></body></html>")
 
         ensure_dir(target_base_dir)
+        ensure_dir(f"{target_base_dir}/Logs")
         with open(offline_file, "rb") as f:
             ftp.storbinary(f"STOR {offline_file}", f)
         

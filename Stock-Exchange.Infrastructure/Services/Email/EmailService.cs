@@ -43,6 +43,8 @@ namespace Stock_Exchange.Infrastructure.Services.Email
             };
 
             using var client = new SmtpClient();
+            client.Timeout = 15000;
+            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
             var socketOptions = _emailSettings.Port switch
             {
@@ -51,7 +53,15 @@ namespace Stock_Exchange.Infrastructure.Services.Email
                 _ => SecureSocketOptions.Auto
             };
 
-            await client.ConnectAsync(_emailSettings.Host, _emailSettings.Port, socketOptions, cancellationToken);
+            try
+            {
+                await client.ConnectAsync(_emailSettings.Host, _emailSettings.Port, socketOptions, cancellationToken);
+            }
+            catch (Exception) when (_emailSettings.Port == 587)
+            {
+                // Fallback to SSL Port 465 if port 587 is blocked by hosting firewall (common on MonsterASP)
+                await client.ConnectAsync(_emailSettings.Host, 465, SecureSocketOptions.SslOnConnect, cancellationToken);
+            }
 
             if (!string.IsNullOrWhiteSpace(_emailSettings.Username) && !string.IsNullOrWhiteSpace(_emailSettings.Password))
             {

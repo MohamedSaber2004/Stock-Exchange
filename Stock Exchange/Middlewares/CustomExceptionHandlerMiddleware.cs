@@ -239,6 +239,17 @@ namespace Stock_Exchange.Middlewares
                     statusCode = StatusCodes.Status500InternalServerError;
                     message = Localize(LocalizationKeys.ExceptionMessages.InternalServerError);
                     errorsDict["General"] = new[] { message };
+
+                    var webHostEnv = context.RequestServices.GetService<IWebHostEnvironment>();
+                    if (webHostEnv != null && (webHostEnv.IsDevelopment() || webHostEnv.EnvironmentName == "Test"))
+                    {
+                        errorsDict["Exception_Type"] = new[] { exception.GetType().FullName ?? "Unknown" };
+                        errorsDict["Exception_Message"] = new[] { exception.Message };
+                        if (exception.InnerException != null)
+                        {
+                            errorsDict["Inner_Exception"] = new[] { exception.InnerException.Message };
+                        }
+                    }
                     break;
             }
 
