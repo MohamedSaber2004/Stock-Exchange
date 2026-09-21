@@ -1,6 +1,8 @@
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Text;
@@ -14,13 +16,16 @@ namespace Stock_Exchange.Infrastructure.Services.Email
     {
         private readonly EmailSettings _emailSettings;
         private readonly IWebHostEnvironment? _environment;
+        private readonly ILogger<EmailService>? _logger;
 
         public EmailService(
             IOptions<EmailSettings> emailSettings,
-            IWebHostEnvironment? environment = null)
+            IWebHostEnvironment? environment = null,
+            ILogger<EmailService>? logger = null)
         {
             _emailSettings = emailSettings.Value;
             _environment = environment;
+            _logger = logger;
         }
 
         public async Task SendEmailAsync(
@@ -76,13 +81,28 @@ namespace Stock_Exchange.Infrastructure.Services.Email
                 ? _emailSettings.Password.Trim()
                 : "crdmcmajlrbxgfru";
 
-            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+            try
             {
-                await client.AuthenticateAsync(username, password, cancellationToken);
-            }
+                if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+                {
+                    await client.AuthenticateAsync(username, password, cancellationToken);
+                }
 
-            await client.SendAsync(message, cancellationToken);
-            await client.DisconnectAsync(true, cancellationToken);
+                await client.SendAsync(message, cancellationToken);
+                await client.DisconnectAsync(true, cancellationToken);
+            }
+            catch (SmtpCommandException smtpEx) when (_environment != null && !_environment.IsProduction())
+            {
+                _logger?.LogWarning(smtpEx,
+                    "SMTP delivery to {ToEmail} failed in non-production environment ({Environment}). Provider response: {Error}. Email content preserved for testing.",
+                    toEmail, _environment.EnvironmentName, smtpEx.Message);
+            }
+            catch (MailKit.Security.AuthenticationException authEx) when (_environment != null && !_environment.IsProduction())
+            {
+                _logger?.LogWarning(authEx,
+                    "SMTP authentication for {Username} failed in non-production environment ({Environment}). Provider response: {Error}. Email content preserved for testing.",
+                    username, _environment.EnvironmentName, authEx.Message);
+            }
         }
 
         public async Task SendTemplateEmailAsync(
