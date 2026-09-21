@@ -35,7 +35,10 @@
     "Gone": "The requested resource is no longer available.",
     "MethodNotAllowed": "The specified method is not allowed for this resource.",
     "UnsupportedMediaType": "The request contains an unsupported media type.",
-    "RequestTimeout": "The request timed out. Please try again later."
+    "RequestTimeout": "The request timed out. Please try again later.",
+    "EmailAuthenticationFailed": "Email service authentication failed. Please verify SMTP credentials.",
+    "EmailServerRejected": "The mail server rejected the delivery request.",
+    "NetworkConnectionFailed": "Failed to connect to the external network service."
   },
   "AuthMessages": {
     "InvalidCredentials": "Invalid email or password.",

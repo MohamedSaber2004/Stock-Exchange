@@ -44,6 +44,9 @@ namespace Stock_Exchange.Application.Localization
             public const string MethodNotAllowed = "ExceptionMessages.MethodNotAllowed";
             public const string UnsupportedMediaType = "ExceptionMessages.UnsupportedMediaType";
             public const string RequestTimeout = "ExceptionMessages.RequestTimeout";
+            public const string EmailAuthenticationFailed = "ExceptionMessages.EmailAuthenticationFailed";
+            public const string EmailServerRejected = "ExceptionMessages.EmailServerRejected";
+            public const string NetworkConnectionFailed = "ExceptionMessages.NetworkConnectionFailed";
         }
 
         public static class AuthMessages

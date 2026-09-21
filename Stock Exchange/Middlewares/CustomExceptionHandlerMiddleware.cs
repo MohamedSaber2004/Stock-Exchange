@@ -235,25 +235,22 @@ namespace Stock_Exchange.Middlewares
                     errorsDict["General"] = new[] { message };
                     break;
 
-                case MailKit.Security.AuthenticationException authEx:
+                case MailKit.Security.AuthenticationException:
                     statusCode = StatusCodes.Status500InternalServerError;
-                    message = "Email service authentication failed. Please verify SMTP username and Google App Password.";
+                    message = Localize(LocalizationKeys.ExceptionMessages.EmailAuthenticationFailed);
                     errorsDict["General"] = new[] { message };
-                    errorsDict["Email_Error"] = new[] { authEx.Message };
                     break;
 
-                case MailKit.Net.Smtp.SmtpCommandException smtpEx:
+                case MailKit.Net.Smtp.SmtpCommandException:
                     statusCode = StatusCodes.Status500InternalServerError;
-                    message = $"SMTP server rejected command: {smtpEx.Message}";
+                    message = Localize(LocalizationKeys.ExceptionMessages.EmailServerRejected);
                     errorsDict["General"] = new[] { message };
-                    errorsDict["Smtp_StatusCode"] = new[] { smtpEx.StatusCode.ToString() };
                     break;
 
-                case System.Net.Sockets.SocketException sockEx:
+                case System.Net.Sockets.SocketException:
                     statusCode = StatusCodes.Status503ServiceUnavailable;
-                    message = $"Network connection to email/database server failed: {sockEx.Message}";
+                    message = Localize(LocalizationKeys.ExceptionMessages.NetworkConnectionFailed);
                     errorsDict["General"] = new[] { message };
-                    errorsDict["Socket_ErrorCode"] = new[] { sockEx.SocketErrorCode.ToString() };
                     break;
 
                 default:
