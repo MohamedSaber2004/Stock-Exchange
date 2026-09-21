@@ -55,7 +55,15 @@
     "InvalidPhoneNumber": "يجب أن يكون رقم الهاتف مصرياً صالحاً (010 أو 011 أو 012 أو 015 متبوعاً بـ 8 أرقام).",
     "EmailAlreadyExists": "يوجد حساب مسجل بهذا البريد الإلكتروني بالفعل.",
     "PhoneNumberAlreadyExists": "رقم الهاتف هذا مسجل بالفعل لعميل آخر.",
-    "UserCreationFailed": "فشل في إنشاء الحساب."
+    "UserCreationFailed": "فشل في إنشاء الحساب.",
+    "VerificationCodeRequired": "رمز التحقق مطلوب.",
+    "InvalidVerificationCode": "رمز التحقق غير صحيح.",
+    "VerificationCodeExpired": "انتهت صلاحية رمز التحقق. يرجى طلب رمز جديد.",
+    "ResetTokenRequired": "رمز إعادة تعيين كلمة المرور مطلوب.",
+    "InvalidResetToken": "رمز إعادة تعيين كلمة المرور غير صالح.",
+    "ResetTokenExpired": "انتهت صلاحية رمز إعادة تعيين كلمة المرور. يرجى التحقق من الرمز مرة أخرى.",
+    "PasswordResetFailed": "فشل في إعادة تعيين كلمة المرور.",
+    "PasswordResetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح."
   },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"

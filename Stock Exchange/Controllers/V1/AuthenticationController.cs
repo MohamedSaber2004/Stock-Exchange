@@ -4,6 +4,8 @@ using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
+using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
+using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
 using Stock_Exchange.Application.Features.Auth.DTOs;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Routes.V1;
@@ -71,5 +73,43 @@ public class AuthenticationController : BaseController
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Verifies the OTP verification code sent to the specified email address and generates a password reset token.
+    /// </summary>
+    /// <param name="command">The email address and OTP verification code.</param>
+    /// <returns>A password reset token to authorize password reset.</returns>
+    /// <response code="200">Verification code verified successfully and reset token generated.</response>
+    /// <response code="400">Validation error occurred, code is invalid, or code has expired.</response>
+    /// <response code="404">User not found.</response>
+    [HttpPost]
+    [Route(ApiRoutes.Authentication.VerifyOtp)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> VerifyOtp([FromBody] VerifyOtpCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Resets the user's password using the token received from OTP verification.
+    /// </summary>
+    /// <param name="command">The email address, reset token, and new password.</param>
+    /// <returns>Confirmation that the password was reset successfully.</returns>
+    /// <response code="200">Password reset successfully.</response>
+    /// <response code="400">Validation error occurred, token is invalid or expired, or passwords do not match.</response>
+    /// <response code="404">User not found.</response>
+    [HttpPost]
+    [Route(ApiRoutes.Authentication.ResetPassword)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.AuthMessages.PasswordResetSuccess);
     }
 }

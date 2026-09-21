@@ -13,6 +13,8 @@ using Stock_Exchange.Application.Features.Attachments.Commands.UploadMultipleFil
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
+using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
+using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
 using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application
@@ -44,6 +46,8 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<LoginCommand>, LoginCommandValidator>();
             services.AddTransient<IValidator<SignupCommand>, SignupCommandValidator>();
             services.AddTransient<IValidator<ForgetPasswordCommand>, ForgetPasswordCommandValidator>();
+            services.AddTransient<IValidator<VerifyOtpCommand>, VerifyOtpCommandValidator>();
+            services.AddTransient<IValidator<ResetPasswordCommand>, ResetPasswordCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

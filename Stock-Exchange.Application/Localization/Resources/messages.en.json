@@ -55,7 +55,15 @@
     "InvalidPhoneNumber": "Phone number must be a valid Egyptian number (010, 011, 012, or 015 followed by 8 digits).",
     "EmailAlreadyExists": "An account with this email already exists.",
     "PhoneNumberAlreadyExists": "This phone number is already registered to another client.",
-    "UserCreationFailed": "Failed to create user account."
+    "UserCreationFailed": "Failed to create user account.",
+    "VerificationCodeRequired": "Verification code is required.",
+    "InvalidVerificationCode": "Invalid verification code.",
+    "VerificationCodeExpired": "Verification code has expired. Please request a new one.",
+    "ResetTokenRequired": "Password reset token is required.",
+    "InvalidResetToken": "Invalid password reset token.",
+    "ResetTokenExpired": "Password reset token has expired. Please verify your OTP again.",
+    "PasswordResetFailed": "Failed to reset password.",
+    "PasswordResetSuccess": "Password has been reset successfully."
   },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"

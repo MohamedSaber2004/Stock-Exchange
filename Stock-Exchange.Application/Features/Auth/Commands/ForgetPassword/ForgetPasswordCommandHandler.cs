@@ -17,15 +17,18 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IEmailService _emailService;
         private readonly EmailSettings _emailSettings;
+        private readonly ILogger<ForgetPasswordCommandHandler> _logger;
 
         public ForgetPasswordCommandHandler(
             UserManager<ApplicationUser> userManager,
             IEmailService emailService,
-            IOptions<EmailSettings> emailSettings)
+            IOptions<EmailSettings> emailSettings,
+            ILogger<ForgetPasswordCommandHandler> logger)
         {
             _userManager = userManager;
             _emailService = emailService;
             _emailSettings = emailSettings.Value;
+            _logger = logger;
         }
 
         public async Task<bool> Handle(ForgetPasswordCommand request, CancellationToken cancellationToken)
@@ -69,12 +72,22 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword
                 { "ExpiryMinutes", expiryMinutes.ToString() }
             };
 
-            await _emailService.SendTemplateEmailAsync(
-                user.Email!,
-                subject,
-                templateName,
-                placeholders,
-                cancellationToken: cancellationToken);
+            _logger.LogInformation("Password reset OTP generated for {Email}: {OtpCode} (Expires: {ExpiryTime})", user.Email, otpCode, expiryTime);
+
+            try
+            {
+                await _emailService.SendTemplateEmailAsync(
+                    user.Email!,
+                    subject,
+                    templateName,
+                    placeholders,
+                    cancellationToken: cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to deliver password reset email to {Email}. Generated OTP was: {OtpCode}", user.Email, otpCode);
+                throw;
+            }
 
             return true;
         }

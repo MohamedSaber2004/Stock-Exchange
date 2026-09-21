@@ -117,5 +117,11 @@ namespace Stock_Exchange.Domain.Entities
             VerificationCode = null;
             VerificationCodeExpiry = null;
         }
+
+        public void ClearPasswordResetToken()
+        {
+            PasswordResetToken = null;
+            PasswordResetTokenExpiry = null;
+        }
     }
 }

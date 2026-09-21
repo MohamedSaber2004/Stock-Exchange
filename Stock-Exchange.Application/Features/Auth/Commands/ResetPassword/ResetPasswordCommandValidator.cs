@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Entities;
 
-namespace Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp
+namespace Stock_Exchange.Application.Features.Auth.Commands.ResetPassword
 {
-    public class VerifyOtpCommandValidator : AbstractValidator<VerifyOtpCommand>
+    public class ResetPasswordCommandValidator : AbstractValidator<ResetPasswordCommand>
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public VerifyOtpCommandValidator(UserManager<ApplicationUser> userManager)
+        public ResetPasswordCommandValidator(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
 
@@ -24,9 +24,17 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp
 
             RuleFor(x => x.OtpCode)
                 .NotEmpty()
-                .WithMessage(LocalizationKeys.AuthMessages.VerificationCodeRequired)
-                .Matches(@"^\d{6}$")
-                .WithMessage(LocalizationKeys.AuthMessages.InvalidVerificationCode);
+                .WithMessage(LocalizationKeys.AuthMessages.ResetTokenRequired);
+
+            RuleFor(x => x.NewPassword)
+                .NotEmpty()
+                .WithMessage(LocalizationKeys.AuthMessages.PasswordRequired);
+
+            RuleFor(x => x.ConfirmPassword)
+                .NotEmpty()
+                .WithMessage(LocalizationKeys.AuthMessages.ConfirmPasswordRequired)
+                .Equal(x => x.NewPassword)
+                .WithMessage(LocalizationKeys.AuthMessages.PasswordsDoNotMatch);
         }
 
         private async Task<bool> EmailExists(string email, CancellationToken cancellationToken)

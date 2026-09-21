@@ -66,6 +66,14 @@ namespace Stock_Exchange.Application.Localization
             public const string EmailAlreadyExists = "AuthMessages.EmailAlreadyExists";
             public const string PhoneNumberAlreadyExists = "AuthMessages.PhoneNumberAlreadyExists";
             public const string UserCreationFailed = "AuthMessages.UserCreationFailed";
+            public const string VerificationCodeRequired = "AuthMessages.VerificationCodeRequired";
+            public const string InvalidVerificationCode = "AuthMessages.InvalidVerificationCode";
+            public const string VerificationCodeExpired = "AuthMessages.VerificationCodeExpired";
+            public const string ResetTokenRequired = "AuthMessages.ResetTokenRequired";
+            public const string InvalidResetToken = "AuthMessages.InvalidResetToken";
+            public const string ResetTokenExpired = "AuthMessages.ResetTokenExpired";
+            public const string PasswordResetFailed = "AuthMessages.PasswordResetFailed";
+            public const string PasswordResetSuccess = "AuthMessages.PasswordResetSuccess";
         }
 
         public static class EmailMessages

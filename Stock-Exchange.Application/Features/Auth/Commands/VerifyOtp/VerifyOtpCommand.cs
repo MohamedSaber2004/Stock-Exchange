@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
 
-namespace Stock_Exchange.Application.Features.Auth.Commands.VerifyOTP
+namespace Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp
 {
-    internal class VerifyOtpCommand
+    public record VerifyOtpCommand : IRequest<string>
     {
+        public string Email { get; set; } = null!;
+        public string OtpCode { get; set; } = null!;
     }
 }
