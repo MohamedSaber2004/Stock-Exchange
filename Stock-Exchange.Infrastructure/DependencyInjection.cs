@@ -15,6 +15,7 @@ using Stock_Exchange.Infrastructure.Repositories.Implementations;
 using Stock_Exchange.Infrastructure.Repositories.Implementations.Base;
 using Stock_Exchange.Infrastructure.Services;
 using Stock_Exchange.Infrastructure.Services.Attachment;
+using Stock_Exchange.Infrastructure.Services.Email;
 using Stock_Exchange.Infrastructure.Services.Security;
 using Stock_Exchange.Persistance;
 using System.Text;
@@ -38,6 +39,11 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<IImageValidator, ImageValidator>();
             services.AddScoped<IVideoValidator, VideoValidator>();
             services.AddScoped<IJwtTokenService, JwtTokenService>();
+            services.AddScoped<IEmailService, EmailService>();
+
+            services.Configure<EmailSettings>(configuration.GetSection(nameof(EmailSettings)));
+            var emailSettings = configuration.GetSection(nameof(EmailSettings)).Get<EmailSettings>() ?? new EmailSettings();
+            services.AddSingleton(emailSettings);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));

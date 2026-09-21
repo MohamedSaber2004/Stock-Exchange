@@ -54,6 +54,9 @@
     "PhoneNumberAlreadyExists": "رقم الهاتف هذا مسجل بالفعل لعميل آخر.",
     "UserCreationFailed": "فشل في إنشاء الحساب."
   },
+  "EmailMessages": {
+    "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"
+  },
   "Users": {
     "FullNameEmpty": "الاسم الكامل لا يمكن أن يكون فارغاً.",
     "PasswordResetTokenEmpty": "رمز إعادة تعيين كلمة المرور لا يمكن أن يكون فارغاً.",

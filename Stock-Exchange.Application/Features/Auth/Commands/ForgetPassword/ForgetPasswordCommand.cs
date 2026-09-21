@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
 
 namespace Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword
 {
-    internal class ForgetPasswordCommand
-    {
-    }
+    public record ForgetPasswordCommand(string Email) : IRequest<bool>;
 }

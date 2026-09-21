@@ -10,6 +10,7 @@ using Stock_Exchange.Application.Features.Attachments.Commands.DownloadFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UpdateFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadMultipleFiles;
+using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Localization;
@@ -29,6 +30,7 @@ namespace Stock_Exchange.Application
             services.Configure<IpRateLimitingOptions>(configuration.GetSection(IpRateLimitingOptions.SectionName));
             services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
             services.Configure<IdentityOptions>(configuration.GetSection(nameof(IdentityOptions)));
+            services.Configure<EmailSettings>(configuration.GetSection(nameof(EmailSettings)));
 
             services.AddMediatR(typeof(DependencyInjection).Assembly);
 
@@ -41,6 +43,7 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<UpdateFileCommand>, UpdateFileCommandValidator>();
             services.AddTransient<IValidator<LoginCommand>, LoginCommandValidator>();
             services.AddTransient<IValidator<SignupCommand>, SignupCommandValidator>();
+            services.AddTransient<IValidator<ForgetPasswordCommand>, ForgetPasswordCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

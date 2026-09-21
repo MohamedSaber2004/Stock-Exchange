@@ -117,6 +117,9 @@ namespace Stock_Exchange
                         return new BadRequestObjectResult(response);
                     };
                 });
+
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddMemoryCache();
             builder.Services.AddInMemoryRateLimiting();

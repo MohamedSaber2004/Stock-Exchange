@@ -1,6 +1,7 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
+using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Features.Auth.DTOs;
@@ -51,5 +52,24 @@ public class AuthenticationController : BaseController
     {
         var result = await Mediator.Send(command);
         return CreatedResult(result, LocalizationKeys.ActionResults.Created);
+    }
+
+    /// <summary>
+    /// Sends a password reset verification code to the specified email address.
+    /// </summary>
+    /// <param name="command">The email address of the account to recover.</param>
+    /// <returns>Confirmation that the verification code was sent.</returns>
+    /// <response code="200">Verification code sent successfully.</response>
+    /// <response code="400">Validation error occurred.</response>
+    /// <response code="404">User not found.</response>
+    [HttpPost]
+    [Route(ApiRoutes.Authentication.ForgetPassword)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> ForgetPassword([FromBody] ForgetPasswordCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.ActionResults.Ok);
     }
 }

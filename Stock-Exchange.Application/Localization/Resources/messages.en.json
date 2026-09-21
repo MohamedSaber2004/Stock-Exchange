@@ -54,6 +54,9 @@
     "PhoneNumberAlreadyExists": "This phone number is already registered to another client.",
     "UserCreationFailed": "Failed to create user account."
   },
+  "EmailMessages": {
+    "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"
+  },
   "Users": {
     "FullNameEmpty": "Full name cannot be empty.",
     "PasswordResetTokenEmpty": "Password reset token cannot be empty.",

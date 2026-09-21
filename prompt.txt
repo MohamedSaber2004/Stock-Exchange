@@ -1,39 +1,95 @@
-Curl
-
-curl -X 'POST' \
-  'https://localhost:44308/api/v1/authentication/register' \
-  -H 'accept: text/plain' \
-  -H 'Accept-Language: ar' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "fullName": "Mohamed Saber",
-  "email": "mmms77990@gmail.com",
-  "password": "Mo@123456",
-  "confirmPassword": "Mo@123456",
-  "phoneNumber": "01022812243,
-  "fcmToken": "",
-  "devicePlatform": 0
-}'
-Request URL
-https://localhost:44308/api/v1/authentication/register
-Server response
-Code	Details
-400	
-Error: response status is 400
-
-Response body
-Download
-{
-  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
-  "title": "One or more validation errors occurred.",
-  "status": 400,
-  "errors": {
-    "command": [
-      "The command field is required."
-    ],
-    "$.phoneNumber": [
-      "'0x0A' is invalid within a JSON string. The string should be correctly escaped. Path: $.phoneNumber | LineNumber: 5 | BytePositionInLine: 30."
-    ]
-  },
-  "traceId": "00-e202274c74730188b565113449735639-595b662fff59a33b-00"
-}
+﻿MailKit.Security.AuthenticationException: 535: 5.7.8 Username and Password not accepted. For more information, go to
+﻿5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49fcd0f8563sm222459955e9.6 - gsmtp
+﻿ ---> MailKit.Net.Smtp.SmtpCommandException: 5.7.8 Username and Password not accepted. For more information, go to
+﻿5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49fcd0f8563sm222459955e9.6 - gsmtp
+﻿   --- End of inner exception stack trace ---
+﻿   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+﻿   at Stock_Exchange.Infrastructure.Services.Email.EmailService.SendEmailAsync(String toEmail, String subject, String body, Boolean isHtml, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Infrastructure\Services\Email\EmailService.cs:line 58
+﻿   at Stock_Exchange.Infrastructure.Services.Email.EmailService.SendTemplateEmailAsync(String toEmail, String subject, String templateName, IDictionary`2 placeholders, Boolean isHtml, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Infrastructure\Services\Email\EmailService.cs:line 87
+﻿   at Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword.ForgetPasswordCommandHandler.Handle(ForgetPasswordCommand request, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Features\Auth\Commands\ForgetPassword\ForgetPasswordCommandHandler.cs:line 72
+﻿   at Stock_Exchange.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Common\Behaviours\ValidationBehaviour.cs:line 28
+﻿   at Stock_Exchange.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+﻿[06:54:13 INF] Executed action Stock_Exchange.Controllers.V1.AuthenticationController.ForgetPassword (Stock-Exchange.API) in 140099.38ms
+﻿[06:54:14 INF] Executed endpoint 'Stock_Exchange.Controllers.V1.AuthenticationController.ForgetPassword (Stock-Exchange.API)'
+﻿[06:54:14 ERR] An error occurred while applying security headers.
+﻿MailKit.Security.AuthenticationException: 535: 5.7.8 Username and Password not accepted. For more information, go to
+﻿5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49fcd0f8563sm222459955e9.6 - gsmtp
+﻿ ---> MailKit.Net.Smtp.SmtpCommandException: 5.7.8 Username and Password not accepted. For more information, go to
+﻿5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49fcd0f8563sm222459955e9.6 - gsmtp
+﻿   --- End of inner exception stack trace ---
+﻿   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+﻿   at Stock_Exchange.Infrastructure.Services.Email.EmailService.SendEmailAsync(String toEmail, String subject, String body, Boolean isHtml, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Infrastructure\Services\Email\EmailService.cs:line 58
+﻿   at Stock_Exchange.Infrastructure.Services.Email.EmailService.SendTemplateEmailAsync(String toEmail, String subject, String templateName, IDictionary`2 placeholders, Boolean isHtml, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Infrastructure\Services\Email\EmailService.cs:line 87
+﻿   at Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword.ForgetPasswordCommandHandler.Handle(ForgetPasswordCommand request, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Features\Auth\Commands\ForgetPassword\ForgetPasswordCommandHandler.cs:line 72
+﻿   at Stock_Exchange.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Common\Behaviours\ValidationBehaviour.cs:line 28
+﻿   at Stock_Exchange.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+﻿   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at Stock_Exchange.Controllers.V1.AuthenticationController.ForgetPassword(ForgetPasswordCommand command) in E:\Stock Exchange\Stock Exchange\Stock Exchange\Controllers\V1\AuthenticationController.cs:line 72
+﻿   at lambda_method9(Closure, Object)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+﻿   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+﻿   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+﻿   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+﻿   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+﻿   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+﻿   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+﻿   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+﻿   at Stock_Exchange.Middlewares.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in E:\Stock Exchange\Stock Exchange\Stock Exchange\Middlewares\SecurityHeadersMiddleware.cs:line 44
+﻿[06:54:15 ERR] Server exception occurred with status 500: ??? ??? ????? ?? ??????.
+﻿MailKit.Security.AuthenticationException: 535: 5.7.8 Username and Password not accepted. For more information, go to
+﻿5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49fcd0f8563sm222459955e9.6 - gsmtp
+﻿ ---> MailKit.Net.Smtp.SmtpCommandException: 5.7.8 Username and Password not accepted. For more information, go to
+﻿5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49fcd0f8563sm222459955e9.6 - gsmtp
+﻿   --- End of inner exception stack trace ---
+﻿   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+﻿   at Stock_Exchange.Infrastructure.Services.Email.EmailService.SendEmailAsync(String toEmail, String subject, String body, Boolean isHtml, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Infrastructure\Services\Email\EmailService.cs:line 58
+﻿   at Stock_Exchange.Infrastructure.Services.Email.EmailService.SendTemplateEmailAsync(String toEmail, String subject, String templateName, IDictionary`2 placeholders, Boolean isHtml, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Infrastructure\Services\Email\EmailService.cs:line 87
+﻿   at Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword.ForgetPasswordCommandHandler.Handle(ForgetPasswordCommand request, CancellationToken cancellationToken) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Features\Auth\Commands\ForgetPassword\ForgetPasswordCommandHandler.cs:line 72
+﻿   at Stock_Exchange.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Common\Behaviours\ValidationBehaviour.cs:line 28
+﻿   at Stock_Exchange.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in E:\Stock Exchange\Stock Exchange\Stock-Exchange.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+﻿   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+﻿   at Stock_Exchange.Controllers.V1.AuthenticationController.ForgetPassword(ForgetPasswordCommand command) in E:\Stock Exchange\Stock Exchange\Stock Exchange\Controllers\V1\AuthenticationController.cs:line 72
+﻿   at lambda_method9(Closure, Object)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+﻿   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+﻿   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+﻿   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+﻿   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+﻿   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+﻿   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+﻿   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+﻿   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+﻿   at Stock_Exchange.Middlewares.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in E:\Stock Exchange\Stock Exchange\Stock Exchange\Middlewares\SecurityHeadersMiddleware.cs:line 44
+﻿   at Stock_Exchange.Middlewares.CustomExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in E:\Stock Exchange\Stock Exchange\Stock Exchange\Middlewares\CustomExceptionHandlerMiddleware.cs:line 27
+﻿[06:54:15 INF] Request finished HTTP/2 POST https://localhost:44308/api/v1/authentication/forget-password - 500 null application/json 141426.761ms

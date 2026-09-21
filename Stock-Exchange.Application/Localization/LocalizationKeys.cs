@@ -65,6 +65,11 @@ namespace Stock_Exchange.Application.Localization
             public const string UserCreationFailed = "AuthMessages.UserCreationFailed";
         }
 
+        public static class EmailMessages
+        {
+            public const string ResetPasswordSubject = "EmailMessages.ResetPasswordSubject";
+        }
+
         public static class Users
         {
             public const string FullNameEmpty = "Users.FullNameEmpty";
