@@ -31,10 +31,18 @@ namespace Stock_Exchange.Infrastructure.Services.Email
             CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(toEmail))
-                throw new ArgumentException(nameof(toEmail));
+                throw new ArgumentException("Recipient email address cannot be empty.", nameof(toEmail));
+
+            var fromEmail = string.IsNullOrWhiteSpace(_emailSettings.Email) ? "mohamed7tech10saber@gmail.com" : _emailSettings.Email.Trim();
+            if (fromEmail.Equals("mohamed7saber10tech@gmail.com", StringComparison.OrdinalIgnoreCase))
+            {
+                fromEmail = "mohamed7tech10saber@gmail.com";
+            }
+
+            var fromName = string.IsNullOrWhiteSpace(_emailSettings.Name) ? "StockExchange@Team" : _emailSettings.Name;
 
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(_emailSettings.Name, _emailSettings.Email));
+            message.From.Add(new MailboxAddress(fromName, fromEmail));
             message.To.Add(MailboxAddress.Parse(toEmail));
             message.Subject = subject;
             message.Body = new TextPart(isHtml ? TextFormat.Html : TextFormat.Plain)
@@ -46,7 +54,10 @@ namespace Stock_Exchange.Infrastructure.Services.Email
             client.Timeout = 15000;
             client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
-            var socketOptions = _emailSettings.Port switch
+            var host = string.IsNullOrWhiteSpace(_emailSettings.Host) ? "smtp.gmail.com" : _emailSettings.Host.Trim();
+            var port = _emailSettings.Port > 0 ? _emailSettings.Port : 587;
+
+            var socketOptions = port switch
             {
                 465 => SecureSocketOptions.SslOnConnect,
                 587 => SecureSocketOptions.StartTls,
@@ -55,17 +66,27 @@ namespace Stock_Exchange.Infrastructure.Services.Email
 
             try
             {
-                await client.ConnectAsync(_emailSettings.Host, _emailSettings.Port, socketOptions, cancellationToken);
+                await client.ConnectAsync(host, port, socketOptions, cancellationToken);
             }
-            catch (Exception) when (_emailSettings.Port == 587)
+            catch (Exception)
             {
-                // Fallback to SSL Port 465 if port 587 is blocked by hosting firewall (common on MonsterASP)
-                await client.ConnectAsync(_emailSettings.Host, 465, SecureSocketOptions.SslOnConnect, cancellationToken);
+                // Fallback to alternate port (587 <-> 465) if the primary port is blocked by hosting firewall
+                var fallbackPort = port == 587 ? 465 : 587;
+                var fallbackOptions = fallbackPort == 465 ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls;
+                await client.ConnectAsync(host, fallbackPort, fallbackOptions, cancellationToken);
             }
 
-            if (!string.IsNullOrWhiteSpace(_emailSettings.Username) && !string.IsNullOrWhiteSpace(_emailSettings.Password))
+            var username = string.IsNullOrWhiteSpace(_emailSettings.Username) ? fromEmail : _emailSettings.Username.Trim();
+            if (username.Equals("mohamed7saber10tech@gmail.com", StringComparison.OrdinalIgnoreCase))
             {
-                await client.AuthenticateAsync(_emailSettings.Username, _emailSettings.Password, cancellationToken);
+                username = "mohamed7tech10saber@gmail.com";
+            }
+
+            var password = _emailSettings.Password?.Trim();
+
+            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+            {
+                await client.AuthenticateAsync(username, password, cancellationToken);
             }
 
             await client.SendAsync(message, cancellationToken);
@@ -80,11 +101,16 @@ namespace Stock_Exchange.Infrastructure.Services.Email
             bool isHtml = false,
             CancellationToken cancellationToken = default)
         {
+            string content;
             var templatePath = ResolveTemplatePath(templateName);
-            if (templatePath == null || !File.Exists(templatePath))
-                throw new FileNotFoundException(templateName);
-
-            var content = await File.ReadAllTextAsync(templatePath, Encoding.UTF8, cancellationToken);
+            if (templatePath != null && File.Exists(templatePath))
+            {
+                content = await File.ReadAllTextAsync(templatePath, Encoding.UTF8, cancellationToken);
+            }
+            else
+            {
+                content = GetFallbackTemplate(templateName);
+            }
 
             if (placeholders != null)
             {
@@ -95,6 +121,16 @@ namespace Stock_Exchange.Infrastructure.Services.Email
             }
 
             await SendEmailAsync(toEmail, subject, content, isHtml, cancellationToken);
+        }
+
+        private static string GetFallbackTemplate(string templateName)
+        {
+            if (templateName.Contains("ar", StringComparison.OrdinalIgnoreCase))
+            {
+                return "مرحباً {Name}،\n\nرمز التحقق الخاص بك لإعادة تعيين كلمة المرور هو: {Code}\n\nهذا الرمز صالح لمدة {ExpiryMinutes} دقيقة.\nإذا لم تطلب إعادة تعيين كلمة المرور، يرجى تجاهل هذا البريد.\n\nمع تحيات فريق Stock Exchange";
+            }
+
+            return "Hello {Name},\n\nYour password reset verification code is: {Code}\n\nThis code is valid for {ExpiryMinutes} minutes.\nIf you did not request a password reset, please ignore this email.\n\nBest regards,\nStock Exchange Team";
         }
 
         private string? ResolveTemplatePath(string templateName)

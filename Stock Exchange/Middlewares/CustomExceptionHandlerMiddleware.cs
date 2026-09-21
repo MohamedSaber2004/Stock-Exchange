@@ -235,19 +235,48 @@ namespace Stock_Exchange.Middlewares
                     errorsDict["General"] = new[] { message };
                     break;
 
+                case MailKit.Security.AuthenticationException authEx:
+                    statusCode = StatusCodes.Status500InternalServerError;
+                    message = "Email service authentication failed. Please verify SMTP username and Google App Password.";
+                    errorsDict["General"] = new[] { message };
+                    errorsDict["Email_Error"] = new[] { authEx.Message };
+                    break;
+
+                case MailKit.Net.Smtp.SmtpCommandException smtpEx:
+                    statusCode = StatusCodes.Status500InternalServerError;
+                    message = $"SMTP server rejected command: {smtpEx.Message}";
+                    errorsDict["General"] = new[] { message };
+                    errorsDict["Smtp_StatusCode"] = new[] { smtpEx.StatusCode.ToString() };
+                    break;
+
+                case System.Net.Sockets.SocketException sockEx:
+                    statusCode = StatusCodes.Status503ServiceUnavailable;
+                    message = $"Network connection to email/database server failed: {sockEx.Message}";
+                    errorsDict["General"] = new[] { message };
+                    errorsDict["Socket_ErrorCode"] = new[] { sockEx.SocketErrorCode.ToString() };
+                    break;
+
                 default:
                     statusCode = StatusCodes.Status500InternalServerError;
                     message = Localize(LocalizationKeys.ExceptionMessages.InternalServerError);
                     errorsDict["General"] = new[] { message };
 
                     var webHostEnv = context.RequestServices.GetService<IWebHostEnvironment>();
-                    if (webHostEnv != null && (webHostEnv.IsDevelopment() || webHostEnv.EnvironmentName == "Test"))
+                    bool isDebugEnv = webHostEnv == null 
+                        || !webHostEnv.IsProduction() 
+                        || webHostEnv.EnvironmentName.Equals("Test", StringComparison.OrdinalIgnoreCase);
+
+                    if (isDebugEnv)
                     {
                         errorsDict["Exception_Type"] = new[] { exception.GetType().FullName ?? "Unknown" };
                         errorsDict["Exception_Message"] = new[] { exception.Message };
                         if (exception.InnerException != null)
                         {
                             errorsDict["Inner_Exception"] = new[] { exception.InnerException.Message };
+                        }
+                        if (!string.IsNullOrWhiteSpace(exception.StackTrace))
+                        {
+                            errorsDict["StackTrace"] = new[] { exception.StackTrace };
                         }
                     }
                     break;

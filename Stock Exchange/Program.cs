@@ -59,15 +59,40 @@ namespace Stock_Exchange
                 if (appAssembly != null) builder.Configuration.AddUserSecrets(appAssembly, optional: true);
             }
 
+            var logFilePath = Path.Combine(logsPath, "log-.txt");
+
             builder.Configuration.AddEnvironmentVariables().AddCommandLine(args);
             Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
+                .MinimumLevel.Override("System", Serilog.Events.LogEventLevel.Warning)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.File(
+                    path: logFilePath,
+                    rollingInterval: RollingInterval.Day,
+                    retainedFileCountLimit: 31,
+                    shared: true,
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
+                )
                 .ReadFrom.Configuration(builder.Configuration)
                 .CreateBootstrapLogger();
 
             builder.Host.UseSerilog((context, services, configuration) => configuration
+                .MinimumLevel.Information()
+                .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
+                .MinimumLevel.Override("System", Serilog.Events.LogEventLevel.Warning)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.File(
+                    path: logFilePath,
+                    rollingInterval: RollingInterval.Day,
+                    retainedFileCountLimit: 31,
+                    shared: true,
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
+                )
                 .ReadFrom.Configuration(context.Configuration)
-                .ReadFrom.Services(services)
-                .Enrich.FromLogContext());
+                .ReadFrom.Services(services));
 
             builder.Services.AddApplicationServices(builder.Configuration);
             builder.Services.AddInfrastructureServices(builder.Configuration);
@@ -245,7 +270,14 @@ namespace Stock_Exchange
 
             try
             {
+                Log.Information("=== Stock Exchange API Started === Environment: {Environment}, BaseDir: {BaseDir}, ContentRoot: {ContentRoot}", 
+                    app.Environment.EnvironmentName, AppContext.BaseDirectory, app.Environment.ContentRootPath);
                 app.Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Stock Exchange API terminated unexpectedly during runtime.");
+                throw;
             }
             finally
             {
