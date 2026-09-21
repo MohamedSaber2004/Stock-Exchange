@@ -37,6 +37,23 @@
     "UnsupportedMediaType": "يحتوي الطلب على نوع وسائط غير مدعوم.",
     "RequestTimeout": "انتهت صلاحية الطلب. يرجى المحاولة لاحقاً."
   },
+  "AuthMessages": {
+    "InvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+    "AccountDeleted": "تم حذف هذا الحساب.",
+    "AccountDeactivated": "هذا الحساب غير نشط.",
+    "AccountPendingApproval": "هذا الحساب في انتظار الموافقة.",
+    "EmailRequired": "البريد الإلكتروني مطلوب.",
+    "InvalidEmail": "صيغة البريد الإلكتروني غير صالحة.",
+    "PasswordRequired": "كلمة المرور مطلوبة.",
+    "FullNameRequired": "الاسم الكامل مطلوب.",
+    "ConfirmPasswordRequired": "تأكيد كلمة المرور مطلوب.",
+    "PasswordsDoNotMatch": "كلمات المرور غير متطابقة.",
+    "PhoneNumberRequired": "رقم الهاتف مطلوب.",
+    "InvalidPhoneNumber": "يجب أن يكون رقم الهاتف مصرياً صالحاً (010 أو 011 أو 012 أو 015 متبوعاً بـ 8 أرقام).",
+    "EmailAlreadyExists": "يوجد حساب مسجل بهذا البريد الإلكتروني بالفعل.",
+    "PhoneNumberAlreadyExists": "رقم الهاتف هذا مسجل بالفعل لعميل آخر.",
+    "UserCreationFailed": "فشل في إنشاء الحساب."
+  },
   "Users": {
     "FullNameEmpty": "الاسم الكامل لا يمكن أن يكون فارغاً.",
     "PasswordResetTokenEmpty": "رمز إعادة تعيين كلمة المرور لا يمكن أن يكون فارغاً.",

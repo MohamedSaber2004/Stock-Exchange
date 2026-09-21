@@ -37,6 +37,23 @@
     "UnsupportedMediaType": "The request contains an unsupported media type.",
     "RequestTimeout": "The request timed out. Please try again later."
   },
+  "AuthMessages": {
+    "InvalidCredentials": "Invalid email or password.",
+    "AccountDeleted": "This account has been deleted.",
+    "AccountDeactivated": "This account is inactive.",
+    "AccountPendingApproval": "This account is pending approval.",
+    "EmailRequired": "Email is required.",
+    "InvalidEmail": "Invalid email address format.",
+    "PasswordRequired": "Password is required.",
+    "FullNameRequired": "Full name is required.",
+    "ConfirmPasswordRequired": "Password confirmation is required.",
+    "PasswordsDoNotMatch": "Passwords do not match.",
+    "PhoneNumberRequired": "Phone number is required.",
+    "InvalidPhoneNumber": "Phone number must be a valid Egyptian number (010, 011, 012, or 015 followed by 8 digits).",
+    "EmailAlreadyExists": "An account with this email already exists.",
+    "PhoneNumberAlreadyExists": "This phone number is already registered to another client.",
+    "UserCreationFailed": "Failed to create user account."
+  },
   "Users": {
     "FullNameEmpty": "Full name cannot be empty.",
     "PasswordResetTokenEmpty": "Password reset token cannot be empty.",

@@ -10,6 +10,8 @@ using Stock_Exchange.Application.Features.Attachments.Commands.DownloadFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UpdateFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadMultipleFiles;
+using Stock_Exchange.Application.Features.Auth.Commands.Login;
+using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application
@@ -37,6 +39,8 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<UploadMultipleFilesCommand>, UploadMultipleFilesCommandValidator>();
             services.AddTransient<IValidator<DownloadFileCommand>, DownloadFileCommandValidator>();
             services.AddTransient<IValidator<UpdateFileCommand>, UpdateFileCommandValidator>();
+            services.AddTransient<IValidator<LoginCommand>, LoginCommandValidator>();
+            services.AddTransient<IValidator<SignupCommand>, SignupCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

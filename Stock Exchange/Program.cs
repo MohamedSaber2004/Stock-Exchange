@@ -3,11 +3,13 @@ using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Stock_Exchange.Application;
 using Stock_Exchange.Application.Common.Interfaces;
+using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Common.Options;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Infrastructure;
@@ -86,7 +88,35 @@ namespace Stock_Exchange
                 }
             }
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options.InvalidModelStateResponseFactory = context =>
+                    {
+                        var localizationProvider = context.HttpContext.RequestServices.GetService<ILocalizationProvider>();
+                        var culture = context.HttpContext.Request.Headers["Accept-Language"].FirstOrDefault() ?? "ar";
+                        if (culture.Contains('-')) culture = culture.Split('-')[0];
+                        if (culture.Length > 2) culture = culture.Substring(0, 2);
+                        if (culture != "en" && culture != "ar") culture = "ar";
+
+                        var message = localizationProvider?.GetLocalizedString(LocalizationKeys.ExceptionMessages.InvalidModelState, culture)
+                                      ?? "The provided model state is invalid.";
+
+                        var errors = context.ModelState
+                            .Where(x => x.Value?.Errors.Count > 0)
+                            .ToDictionary(
+                                kvp => string.IsNullOrWhiteSpace(kvp.Key) ? "General" : kvp.Key,
+                                kvp => kvp.Value!.Errors.Select(e =>
+                                    !string.IsNullOrWhiteSpace(e.ErrorMessage)
+                                        ? (localizationProvider?.GetLocalizedString(e.ErrorMessage, culture) ?? e.ErrorMessage)
+                                        : (localizationProvider?.GetLocalizedString(LocalizationKeys.ExceptionMessages.InvalidModelState, culture) ?? "Invalid value.")
+                                ).ToArray()
+                            );
+
+                        var response = ApiResponse<object?>.Error(errors, message, StatusCodes.Status400BadRequest);
+                        return new BadRequestObjectResult(response);
+                    };
+                });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddMemoryCache();
             builder.Services.AddInMemoryRateLimiting();

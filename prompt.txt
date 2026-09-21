@@ -1,1 +1,39 @@
-InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Http.IHttpContextAccessor' while attempting to activate 'Stock_Exchange.Services.CurrentUserService'.
+Curl
+
+curl -X 'POST' \
+  'https://localhost:44308/api/v1/authentication/register' \
+  -H 'accept: text/plain' \
+  -H 'Accept-Language: ar' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "fullName": "Mohamed Saber",
+  "email": "mmms77990@gmail.com",
+  "password": "Mo@123456",
+  "confirmPassword": "Mo@123456",
+  "phoneNumber": "01022812243,
+  "fcmToken": "",
+  "devicePlatform": 0
+}'
+Request URL
+https://localhost:44308/api/v1/authentication/register
+Server response
+Code	Details
+400	
+Error: response status is 400
+
+Response body
+Download
+{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "errors": {
+    "command": [
+      "The command field is required."
+    ],
+    "$.phoneNumber": [
+      "'0x0A' is invalid within a JSON string. The string should be correctly escaped. Path: $.phoneNumber | LineNumber: 5 | BytePositionInLine: 30."
+    ]
+  },
+  "traceId": "00-e202274c74730188b565113449735639-595b662fff59a33b-00"
+}

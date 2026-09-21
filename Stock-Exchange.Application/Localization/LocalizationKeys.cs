@@ -46,6 +46,25 @@ namespace Stock_Exchange.Application.Localization
             public const string RequestTimeout = "ExceptionMessages.RequestTimeout";
         }
 
+        public static class AuthMessages
+        {
+            public const string InvalidCredentials = "AuthMessages.InvalidCredentials";
+            public const string AccountDeleted = "AuthMessages.AccountDeleted";
+            public const string AccountDeactivated = "AuthMessages.AccountDeactivated";
+            public const string AccountPendingApproval = "AuthMessages.AccountPendingApproval";
+            public const string EmailRequired = "AuthMessages.EmailRequired";
+            public const string InvalidEmail = "AuthMessages.InvalidEmail";
+            public const string PasswordRequired = "AuthMessages.PasswordRequired";
+            public const string FullNameRequired = "AuthMessages.FullNameRequired";
+            public const string ConfirmPasswordRequired = "AuthMessages.ConfirmPasswordRequired";
+            public const string PasswordsDoNotMatch = "AuthMessages.PasswordsDoNotMatch";
+            public const string PhoneNumberRequired = "AuthMessages.PhoneNumberRequired";
+            public const string InvalidPhoneNumber = "AuthMessages.InvalidPhoneNumber";
+            public const string EmailAlreadyExists = "AuthMessages.EmailAlreadyExists";
+            public const string PhoneNumberAlreadyExists = "AuthMessages.PhoneNumberAlreadyExists";
+            public const string UserCreationFailed = "AuthMessages.UserCreationFailed";
+        }
+
         public static class Users
         {
             public const string FullNameEmpty = "Users.FullNameEmpty";

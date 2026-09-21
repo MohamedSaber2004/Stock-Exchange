@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Common\Behaviours\" />
+    <Folder Include="Features\Auth\Commands\LoginWithGoogle\" />
     <Folder Include="Localization\" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Options;
@@ -19,7 +19,7 @@ namespace Stock_Exchange.Infrastructure.Services
             _settings = settings.Value;
         }
 
-        public string GenerateAccessToken(ApplicationUser user, IList<string> roles, Guid? clinicId = null, bool hasActiveSubscription = false)
+        public string GenerateAccessToken(ApplicationUser user, IList<string> roles)
         {
             var claims = new List<Claim>
             {
