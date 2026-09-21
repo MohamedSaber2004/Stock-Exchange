@@ -82,7 +82,9 @@ namespace Stock_Exchange.Infrastructure.Services.Email
                 username = "mohamed7tech10saber@gmail.com";
             }
 
-            var password = _emailSettings.Password?.Trim();
+            var password = !string.IsNullOrWhiteSpace(_emailSettings.Password)
+                ? _emailSettings.Password.Trim()
+                : "crdmcmajlrbxgfru";
 
             if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
