@@ -69,10 +69,16 @@ def deploy():
             f.write("<!DOCTYPE html><html><body><h2>Deploying update...</h2></body></html>")
 
         ensure_dir(target_base_dir)
-        ensure_dir(f"{target_base_dir}/Logs")
         with open(offline_file, "rb") as f:
             ftp.storbinary(f"STOR {offline_file}", f)
         
+        # Ensure Logs directory exists without keeping it as active working directory
+        try:
+            ensure_dir(f"{target_base_dir}/Logs")
+            ensure_dir(target_base_dir)
+        except Exception:
+            pass
+
         print("app_offline.htm uploaded. Waiting 6 seconds for IIS worker process to gracefully shut down...")
         time.sleep(6)
 
@@ -125,6 +131,12 @@ def deploy():
 
     finally:
         # 3. Always remove app_offline.htm so IIS immediately boots with the new version
+        try:
+            ensure_dir(f"{target_base_dir}/Logs")
+            ftp.delete(offline_file)
+        except Exception:
+            pass
+
         try:
             ensure_dir(target_base_dir)
             ftp.delete(offline_file)
