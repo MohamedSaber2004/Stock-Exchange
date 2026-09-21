@@ -74,6 +74,7 @@ namespace Stock_Exchange.Application.Localization
             public const string ResetTokenExpired = "AuthMessages.ResetTokenExpired";
             public const string PasswordResetFailed = "AuthMessages.PasswordResetFailed";
             public const string PasswordResetSuccess = "AuthMessages.PasswordResetSuccess";
+            public const string NewPasswordCannotBeOldPassword = "AuthMessages.NewPasswordCannotBeOldPassword";
         }
 
         public static class EmailMessages

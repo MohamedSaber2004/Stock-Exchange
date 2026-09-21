@@ -63,7 +63,8 @@
     "InvalidResetToken": "Invalid password reset token.",
     "ResetTokenExpired": "Password reset token has expired. Please verify your OTP again.",
     "PasswordResetFailed": "Failed to reset password.",
-    "PasswordResetSuccess": "Password has been reset successfully."
+    "PasswordResetSuccess": "Password has been reset successfully.",
+    "NewPasswordCannotBeOldPassword": "New password cannot be the same as your old password."
   },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"

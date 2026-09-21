@@ -63,7 +63,8 @@
     "InvalidResetToken": "رمز إعادة تعيين كلمة المرور غير صالح.",
     "ResetTokenExpired": "انتهت صلاحية رمز إعادة تعيين كلمة المرور. يرجى التحقق من الرمز مرة أخرى.",
     "PasswordResetFailed": "فشل في إعادة تعيين كلمة المرور.",
-    "PasswordResetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح."
+    "PasswordResetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح.",
+    "NewPasswordCannotBeOldPassword": "لا يمكن أن تكون كلمة المرور الجديدة مطابقة لكلمة المرور القديمة."
   },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"

@@ -28,7 +28,9 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ResetPassword
 
             RuleFor(x => x.NewPassword)
                 .NotEmpty()
-                .WithMessage(LocalizationKeys.AuthMessages.PasswordRequired);
+                .WithMessage(LocalizationKeys.AuthMessages.PasswordRequired)
+                .MustAsync(PasswordMustNotMatchOld)
+                .WithMessage(LocalizationKeys.AuthMessages.NewPasswordCannotBeOldPassword);
 
             RuleFor(x => x.ConfirmPassword)
                 .NotEmpty()
@@ -40,6 +42,23 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ResetPassword
         private async Task<bool> EmailExists(string email, CancellationToken cancellationToken)
         {
             return await _userManager.Users.AnyAsync(u => u.Email == email && !u.IsDeleted, cancellationToken);
+        }
+
+        private async Task<bool> PasswordMustNotMatchOld(ResetPasswordCommand command, string newPassword, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(command.Email))
+                return true;
+
+            var user = await _userManager.FindByEmailAsync(command.Email.Trim());
+            if (user == null || string.IsNullOrWhiteSpace(user.PasswordHash))
+                return true;
+
+            var verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(
+                user,
+                user.PasswordHash,
+                newPassword);
+
+            return verificationResult == PasswordVerificationResult.Failed;
         }
     }
 }
