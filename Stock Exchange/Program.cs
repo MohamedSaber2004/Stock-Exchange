@@ -31,6 +31,13 @@ namespace Stock_Exchange
 
             var env = builder.Environment;
 
+            Directory.SetCurrentDirectory(env.ContentRootPath);
+            var logsPath = Path.Combine(env.ContentRootPath, "Logs");
+            if (!Directory.Exists(logsPath))
+            {
+                Directory.CreateDirectory(logsPath);
+            }
+
             builder.Configuration.Sources.Clear();
             builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);

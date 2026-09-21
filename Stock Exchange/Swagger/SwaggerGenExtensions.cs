@@ -33,13 +33,21 @@ public static class SwaggerGenExtensions
 
     public static SwaggerGenOptions IncludeApiXmlComments(this SwaggerGenOptions options)
     {
-        var assemblyName = Assembly.GetExecutingAssembly().GetName().Name?.Replace('.', '-') ?? "Stock-Exchange";
-        var xmlFiles = Directory.GetFiles(AppContext.BaseDirectory, "*.xml")
-            .Where(f => Path.GetFileNameWithoutExtension(f).Contains(assemblyName, StringComparison.OrdinalIgnoreCase) ||
-                        Path.GetFileNameWithoutExtension(f).Contains("Stock_Exchange", StringComparison.OrdinalIgnoreCase))
+        var executingAssembly = Assembly.GetExecutingAssembly();
+        var apiXmlPath = Path.Combine(AppContext.BaseDirectory, $"{executingAssembly.GetName().Name}.xml");
+
+        if (File.Exists(apiXmlPath))
+        {
+            options.IncludeXmlComments(apiXmlPath, includeControllerXmlComments: true);
+        }
+
+        var otherXmlFiles = Directory.GetFiles(AppContext.BaseDirectory, "*.xml")
+            .Where(f => !string.Equals(f, apiXmlPath, StringComparison.OrdinalIgnoreCase) &&
+                        (Path.GetFileName(f).StartsWith("Stock", StringComparison.OrdinalIgnoreCase) ||
+                         Path.GetFileName(f).Contains("Exchange", StringComparison.OrdinalIgnoreCase)))
             .ToList();
 
-        foreach (var xmlPath in xmlFiles)
+        foreach (var xmlPath in otherXmlFiles)
         {
             options.IncludeXmlComments(xmlPath);
         }
