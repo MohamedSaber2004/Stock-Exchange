@@ -33,12 +33,7 @@ namespace Stock_Exchange.Infrastructure.Services.Email
             if (string.IsNullOrWhiteSpace(toEmail))
                 throw new ArgumentException("Recipient email address cannot be empty.", nameof(toEmail));
 
-            var fromEmail = string.IsNullOrWhiteSpace(_emailSettings.Email) ? "mohamed7tech10saber@gmail.com" : _emailSettings.Email.Trim();
-            if (fromEmail.Equals("mohamed7saber10tech@gmail.com", StringComparison.OrdinalIgnoreCase))
-            {
-                fromEmail = "mohamed7tech10saber@gmail.com";
-            }
-
+            var fromEmail = !string.IsNullOrWhiteSpace(_emailSettings.Email) ? _emailSettings.Email.Trim() : "mohamed7saber10tech@gmail.com";
             var fromName = string.IsNullOrWhiteSpace(_emailSettings.Name) ? "StockExchange@Team" : _emailSettings.Name;
 
             var message = new MimeMessage();
@@ -76,12 +71,7 @@ namespace Stock_Exchange.Infrastructure.Services.Email
                 await client.ConnectAsync(host, fallbackPort, fallbackOptions, cancellationToken);
             }
 
-            var username = string.IsNullOrWhiteSpace(_emailSettings.Username) ? fromEmail : _emailSettings.Username.Trim();
-            if (username.Equals("mohamed7saber10tech@gmail.com", StringComparison.OrdinalIgnoreCase))
-            {
-                username = "mohamed7tech10saber@gmail.com";
-            }
-
+            var username = !string.IsNullOrWhiteSpace(_emailSettings.Username) ? _emailSettings.Username.Trim() : fromEmail;
             var password = !string.IsNullOrWhiteSpace(_emailSettings.Password)
                 ? _emailSettings.Password.Trim()
                 : "crdmcmajlrbxgfru";

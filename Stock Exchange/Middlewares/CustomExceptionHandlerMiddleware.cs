@@ -236,6 +236,7 @@ namespace Stock_Exchange.Middlewares
                     break;
 
                 case MailKit.Security.AuthenticationException:
+                case MailKit.Net.Smtp.SmtpProtocolException:
                     statusCode = StatusCodes.Status500InternalServerError;
                     message = Localize(LocalizationKeys.ExceptionMessages.EmailAuthenticationFailed);
                     errorsDict["General"] = new[] { message };
