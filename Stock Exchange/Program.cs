@@ -199,7 +199,7 @@ namespace Stock_Exchange
 
             builder.Services.AddSwaggerGen(options =>
             {
-                options.AddAcceptLanguageHeader().IncludeApiXmlComments().AddJwtBearerSecurity();
+                options.AddAcceptLanguageHeader().IncludeApiXmlComments().AddJwtBearerSecurity().AddApiResponseExamples();
             });
 
             builder.Services.AddOptions<SwaggerGenOptions>().Configure<IApiVersionDescriptionProvider>((options, provider) =>
@@ -255,6 +255,9 @@ namespace Stock_Exchange
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
+                c.InjectStylesheet("/swagger-custom/response-codes.css");
+                c.InjectJavascript("/swagger-custom/response-codes.js");
+
                 var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
                 foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
                 {

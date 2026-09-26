@@ -19,15 +19,19 @@ public static class SwaggerGenExtensions
         options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
             Name = "Authorization",
-            Type = SecuritySchemeType.Http,
-            Scheme = "Bearer",
-            BearerFormat = "JWT",
+            Type = SecuritySchemeType.ApiKey,
             In = ParameterLocation.Header,
-            Description = "Enter JWT Bearer token."
+            Description = "Enter the word 'Bearer' followed by a space and your JWT. Example: Bearer eyJhbGciOiJIUzI1NiIs..."
         });
 
         options.OperationFilter<AuthorizeCheckOperationFilter>();
 
+        return options;
+    }
+
+    public static SwaggerGenOptions AddApiResponseExamples(this SwaggerGenOptions options)
+    {
+        options.OperationFilter<ApiResponseExamplesOperationFilter>();
         return options;
     }
 

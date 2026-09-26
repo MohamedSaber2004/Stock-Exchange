@@ -28,6 +28,7 @@ namespace Stock_Exchange.Domain.Entities
         public string? VerificationCode { get; private set; }
         public DateTime? VerificationCodeExpiry { get; private set; }
         public string? GoogleUserId { get; private set; }
+        public long TokenVersion { get; private set; }
         public virtual ICollection<UserRefreshToken> RefreshTokens { get; private set; } = new List<UserRefreshToken>();
 
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
@@ -92,6 +93,11 @@ namespace Stock_Exchange.Domain.Entities
         public void ChangeLanguage(Language language)
         {
             Language = language;
+        }
+
+        public void IncrementTokenVersion()
+        {
+            TokenVersion++;
         }
 
         public void SetPasswordResetToken(string token, DateTime expiry)

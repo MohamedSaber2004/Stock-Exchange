@@ -75,6 +75,12 @@ namespace Stock_Exchange.Application.Localization
             public const string PasswordResetFailed = "AuthMessages.PasswordResetFailed";
             public const string PasswordResetSuccess = "AuthMessages.PasswordResetSuccess";
             public const string NewPasswordCannotBeOldPassword = "AuthMessages.NewPasswordCannotBeOldPassword";
+            public const string RefreshTokenRequired = "AuthMessages.RefreshTokenRequired";
+            public const string InvalidRefreshToken = "AuthMessages.InvalidRefreshToken";
+            public const string RefreshTokenExpired = "AuthMessages.RefreshTokenExpired";
+            public const string RefreshTokenRevoked = "AuthMessages.RefreshTokenRevoked";
+            public const string SessionExpired = "AuthMessages.SessionExpired";
+            public const string SessionRevoked = "AuthMessages.SessionRevoked";
         }
 
         public static class EmailMessages

@@ -9,6 +9,7 @@ using Stock_Exchange.Routes;
 namespace Stock_Exchange.Controllers;
 
 [ApiController]
+[Produces("application/json")]
 public abstract class BaseController : ControllerBase
 {
     private IMediator? _mediator;

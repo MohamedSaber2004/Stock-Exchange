@@ -42,7 +42,13 @@ public class AuthorizeCheckOperationFilter : IOperationFilter
 
         operation.Security.Add(securityRequirement);
 
-        operation.Responses.TryAdd("401", new OpenApiResponse { Description = "Unauthorized" });
-        operation.Responses.TryAdd("403", new OpenApiResponse { Description = "Forbidden" });
+        operation.Responses.TryAdd("401", new OpenApiResponse
+        {
+            Description = "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+        });
+        operation.Responses.TryAdd("403", new OpenApiResponse
+        {
+            Description = "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+        });
     }
 }

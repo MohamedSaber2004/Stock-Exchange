@@ -5,35 +5,40 @@ namespace Stock_Exchange.Services
 {
     public class CurrentUserService : ICurrentUserService
     {
-        public Guid UserId { get; }
-
-        public bool IsAuthenticated { get; }
-
-        public string? IpAddress { get; }
-
-        public int? UserTypes { get; }
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
-            var httpContext = httpContextAccessor.HttpContext;
+            _httpContextAccessor = httpContextAccessor;
+        }
 
-            if (httpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value is { } userIdString &&
-                Guid.TryParse(userIdString, out var userId))
+        private ClaimsPrincipal? User => _httpContextAccessor.HttpContext?.User;
+
+        public Guid UserId
+        {
+            get
             {
-                UserId = userId;
+                var userIdString = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                    ?? User?.FindFirst("sub")?.Value;
+
+                return Guid.TryParse(userIdString, out var userId)
+                    ? userId
+                    : Guid.Empty;
             }
-            else
-            {
-                UserId = Guid.Empty;
-            }
+        }
 
-            IsAuthenticated = httpContext?.User?.Identity?.IsAuthenticated ?? false;
-            IpAddress = httpContext?.Connection?.RemoteIpAddress?.ToString();
+        public bool IsAuthenticated => User?.Identity?.IsAuthenticated ?? false;
 
-            var userTypesClaim = httpContext?.User?.FindFirst("UserTypes")?.Value;
-            if (int.TryParse(userTypesClaim, out var userTypes))
+        public string? IpAddress => _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+
+        public int? UserTypes
+        {
+            get
             {
-                UserTypes = userTypes;
+                var userTypesClaim = User?.FindFirst("UserTypes")?.Value;
+                return int.TryParse(userTypesClaim, out var userTypes)
+                    ? userTypes
+                    : null;
             }
         }
     }

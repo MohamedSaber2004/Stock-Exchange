@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stock_Exchange.Persistance;
 
@@ -11,9 +12,11 @@ using Stock_Exchange.Persistance;
 namespace Stock_Exchange.Persistance.Migrations
 {
     [DbContext(typeof(StockExchangeDbContext))]
-    partial class StockExchangeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260926223500_AddTokenVersionToUsers")]
+    partial class AddTokenVersionToUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

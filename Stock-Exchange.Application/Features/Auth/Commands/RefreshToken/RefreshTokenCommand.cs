@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Stock_Exchange.Application.Features.Auth.DTOs;
 
 namespace Stock_Exchange.Application.Features.Auth.Commands.RefreshToken
 {
-    internal class RefreshTokenCommand
+    public record RefreshTokenCommand : IRequest<RefreshTokenResponseDto>
     {
+        public string RefreshToken { get; set; } = null!;
     }
 }

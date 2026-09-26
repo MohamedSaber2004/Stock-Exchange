@@ -34,6 +34,10 @@ namespace Stock_Exchange.Persistance.Configurations
             builder.Property(u => u.GoogleUserId)
                 .IsRequired(false);
 
+            builder.Property(u => u.TokenVersion)
+                .HasDefaultValue(0L)
+                .IsRequired();
+
             builder.Property(u => u.Language)
                 .HasConversion<string>()
                 .HasDefaultValue(Language.en)

@@ -64,7 +64,13 @@
     "ResetTokenExpired": "انتهت صلاحية رمز إعادة تعيين كلمة المرور. يرجى التحقق من الرمز مرة أخرى.",
     "PasswordResetFailed": "فشل في إعادة تعيين كلمة المرور.",
     "PasswordResetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح.",
-    "NewPasswordCannotBeOldPassword": "لا يمكن أن تكون كلمة المرور الجديدة مطابقة لكلمة المرور القديمة."
+    "NewPasswordCannotBeOldPassword": "لا يمكن أن تكون كلمة المرور الجديدة مطابقة لكلمة المرور القديمة.",
+    "RefreshTokenRequired": "رمز التحديث مطلوب.",
+    "InvalidRefreshToken": "رمز التحديث غير صالح.",
+    "RefreshTokenExpired": "انتهت صلاحية رمز التحديث. يرجى تسجيل الدخول مرة أخرى.",
+    "RefreshTokenRevoked": "تم إلغاء رمز التحديث. يرجى تسجيل الدخول مرة أخرى.",
+    "SessionExpired": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
+    "SessionRevoked": "لم تعد جلستك صالحة. يرجى تسجيل الدخول مرة أخرى."
   },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"

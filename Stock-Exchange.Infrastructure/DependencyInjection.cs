@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Stock_Exchange.Application.Common.Auth;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Common.Options;
@@ -18,6 +20,8 @@ using Stock_Exchange.Infrastructure.Services.Attachment;
 using Stock_Exchange.Infrastructure.Services.Email;
 using Stock_Exchange.Infrastructure.Services.Security;
 using Stock_Exchange.Persistance;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace Stock_Exchange.Infrastructure
@@ -111,13 +115,22 @@ namespace Stock_Exchange.Infrastructure
                 options.TokenValidationParameters = tokenValidationParameters;
                 options.Events = new JwtBearerEvents
                 {
+                    OnAuthenticationFailed = context =>
+                    {
+                        if (context.Exception is SecurityTokenExpiredException)
+                        {
+                            context.HttpContext.Items[AuthFailureReasons.ItemsKey] = AuthFailureReasons.Expired;
+                        }
+
+                        return Task.CompletedTask;
+                    },
                     OnChallenge = context =>
                     {
                         context.HandleResponse();
                         context.Response.StatusCode = StatusCodes.Status401Unauthorized;
                         context.Response.ContentType = "application/json";
 
-                        var localizedMessage = JsonLocalizationProvider.GetLocalizedString(LocalizationKeys.ExceptionMessages.Unauthorized);
+                        var localizedMessage = ResolveChallengeMessage(context);
                         var response = ApiResponse<object?>.Error(new Dictionary<string, string[]>(), localizedMessage, StatusCodes.Status401Unauthorized);
                         var jsonOptions = new System.Text.Json.JsonSerializerOptions
                         {
@@ -125,11 +138,62 @@ namespace Stock_Exchange.Infrastructure
                         };
 
                         return context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(response, jsonOptions));
+                    },
+                    OnTokenValidated = async context =>
+                    {
+                        var userManager = context.HttpContext.RequestServices.GetService<UserManager<ApplicationUser>>();
+                        var userId = context.Principal?.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                            ?? context.Principal?.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+                        var versionClaim = context.Principal?.FindFirst("TokenVersion")?.Value;
+
+                        if (userManager is null
+                            || !Guid.TryParse(userId, out _)
+                            || !long.TryParse(versionClaim, out var tokenVersion))
+                        {
+                            context.HttpContext.Items[AuthFailureReasons.ItemsKey] = AuthFailureReasons.Revoked;
+                            context.Fail(MissingTokenClaimsMessage);
+                            return;
+                        }
+
+                        var user = await userManager.FindByIdAsync(userId!);
+                        if (user is null
+                            || user.IsDeleted
+                            || !user.IsActive
+                            || user.TokenVersion != tokenVersion)
+                        {
+                            context.HttpContext.Items[AuthFailureReasons.ItemsKey] = AuthFailureReasons.Revoked;
+                            context.Fail(RevokedAccessTokenMessage);
+                        }
                     }
                 };
             });
 
             return services;
+        }
+
+        private const string MissingTokenClaimsMessage = "Access token is missing required claims.";
+        private const string RevokedAccessTokenMessage = "Access token has been revoked.";
+
+        private static string ResolveChallengeMessage(JwtBearerChallengeContext context)
+        {
+            var reason = context.HttpContext.Items[AuthFailureReasons.ItemsKey] as string;
+            if (reason == AuthFailureReasons.Expired)
+                return JsonLocalizationProvider.GetLocalizedString(LocalizationKeys.AuthMessages.SessionExpired);
+
+            if (reason == AuthFailureReasons.Revoked)
+                return JsonLocalizationProvider.GetLocalizedString(LocalizationKeys.AuthMessages.SessionRevoked);
+
+            return context.AuthenticateFailure switch
+            {
+                SecurityTokenExpiredException => JsonLocalizationProvider.GetLocalizedString(
+                    LocalizationKeys.AuthMessages.SessionExpired),
+                AuthenticationFailureException authFailure
+                    when authFailure.Message == RevokedAccessTokenMessage
+                        || authFailure.Message == MissingTokenClaimsMessage => JsonLocalizationProvider.GetLocalizedString(
+                            LocalizationKeys.AuthMessages.SessionRevoked),
+                _ => JsonLocalizationProvider.GetLocalizedString(
+                    LocalizationKeys.ExceptionMessages.Unauthorized)
+            };
         }
     }
 }

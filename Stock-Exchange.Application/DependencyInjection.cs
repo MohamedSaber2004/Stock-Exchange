@@ -12,6 +12,8 @@ using Stock_Exchange.Application.Features.Attachments.Commands.UploadFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadMultipleFiles;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
+using Stock_Exchange.Application.Features.Auth.Commands.Logout;
+using Stock_Exchange.Application.Features.Auth.Commands.RefreshToken;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
@@ -48,6 +50,8 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<ForgetPasswordCommand>, ForgetPasswordCommandValidator>();
             services.AddTransient<IValidator<VerifyOtpCommand>, VerifyOtpCommandValidator>();
             services.AddTransient<IValidator<ResetPasswordCommand>, ResetPasswordCommandValidator>();
+            services.AddTransient<IValidator<RefreshTokenCommand>, RefreshTokenCommandValidator>();
+            services.AddTransient<IValidator<LogoutCommand>, LogoutCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

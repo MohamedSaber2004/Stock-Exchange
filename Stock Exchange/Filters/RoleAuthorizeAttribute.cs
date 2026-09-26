@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Localization;
+using Stock_Exchange.Application.Common.Auth;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Localization;
@@ -39,7 +40,15 @@ namespace Stock_Exchange.Filters
 
             if (user.Identity == null || !user.Identity.IsAuthenticated || currentUserService == null || !currentUserService.IsAuthenticated)
             {
-                var message = localizer[LocalizationKeys.ExceptionMessages.Unauthorized];
+                var reason = context.HttpContext.Items[AuthFailureReasons.ItemsKey] as string;
+                var localizationKey = reason switch
+                {
+                    AuthFailureReasons.Expired => LocalizationKeys.AuthMessages.SessionExpired,
+                    AuthFailureReasons.Revoked => LocalizationKeys.AuthMessages.SessionRevoked,
+                    _ => LocalizationKeys.ExceptionMessages.Unauthorized
+                };
+
+                var message = localizer[localizationKey];
                 var response = ApiResponse<object?>.Error(new Dictionary<string, string[]>(), message, StatusCodes.Status401Unauthorized);
                 context.Result = new UnauthorizedObjectResult(response);
                 return;

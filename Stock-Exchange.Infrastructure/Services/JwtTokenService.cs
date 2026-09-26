@@ -35,16 +35,25 @@ namespace Stock_Exchange.Infrastructure.Services
 
             claims.Add(new Claim("UserTypes", userTypesMask.ToString()));
 
+            // Token version: bumped on logout/refresh/password-reset so previously
+            // issued access tokens fail OnTokenValidated immediately.
+            claims.Add(new Claim("TokenVersion", user.TokenVersion.ToString()));
+
             foreach (var role in roles)
             {
                 claims.Add(new Claim("role", role));
+            }
+
+
+            foreach (var audience in GetAudiences())
+            {
+                claims.Add(new Claim(JwtRegisteredClaimNames.Aud, audience));
             }
 
             var secret = !string.IsNullOrWhiteSpace(_settings.Secret)
                 ? _settings.Secret
                 : "n]:#J:?,{%9SvotDc^+/FMs7XHl$R1D2c^,Sf7_6vGJ>L8^!WvK1$$BqjVjD}rHGp}[fxYa90K1%4l3yf;sx5:";
             var issuer = !string.IsNullOrWhiteSpace(_settings.Issuer) ? _settings.Issuer : "StockExchangeAPI";
-            var audience = !string.IsNullOrWhiteSpace(_settings.Audience) ? _settings.Audience : "StockExchangeMobile,StockExchangeDashboard";
             var expiryDays = _settings.ExpiryInDays > 0 ? _settings.ExpiryInDays : 30;
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
@@ -53,12 +62,19 @@ namespace Stock_Exchange.Infrastructure.Services
 
             var token = new JwtSecurityToken(
                 issuer,
-                audience,
+                null,
                 claims,
                 expires: expiry,
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private string[] GetAudiences()
+        {
+            return !string.IsNullOrWhiteSpace(_settings.Audience)
+                ? _settings.Audience.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                : Array.Empty<string>();
         }
 
         public string GenerateRefreshToken(ApplicationUser user)
@@ -70,11 +86,15 @@ namespace Stock_Exchange.Infrastructure.Services
                 new Claim("TokenType", "RefreshToken")
             };
 
+            foreach (var audience in GetAudiences())
+            {
+                claims.Add(new Claim(JwtRegisteredClaimNames.Aud, audience));
+            }
+
             var secret = !string.IsNullOrWhiteSpace(_settings.Secret)
                 ? _settings.Secret
                 : "n]:#J:?,{%9SvotDc^+/FMs7XHl$R1D2c^,Sf7_6vGJ>L8^!WvK1$$BqjVjD}rHGp}[fxYa90K1%4l3yf;sx5:";
             var issuer = !string.IsNullOrWhiteSpace(_settings.Issuer) ? _settings.Issuer : "StockExchangeAPI";
-            var audience = !string.IsNullOrWhiteSpace(_settings.Audience) ? _settings.Audience : "StockExchangeMobile,StockExchangeDashboard";
             var refreshDays = _settings.RefreshTokenExpiryDays > 0 ? _settings.RefreshTokenExpiryDays : 30;
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
@@ -83,7 +103,7 @@ namespace Stock_Exchange.Infrastructure.Services
 
             var token = new JwtSecurityToken(
                 issuer,
-                audience,
+                null,
                 claims,
                 expires: expiry,
                 signingCredentials: creds);

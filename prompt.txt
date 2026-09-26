@@ -1,4 +1,5 @@
-﻿Accept-Language
+﻿Name	Description
+Accept-Language
 string
 (header)
 Preferred language for the response. Supported values: ar, en.
@@ -8,11 +9,10 @@ ar
 Request body
 
 application/json
-The login credentials.
+Optional refresh token to revoke a single device; when omitted all active tokens are revoked.
 
 {
-  "email": "mmms77990@gmail.com",
-  "password": "Mo@12345678"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MjQ0Y2YwZi1lNTk1LTRlYjYtNTRjNC0wOGRmMTc4NGRlNDMiLCJqdGkiOiI4OTNlYzEzNi1jNDk3LTQ5NmYtYWE5ZC1iZjU1N2Q2NmZlNzIiLCJUb2tlblR5cGUiOiJSZWZyZXNoVG9rZW4iLCJhdWQiOlsiU3RvY2tFeGNoYW5nZU1vYmlsZSIsIlN0b2NrRXhjaGFuZ2VEYXNoYm9hcmQiXSwiZXhwIjoxNzkzMDQ0NDg0LCJpc3MiOiJTdG9ja0V4Y2hhbmdlQVBJIn0.UX2UC54jxKJSkqZButgqTbo_79JK6ZmubWO2koAcdzw"
 }
 Execute
 Clear
@@ -20,32 +20,40 @@ Responses
 Curl
 
 curl -X 'POST' \
-  'https://stock-exchange.runasp.net/api/v1/authentication/login' \
+  'https://localhost:44308/api/v1/authentication/logout' \
   -H 'accept: text/plain' \
   -H 'Accept-Language: ar' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MjQ0Y2YwZi1lNTk1LTRlYjYtNTRjNC0wOGRmMTc4NGRlNDMiLCJlbWFpbCI6Im1tbXM3Nzk5MEBnbWFpbC5jb20iLCJqdGkiOiJiM2U5MDg1YS1kOGMyLTQ5YTAtOTJhZS1mNzc4ODRhNWRjMTUiLCJGdWxsTmFtZSI6Ik1vaGFtZWQgU2FiZXIiLCJVc2VyVHlwZXMiOiIwIiwiVG9rZW5WZXJzaW9uIjoiMSIsInJvbGUiOiJDdXN0b21lciIsImF1ZCI6WyJTdG9ja0V4Y2hhbmdlTW9iaWxlIiwiU3RvY2tFeGNoYW5nZURhc2hib2FyZCJdLCJleHAiOjE3OTMwNDQ4NDgsImlzcyI6IlN0b2NrRXhjaGFuZ2VBUEkifQ.VpsTUQrhaSQCDHAoP4iof5gzRoVHizV2LGK5oGUTQBg' \
   -H 'Content-Type: application/json' \
   -d '{
-  "email": "mmms77990@gmail.com",
-  "password": "Mo@12345678"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MjQ0Y2YwZi1lNTk1LTRlYjYtNTRjNC0wOGRmMTc4NGRlNDMiLCJqdGkiOiI4OTNlYzEzNi1jNDk3LTQ5NmYtYWE5ZC1iZjU1N2Q2NmZlNzIiLCJUb2tlblR5cGUiOiJSZWZyZXNoVG9rZW4iLCJhdWQiOlsiU3RvY2tFeGNoYW5nZU1vYmlsZSIsIlN0b2NrRXhjaGFuZ2VEYXNoYm9hcmQiXSwiZXhwIjoxNzkzMDQ0NDg0LCJpc3MiOiJTdG9ja0V4Y2hhbmdlQVBJIn0.UX2UC54jxKJSkqZButgqTbo_79JK6ZmubWO2koAcdzw"
 }'
 Request URL
-https://stock-exchange.runasp.net/api/v1/authentication/login
+https://localhost:44308/api/v1/authentication/logout
 Server response
 Code	Details
-400	
-Error: response status is 400
+401	
+Error: response status is 401
 
 Response body
 Download
 {
   "success": false,
   "isSuccess": false,
-  "errors": {
-    "General": [
-      "Value cannot be null. (Parameter 's')"
-    ]
-  },
+  "errors": {},
   "data": null,
-  "message": "Value cannot be null. (Parameter 's')",
-  "statusCode": 400
+  "message": "ليس لديك صلاحية تنفيذ هذا الإجراء.",
+  "statusCode": 401
 }
+Response headers
+ content-security-policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self' data: 
+ content-type: application/json; charset=utf-8 
+ date: Sat,26 Sep 2026 20:01:36 GMT 
+ permissions-policy: camera=(),microphone=(),geolocation=(),payment=(),usb=(),accelerometer=(),gyroscope=(),fullscreen=(self) 
+ referrer-policy: no-referrer 
+ server: Microsoft-IIS/10.0 
+ strict-transport-security: max-age=31536000; includeSubDomains; preload 
+ x-content-type-options: nosniff 
+ x-frame-options: DENY 
+ x-powered-by: ASP.NET 
+ x-xss-protection: 1; mode=block 

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Stock_Exchange.Application.Features.Auth.Commands.Logout
 {
-    internal class LogoutCommand
+    public record LogoutCommand : IRequest<bool>
     {
+        public string? RefreshToken { get; set; }
     }
 }

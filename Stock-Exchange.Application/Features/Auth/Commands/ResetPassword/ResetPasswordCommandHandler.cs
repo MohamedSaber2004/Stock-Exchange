@@ -107,6 +107,9 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ResetPassword
 
             user.ClearPasswordResetToken();
             user.ClearVerificationCode();
+            // A password change must kill existing sessions: invalidate all
+            // previously issued access tokens alongside the revoked refresh tokens.
+            user.IncrementTokenVersion();
             user.MarkAsUpdated(user.Email ?? "System");
 
             var updateResult = await _userManager.UpdateAsync(user);

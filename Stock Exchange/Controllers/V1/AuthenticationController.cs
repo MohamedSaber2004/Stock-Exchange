@@ -1,13 +1,17 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
+using Stock_Exchange.Application.Features.Auth.Commands.Logout;
+using Stock_Exchange.Application.Features.Auth.Commands.RefreshToken;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
 using Stock_Exchange.Application.Features.Auth.DTOs;
 using Stock_Exchange.Application.Localization;
+using Stock_Exchange.Filters;
 using Stock_Exchange.Routes.V1;
 
 namespace Stock_Exchange.Controllers.V1;
@@ -111,5 +115,48 @@ public class AuthenticationController : BaseController
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.AuthMessages.PasswordResetSuccess);
+    }
+
+    /// <summary>
+    /// Refreshes an expired access token using a valid refresh token (rotation).
+    /// </summary>
+    /// <param name="command">The refresh token issued at login/register.</param>
+    /// <returns>A new access + refresh token pair.</returns>
+    /// <response code="200">Tokens refreshed successfully.</response>
+    /// <response code="400">Validation error occurred.</response>
+    /// <response code="401">Refresh token is invalid, revoked, or expired.</response>
+    /// <response code="403">Account is deleted or deactivated.</response>
+    [HttpPost]
+    [Route(ApiRoutes.Authentication.RefreshToken)]
+    [ProducesResponseType(typeof(ApiResponse<RefreshTokenResponseDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<RefreshTokenResponseDto>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<RefreshTokenResponseDto>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ApiResponse<RefreshTokenResponseDto>), StatusCodes.Status403Forbidden)]
+    public async Task<ActionResult> RefreshToken([FromBody] RefreshTokenCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Logs out the current user by revoking refresh token(s).
+    /// </summary>
+    /// <param name="command">Optional refresh token to revoke a single device; when omitted all active tokens are revoked.</param>
+    /// <returns>Confirmation that logout succeeded.</returns>
+    /// <response code="200">Logout successful.</response>
+    /// <response code="400">Validation error occurred.</response>
+    /// <response code="401">User is not authenticated.</response>
+    /// <response code="404">Refresh token not found.</response>
+    [HttpPost]
+    [RoleAuthorize]
+    [Route(ApiRoutes.Authentication.Logout)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> Logout([FromBody] LogoutCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.ActionResults.Ok);
     }
 }
