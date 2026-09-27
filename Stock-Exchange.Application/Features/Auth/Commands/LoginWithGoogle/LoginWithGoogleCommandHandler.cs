@@ -1,5 +1,4 @@
-﻿using Google.Apis.Auth;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -7,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
+using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Common.Options;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadFile;
 using Stock_Exchange.Application.Features.Auth.DTOs;
@@ -67,20 +67,20 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
         {
             var correlationId = _currentUserService.CorrelationId;
 
-            var payload = await _googleAuth.ValidateGoogleTokenAsync(request.IdToken, correlationId, cancellationToken);
-            if (payload is null || string.IsNullOrWhiteSpace(payload.Subject))
+            var profile = await _googleAuth.ValidateGoogleTokenAsync(request.IdToken, correlationId, cancellationToken);
+            if (profile is null || string.IsNullOrWhiteSpace(profile.Subject))
                 throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidGoogleToken]);
 
-            if (string.IsNullOrWhiteSpace(payload.Email))
+            if (string.IsNullOrWhiteSpace(profile.Email))
                 throw new BadRequestException(_localizer[LocalizationKeys.AuthMessages.GoogleEmailRequired]);
 
-            if (!payload.EmailVerified)
+            if (!profile.EmailVerified)
                 throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.GoogleEmailNotVerified]);
 
-            var email = payload.Email.Trim().ToLowerInvariant();
+            var email = profile.Email.Trim().ToLowerInvariant();
 
             var user = await _userManager.Users
-                .FirstOrDefaultAsync(x => x.GoogleUserId == payload.Subject, cancellationToken);
+                .FirstOrDefaultAsync(x => x.GoogleUserId == profile.Subject, cancellationToken);
 
             var isNewUser = false;
             if (user is null)
@@ -90,7 +90,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
                 if (user is null)
                 {
                     await EnsureEmailIsNotRetiredAsync(email, cancellationToken);
-                    user = await CreateUserFromGoogleAsync(payload, email);
+                    user = await CreateUserFromGoogleAsync(profile, email);
                     isNewUser = true;
                 }
             }
@@ -102,15 +102,15 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
                 throw new ForbiddenException(_localizer[LocalizationKeys.AuthMessages.AccountDeactivated]);
 
             if (!string.IsNullOrEmpty(user.GoogleUserId)
-                && !string.Equals(user.GoogleUserId, payload.Subject, StringComparison.Ordinal))
+                && !string.Equals(user.GoogleUserId, profile.Subject, StringComparison.Ordinal))
             {
                 throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.GoogleAccountAlreadyLinked]);
             }
 
-            await _googleAuth.LinkGoogleAccountIfNeeded(user, payload, correlationId);
-            await _googleAuth.UpdateUserInfoFromGoogle(user, payload, correlationId);
+            await _googleAuth.LinkGoogleAccountIfNeeded(user, profile, correlationId);
+            await _googleAuth.UpdateUserInfoFromGoogle(user, profile, correlationId);
 
-            await StoreGoogleProfilePictureAsync(user, payload, cancellationToken);
+            await StoreGoogleProfilePictureAsync(user, profile, cancellationToken);
 
             if (isNewUser)
                 await AssignDefaultRoleAsync(user);
@@ -130,15 +130,21 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
                 user.ProfilePictureUrl);
         }
 
-        private async Task StoreGoogleProfilePictureAsync(ApplicationUser user, GoogleJsonWebSignature.Payload payload, CancellationToken cancellationToken)
+        // Downloads the Google avatar, pushes it through UploadFileCommand so it lands in the
+        // upload folder, and stores the returned name. Every failure is swallowed: a missing
+        // avatar must never block authentication.
+        private async Task StoreGoogleProfilePictureAsync(ApplicationUser user, GoogleUserProfile profile, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(payload.Picture))
+            if (string.IsNullOrWhiteSpace(profile.Picture))
                 return;
 
+            // ProfilePictureUrl holds a stored file name once the user has one. Re-uploading on
+            // every sign-in would add a new GUID file each time and grow the folder unbounded,
+            // so only a first-time user (or one still holding a legacy raw Google URL) uploads.
             if (!string.IsNullOrWhiteSpace(user.ProfilePictureUrl) && !IsRemoteUrl(user.ProfilePictureUrl))
                 return;
 
-            var formFile = await _imageValidator.ConvertImageToFormFile(payload.Picture, cancellationToken);
+            var formFile = await _imageValidator.ConvertImageToFormFile(profile.Picture, cancellationToken);
             if (formFile is null)
             {
                 _logger.LogWarning(
@@ -190,7 +196,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
                 throw new ForbiddenException(_localizer[LocalizationKeys.AuthMessages.AccountDeleted]);
         }
 
-        private async Task<ApplicationUser> CreateUserFromGoogleAsync(GoogleJsonWebSignature.Payload payload, string email)
+        private async Task<ApplicationUser> CreateUserFromGoogleAsync(GoogleUserProfile profile, string email)
         {
             var user = new ApplicationUser
             {
@@ -198,7 +204,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
                 Email = email
             };
 
-            user.UpdateFullName(string.IsNullOrWhiteSpace(payload.Name) ? email : payload.Name);
+            user.UpdateFullName(string.IsNullOrWhiteSpace(profile.Name) ? email : profile.Name);
 
             user.ConfirmEmail();
 

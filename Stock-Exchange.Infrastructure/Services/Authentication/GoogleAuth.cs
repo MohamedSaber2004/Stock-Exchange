@@ -1,10 +1,11 @@
-﻿using Google.Apis.Auth;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
+using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Common.Options;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Entities;
@@ -16,66 +17,58 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
         private const string GoogleLoginProvider = "Google";
 
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly GoogleIdTokenValidator _idTokenValidator;
         private readonly GoogleAuthSettings _googleAuthSettings;
         private readonly IStringLocalizer<Messages> _localizer;
         private readonly ILogger<GoogleAuth> _logger;
 
         public GoogleAuth(
             UserManager<ApplicationUser> userManager,
+            GoogleIdTokenValidator idTokenValidator,
             IOptions<GoogleAuthSettings> googleAuthSettings,
             IStringLocalizer<Messages> localizer,
             ILogger<GoogleAuth> logger)
         {
             _userManager = userManager;
+            _idTokenValidator = idTokenValidator;
             _googleAuthSettings = googleAuthSettings.Value;
             _localizer = localizer;
             _logger = logger;
         }
 
-        public async Task<GoogleJsonWebSignature.Payload?> ValidateGoogleTokenAsync(string idToken, string correlationId, CancellationToken cancellationToken)
+        public async Task<GoogleUserProfile?> ValidateGoogleTokenAsync(string idToken, string correlationId, CancellationToken cancellationToken)
         {
             if (string.IsNullOrWhiteSpace(idToken))
                 return null;
 
-            if (string.IsNullOrWhiteSpace(_googleAuthSettings.WebClientId))
+            if (string.IsNullOrWhiteSpace(_googleAuthSettings.WebClientId)
+                && (_googleAuthSettings.WebClientIds is null || _googleAuthSettings.WebClientIds.Length == 0))
+            {
                 throw new ServiceUnavailableException(_localizer[LocalizationKeys.ExceptionMessages.GoogleAuthNotConfigured]);
+            }
 
             cancellationToken.ThrowIfCancellationRequested();
 
             try
             {
-                var settings = new GoogleJsonWebSignature.ValidationSettings
-                {
-                    Audience = new[] { _googleAuthSettings.WebClientId }
-                };
+                var token = await _idTokenValidator.ValidateAsync(idToken, cancellationToken);
 
-                // Google.Apis.Auth 1.76.0 exposes no CancellationToken overload and pins the
-                // issuer to Google's own signing certificates internally.
-                return await GoogleJsonWebSignature.ValidateAsync(idToken, settings);
+                return new GoogleUserProfile(
+                    Subject: token.Subject,
+                    Email: ReadClaim(token, "email"),
+                    Name: ReadClaim(token, "name"),
+                    Picture: ReadClaim(token, "picture"),
+                    EmailVerified: ReadEmailVerified(token));
             }
-            catch (InvalidJwtException)
+            catch (Exception)
             {
-                return null;
-            }
-            catch (Exception ex) when (ex is not OperationCanceledException)
-            {
-                // The SDK also throws raw Newtonsoft/Base64/Format errors for malformed token
-                // segments, and can fail when the Google certificate endpoint is unreachable.
-                // None of those are trustworthy tokens, and none may surface as a 500 (which
-                // would return a stack trace to the caller outside Production). The type is
-                // logged so genuine outages stay diagnosable.
-                _logger.LogWarning(
-                    ex,
-                    "Google ID token validation failed unexpectedly ({ExceptionType}). CorrelationId: {CorrelationId}",
-                    ex.GetType().Name, correlationId);
-
-                return null;
+                throw new ServiceUnavailableException(_localizer[LocalizationKeys.ExceptionMessages.GoogleAuthValidationUnavailable]);
             }
         }
 
-        public async Task LinkGoogleAccountIfNeeded(ApplicationUser user, GoogleJsonWebSignature.Payload payload, string correlationId)
+        public async Task LinkGoogleAccountIfNeeded(ApplicationUser user, GoogleUserProfile profile, string correlationId)
         {
-            if (string.IsNullOrWhiteSpace(payload.Subject))
+            if (string.IsNullOrWhiteSpace(profile.Subject))
                 throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidGoogleToken]);
 
             var logins = await _userManager.GetLoginsAsync(user);
@@ -84,71 +77,60 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
 
             if (existingGoogleLogin is not null)
             {
-                if (!string.Equals(existingGoogleLogin.ProviderKey, payload.Subject, StringComparison.Ordinal))
+                if (!string.Equals(existingGoogleLogin.ProviderKey, profile.Subject, StringComparison.Ordinal))
                 {
-                    _logger.LogWarning(
-                        "Google sign-in rejected: user {UserId} is already linked to a different Google subject. CorrelationId: {CorrelationId}",
-                        user.Id, correlationId);
-
                     throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.GoogleAccountAlreadyLinked]);
                 }
 
-                user.LinkGoogleAccount(payload.Subject);
+                user.LinkGoogleAccount(profile.Subject);
                 return;
             }
 
             var addLoginResult = await _userManager.AddLoginAsync(
                 user,
-                new UserLoginInfo(GoogleLoginProvider, payload.Subject, GoogleLoginProvider));
+                new UserLoginInfo(GoogleLoginProvider, profile.Subject, GoogleLoginProvider));
 
             if (!addLoginResult.Succeeded)
             {
-                _logger.LogWarning(
-                    "Failed to add Google login for user {UserId}: {Errors}. CorrelationId: {CorrelationId}",
-                    user.Id, string.Join(", ", addLoginResult.Errors.Select(e => e.Code)), correlationId);
-
                 throw new BadRequestException(ToErrors(addLoginResult), _localizer[LocalizationKeys.AuthMessages.GoogleAccountLinkFailed]);
             }
 
-            user.LinkGoogleAccount(payload.Subject);
+            user.LinkGoogleAccount(profile.Subject);
 
             var updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)
             {
-                _logger.LogWarning(
-                    "Failed to persist Google user id for user {UserId}: {Errors}. CorrelationId: {CorrelationId}",
-                    user.Id, string.Join(", ", updateResult.Errors.Select(e => e.Code)), correlationId);
-
                 throw new BadRequestException(ToErrors(updateResult), _localizer[LocalizationKeys.AuthMessages.GoogleAccountLinkFailed]);
             }
         }
 
-        // Only the name is synced here. ProfilePictureUrl deliberately holds a locally stored
-        // file name (not the Google URL), so the caller uploads payload.Picture via
-        // UploadFileCommand and assigns the returned name before the response is built.
-        public async Task UpdateUserInfoFromGoogle(ApplicationUser user, GoogleJsonWebSignature.Payload payload, string correlationId)
+        public async Task UpdateUserInfoFromGoogle(ApplicationUser user, GoogleUserProfile profile, string correlationId)
         {
-            var needsUpdate = false;
-
-            if (!string.IsNullOrWhiteSpace(payload.Name)
-                && !string.Equals(user.FullName, payload.Name.Trim(), StringComparison.Ordinal))
+            if (string.IsNullOrWhiteSpace(profile.Name)
+                || string.Equals(user.FullName, profile.Name.Trim(), StringComparison.Ordinal))
             {
-                user.UpdateFullName(payload.Name);
-                needsUpdate = true;
+                return;
             }
 
-            if (!needsUpdate)
-                return;
+            user.UpdateFullName(profile.Name);
 
             var updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)
             {
-                _logger.LogWarning(
-                    "Failed to sync Google profile for user {UserId}: {Errors}. CorrelationId: {CorrelationId}",
-                    user.Id, string.Join(", ", updateResult.Errors.Select(e => e.Code)), correlationId);
-
                 throw new BadRequestException(ToErrors(updateResult), _localizer[LocalizationKeys.AuthMessages.GoogleProfileUpdateFailed]);
             }
+        }
+
+        private static string? ReadClaim(JsonWebToken token, string claimName) =>
+            token.Claims.FirstOrDefault(c => c.Type == claimName)?.Value;
+
+        private static bool ReadEmailVerified(JsonWebToken token)
+        {
+            var claim = token.Claims.FirstOrDefault(c => c.Type == "email_verified");
+            if (claim is null)
+                return false;
+
+            return bool.TryParse(claim.Value, out var verified) && verified;
         }
 
         private static IDictionary<string, string[]> ToErrors(IdentityResult result) =>

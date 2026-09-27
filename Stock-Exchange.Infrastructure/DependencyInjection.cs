@@ -44,6 +44,7 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<IVideoValidator, VideoValidator>();
             services.AddScoped<IJwtTokenService, JwtTokenService>();
             services.AddScoped<IGoogleAuth, GoogleAuth>();
+            services.AddSingleton<GoogleIdTokenValidator>();
             services.AddScoped<IEmailService, EmailService>();
 
             services.Configure<EmailSettings>(configuration.GetSection(nameof(EmailSettings)));

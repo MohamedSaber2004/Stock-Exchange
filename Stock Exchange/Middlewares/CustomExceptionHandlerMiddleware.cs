@@ -133,8 +133,10 @@ namespace Stock_Exchange.Middlewares
                     break;
 
                 case KeyNotFoundException keyNotFoundEx:
+                    // The message can name internal dictionary keys, so it is logged but never returned.
                     statusCode = StatusCodes.Status404NotFound;
-                    message = !string.IsNullOrWhiteSpace(keyNotFoundEx.Message) ? keyNotFoundEx.Message : Localize(LocalizationKeys.ExceptionMessages.NotFound);
+                    _logger.LogWarning("Key not found: {Message}", keyNotFoundEx.Message);
+                    message = Localize(LocalizationKeys.ExceptionMessages.NotFound);
                     errorsDict["General"] = new[] { message };
                     break;
 
@@ -146,7 +148,8 @@ namespace Stock_Exchange.Middlewares
 
                 case UnauthorizedAccessException unAuthAccessEx:
                     statusCode = StatusCodes.Status401Unauthorized;
-                    message = !string.IsNullOrWhiteSpace(unAuthAccessEx.Message) ? unAuthAccessEx.Message : Localize(LocalizationKeys.ExceptionMessages.Unauthorized);
+                    _logger.LogWarning("Unauthorized access: {Message}", unAuthAccessEx.Message);
+                    message = Localize(LocalizationKeys.ExceptionMessages.Unauthorized);
                     errorsDict["General"] = new[] { message };
                     break;
 
@@ -217,14 +220,20 @@ namespace Stock_Exchange.Middlewares
                     break;
 
                 case ArgumentException argEx:
+                    // Framework messages such as "The 'ClientId' option must be provided." reveal
+                    // internal configuration and call structure, so only the generic text is returned.
                     statusCode = StatusCodes.Status400BadRequest;
-                    message = !string.IsNullOrWhiteSpace(argEx.Message) ? argEx.Message : Localize(LocalizationKeys.ExceptionMessages.BadRequest);
+                    _logger.LogWarning("Argument exception ({ExceptionType}): {Message}", argEx.GetType().Name, argEx.Message);
+                    message = Localize(LocalizationKeys.ExceptionMessages.BadRequest);
                     errorsDict["General"] = new[] { message };
                     break;
 
                 case DomainException domainEx:
                     statusCode = StatusCodes.Status400BadRequest;
-                    var domainKey = !string.IsNullOrWhiteSpace(domainEx.LocalizationKey) ? domainEx.LocalizationKey : domainEx.Message;
+                    // Without a localization key the raw message is developer text, not user text.
+                    if (string.IsNullOrWhiteSpace(domainEx.LocalizationKey))
+                        _logger.LogWarning("Domain exception without localization key: {Message}", domainEx.Message);
+                    var domainKey = !string.IsNullOrWhiteSpace(domainEx.LocalizationKey) ? domainEx.LocalizationKey : LocalizationKeys.ExceptionMessages.BadRequest;
                     message = Localize(domainKey, domainEx.Args);
                     errorsDict["General"] = new[] { message };
                     break;
@@ -259,12 +268,14 @@ namespace Stock_Exchange.Middlewares
                     message = Localize(LocalizationKeys.ExceptionMessages.InternalServerError);
                     errorsDict["General"] = new[] { message };
 
+                    // Fail closed: exception detail is attached only when the host explicitly says
+                    // it is Development. An unknown environment name, Staging or Test must not
+                    // leak exception type, message, inner exception or stack trace to the caller.
                     var webHostEnv = context.RequestServices.GetService<IWebHostEnvironment>();
-                    bool isDebugEnv = webHostEnv == null 
-                        || !webHostEnv.IsProduction() 
-                        || webHostEnv.EnvironmentName.Equals("Test", StringComparison.OrdinalIgnoreCase);
+                    bool isDevelopmentEnv = webHostEnv != null
+                        && webHostEnv.EnvironmentName.Equals(Environments.Development, StringComparison.OrdinalIgnoreCase);
 
-                    if (isDebugEnv)
+                    if (isDevelopmentEnv)
                     {
                         errorsDict["Exception_Type"] = new[] { exception.GetType().FullName ?? "Unknown" };
                         errorsDict["Exception_Message"] = new[] { exception.Message };

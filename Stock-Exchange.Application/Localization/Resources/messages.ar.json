@@ -39,7 +39,8 @@
     "EmailAuthenticationFailed": "فشل التحقق من بيانات اعتماد خدمة البريد الإلكتروني. يرجى التحقق من صحة البيانات.",
     "EmailServerRejected": "رفض خادم البريد طلب الإرسال.",
     "NetworkConnectionFailed": "فشل الاتصال بالخدمة الخارجية عبر الشبكة.",
-    "GoogleAuthNotConfigured": "تسجيل الدخول عبر Google غير مُهيأ على الخادم."
+    "GoogleAuthNotConfigured": "تسجيل الدخول عبر Google غير مُهيأ على الخادم.",
+    "GoogleAuthValidationUnavailable": "تسجيل الدخول عبر Google غير متاح مؤقتاً. يرجى المحاولة مرة أخرى."
   },
   "AuthMessages": {
     "InvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",

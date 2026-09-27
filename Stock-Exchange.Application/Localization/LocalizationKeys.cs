@@ -48,6 +48,7 @@ namespace Stock_Exchange.Application.Localization
             public const string EmailServerRejected = "ExceptionMessages.EmailServerRejected";
             public const string NetworkConnectionFailed = "ExceptionMessages.NetworkConnectionFailed";
             public const string GoogleAuthNotConfigured = "ExceptionMessages.GoogleAuthNotConfigured";
+            public const string GoogleAuthValidationUnavailable = "ExceptionMessages.GoogleAuthValidationUnavailable";
         }
 
         public static class AuthMessages
