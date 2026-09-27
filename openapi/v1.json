@@ -505,12 +505,12 @@
         ]
       }
     },
-    "/api/v1/authentication/login": {
+    "/api/v1/authentication/login-with-google": {
       "post": {
         "tags": [
           "Authentication"
         ],
-        "summary": "Authenticates a user with email and password and returns JWT access and refresh tokens.",
+        "summary": "Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.",
         "parameters": [
           {
             "name": "Accept-Language",
@@ -527,21 +527,21 @@
           }
         ],
         "requestBody": {
-          "description": "The login credentials.",
+          "description": "The Google ID token issued to the client.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginCommand"
+                "$ref": "#/components/schemas/LoginWithGoogleCommand"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginCommand"
+                "$ref": "#/components/schemas/LoginWithGoogleCommand"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginCommand"
+                "$ref": "#/components/schemas/LoginWithGoogleCommand"
               }
             }
           }
@@ -580,7 +580,7 @@
             }
           },
           "400": {
-            "description": "Validation error occurred.",
+            "description": "Validation error occurred, or Google did not supply a usable email address.",
             "content": {
               "application/json": {
                 "schema": {
@@ -622,7 +622,7 @@
             }
           },
           "401": {
-            "description": "Invalid email or password.",
+            "description": "The Google token is invalid, expired, or its email is unverified.",
             "content": {
               "application/json": {
                 "schema": {
@@ -685,6 +685,60 @@
                       "data": null,
                       "message": "You do not have permission to access this resource.",
                       "statusCode": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The account is already linked to a different Google account.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDtoApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Conflict",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "A conflict occurred with the current state of the resource."
+                        ]
+                      },
+                      "data": null,
+                      "message": "A conflict occurred with the current state of the resource.",
+                      "statusCode": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Google sign-in is not configured on the server.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDtoApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The request is invalid."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 503
                     }
                   }
                 }
@@ -1768,14 +1822,10 @@
         },
         "additionalProperties": false
       },
-      "LoginCommand": {
+      "LoginWithGoogleCommand": {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
+          "idToken": {
             "type": "string",
             "nullable": true
           }
