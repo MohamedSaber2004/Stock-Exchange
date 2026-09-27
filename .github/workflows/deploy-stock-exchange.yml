@@ -166,3 +166,13 @@ jobs:
           POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
           POSTMAN_COLLECTION_ID: ${{ secrets.POSTMAN_COLLECTION_ID }}
         run: ./scripts/Publish-PostmanCollection.ps1
+
+      # Reads the collection back out of Postman and compares it with the document the
+      # deployed site serves, so the job fails if the collection in Postman is not the one
+      # that was just published.
+      - name: Verify Postman matches the deployed API
+        shell: pwsh
+        env:
+          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+          POSTMAN_COLLECTION_ID: ${{ secrets.POSTMAN_COLLECTION_ID }}
+        run: ./scripts/Verify-PostmanCollection.ps1 -FromPostman
