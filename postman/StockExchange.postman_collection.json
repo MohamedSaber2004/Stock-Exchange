@@ -66,16 +66,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -138,16 +138,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -213,16 +213,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -285,16 +285,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -307,7 +307,7 @@
       "description": "",
       "item": [
         {
-          "name": "Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.",
+          "name": "Authenticates a user with email and password and returns JWT access and refresh tokens.",
           "request": {
             "method": "POST",
             "header": [
@@ -323,7 +323,7 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/api/v1/authentication/login-with-google",
+              "raw": "{{baseUrl}}/api/v1/authentication/login",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -331,15 +331,15 @@
                 "api",
                 "v1",
                 "authentication",
-                "login-with-google"
+                "login"
               ],
               "query": [],
               "variable": []
             },
-            "description": "Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.",
+            "description": "Authenticates a user with email and password and returns JWT access and refresh tokens.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"idToken\": \"string\"\n}",
+              "raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -356,16 +356,16 @@
               "body": ""
             },
             {
-              "name": "400 Validation error occurred, or Google did not supply a usable email address.",
+              "name": "400 Validation error occurred.",
               "code": 400,
-              "description": "Validation error occurred, or Google did not supply a usable email address.",
+              "description": "Validation error occurred.",
               "header": [],
               "body": ""
             },
             {
-              "name": "401 The Google token is invalid, expired, or its email is unverified.",
+              "name": "401 Invalid email or password.",
               "code": 401,
-              "description": "The Google token is invalid, expired, or its email is unverified.",
+              "description": "Invalid email or password.",
               "header": [],
               "body": ""
             },
@@ -373,20 +373,6 @@
               "name": "403 Account is deleted or deactivated.",
               "code": 403,
               "description": "Account is deleted or deactivated.",
-              "header": [],
-              "body": ""
-            },
-            {
-              "name": "409 The account is already linked to a different Google account.",
-              "code": 409,
-              "description": "The account is already linked to a different Google account.",
-              "header": [],
-              "body": ""
-            },
-            {
-              "name": "503 Google sign-in is not configured on the server.",
-              "code": 503,
-              "description": "Google sign-in is not configured on the server.",
               "header": [],
               "body": ""
             }
@@ -795,9 +781,9 @@
               "body": ""
             },
             {
-              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
