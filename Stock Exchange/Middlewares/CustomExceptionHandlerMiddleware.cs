@@ -223,7 +223,9 @@ namespace Stock_Exchange.Middlewares
                     // Framework messages such as "The 'ClientId' option must be provided." reveal
                     // internal configuration and call structure, so only the generic text is returned.
                     statusCode = StatusCodes.Status400BadRequest;
-                    _logger.LogWarning("Argument exception ({ExceptionType}): {Message}", argEx.GetType().Name, argEx.Message);
+                    // The response stays generic, but the log must keep the full exception so the
+                    // masked 400 can still be traced to the argument that failed.
+                    _logger.LogWarning(argEx, "Argument exception ({ExceptionType}): {Message}", argEx.GetType().Name, argEx.Message);
                     message = Localize(LocalizationKeys.ExceptionMessages.BadRequest);
                     errorsDict["General"] = new[] { message };
                     break;

@@ -130,17 +130,11 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
                 user.ProfilePictureUrl);
         }
 
-        // Downloads the Google avatar, pushes it through UploadFileCommand so it lands in the
-        // upload folder, and stores the returned name. Every failure is swallowed: a missing
-        // avatar must never block authentication.
         private async Task StoreGoogleProfilePictureAsync(ApplicationUser user, GoogleUserProfile profile, CancellationToken cancellationToken)
         {
             if (string.IsNullOrWhiteSpace(profile.Picture))
                 return;
 
-            // ProfilePictureUrl holds a stored file name once the user has one. Re-uploading on
-            // every sign-in would add a new GUID file each time and grow the folder unbounded,
-            // so only a first-time user (or one still holding a legacy raw Google URL) uploads.
             if (!string.IsNullOrWhiteSpace(user.ProfilePictureUrl) && !IsRemoteUrl(user.ProfilePictureUrl))
                 return;
 

@@ -1,1 +1,1 @@
-﻿{"success":false,"isSuccess":false,"errors":{"General":["The \u0027ClientId\u0027 option must be provided. (Parameter \u0027ClientId\u0027)"]},"data":null,"message":"The \u0027ClientId\u0027 option must be provided. (Parameter \u0027ClientId\u0027)","statusCode":400}
+﻿{"success":false,"isSuccess":false,"errors":{"General":["The request is invalid."]},"data":null,"message":"The request is invalid.","statusCode":400}
