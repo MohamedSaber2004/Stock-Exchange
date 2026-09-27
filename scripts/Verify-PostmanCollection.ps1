@@ -27,45 +27,6 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$repoRoot = Split-Path -Parent $PSScriptRoot
-if (-not $SpecFile) { $SpecFile = Join-Path $repoRoot 'openapi\v1.json' }
-if (-not $CollectionFile) { $CollectionFile = Join-Path $repoRoot 'postman\StockExchange.postman_collection.json' }
-
-if (-not (Test-Path -LiteralPath $SpecFile)) { throw "OpenAPI document not found: $SpecFile" }
-
-$spec = Get-Content -LiteralPath $SpecFile -Raw | ConvertFrom-Json
-$expected = @()
-foreach ($pathProperty in $spec.paths.PSObject.Properties) {
-    # "/" is the browser redirect to the Swagger UI (Program.cs), not an API operation.
-    if ($pathProperty.Name -eq '/') { continue }
-
-    foreach ($property in $pathProperty.Value.PSObject.Properties) {
-        $method = $property.Name.ToUpper()
-        if ($method -notin @('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'TRACE')) { continue }
-        $expected += [PSCustomObject]@{
-            Key     = "$method $($pathProperty.Name)"
-            Summary = [string]$property.Value.summary
-        }
-    }
-}
-
-if ($FromPostman) {
-    $apiKey = $env:POSTMAN_API_KEY
-    $collectionId = $env:POSTMAN_COLLECTION_ID
-    if (-not $apiKey -or -not $collectionId) {
-        throw 'POSTMAN_API_KEY and POSTMAN_COLLECTION_ID are required with -FromPostman.'
-    }
-    Write-Host "Reading collection $collectionId from Postman..."
-    $response = Invoke-RestMethod -Method Get -Uri "$ApiBaseUrl/collections/$collectionId" `
-        -Headers @{ 'X-Api-Key' = $apiKey }
-    $collection = $response.collection
-    $source = "Postman collection '$((Get-CollectionName $collection))'"
-} else {
-    if (-not (Test-Path -LiteralPath $CollectionFile)) { throw "Collection file not found: $CollectionFile" }
-    $collection = Get-Content -LiteralPath $CollectionFile -Raw | ConvertFrom-Json
-    $source = $CollectionFile
-}
-
 function Get-CollectionName {
     param($Collection)
 
@@ -124,6 +85,45 @@ function Get-Requests {
         }
     }
     return $requests
+}
+
+$repoRoot = Split-Path -Parent $PSScriptRoot
+if (-not $SpecFile) { $SpecFile = Join-Path $repoRoot 'openapi\v1.json' }
+if (-not $CollectionFile) { $CollectionFile = Join-Path $repoRoot 'postman\StockExchange.postman_collection.json' }
+
+if (-not (Test-Path -LiteralPath $SpecFile)) { throw "OpenAPI document not found: $SpecFile" }
+
+$spec = Get-Content -LiteralPath $SpecFile -Raw | ConvertFrom-Json
+$expected = @()
+foreach ($pathProperty in $spec.paths.PSObject.Properties) {
+    # "/" is the browser redirect to the Swagger UI (Program.cs), not an API operation.
+    if ($pathProperty.Name -eq '/') { continue }
+
+    foreach ($property in $pathProperty.Value.PSObject.Properties) {
+        $method = $property.Name.ToUpper()
+        if ($method -notin @('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'TRACE')) { continue }
+        $expected += [PSCustomObject]@{
+            Key     = "$method $($pathProperty.Name)"
+            Summary = [string]$property.Value.summary
+        }
+    }
+}
+
+if ($FromPostman) {
+    $apiKey = $env:POSTMAN_API_KEY
+    $collectionId = $env:POSTMAN_COLLECTION_ID
+    if (-not $apiKey -or -not $collectionId) {
+        throw 'POSTMAN_API_KEY and POSTMAN_COLLECTION_ID are required with -FromPostman.'
+    }
+    Write-Host "Reading collection $collectionId from Postman..."
+    $response = Invoke-RestMethod -Method Get -Uri "$ApiBaseUrl/collections/$collectionId" `
+        -Headers @{ 'X-Api-Key' = $apiKey }
+    $collection = $response.collection
+    $source = "Postman collection '$((Get-CollectionName $collection))'"
+} else {
+    if (-not (Test-Path -LiteralPath $CollectionFile)) { throw "Collection file not found: $CollectionFile" }
+    $collection = Get-Content -LiteralPath $CollectionFile -Raw | ConvertFrom-Json
+    $source = $CollectionFile
 }
 
 $actual = Get-Requests $collection.item

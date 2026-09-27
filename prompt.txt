@@ -1,11 +1,11 @@
 ﻿Run ./scripts/Verify-PostmanCollection.ps1 -FromPostman
+  
 Reading collection *** from Postman...
-Postman collection '' holds 12 requests; the document declares 12 operations.
-note: Postman collection '' has GET /api/v1/attachments/download?FileName=string&FilePlace=0&MediaType=0 which the document does not declare (Downloads a previously uploaded attachment file.)
-Error: missing from Postman collection '': GET /api/v1/attachments/download - Downloads a previously uploaded attachment file.
-Exception: /home/runner/work/Stock-Exchange/Stock-Exchange/scripts/Verify-PostmanCollection.ps1:101
+Verify-PostmanCollection.ps1: /home/runner/work/_temp/da1a6e4a-5641-4dc7-a754-45438667d2db.ps1:2
 Line |
- 101 |      throw "$($missing.Count) operation(s) from the OpenAPI document a …
-     |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | 1 operation(s) from the OpenAPI document are missing.
-Error: Process completed with exit code 1.
+   2 |  ./scripts/Verify-PostmanCollection.ps1 -FromPostman
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | The term 'Get-CollectionName' is not recognized as a name of a cmdlet,
+     | function, script file, or executable program. Check the spelling of the
+     | name, or if a path was included, verify that the path is correct and try
+     | again.
