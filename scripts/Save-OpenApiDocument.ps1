@@ -31,7 +31,7 @@ if (-not (Test-Path -LiteralPath $InputPath)) {
     throw "OpenAPI document not found: $InputPath"
 }
 
-$content = Get-Content -LiteralPath $InputPath -Raw
+$content = [System.IO.File]::ReadAllText($InputPath, [System.Text.Encoding]::UTF8)
 if ($content -notmatch '"openapi"') {
     throw "The downloaded document is not an OpenAPI document: $InputPath"
 }

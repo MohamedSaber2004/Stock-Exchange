@@ -43,7 +43,7 @@ if (-not (Test-Path -LiteralPath $specFile)) {
 
 & (Join-Path $PSScriptRoot 'Convert-OpenApiToPostman.ps1') -SpecFile $specFile -OutFile $outFile -BaseUrl $BaseUrl
 
-$collection = Get-Content -LiteralPath $outFile -Raw | ConvertFrom-Json
+$collection = [System.IO.File]::ReadAllText($outFile, [System.Text.Encoding]::UTF8) | ConvertFrom-Json
 Write-Host "postman\StockExchange.postman_collection.json - '$($collection.info.name)' with $(Count-Requests $collection.item) requests"
 
 git -C $repoRoot --no-pager diff --stat -- postman

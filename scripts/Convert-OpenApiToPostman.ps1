@@ -38,7 +38,7 @@ if (-not (Test-Path -LiteralPath $SpecFile)) {
     throw "OpenAPI document not found: $SpecFile"
 }
 
-$script:spec = Get-Content -LiteralPath $SpecFile -Raw | ConvertFrom-Json
+$script:spec = [System.IO.File]::ReadAllText($SpecFile, [System.Text.Encoding]::UTF8) | ConvertFrom-Json
 if (-not $script:spec.openapi) {
     throw "Not an OpenAPI 3 document (missing 'openapi' field): $SpecFile"
 }
@@ -245,7 +245,13 @@ function ConvertTo-RequestBody {
 }
 
 function ConvertTo-ResponseList {
-    param($Operation)
+    <#
+        Turns the responses of an operation into Postman saved examples. Every named example
+        in the OpenAPI document (success, validationError, businessError, ...) becomes its own
+        saved response with a real body, so the examples stay visible in Postman instead of an
+        empty placeholder.
+    #>
+    param($Operation, $Request)
 
     $responses = @()
     if ($null -eq $Operation.PSObject.Properties['responses']) { return , $responses }
@@ -253,13 +259,60 @@ function ConvertTo-ResponseList {
     foreach ($property in $Operation.responses.PSObject.Properties) {
         $description = [string]$property.Value.description
         $code = $property.Name -replace '[^0-9]', ''
-        $responses += , ([PSCustomObject][ordered]@{
-            name        = "$($property.Name) $description".Trim()
-            code        = $(if ($code) { [int]$code } else { 0 })
-            description = $description
-            header      = @()
-            body        = ''
-        })
+
+        $mediaType = ''
+        $examples = @()
+        if ($null -ne $property.Value.PSObject.Properties['content']) {
+            $mediaTypes = @($property.Value.content.PSObject.Properties.Name)
+            $mediaType = $mediaTypes | Where-Object { $_ -like '*json*' } | Select-Object -First 1
+            if (-not $mediaType) { $mediaType = $mediaTypes | Select-Object -First 1 }
+
+            if ($mediaType) {
+                $media = $property.Value.content.$mediaType
+                if ($null -ne $media.PSObject.Properties['examples']) {
+                    foreach ($example in $media.examples.PSObject.Properties) {
+                        $examples += , ([PSCustomObject]@{
+                            Name  = [string]$example.Name
+                            Value = $example.Value.value
+                        })
+                    }
+                } elseif ($null -ne $media.PSObject.Properties['example']) {
+                    $examples += , ([PSCustomObject]@{ Name = ''; Value = $media.example })
+                }
+            }
+        }
+
+        $header = @()
+        if ($mediaType) { $header += , ([PSCustomObject]@{ key = 'Content-Type'; value = $mediaType }) }
+        $previewLanguage = if ($mediaType -like '*json*') { 'json' } else { 'text' }
+
+        if ($examples.Count -eq 0) {
+            $responses += , ([PSCustomObject][ordered]@{
+                name                  = "$($property.Name) $description".Trim()
+                originalRequest       = $Request
+                status                = $description
+                code                  = $(if ($code) { [int]$code } else { 0 })
+                header                = $header
+                body                  = ''
+                _postman_previewlanguage = $previewLanguage
+            })
+            continue
+        }
+
+        foreach ($example in $examples) {
+            $name = "$($property.Name) $description".Trim()
+            if ($example.Name) { $name = "$name - $($example.Name)" }
+
+            $responses += , ([PSCustomObject][ordered]@{
+                name                     = $name
+                originalRequest          = $Request
+                status                   = $description
+                code                     = $(if ($code) { [int]$code } else { 0 })
+                header                   = $header
+                body                     = (ConvertTo-StableJson -InputObject $example.Value)
+                _postman_previewlanguage = $previewLanguage
+            })
+        }
     }
 
     return , $responses
@@ -325,17 +378,19 @@ function ConvertTo-RequestItem {
         }
     }
 
-    $responses = ConvertTo-ResponseList $Operation
+    $request = [PSCustomObject][ordered]@{
+        method      = $Method.ToUpper()
+        header      = $headers
+        url         = ConvertTo-RequestUrl -Path $Path -Parameters $parameters -VariableName $VariableName
+        description = $description
+        body        = $requestBody
+    }
+
+    $responses = ConvertTo-ResponseList -Operation $Operation -Request $request
 
     return [PSCustomObject][ordered]@{
         name     = $summary
-        request  = [PSCustomObject][ordered]@{
-            method      = $Method.ToUpper()
-            header      = $headers
-            url         = ConvertTo-RequestUrl -Path $Path -Parameters $parameters -VariableName $VariableName
-            description = $description
-            body        = $requestBody
-        }
+        request  = $request
         response = $responses
     }
 }

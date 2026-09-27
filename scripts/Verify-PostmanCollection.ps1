@@ -93,7 +93,7 @@ if (-not $CollectionFile) { $CollectionFile = Join-Path $repoRoot 'postman\Stock
 
 if (-not (Test-Path -LiteralPath $SpecFile)) { throw "OpenAPI document not found: $SpecFile" }
 
-$spec = Get-Content -LiteralPath $SpecFile -Raw | ConvertFrom-Json
+$spec = [System.IO.File]::ReadAllText($SpecFile, [System.Text.Encoding]::UTF8) | ConvertFrom-Json
 $expected = @()
 foreach ($pathProperty in $spec.paths.PSObject.Properties) {
     # "/" is the browser redirect to the Swagger UI (Program.cs), not an API operation.
@@ -122,7 +122,7 @@ if ($FromPostman) {
     $source = "Postman collection '$((Get-CollectionName $collection))'"
 } else {
     if (-not (Test-Path -LiteralPath $CollectionFile)) { throw "Collection file not found: $CollectionFile" }
-    $collection = Get-Content -LiteralPath $CollectionFile -Raw | ConvertFrom-Json
+    $collection = [System.IO.File]::ReadAllText($CollectionFile, [System.Text.Encoding]::UTF8) | ConvertFrom-Json
     $source = $CollectionFile
 }
 

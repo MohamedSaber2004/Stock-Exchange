@@ -39,7 +39,7 @@ if (-not (Test-Path -LiteralPath $CollectionFile)) {
     throw "Collection file not found: $CollectionFile. Run .\scripts\Update-PostmanCollection.ps1 first."
 }
 
-$collection = Get-Content -LiteralPath $CollectionFile -Raw | ConvertFrom-Json
+$collection = [System.IO.File]::ReadAllText($CollectionFile, [System.Text.Encoding]::UTF8) | ConvertFrom-Json
 $payload = @{ collection = $collection } | ConvertTo-Json -Depth 100 -Compress
 
 $headers = @{
