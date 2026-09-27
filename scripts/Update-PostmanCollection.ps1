@@ -1,0 +1,45 @@
+<#
+.SYNOPSIS
+    Converts openapi/v1.json into the tracked Postman collection.
+
+.DESCRIPTION
+    The output is a generated artifact. Never hand-edit postman\StockExchange.postman_collection.json:
+    every regeneration overwrites it. Team members get their editable copy from the Postman
+    team workspace, which Postman keeps in sync with openapi\v1.json.
+
+.EXAMPLE
+    .\scripts\Update-PostmanCollection.ps1
+#>
+[CmdletBinding()]
+param(
+    [string]$Version = 'v1',
+    [string]$BaseUrl = 'http://localhost:5074'
+)
+
+$ErrorActionPreference = 'Stop'
+
+function Count-Requests {
+    param($Items)
+
+    $count = 0
+    foreach ($item in $Items) {
+        if ($null -ne $item.PSObject.Properties['item'] -and $item.item) { $count += Count-Requests $item.item }
+        elseif ($null -ne $item.PSObject.Properties['request']) { $count++ }
+    }
+    return $count
+}
+
+$repoRoot = Split-Path -Parent $PSScriptRoot
+$specFile = Join-Path $repoRoot "openapi\$Version.json"
+$outFile = Join-Path $repoRoot 'postman\StockExchange.postman_collection.json'
+
+if (-not (Test-Path -LiteralPath $specFile)) {
+    throw "OpenAPI document not found: $specFile. Run .\scripts\Update-OpenApi.ps1 first."
+}
+
+& (Join-Path $PSScriptRoot 'Convert-OpenApiToPostman.ps1') -SpecFile $specFile -OutFile $outFile -BaseUrl $BaseUrl
+
+$collection = Get-Content -LiteralPath $outFile -Raw | ConvertFrom-Json
+Write-Host "postman\StockExchange.postman_collection.json - '$($collection.info.name)' with $(Count-Requests $collection.item) requests"
+
+git -C $repoRoot --no-pager diff --stat -- postman

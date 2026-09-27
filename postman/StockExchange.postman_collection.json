@@ -1,0 +1,1086 @@
+{
+    "info":  {
+                 "name":  "Stock Exchange API",
+                 "description":  "Stock Exchange API v1. The API is supported and stable.",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+             },
+    "item":  [
+                 {
+                     "name":  "Attachments",
+                     "description":  "",
+                     "item":  [
+                                  {
+                                      "name":  "Uploads a single attachment file.",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "multipart/form-data",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/attachments/upload",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "attachments",
+                                                                               "upload"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Uploads a single attachment file.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"File\":  \"string\",\n    \"MediaType\":  0,\n    \"Place\":  0\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "201 File uploaded successfully.",
+                                                           "code":  201,
+                                                           "description":  "File uploaded successfully.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 The file is missing or its format is not valid for the given media type.",
+                                                           "code":  400,
+                                                           "description":  "The file is missing or its format is not valid for the given media type.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+                                                           "code":  401,
+                                                           "description":  "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "code":  403,
+                                                           "description":  "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Uploads multiple attachment files of the same media type.",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "multipart/form-data",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/attachments/upload-multiple",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "attachments",
+                                                                               "upload-multiple"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Uploads multiple attachment files of the same media type.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"Files\":  [\n                  \"string\"\n              ],\n    \"MediaType\":  0,\n    \"Place\":  0\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "201 Files uploaded successfully.",
+                                                           "code":  201,
+                                                           "description":  "Files uploaded successfully.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 No files were provided or none of them is valid for the given media type.",
+                                                           "code":  400,
+                                                           "description":  "No files were provided or none of them is valid for the given media type.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+                                                           "code":  401,
+                                                           "description":  "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "code":  403,
+                                                           "description":  "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Downloads a previously uploaded attachment file.",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/attachments/download",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "attachments",
+                                                                               "download"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "FileName",
+                                                                                    "value":  "string",
+                                                                                    "description":  ""
+                                                                                },
+                                                                                {
+                                                                                    "key":  "FilePlace",
+                                                                                    "value":  "0",
+                                                                                    "description":  ""
+                                                                                },
+                                                                                {
+                                                                                    "key":  "MediaType",
+                                                                                    "value":  "0",
+                                                                                    "description":  ""
+                                                                                }
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Downloads a previously uploaded attachment file.",
+                                                      "body":  null
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 File content.",
+                                                           "code":  200,
+                                                           "description":  "File content.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "404 The requested file was not found.",
+                                                           "code":  404,
+                                                           "description":  "The requested file was not found.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+                                                           "code":  401,
+                                                           "description":  "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "code":  403,
+                                                           "description":  "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Replaces an existing attachment file with a newly uploaded one.",
+                                      "request":  {
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "multipart/form-data",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/attachments/update",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "attachments",
+                                                                               "update"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Replaces an existing attachment file with a newly uploaded one.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"OldFileName\":  \"string\",\n    \"File\":  \"string\",\n    \"MediaType\":  0,\n    \"Place\":  0\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 File replaced successfully.",
+                                                           "code":  200,
+                                                           "description":  "File replaced successfully.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 The old file name is missing, or the new file is missing or invalid.",
+                                                           "code":  400,
+                                                           "description":  "The old file name is missing, or the new file is missing or invalid.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+                                                           "code":  401,
+                                                           "description":  "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "code":  403,
+                                                           "description":  "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Authentication",
+                     "description":  "",
+                     "item":  [
+                                  {
+                                      "name":  "Authenticates a user with email and password and returns JWT access and refresh tokens.",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/authentication/login",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "authentication",
+                                                                               "login"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Authenticates a user with email and password and returns JWT access and refresh tokens.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"email\":  \"string\",\n    \"password\":  \"string\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 Login successful.",
+                                                           "code":  200,
+                                                           "description":  "Login successful.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 Validation error occurred.",
+                                                           "code":  400,
+                                                           "description":  "Validation error occurred.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "401 Invalid email or password.",
+                                                           "code":  401,
+                                                           "description":  "Invalid email or password.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "403 Account is deleted or deactivated.",
+                                                           "code":  403,
+                                                           "description":  "Account is deleted or deactivated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/authentication/login-with-google",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "authentication",
+                                                                               "login-with-google"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"idToken\":  \"string\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 Login successful.",
+                                                           "code":  200,
+                                                           "description":  "Login successful.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 Validation error occurred, or Google did not supply a usable email address.",
+                                                           "code":  400,
+                                                           "description":  "Validation error occurred, or Google did not supply a usable email address.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "401 The Google token is invalid, expired, or its email is unverified.",
+                                                           "code":  401,
+                                                           "description":  "The Google token is invalid, expired, or its email is unverified.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "403 Account is deleted or deactivated.",
+                                                           "code":  403,
+                                                           "description":  "Account is deleted or deactivated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "409 The account is already linked to a different Google account.",
+                                                           "code":  409,
+                                                           "description":  "The account is already linked to a different Google account.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "503 Google sign-in is not configured on the server.",
+                                                           "code":  503,
+                                                           "description":  "Google sign-in is not configured on the server.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Registers a new user account and returns JWT access and refresh tokens.",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/authentication/register",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "authentication",
+                                                                               "register"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Registers a new user account and returns JWT access and refresh tokens.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"fullName\":  \"string\",\n    \"email\":  \"string\",\n    \"password\":  \"string\",\n    \"confirmPassword\":  \"string\",\n    \"phoneNumber\":  \"string\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "201 User registered successfully.",
+                                                           "code":  201,
+                                                           "description":  "User registered successfully.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 Validation error occurred.",
+                                                           "code":  400,
+                                                           "description":  "Validation error occurred.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "409 Email or phone number already in use.",
+                                                           "code":  409,
+                                                           "description":  "Email or phone number already in use.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Sends a password reset verification code to the specified email address.",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/authentication/forget-password",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "authentication",
+                                                                               "forget-password"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Sends a password reset verification code to the specified email address.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"email\":  \"string\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 Verification code sent successfully.",
+                                                           "code":  200,
+                                                           "description":  "Verification code sent successfully.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 Validation error occurred.",
+                                                           "code":  400,
+                                                           "description":  "Validation error occurred.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "404 User not found.",
+                                                           "code":  404,
+                                                           "description":  "User not found.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Verifies the OTP verification code sent to the specified email address and generates a password reset token.",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/authentication/verify-otp",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "authentication",
+                                                                               "verify-otp"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Verifies the OTP verification code sent to the specified email address and generates a password reset token.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"email\":  \"string\",\n    \"otpCode\":  \"string\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 Verification code verified successfully and reset token generated.",
+                                                           "code":  200,
+                                                           "description":  "Verification code verified successfully and reset token generated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 Validation error occurred, code is invalid, or code has expired.",
+                                                           "code":  400,
+                                                           "description":  "Validation error occurred, code is invalid, or code has expired.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "404 User not found.",
+                                                           "code":  404,
+                                                           "description":  "User not found.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Resets the user\u0027s password using the token received from OTP verification.",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/authentication/reset-password",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "authentication",
+                                                                               "reset-password"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Resets the user\u0027s password using the token received from OTP verification.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"email\":  \"string\",\n    \"otpCode\":  \"string\",\n    \"newPassword\":  \"string\",\n    \"confirmPassword\":  \"string\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 Password reset successfully.",
+                                                           "code":  200,
+                                                           "description":  "Password reset successfully.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 Validation error occurred, token is invalid or expired, or passwords do not match.",
+                                                           "code":  400,
+                                                           "description":  "Validation error occurred, token is invalid or expired, or passwords do not match.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "404 User not found.",
+                                                           "code":  404,
+                                                           "description":  "User not found.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Refreshes an expired access token using a valid refresh token (rotation).",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/authentication/refresh-token",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "authentication",
+                                                                               "refresh-token"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Refreshes an expired access token using a valid refresh token (rotation).",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"refreshToken\":  \"string\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 Tokens refreshed successfully.",
+                                                           "code":  200,
+                                                           "description":  "Tokens refreshed successfully.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 Validation error occurred.",
+                                                           "code":  400,
+                                                           "description":  "Validation error occurred.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "401 Refresh token is invalid, revoked, or expired.",
+                                                           "code":  401,
+                                                           "description":  "Refresh token is invalid, revoked, or expired.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "403 Account is deleted or deactivated.",
+                                                           "code":  403,
+                                                           "description":  "Account is deleted or deactivated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Logs out the current user by revoking refresh token(s).",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     },
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "description":  ""
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/authentication/logout",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "authentication",
+                                                                               "logout"
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "Logs out the current user by revoking refresh token(s).",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n    \"refreshToken\":  \"string\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 Logout successful.",
+                                                           "code":  200,
+                                                           "description":  "Logout successful.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "400 Validation error occurred.",
+                                                           "code":  400,
+                                                           "description":  "Validation error occurred.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "401 User is not authenticated.",
+                                                           "code":  401,
+                                                           "description":  "User is not authenticated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "404 Refresh token not found.",
+                                                           "code":  404,
+                                                           "description":  "Refresh token not found.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       },
+                                                       {
+                                                           "name":  "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "code":  403,
+                                                           "description":  "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Stock-Exchange.API",
+                     "description":  "",
+                     "item":  [
+                                  {
+                                      "name":  "GET /",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept-Language",
+                                                                         "value":  "ar",
+                                                                         "description":  "Preferred language for the response. Supported values: `ar`, `en`."
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+
+                                                                           ],
+                                                                  "query":  [
+
+                                                                            ],
+                                                                  "variable":  [
+
+                                                                               ]
+                                                              },
+                                                      "description":  "GET /",
+                                                      "body":  null
+                                                  },
+                                      "response":  [
+                                                       {
+                                                           "name":  "200 OK",
+                                                           "code":  200,
+                                                           "description":  "OK",
+                                                           "header":  [
+
+                                                                      ],
+                                                           "body":  ""
+                                                       }
+                                                   ]
+                                  }
+                              ]
+                 }
+             ],
+    "variable":  [
+                     {
+                         "key":  "baseUrl",
+                         "value":  "http://localhost:5074",
+                         "type":  "string",
+                         "description":  "API base URL. Point it at the environment you want to call."
+                     }
+                 ],
+    "auth":  {
+                 "type":  "bearer",
+                 "bearer":  [
+                                {
+                                    "key":  "token",
+                                    "value":  "{{token}}",
+                                    "type":  "string"
+                                }
+                            ]
+             }
+}
