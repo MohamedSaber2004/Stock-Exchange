@@ -1,43 +1,11 @@
-﻿1s
-8s
-Run # The smoke test above already proved the endpoint answers. The document is
-  
-Using site URL: https://stock-exchange.runasp.net
-openapi\v1.json updated from /home/runner/work/_temp/swagger.json
-2s
-Run ./scripts/Update-PostmanCollection.ps1 -BaseUrl $env:SITE_URL
-  
-Wrote /home/runner/work/Stock-Exchange/Stock-Exchange/postman/StockExchange.postman_collection.json
-postman\StockExchange.postman_collection.json - 'Stock Exchange API' with 13 requests
- postman/StockExchange.postman_collection.json | 36 +++++++++++++--------------
- 1 file changed, 18 insertions(+), 18 deletions(-)
-1s
-Run git config user.name 'github-actions[bot]'
-[master d983cde] chore(api): sync OpenAPI document and Postman collection [skip ci]
- 2 files changed, 34 insertions(+), 34 deletions(-)
-To https://github.com/MohamedSaber2004/Stock-Exchange
-   3535894..d983cde  HEAD -> master
-2s
-Run ./scripts/Publish-PostmanCollection.ps1
-  
-Exception: /home/runner/work/Stock-Exchange/Stock-Exchange/scripts/Publish-PostmanCollection.ps1:33
+﻿Run ./scripts/Verify-PostmanCollection.ps1 -FromPostman
+Reading collection *** from Postman...
+Postman collection '' holds 12 requests; the document declares 12 operations.
+note: Postman collection '' has GET /api/v1/attachments/download?FileName=string&FilePlace=0&MediaType=0 which the document does not declare (Downloads a previously uploaded attachment file.)
+Error: missing from Postman collection '': GET /api/v1/attachments/download - Downloads a previously uploaded attachment file.
+Exception: /home/runner/work/Stock-Exchange/Stock-Exchange/scripts/Verify-PostmanCollection.ps1:101
 Line |
-  33 |      throw 'POSTMAN_API_KEY is not set. Add a Postman API key as a rep …
+ 101 |      throw "$($missing.Count) operation(s) from the OpenAPI document a …
      |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | POSTMAN_API_KEY is not set. Add a Postman API key as a repository secret.
+     | 1 operation(s) from the OpenAPI document are missing.
 Error: Process completed with exit code 1.
-0s
-Post job cleanup.
-/usr/bin/git version
-git version 2.55.0
-Temporarily overriding HOME='/home/runner/work/_temp/2fdadd33-4545-43d8-8cea-e6f1d6ceadfe' before making global git config changes
-Adding repository directory to the temporary git global config as a safe directory
-/usr/bin/git config --global --add safe.directory /home/runner/work/Stock-Exchange/Stock-Exchange
-/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-http.https://github.com/.extraheader
-/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url

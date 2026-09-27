@@ -66,16 +66,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -138,16 +138,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -213,16 +213,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -285,16 +285,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -867,48 +867,9 @@
               "body": ""
             },
             {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "header": [],
-              "body": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Stock-Exchange.API",
-      "description": "",
-      "item": [
-        {
-          "name": "GET /",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept-Language",
-                "value": "ar",
-                "description": "Preferred language for the response. Supported values: `ar`, `en`."
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [],
-              "query": [],
-              "variable": []
-            },
-            "description": "GET /",
-            "body": null
-          },
-          "response": [
-            {
-              "name": "200 OK",
-              "code": 200,
-              "description": "OK",
+              "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }

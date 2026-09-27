@@ -346,6 +346,9 @@ function Get-TagFolders {
     $folders = [ordered]@{}
 
     foreach ($pathProperty in $Document.paths.PSObject.Properties) {
+        # "/" is the browser redirect to the Swagger UI (Program.cs), not an API operation.
+        if ($pathProperty.Name -eq '/') { continue }
+
         $pathItem = $pathProperty.Value
         foreach ($method in $script:httpMethods) {
             if ($null -eq $pathItem.PSObject.Properties[$method]) { continue }

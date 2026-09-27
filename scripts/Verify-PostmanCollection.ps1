@@ -36,6 +36,9 @@ if (-not (Test-Path -LiteralPath $SpecFile)) { throw "OpenAPI document not found
 $spec = Get-Content -LiteralPath $SpecFile -Raw | ConvertFrom-Json
 $expected = @()
 foreach ($pathProperty in $spec.paths.PSObject.Properties) {
+    # "/" is the browser redirect to the Swagger UI (Program.cs), not an API operation.
+    if ($pathProperty.Name -eq '/') { continue }
+
     foreach ($property in $pathProperty.Value.PSObject.Properties) {
         $method = $property.Name.ToUpper()
         if ($method -notin @('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'TRACE')) { continue }
@@ -56,11 +59,54 @@ if ($FromPostman) {
     $response = Invoke-RestMethod -Method Get -Uri "$ApiBaseUrl/collections/$collectionId" `
         -Headers @{ 'X-Api-Key' = $apiKey }
     $collection = $response.collection
-    $source = "Postman collection '$($collection.name)'"
+    $source = "Postman collection '$((Get-CollectionName $collection))'"
 } else {
     if (-not (Test-Path -LiteralPath $CollectionFile)) { throw "Collection file not found: $CollectionFile" }
     $collection = Get-Content -LiteralPath $CollectionFile -Raw | ConvertFrom-Json
     $source = $CollectionFile
+}
+
+function Get-CollectionName {
+    param($Collection)
+
+    if ($null -ne $Collection.PSObject.Properties['info'] -and $Collection.info.PSObject.Properties['name']) {
+        return [string]$Collection.info.name
+    }
+    if ($null -ne $Collection.PSObject.Properties['name']) { return [string]$Collection.name }
+    return 'unnamed'
+}
+
+function Get-NormalizedPath {
+    <#
+        Reduces a Postman URL to the path shape used by the OpenAPI document:
+        the base URL variable is dropped, path variables become {name} no matter whether
+        Postman wrote {{name}}, {name} or :name, and the query string is removed because
+        query parameters are not part of an operation's identity.
+    #>
+    param($Url)
+
+    if ($null -eq $Url) { return '' }
+
+    $segments = @()
+    if ($Url -is [string]) {
+        $raw = $Url
+    } elseif ($null -ne $Url.PSObject.Properties['path'] -and @($Url.path).Count -gt 0) {
+        $raw = @($Url.path) -join '/'
+    } elseif ($null -ne $Url.PSObject.Properties['raw']) {
+        $raw = [string]$Url.raw
+    } else {
+        $raw = [string]$Url
+    }
+
+    $raw = ($raw -split '\?')[0]
+    $raw = $raw -replace '^[a-zA-Z][a-zA-Z0-9+.-]*://[^/]*', ''          # absolute URL: drop scheme and host
+    foreach ($segment in $raw.Split('/')) {
+        if (-not $segment) { continue }
+        if ($segment -match '^\{\{[^}]+\}\}$') { continue }                  # the baseUrl variable
+        $segments += ($segment -replace '^\{\{([^}]+)\}\}$', '{$1}' -replace '^:([A-Za-z0-9_]+)$', '{$1}')
+    }
+
+    return '/' + ($segments -join '/')
 }
 
 function Get-Requests {
@@ -71,13 +117,9 @@ function Get-Requests {
         if ($null -ne $item.PSObject.Properties['item'] -and $item.item) {
             $requests += Get-Requests $item.item
         } elseif ($null -ne $item.PSObject.Properties['request']) {
-            $url = [string]$item.request.url.raw
-            $url = $url -replace '^\{\{[^}]+\}\}', ''                       # drop the baseUrl variable
-            $url = $url -replace '\{\{([^}]+)\}\}', '{$1}'                  # path variables back to {name}
             $requests += [PSCustomObject]@{
-                Key      = "$($item.request.method.ToUpper()) $url"
-                Summary  = [string]$item.name
-                RawUrl   = [string]$item.request.url.raw
+                Key     = "$($item.request.method.ToUpper()) $(Get-NormalizedPath $item.request.url)"
+                Summary = [string]$item.name
             }
         }
     }
