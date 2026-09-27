@@ -307,6 +307,78 @@
       "description": "",
       "item": [
         {
+          "name": "Authenticates a user with email and password and returns JWT access and refresh tokens.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/authentication/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "authentication",
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Authenticates a user with email and password and returns JWT access and refresh tokens.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Login successful.",
+              "code": 200,
+              "description": "Login successful.",
+              "header": [],
+              "body": ""
+            },
+            {
+              "name": "400 Validation error occurred.",
+              "code": 400,
+              "description": "Validation error occurred.",
+              "header": [],
+              "body": ""
+            },
+            {
+              "name": "401 Invalid email or password.",
+              "code": 401,
+              "description": "Invalid email or password.",
+              "header": [],
+              "body": ""
+            },
+            {
+              "name": "403 Account is deleted or deactivated.",
+              "code": 403,
+              "description": "Account is deleted or deactivated.",
+              "header": [],
+              "body": ""
+            }
+          ]
+        },
+        {
           "name": "Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.",
           "request": {
             "method": "POST",
