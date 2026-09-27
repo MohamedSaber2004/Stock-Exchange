@@ -18,6 +18,10 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+if ($BaseUrl -notmatch '^https?://') {
+    throw "BaseUrl must be an absolute http(s) URL, got '$BaseUrl'. Pass -BaseUrl https://your-site, otherwise the generated collection would point at an unusable host."
+}
+
 function Count-Requests {
     param($Items)
 

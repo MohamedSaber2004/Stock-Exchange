@@ -127,15 +127,22 @@ jobs:
         env:
           SITE_URL: ${{ vars.SITE_URL || 'https://stock-exchange.runasp.net' }}
         run: |
-          # The smoke test above already proved the endpoint answers; download it again from
-          # this job so the artifacts never depend on the previous job's runner.
-          curl -sSf --max-time 60 "$SITE_URL/swagger/v1/swagger.json" -o /tmp/spec.json
-          ./scripts/Save-OpenApiDocument.ps1 -InputPath /tmp/spec.json -Version v1
+          # The smoke test above already proved the endpoint answers. The document is
+          # downloaded again in this job so the artifacts never depend on the previous
+          # job's runner, and the resolved URL is exported for the next steps.
+          $siteUrl = $env:SITE_URL
+          if (-not $siteUrl -or $siteUrl -notmatch '^https?://') {
+            $siteUrl = 'https://stock-exchange.runasp.net'
+          }
+          Write-Host "Using site URL: $siteUrl"
+          "SITE_URL=$siteUrl" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+          $specPath = Join-Path $env:RUNNER_TEMP 'swagger.json'
+          Invoke-WebRequest -Uri "$siteUrl/swagger/v1/swagger.json" -OutFile $specPath -UseBasicParsing
+          ./scripts/Save-OpenApiDocument.ps1 -InputPath $specPath -Version v1
 
       - name: Rebuild the Postman collection
         shell: pwsh
-        env:
-          SITE_URL: ${{ vars.SITE_URL || 'https://stock-exchange.runasp.net' }}
         run: ./scripts/Update-PostmanCollection.ps1 -BaseUrl $env:SITE_URL
 
       # openapi/v1.json and postman/StockExchange.postman_collection.json are committed on
