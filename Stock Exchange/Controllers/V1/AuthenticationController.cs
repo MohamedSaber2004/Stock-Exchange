@@ -55,19 +55,19 @@ public class AuthenticationController : BaseController
     /// <response code="403">Account is deleted or deactivated.</response>
     /// <response code="409">The account is already linked to a different Google account.</response>
     /// <response code="503">Google sign-in is not configured on the server.</response>
-    [HttpPost]
-    [Route(ApiRoutes.Authentication.LoginWithGoogle)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status403Forbidden)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status409Conflict)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status503ServiceUnavailable)]
-    public async Task<ActionResult> LoginWithGoogle([FromBody] LoginWithGoogleCommand command)
-    {
-        var result = await Mediator.Send(command);
-        return OkResult(result, LocalizationKeys.ActionResults.Ok);
-    }
+    //[HttpPost]
+    //[Route(ApiRoutes.Authentication.LoginWithGoogle)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status200OK)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status400BadRequest)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status401Unauthorized)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status403Forbidden)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status409Conflict)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status503ServiceUnavailable)]
+    //public async Task<ActionResult> LoginWithGoogle([FromBody] LoginWithGoogleCommand command)
+    //{
+    //    var result = await Mediator.Send(command);
+    //    return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    //}
 
     /// <summary>
     /// Registers a new user account and returns JWT access and refresh tokens.
