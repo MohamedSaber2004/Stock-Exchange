@@ -115,6 +115,14 @@ namespace Stock_Exchange.Infrastructure
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
+            .AddGoogle(options =>
+            {
+                options.ClientId = googleSection["WebClientId"]!;
+                options.ClientSecret = googleSection["WebClientSecret"]!;
+                options.CallbackPath = "/signin-google";
+                options.SaveTokens = true;
+                options.AccessType = "offline";
+            })
             .AddJwtBearer(options =>
             {
                 options.SaveToken = true;
@@ -173,19 +181,6 @@ namespace Stock_Exchange.Infrastructure
                     }
                 };
             });
-
-            var googleClientId = googleSection["WebClientId"];
-            if (!string.IsNullOrWhiteSpace(googleClientId))
-            {
-                authenticationBuilder.AddGoogle(options =>
-                {
-                    options.ClientId = googleClientId;
-                    options.ClientSecret = googleSection["WebClientSecret"] ?? string.Empty;
-                    options.CallbackPath = "/signin-google";
-                    options.SaveTokens = true;
-                    options.AccessType = "offline";
-                });
-            }
 
             return services;
         }

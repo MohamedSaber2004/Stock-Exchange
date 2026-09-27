@@ -36,6 +36,7 @@ namespace Stock_Exchange.Application
             services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
             services.Configure<IdentityOptions>(configuration.GetSection(nameof(IdentityOptions)));
             services.Configure<EmailSettings>(configuration.GetSection(nameof(EmailSettings)));
+            services.Configure<GoogleAuthSettings>(configuration.GetSection(nameof(GoogleAuthSettings)));
 
             services.AddMediatR(typeof(DependencyInjection).Assembly);
 
