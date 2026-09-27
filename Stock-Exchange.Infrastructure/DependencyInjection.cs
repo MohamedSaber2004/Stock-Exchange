@@ -109,19 +109,11 @@ namespace Stock_Exchange.Infrastructure
 
             var googleSection = configuration.GetSection(nameof(GoogleAuthSettings));
 
-            services.AddAuthentication(x =>
+            var authenticationBuilder = services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddGoogle(options =>
-            {
-                options.ClientId = googleSection["WebClientId"]!;
-                options.ClientSecret = googleSection["WebClientSecret"]!;
-                options.CallbackPath = "/signin-google";
-                options.SaveTokens = true;
-                options.AccessType = "offline";
             })
             .AddJwtBearer(options =>
             {
@@ -181,6 +173,19 @@ namespace Stock_Exchange.Infrastructure
                     }
                 };
             });
+
+            var googleClientId = googleSection["WebClientId"];
+            if (!string.IsNullOrWhiteSpace(googleClientId))
+            {
+                authenticationBuilder.AddGoogle(options =>
+                {
+                    options.ClientId = googleClientId;
+                    options.ClientSecret = googleSection["WebClientSecret"] ?? string.Empty;
+                    options.CallbackPath = "/signin-google";
+                    options.SaveTokens = true;
+                    options.AccessType = "offline";
+                });
+            }
 
             return services;
         }

@@ -30,6 +30,35 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      - name: Restore appsettings from secrets
+        env:
+          BASE_APPSETTINGS_BASE64: ${{ secrets.BASE_APPSETTINGS_BASE64 }}
+          TEST_APPSETTINGS_BASE64: ${{ secrets.TEST_APPSETTINGS_BASE64 }}
+          PRODUCTION_APPSETTINGS_BASE64: ${{ secrets.PRODUCTION_APPSETTINGS_BASE64 }}
+        run: |
+          python3 - <<'PY'
+          import base64, os, sys
+
+          targets = {
+              "BASE_APPSETTINGS_BASE64": "Stock Exchange/appsettings.json",
+              "TEST_APPSETTINGS_BASE64": "Stock Exchange/appsettings.Test.json",
+              "PRODUCTION_APPSETTINGS_BASE64": "Stock Exchange/appsettings.Production.json",
+          }
+
+          missing = []
+          for name, path in targets.items():
+              value = os.environ.get(name, "").strip()
+              if not value:
+                  missing.append(name)
+                  continue
+              with open(path, "wb") as handle:
+                  handle.write(base64.b64decode(value))
+              print(f"restored {path}")
+
+          if missing:
+              sys.exit("Missing required repository secrets: " + ", ".join(missing))
+          PY
+
       - name: Publish Stock Exchange API
         run: |
           dotnet publish "Stock Exchange/Stock-Exchange.API.csproj" \
