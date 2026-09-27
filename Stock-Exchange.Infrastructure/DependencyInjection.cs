@@ -107,21 +107,13 @@ namespace Stock_Exchange.Infrastructure
             };
             services.AddSingleton(tokenValidationParameters);
 
-            var googleSection = configuration.GetSection(nameof(GoogleAuthSettings));
+            var googleSettings = configuration.GetSection(nameof(GoogleAuthSettings)).Get<GoogleAuthSettings>() ?? new GoogleAuthSettings();
 
             var authenticationBuilder = services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddGoogle(options =>
-            {
-                options.ClientId = googleSection["WebClientId"]!;
-                options.ClientSecret = googleSection["WebClientSecret"]!;
-                options.CallbackPath = "/signin-google";
-                options.SaveTokens = true;
-                options.AccessType = "offline";
             })
             .AddJwtBearer(options =>
             {
@@ -181,6 +173,18 @@ namespace Stock_Exchange.Infrastructure
                     }
                 };
             });
+
+            if (googleSettings.HasClientId && !string.IsNullOrWhiteSpace(googleSettings.WebClientSecret))
+            {
+                authenticationBuilder.AddGoogle(options =>
+                {
+                    options.ClientId = googleSettings.WebClientId;
+                    options.ClientSecret = googleSettings.WebClientSecret;
+                    options.CallbackPath = "/signin-google";
+                    options.SaveTokens = true;
+                    options.AccessType = "offline";
+                });
+            }
 
             return services;
         }

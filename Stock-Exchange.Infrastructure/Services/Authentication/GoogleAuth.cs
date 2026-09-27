@@ -3,6 +3,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -18,9 +19,9 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly GoogleIdTokenValidator _idTokenValidator;
-        private readonly GoogleAuthSettings _googleAuthSettings;
         private readonly IStringLocalizer<Messages> _localizer;
         private readonly ILogger<GoogleAuth> _logger;
+        private readonly bool _hasConfiguredClientId;
 
         public GoogleAuth(
             UserManager<ApplicationUser> userManager,
@@ -31,9 +32,9 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
         {
             _userManager = userManager;
             _idTokenValidator = idTokenValidator;
-            _googleAuthSettings = googleAuthSettings.Value;
             _localizer = localizer;
             _logger = logger;
+            _hasConfiguredClientId = googleAuthSettings.Value.HasClientId;
         }
 
         public async Task<GoogleUserProfile?> ValidateGoogleTokenAsync(string idToken, string correlationId, CancellationToken cancellationToken)
@@ -41,8 +42,7 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
             if (string.IsNullOrWhiteSpace(idToken))
                 return null;
 
-            if (string.IsNullOrWhiteSpace(_googleAuthSettings.WebClientId)
-                && (_googleAuthSettings.WebClientIds is null || _googleAuthSettings.WebClientIds.Length == 0))
+            if (!_hasConfiguredClientId)
             {
                 throw new ServiceUnavailableException(_localizer[LocalizationKeys.ExceptionMessages.GoogleAuthNotConfigured]);
             }
@@ -60,8 +60,14 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
                     Picture: ReadClaim(token, "picture"),
                     EmailVerified: ReadEmailVerified(token));
             }
-            catch (Exception)
+            catch (SecurityTokenException ex)
             {
+                _logger.LogWarning(ex, "Google ID token rejected. CorrelationId: {CorrelationId}", correlationId);
+                throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidGoogleToken]);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Google ID token validation failed. CorrelationId: {CorrelationId}", correlationId);
                 throw new ServiceUnavailableException(_localizer[LocalizationKeys.ExceptionMessages.GoogleAuthValidationUnavailable]);
             }
         }

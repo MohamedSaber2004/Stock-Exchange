@@ -82,14 +82,13 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
             return token;
         }
 
-        private IReadOnlyList<string> GetValidAudiences() =>
-        [
-            .. new[] { _settings.WebClientId }
-                .Concat(_settings.WebClientIds ?? [])
-                .Where(id => !string.IsNullOrWhiteSpace(id))
-                .Select(id => id.Trim())
-                .Distinct(StringComparer.Ordinal)
-        ];
+        private IReadOnlyList<string> GetValidAudiences()
+        {
+            if (string.IsNullOrWhiteSpace(_settings.WebClientId))
+                return [];
+
+            return [.. GoogleClientId.ToAudienceForms(_settings.WebClientId)];
+        }
 
         private async Task<SecurityKey?> GetSigningKeyAsync(string? keyId, CancellationToken cancellationToken)
         {

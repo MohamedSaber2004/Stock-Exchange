@@ -5,6 +5,6 @@
         public string WebClientId { get; set; } = null!;
         public string WebClientSecret { get; set; } = null!;
 
-        public string[] WebClientIds { get; set; } = [];
+        public bool HasClientId => !string.IsNullOrWhiteSpace(WebClientId);
     }
 }
