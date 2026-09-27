@@ -43,6 +43,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
+
             if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password))
                 throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidCredentials]);
 
