@@ -1,26 +1,14 @@
-﻿بص انا شغال علي .net api project swagger وعايز اي تعديل يحصل يسمع التعديل في ال collection بتاع postman اوتوماتيك هل فيه امكانية للموضوع ده؟؟؟؟
-
-نعم، يمكنك أتمتة مزامنة التعديلات من Swagger إلى Postman Collection بالكامل. يعتمد اختيار الطريقة الأنسب على بيئة العمل الخاصة بك (تطوير محلي أم ضمن فريق متصل بـ CI/CD).
-
-1. الربط المباشر مع مستودع الكود (أفضل طريقة لفرق العمل)
-هذه هي الطريقة الأكثر استقراراً؛ حيث يقوم Postman بمراقبة ملف swagger.json في مستودعك (GitHub أو GitLab) وتحديث الـ Collection تلقائياً عند أي دمج (Push) جديد.
-
-توليد ملف Swagger تلقائياً مع الـ Build:
-في مجلد المشروع، قم بتثبيت أداة Swashbuckle لتعمل عبر سطر الأوامر:
-
-Bash
-dotnet new tool-manifest
-dotnet tool install Swashbuckle.AspNetCore.Cli
-ثم أضف هذا الكود في ملف .csproj الخاص بمشروعك لتوليد ملف JSON عند كل Build:
-
-XML
-<Target Name="GenerateSwagger" AfterTargets="Build">
-    <Exec Command="dotnet swagger tofile --output ./swagger.json $(OutputPath)$(AssemblyName).dll v1" />
-</Target>
-الربط مع Postman:
-
-افتح Postman واذهب إلى تبويب APIs (من القائمة الجانبية).
-
-أنشئ API جديد واضغط على Connect Repository.
-
-اختر منصتك (مثل GitHub) وحدد مسار ملف swagger.json الذي يتم إنشاؤه.
+﻿0s
+1s
+Run ./scripts/tests/Convert-OpenApiToPostman.Tests.ps1
+./scripts/tests/Convert-OpenApiToPostman.Tests.ps1: D:\a\_temp\dd68f2ca-c72a-4f2d-ae43-e407a4ee3ecf.ps1:2
+Line |
+   2 |  ./scripts/tests/Convert-OpenApiToPostman.Tests.ps1
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | The term './scripts/tests/Convert-OpenApiToPostman.Tests.ps1' is not recognized as a name of a cmdlet, function,
+     | script file, or executable program. Check the spelling of the name, or if a path was included, verify that the
+     | path is correct and try again.
+Error: Process completed with exit code 1.
+0s
+0s
+1s

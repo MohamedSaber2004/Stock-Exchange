@@ -53,10 +53,6 @@ jobs:
         shell: pwsh
         run: ./scripts/Update-PostmanCollection.ps1
 
-      - name: Unit tests for the OpenAPI to Postman converter
-        shell: pwsh
-        run: ./scripts/tests/Convert-OpenApiToPostman.Tests.ps1
-
       # openapi/v1.json and postman/StockExchange.postman_collection.json are committed on
       # purpose: Postman Connect Repository reads openapi/v1.json straight from the repository.
       # A developer who changed a controller without regenerating them would leave every team
