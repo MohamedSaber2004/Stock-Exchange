@@ -21,7 +21,6 @@ namespace Stock_Exchange.Controllers.V1;
 [Route(ApiRoutes.Authentication.Base)]
 public class AuthenticationController : BaseController
 {
-
     /// <summary>
     /// Authenticates a user with email and password and returns JWT access and refresh tokens.
     /// </summary>

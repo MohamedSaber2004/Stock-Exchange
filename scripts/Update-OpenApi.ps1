@@ -28,7 +28,8 @@ $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'StableJson.ps1')
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$projectPath = Join-Path $repoRoot 'Stock Exchange\Stock-Exchange.API.csproj'
+# Join-Path per segment: a backslash inside a single segment is a literal character on Linux.
+$projectPath = Join-Path (Join-Path $repoRoot 'Stock Exchange') 'Stock-Exchange.API.csproj'
 $specUri = "$($BaseUrl.TrimEnd('/'))/swagger/$Version/swagger.json"
 
 function Wait-ForSpec {
@@ -52,7 +53,11 @@ function Wait-ForSpec {
 }
 
 $appProcess = $null
-$logDir = Join-Path $env:TEMP 'stock-exchange-openapi'
+# $env:TEMP does not exist on the Linux runner: PowerShell 7 runs on .NET, where the temporary
+# directory is reported by the runtime rather than by the environment. GetTempPath() resolves to
+# %TEMP% on Windows and /tmp on Linux, so the script is portable without a per-host branch.
+$tempRoot = [System.IO.Path]::GetTempPath()
+$logDir = Join-Path $tempRoot 'stock-exchange-openapi'
 if (-not (Test-Path -LiteralPath $logDir)) {
     New-Item -ItemType Directory -Path $logDir | Out-Null
 }
@@ -73,13 +78,25 @@ try {
     Write-Host "Reading $specUri"
     $content = Wait-ForSpec -Uri $specUri -TimeoutSeconds $TimeoutSeconds
 
-    $tempFile = Join-Path $env:TEMP "openapi-$Version.json"
+    $tempFile = Join-Path $tempRoot "openapi-$Version.json"
     [System.IO.File]::WriteAllText($tempFile, $content, (New-Object System.Text.UTF8Encoding($false)))
 
     & (Join-Path $PSScriptRoot 'Save-OpenApiDocument.ps1') -InputPath $tempFile -Version $Version
 } finally {
     if ($appProcess) {
         Write-Host "Stopping API..."
-        taskkill /PID $appProcess.Id /T /F | Out-Null
+        # 'dotnet run' starts the application as a child process, so stopping the runner is not
+        # enough. Windows PowerShell 5.1 (.NET Framework) has no tree-aware Kill, and taskkill is
+        # Windows-only; PowerShell 7 on either platform has Process.Kill(entireProcessTree).
+        if ($PSVersionTable.PSVersion.Major -lt 6) {
+            taskkill /PID $appProcess.Id /T /F | Out-Null
+        } else {
+            try {
+                $appProcess.Kill($true)
+                $appProcess.WaitForExit(30000) | Out-Null
+            } catch {
+                Write-Host "Could not stop the API process: $($_.Exception.Message)"
+            }
+        }
     }
 }

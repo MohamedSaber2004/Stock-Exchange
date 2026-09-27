@@ -32,7 +32,8 @@ param(
 $ErrorActionPreference = 'Stop'
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
-if (-not $SpecFile) { $SpecFile = Join-Path $repoRoot 'openapi\v1.json' }
+# Join-Path per segment: a backslash inside a single segment is a literal character on Linux.
+if (-not $SpecFile) { $SpecFile = Join-Path (Join-Path $repoRoot 'openapi') 'v1.json' }
 if (-not $OutputRoot) { $OutputRoot = Join-Path $repoRoot 'bruno' }
 
 if (-not (Test-Path -LiteralPath $SpecFile)) {

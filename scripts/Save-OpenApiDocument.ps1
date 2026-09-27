@@ -24,6 +24,7 @@ $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'StableJson.ps1')
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
+# Join-Path per segment: a backslash inside a single segment is a literal character on Linux.
 $outDir = Join-Path $repoRoot 'openapi'
 $outFile = Join-Path $outDir "$Version.json"
 
