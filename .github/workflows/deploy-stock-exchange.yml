@@ -106,6 +106,6 @@ jobs:
           head -c 500 /tmp/swagger.json || true
           exit 1
 
-  # The OpenAPI document and the Bruno collection are not refreshed here. They are built from
-  # the source tree by .github/workflows/openapi-bruno-sync.yml, which triggers on the same
+  # The OpenAPI document and the Postman collection are not refreshed here. They are built from
+  # the source tree by .github/workflows/openapi-postman-sync.yml, which triggers on the same
   # pushes, so the collection never describes a deployed build that is older than the branch.
