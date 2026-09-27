@@ -32,6 +32,8 @@ param(
 $ErrorActionPreference = 'Stop'
 $script:httpMethods = @('get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace')
 
+. (Join-Path $PSScriptRoot 'StableJson.ps1')
+
 if (-not (Test-Path -LiteralPath $SpecFile)) {
     throw "OpenAPI document not found: $SpecFile"
 }
@@ -234,7 +236,7 @@ function ConvertTo-RequestBody {
         $example = $null
     }
 
-    $raw = if ($null -eq $example) { '' } else { ConvertTo-StringValue ($example | ConvertTo-Json -Depth 100) }
+    $raw = if ($null -eq $example) { '' } else { ConvertTo-StringValue (ConvertTo-StableJson -InputObject $example) }
 
     return [PSCustomObject][ordered]@{
         mediaType = [string]$mediaType
@@ -416,7 +418,7 @@ $collection = [PSCustomObject][ordered]@{
 $outDir = Split-Path -Parent $OutFile
 if ($outDir -and -not (Test-Path -LiteralPath $outDir)) { New-Item -ItemType Directory -Path $outDir | Out-Null }
 
-$json = (($collection | ConvertTo-Json -Depth 100) -replace "`r`n", "`n")
+$json = ((ConvertTo-StableJson -InputObject $collection) -replace "`r`n", "`n")
 [System.IO.File]::WriteAllText($OutFile, $json + "`n", (New-Object System.Text.UTF8Encoding($false)))
 
 Write-Host "Wrote $OutFile"

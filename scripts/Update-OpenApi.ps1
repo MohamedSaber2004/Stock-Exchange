@@ -25,10 +25,10 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+. (Join-Path $PSScriptRoot 'StableJson.ps1')
+
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $projectPath = Join-Path $repoRoot 'Stock Exchange\Stock-Exchange.API.csproj'
-$outDir = Join-Path $repoRoot 'openapi'
-$outFile = Join-Path $outDir "$Version.json"
 $specUri = "$($BaseUrl.TrimEnd('/'))/swagger/$Version/swagger.json"
 
 function Wait-ForSpec {
@@ -73,34 +73,10 @@ try {
     Write-Host "Reading $specUri"
     $content = Wait-ForSpec -Uri $specUri -TimeoutSeconds $TimeoutSeconds
 
-    $json = $content | ConvertFrom-Json
-    $normalized = (($json | ConvertTo-Json -Depth 100) -replace "`r`n", "`n")
+    $tempFile = Join-Path $env:TEMP "openapi-$Version.json"
+    [System.IO.File]::WriteAllText($tempFile, $content, (New-Object System.Text.UTF8Encoding($false)))
 
-    if (-not (Test-Path -LiteralPath $outDir)) {
-        New-Item -ItemType Directory -Path $outDir | Out-Null
-    }
-
-    $newText = $normalized + "`n"
-    $unchanged = $false
-    if (Test-Path -LiteralPath $outFile) {
-        $sha = [System.Security.Cryptography.SHA256]::Create()
-        try {
-            $oldHash = [System.BitConverter]::ToString($sha.ComputeHash([System.IO.File]::ReadAllBytes($outFile)))
-            $newHash = [System.BitConverter]::ToString($sha.ComputeHash((New-Object System.Text.UTF8Encoding($false)).GetBytes($newText)))
-            $unchanged = $oldHash -eq $newHash
-        } finally {
-            $sha.Dispose()
-        }
-    }
-
-    [System.IO.File]::WriteAllText($outFile, $newText, (New-Object System.Text.UTF8Encoding($false)))
-
-    if ($unchanged) {
-        Write-Host "No changes in $Version.json"
-    } else {
-        Write-Host "Updated openapi\$Version.json"
-        git -C $repoRoot --no-pager diff --stat -- "openapi/$Version.json"
-    }
+    & (Join-Path $PSScriptRoot 'Save-OpenApiDocument.ps1') -InputPath $tempFile -Version $Version
 } finally {
     if ($appProcess) {
         Write-Host "Stopping API..."

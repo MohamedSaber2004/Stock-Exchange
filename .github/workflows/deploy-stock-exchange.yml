@@ -105,3 +105,57 @@ jobs:
           echo "::error::Deployed site did not serve a valid OpenAPI document after deployment."
           head -c 500 /tmp/swagger.json || true
           exit 1
+
+  # Keeps the team Postman collection in step with the API without anyone importing anything.
+  # It runs after a successful deploy, takes the document the deployed site already serves,
+  # refreshes the committed artifacts, and pushes the collection to Postman through the
+  # Postman API. Requires the repository secrets POSTMAN_API_KEY and POSTMAN_COLLECTION_ID.
+  sync-postman:
+    name: Sync OpenAPI document and Postman collection
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Save the document served by the deployed API
+        shell: pwsh
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://stock-exchange.runasp.net' }}
+        run: |
+          # The smoke test above already proved the endpoint answers; download it again from
+          # this job so the artifacts never depend on the previous job's runner.
+          curl -sSf --max-time 60 "$SITE_URL/swagger/v1/swagger.json" -o /tmp/spec.json
+          ./scripts/Save-OpenApiDocument.ps1 -InputPath /tmp/spec.json -Version v1
+
+      - name: Rebuild the Postman collection
+        shell: pwsh
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://stock-exchange.runasp.net' }}
+        run: ./scripts/Update-PostmanCollection.ps1 -BaseUrl $env:SITE_URL
+
+      # openapi/v1.json and postman/StockExchange.postman_collection.json are committed on
+      # purpose: they are the reviewed history of the API surface. '[skip ci]' keeps this
+      # commit from starting another deploy.
+      - name: Commit the refreshed artifacts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet -- openapi postman; then
+            echo 'The API surface did not change; nothing to commit.'
+            exit 0
+          fi
+          git add openapi postman
+          git commit -m 'chore(api): sync OpenAPI document and Postman collection [skip ci]'
+          git push origin "HEAD:${{ github.ref_name }}"
+
+      - name: Publish the collection to Postman
+        shell: pwsh
+        env:
+          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+          POSTMAN_COLLECTION_ID: ${{ secrets.POSTMAN_COLLECTION_ID }}
+        run: ./scripts/Publish-PostmanCollection.ps1

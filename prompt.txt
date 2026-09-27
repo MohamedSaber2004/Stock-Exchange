@@ -1,14 +1,359 @@
-﻿0s
+﻿Verify the OpenAPI document is up to date
+failed now in 1m 18s
+Search logs
 1s
-Run ./scripts/tests/Convert-OpenApiToPostman.Tests.ps1
-./scripts/tests/Convert-OpenApiToPostman.Tests.ps1: D:\a\_temp\dd68f2ca-c72a-4f2d-ae43-e407a4ee3ecf.ps1:2
-Line |
-   2 |  ./scripts/tests/Convert-OpenApiToPostman.Tests.ps1
-     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | The term './scripts/tests/Convert-OpenApiToPostman.Tests.ps1' is not recognized as a name of a cmdlet, function,
-     | script file, or executable program. Check the spelling of the name, or if a path was included, verify that the
-     | path is correct and try again.
-Error: Process completed with exit code 1.
-0s
-0s
+7s
+Run actions/checkout@v4
+Syncing repository: MohamedSaber2004/Stock-Exchange
+Getting Git version info
+Temporarily overriding HOME='D:\a\_temp\90d94a46-dcc6-4900-84d4-4318aaf2a344' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\Stock-Exchange\Stock-Exchange
+Deleting the contents of 'D:\a\Stock-Exchange\Stock-Exchange'
+Initializing the repository
+Disabling automatic garbage collection
+Setting up auth
+Fetching the repository
+Determining the checkout info
+"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2s
+dotnet-install: .NET Core SDK with version '8.0.425' is already installed.
+1m 2s
+Run ./scripts/Update-OpenApi.ps1 -Launch -TimeoutSeconds 240
+  
+Starting API (http launch profile)...
+Reading http://localhost:5074/swagger/v1/swagger.json
+  not ready yet (No connection could be made because the target machine actively refused it. (localhost:5074)), retrying...
+  not ready yet (No connection could be made because the target machine actively refused it. (localhost:5074)), retrying...
+  not ready yet (No connection could be made because the target machine actively refused it. (localhost:5074)), retrying...
+  not ready yet (No connection could be made because the target machine actively refused it. (localhost:5074)), retrying...
+  not ready yet (No connection could be made because the target machine actively refused it. (localhost:5074)), retrying...
+  not ready yet (No connection could be made because the target machine actively refused it. (localhost:5074)), retrying...
+  not ready yet (No connection could be made because the target machine actively refused it. (localhost:5074)), retrying...
+  not ready yet (No connection could be made because the target machine actively refused it. (localhost:5074)), retrying...
+Updated openapi\v1.json
+warning: in the working copy of 'openapi/v1.json', LF will be replaced by CRLF the next time Git touches it
+ openapi/v1.json | 4151 ++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 2119 insertions(+), 2032 deletions(-)
+Stopping API...
 1s
+Run ./scripts/Update-PostmanCollection.ps1
+  
+Wrote D:\a\Stock-Exchange\Stock-Exchange\postman\StockExchange.postman_collection.json
+postman\StockExchange.postman_collection.json - 'Stock Exchange API' with 13 requests
+warning: in the working copy of 'postman/StockExchange.postman_collection.json', LF will be replaced by CRLF the next time Git touches it
+ postman/StockExchange.postman_collection.json | 1767 +++++++++++++------------
+ 1 file changed, 919 insertions(+), 848 deletions(-)
+0s
+Run $changed = @(git status --porcelain -- openapi postman)
+Error: Generated artifacts are out of date. Run scripts\Update-OpenApi.ps1 and scripts\Update-PostmanCollection.ps1, then commit the result.
+ M openapi/v1.json
+ M postman/StockExchange.postman_collection.json
+warning: in the working copy of 'openapi/v1.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'postman/StockExchange.postman_collection.json', LF will be replaced by CRLF the next time Git touches it
+diff --git a/openapi/v1.json b/openapi/v1.json
+index a467411..727fd6d 100644
+--- a/openapi/v1.json
++++ b/openapi/v1.json
+@@ -1,2136 +1,2223 @@
+ {
+-    "openapi": "3.0.1",
+-    "info": {
+-        "title": "Stock Exchange API",
+-        "description": "Stock Exchange API v1. The API is supported and stable.",
+-        "version": "1.0"
+-    },
+-    "paths": {
+-        "/api/v1/attachments/upload": {
+-            "post": {
+-                "tags": [
+-                    "Attachments"
+-                ],
+-                "summary": "Uploads a single attachment file.",
+-                "parameters": [
+-                    {
+-                        "name": "Accept-Language",
+-                        "in": "header",
+-                        "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+-                        "schema": {
+-                            "enum": [
+-                                "ar",
+-                                "en"
+-                            ],
+-                            "type": "string",
+-                            "default": "ar"
+-                        }
+-                    }
+-                ],
+-                "requestBody": {
+-                    "content": {
+-                        "multipart/form-data": {
+-                            "schema": {
+-                                "type": "object",
+-                                "properties": {
+-                                    "File": {
+-                                        "type": "string",
+-                                        "format": "binary"
+-                                    },
+-                                    "MediaType": {
+-                                        "$ref": "#/components/schemas/MediaType"
+-                                    },
+-                                    "Place": {
+-                                        "type": "integer",
+-                                        "format": "int32"
+-                                    }
+-                                }
+-                            },
+-                            "encoding": {
+-                                "File": {
+-                                    "style": "form"
+-                                },
+-                                "MediaType": {
+-                                    "style": "form"
+-                                },
+-                                "Place": {
+-                                    "style": "form"
+-                                }
+-                            }
+-                        }
+-                    }
++  "openapi": "3.0.1",
++  "info": {
++    "title": "Stock Exchange API",
++    "description": "Stock Exchange API v1. The API is supported and stable.",
++    "version": "1.0"
++  },
++  "paths": {
++    "/api/v1/attachments/upload": {
++      "post": {
++        "tags": [
++          "Attachments"
++        ],
++        "summary": "Uploads a single attachment file.",
++        "parameters": [
++          {
++            "name": "Accept-Language",
++            "in": "header",
++            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
++            "schema": {
++              "enum": [
++                "ar",
++                "en"
++              ],
++              "type": "string",
++              "default": "ar"
++            }
++          }
++        ],
++        "requestBody": {
++          "content": {
++            "multipart/form-data": {
++              "schema": {
++                "type": "object",
++                "properties": {
++                  "File": {
++                    "type": "string",
++                    "format": "binary"
++                  },
++                  "MediaType": {
++                    "$ref": "#/components/schemas/MediaType"
++                  },
++                  "Place": {
++                    "type": "integer",
++                    "format": "int32"
++                  }
++                }
++              },
++              "encoding": {
++                "File": {
++                  "style": "form"
+                 },
+-                "responses": {
+-                    "201": {
+-                        "description": "File uploaded successfully.",
+-                        "content": {
+-                            "application/json": {
+-                                "schema": {
+-                                    "$ref": "#/components/schemas/StringApiResponse"
+-                                },
+-                                "examples": {
+-                                    "success": {
+-                                        "summary": "Success",
+-                                        "value": {
+-                                            "success": true,
+-                                            "isSuccess": true,
+-                                            "errors": {},
+-                                            "data": "string",
+-                                            "message": "Resource created successfully.",
+-                                            "statusCode": 201
+-                                        }
+-                                    }
+-                                }
+-                            }
+-                        }
+-                    },
+-                    "400": {
+-                        "description": "The file is missing or its format is not valid for the given media type.",
+-                        "content": {
+-                            "application/json": {
+-                                "schema": {
+-                                    "$ref": "#/components/schemas/StringApiResponse"
+-                                },
+-                                "examples": {
+-                                    "validationError": {
+-                                        "summary": "Validation error (field-level)",
+-                                        "value": {
+-                                            "success": false,
+-                                            "isSuccess": false,
+-                                            "errors": {
+-                                                "email": [
+-                                                    "Invalid email address format."
+-                                                ]
+-                                            },
+-                                            "data": null,
+-                                            "message": "One or more validation errors occurred.",
+-                                            "statusCode": 400
+-                                        }
+-                                    },
+-                                    "businessError": {
+-                                        "summary": "Business rule violation",
+-                                        "value": {
+-                                            "success": false,
+-                                            "isSuccess": false,
+-                                            "errors": {
+-                                                "General": [
+-                                                    "Invalid refresh token."
+-                                                ]
+-                                            },
+-                                            "data": null,
+-                                            "message": "The request is invalid.",
+-                                            "statusCode": 400
+-                                        }
+-                                    }
+-                                }
+-                            }
+-                        }
+-                    },
+-                    "401": {
+-                        "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+-                    },
+-                    "403": {
+-                        "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+-                    }
++                "MediaType": {
++                  "style": "form"
+                 },
+-                "security": [
+-                    {
+-                        "Bearer": []
+-                    }
+-                ]
++                "Place": {
++                  "style": "form"
++                }
++              }
+             }
++          }
+         },
+-        "/api/v1/attachments/upload-multiple": {
+-            "post": {
+-                "tags": [
+-                    "Attachments"
+-                ],
+-                "summary": "Uploads multiple attachment files of the same media type.",
+-                "parameters": [
+-                    {
+-                        "name": "Accept-Language",
+-                        "in": "header",
+-                        "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+-                        "schema": {
+-                            "enum": [
+-                                "ar",
+-                                "en"
+-                            ],
+-                            "type": "string",
+-                            "default": "ar"
+-                        }
+-                    }
+-                ],
+-                "requestBody": {
+-                    "content": {
+-                        "multipart/form-data": {
+-                            "schema": {
+-                                "type": "object",
+-                                "properties": {
+-                                    "Files": {
+-                                        "type": "array",
+-                                        "items": {
+-                                            "type": "string",
+-                                            "format": "binary"
+-                                        }
+-                                    },
+-                                    "MediaType": {
+-                                        "$ref": "#/components/schemas/MediaType"
+-                                    },
+-                                    "Place": {
+-                                        "type": "integer",
+-                                        "format": "int32"
+-                                    }
+-                                }
+-                            },
+-                            "encoding": {
+-                                "Files": {
+-                                    "style": "form"
+-                                },
+-                                "MediaType": {
+-                                    "style": "form"
+-                                },
+-                                "Place": {
+-                                    "style": "form"
+-                                }
+-                            }
+-                        }
+-                    }
++        "responses": {
++          "201": {
++            "description": "File uploaded successfully.",
++            "content": {
++              "application/json": {
++                "schema": {
++                  "$ref": "#/components/schemas/StringApiResponse"
+                 },
+-                "responses": {
+-                    "201": {
+-                        "description": "Files uploaded successfully.",
+-                        "content": {
+-                            "application/json": {
+-                                "schema": {
+-                                    "$ref": "#/components/schemas/StringApiResponse"
+-                                },
+-                                "examples": {
+-                                    "success": {
+-                                        "summary": "Success",
+-                                        "value": {
+-                                            "success": true,
+-                                            "isSuccess": true,
+-                                            "errors": {},
+-                                            "data": "string",
+-                                            "message": "Resource created successfully.",
+-                                            "statusCode": 201
+-                                        }
+-                                    }
+-                                }
+-                            }
+-                        }
+-                    },
+-                    "400": {
+-                        "description": "No files were provided or none of them is valid for the given media type.",
+-                        "content": {
+-                            "application/json": {
+-                                "schema": {
+-                                    "$ref": "#/components/schemas/StringApiResponse"
+0s
+3s
+"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+http.https://github.com/.extraheader
+"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
