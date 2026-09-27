@@ -66,16 +66,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized Ã¢â‚¬â€ missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized Ã¢â‚¬â€ missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -138,16 +138,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized Ã¢â‚¬â€ missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized Ã¢â‚¬â€ missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -213,16 +213,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized Ã¢â‚¬â€ missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized Ã¢â‚¬â€ missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -285,16 +285,16 @@
               "body": ""
             },
             {
-              "name": "401 Unauthorized Ã¢â‚¬â€ missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "code": 401,
-              "description": "Unauthorized Ã¢â‚¬â€ missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
               "header": [],
               "body": ""
             },
             {
-              "name": "403 Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
@@ -867,9 +867,9 @@
               "body": ""
             },
             {
-              "name": "403 Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
-              "description": "Forbidden Ã¢â‚¬â€ valid token, but the account lacks the required role/permission or is deactivated.",
+              "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "header": [],
               "body": ""
             }
