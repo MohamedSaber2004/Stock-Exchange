@@ -42,6 +42,7 @@ public class AuthenticationController : BaseController
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
     }
 
+
     /// <summary>
     /// Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.
     /// </summary>
