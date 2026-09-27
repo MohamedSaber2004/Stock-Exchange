@@ -15,8 +15,8 @@ using Stock_Exchange.Domain.Repositories.Interfaces;
 using Stock_Exchange.Domain.Repositories.Interfaces.Base;
 using Stock_Exchange.Infrastructure.Repositories.Implementations;
 using Stock_Exchange.Infrastructure.Repositories.Implementations.Base;
-using Stock_Exchange.Infrastructure.Services;
 using Stock_Exchange.Infrastructure.Services.Attachment;
+using Stock_Exchange.Infrastructure.Services.Authentication;
 using Stock_Exchange.Infrastructure.Services.Email;
 using Stock_Exchange.Infrastructure.Services.Security;
 using Stock_Exchange.Persistance;
@@ -43,6 +43,7 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<IImageValidator, ImageValidator>();
             services.AddScoped<IVideoValidator, VideoValidator>();
             services.AddScoped<IJwtTokenService, JwtTokenService>();
+            services.AddScoped<IGoogleAuth, GoogleAuth>();
             services.AddScoped<IEmailService, EmailService>();
 
             services.Configure<EmailSettings>(configuration.GetSection(nameof(EmailSettings)));
@@ -88,6 +89,8 @@ namespace Stock_Exchange.Infrastructure
                 ? jwtSettings.Audience.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
                 : Array.Empty<string>();
 
+            services.Configure<GoogleAuthSettings>(configuration.GetSection(nameof(GoogleAuthSettings)));
+
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
@@ -103,11 +106,21 @@ namespace Stock_Exchange.Infrastructure
             };
             services.AddSingleton(tokenValidationParameters);
 
+            var googleSection = configuration.GetSection(nameof(GoogleAuthSettings));
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddGoogle(options =>
+            {
+                options.ClientId = googleSection["WebClientId"]!;
+                options.ClientSecret = googleSection["WebClientSecret"]!;
+                options.CallbackPath = "/signin-google";
+                options.SaveTokens = true;
+                options.AccessType = "offline";
             })
             .AddJwtBearer(options =>
             {

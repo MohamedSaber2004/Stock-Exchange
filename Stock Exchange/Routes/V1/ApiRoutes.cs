@@ -19,6 +19,7 @@ namespace Stock_Exchange.Routes.V1
             public const string Base = BaseRoutes.Base + "/authentication";
 
             public const string Login = "login";
+            public const string LoginWithGoogle = "login-with-google";
             public const string Register = "register";
             public const string Logout = "logout";
             public const string RefreshToken = "refresh-token";

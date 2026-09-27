@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Stock_Exchange.Infrastructure.Services
+namespace Stock_Exchange.Infrastructure.Services.Authentication
 {
     public class JwtTokenService : IJwtTokenService
     {

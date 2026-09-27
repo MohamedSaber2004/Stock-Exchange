@@ -85,6 +85,28 @@ namespace Stock_Exchange.Domain.Entities
             FullName = fullName.Trim();
         }
 
+        public void LinkGoogleAccount(string googleUserId)
+        {
+            if (string.IsNullOrWhiteSpace(googleUserId))
+                throw new DomainException("Users.GoogleUserIdEmpty");
+
+            if (!string.IsNullOrEmpty(GoogleUserId) && !string.Equals(GoogleUserId, googleUserId, StringComparison.Ordinal))
+                throw new DomainException("Users.GoogleAccountAlreadyLinked");
+
+            GoogleUserId = googleUserId.Trim();
+        }
+
+        public void ConfirmEmail()
+        {
+            if (EmailConfirmed)
+                return;
+
+            EmailConfirmed = true;
+
+            if (Email is not null)
+                NormalizedEmail = Email.ToUpperInvariant();
+        }
+
         public void UpdateProfilePicture(string? url)
         {
             ProfilePictureUrl = url;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Services;
 using Stock_Exchange.Application.Localization;
@@ -10,15 +11,23 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
     {
         private static readonly string[] AllowedExtensions = [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"];
 
+        private const long MaxRemoteImageBytes = 5 * 1024 * 1024;
+
         private readonly IBaseFileService _baseFileService;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IStringLocalizer<Messages> _localizer;
+        private readonly ILogger<ImageValidator> _logger;
 
-        public ImageValidator(IBaseFileService baseFileService, IHttpClientFactory httpClientFactory, IStringLocalizer<Messages> localizer)
+        public ImageValidator(
+            IBaseFileService baseFileService,
+            IHttpClientFactory httpClientFactory,
+            IStringLocalizer<Messages> localizer,
+            ILogger<ImageValidator> logger)
         {
             _baseFileService = baseFileService;
             _httpClientFactory = httpClientFactory;
             _localizer = localizer;
+            _logger = logger;
         }
 
         public async Task<(bool Uploaded, string Result)> UploadImage(IFormFile? file, int place)
@@ -95,39 +104,65 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
             return !string.IsNullOrWhiteSpace(imageName) && imageName != placeHolder;
         }
 
-        public async Task<IFormFile?> ConvertImageToFormFile(string? imageUrl)
+        public async Task<IFormFile?> ConvertImageToFormFile(string? imageUrl, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(imageUrl) || !Uri.TryCreate(imageUrl, UriKind.Absolute, out var uri))
+                return null;
+
+            if (uri.Scheme != Uri.UriSchemeHttps && uri.Scheme != Uri.UriSchemeHttp)
                 return null;
 
             try
             {
                 var httpClient = _httpClientFactory.CreateClient();
-                using var response = await httpClient.GetAsync(uri);
+                using var response = await httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
                 if (!response.IsSuccessStatusCode)
                     return null;
 
-                var content = await response.Content.ReadAsByteArrayAsync();
-                if (content.Length == 0)
+                if (response.Content.Headers.ContentLength is long declaredLength && declaredLength > MaxRemoteImageBytes)
                     return null;
 
-                var stream = new MemoryStream(content);
+                var content = await response.Content.ReadAsByteArrayAsync(cancellationToken);
+                if (content.Length == 0 || content.Length > MaxRemoteImageBytes)
+                    return null;
 
-                var fileName = Path.GetFileName(uri.LocalPath);
-                if (string.IsNullOrWhiteSpace(fileName))
-                    fileName = "downloaded_image.jpg";
-
-                return new FormFile(stream, 0, content.Length, "file", fileName)
+                return new FormFile(new MemoryStream(content), 0, content.Length, "file", BuildFileName(uri, response.Content.Headers.ContentType?.MediaType))
                 {
                     Headers = new HeaderDictionary(),
                     ContentType = response.Content.Headers.ContentType?.ToString() ?? "application/octet-stream"
                 };
             }
-            catch
+            catch (Exception ex) when (ex is not OperationCanceledException)
             {
+                _logger.LogWarning(ex, "Failed to download image from {Host}: {Reason}", uri.Host, ex.Message);
                 return null;
             }
         }
+
+        private static string BuildFileName(Uri uri, string? mediaType)
+        {
+            var fromUrl = Path.GetFileName(uri.LocalPath);
+            var existingExtension = Path.GetExtension(fromUrl);
+
+            if (AllowedExtensions.Contains(existingExtension, StringComparer.OrdinalIgnoreCase))
+                return fromUrl;
+
+            var extension = MapMediaTypeToExtension(mediaType);
+            var nameWithoutExtension = Path.GetFileNameWithoutExtension(fromUrl);
+
+            return string.IsNullOrWhiteSpace(nameWithoutExtension)
+                ? $"downloaded_image{extension}"
+                : $"{nameWithoutExtension}{extension}";
+        }
+
+        private static string MapMediaTypeToExtension(string? mediaType) => mediaType?.ToLowerInvariant() switch
+        {
+            "image/png" => ".png",
+            "image/gif" => ".gif",
+            "image/bmp" or "image/x-ms-bmp" => ".bmp",
+            "image/webp" => ".webp",
+            _ => ".jpg"
+        };
 
         private static string GetFolderPath(int place)
         {

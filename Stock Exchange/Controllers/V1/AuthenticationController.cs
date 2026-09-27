@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
+using Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle;
 using Stock_Exchange.Application.Features.Auth.Commands.Logout;
 using Stock_Exchange.Application.Features.Auth.Commands.RefreshToken;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
@@ -36,6 +37,31 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status403Forbidden)]
     public async Task<ActionResult> Login([FromBody] LoginCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.
+    /// </summary>
+    /// <param name="command">The Google ID token issued to the client.</param>
+    /// <returns>The authenticated user information and authentication tokens.</returns>
+    /// <response code="200">Login successful.</response>
+    /// <response code="400">Validation error occurred, or Google did not supply a usable email address.</response>
+    /// <response code="401">The Google token is invalid, expired, or its email is unverified.</response>
+    /// <response code="403">Account is deleted or deactivated.</response>
+    /// <response code="409">The account is already linked to a different Google account.</response>
+    /// <response code="503">Google sign-in is not configured on the server.</response>
+    [HttpPost]
+    [Route(ApiRoutes.Authentication.LoginWithGoogle)]
+    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status409Conflict)]
+    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status503ServiceUnavailable)]
+    public async Task<ActionResult> LoginWithGoogle([FromBody] LoginWithGoogleCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);

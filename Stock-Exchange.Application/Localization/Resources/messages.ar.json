@@ -38,7 +38,8 @@
     "RequestTimeout": "انتهت صلاحية الطلب. يرجى المحاولة لاحقاً.",
     "EmailAuthenticationFailed": "فشل التحقق من بيانات اعتماد خدمة البريد الإلكتروني. يرجى التحقق من صحة البيانات.",
     "EmailServerRejected": "رفض خادم البريد طلب الإرسال.",
-    "NetworkConnectionFailed": "فشل الاتصال بالخدمة الخارجية عبر الشبكة."
+    "NetworkConnectionFailed": "فشل الاتصال بالخدمة الخارجية عبر الشبكة.",
+    "GoogleAuthNotConfigured": "تسجيل الدخول عبر Google غير مُهيأ على الخادم."
   },
   "AuthMessages": {
     "InvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
@@ -69,6 +70,15 @@
     "InvalidRefreshToken": "رمز التحديث غير صالح.",
     "RefreshTokenExpired": "انتهت صلاحية رمز التحديث. يرجى تسجيل الدخول مرة أخرى.",
     "RefreshTokenRevoked": "تم إلغاء رمز التحديث. يرجى تسجيل الدخول مرة أخرى.",
+    "GoogleIdTokenRequired": "معرّف رمز Google مطلوب.",
+    "GoogleIdTokenTooLong": "رمز Google يتجاوز الحد الأقصى المسموح به للطول.",
+    "InvalidGoogleToken": "رمز Google غير صالح أو منتهي الصلاحية.",
+    "GoogleEmailRequired": "لم يوفر حساب Google عنوان بريد إلكتروني.",
+    "GoogleEmailNotVerified": "البريد الإلكتروني لحساب Google غير مُتحقق منه.",
+    "GoogleUserCreationFailed": "فشل إنشاء حساب مستخدم من حساب Google.",
+    "GoogleAccountAlreadyLinked": "هذا الحساب مرتبط مسبقاً بحساب Google مختلف.",
+    "GoogleAccountLinkFailed": "فشل ربط حساب Google بالمستخدم.",
+    "GoogleProfileUpdateFailed": "فشل تحديث ملف المستخدم من Google.",
     "SessionExpired": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
     "SessionRevoked": "لم تعد جلستك صالحة. يرجى تسجيل الدخول مرة أخرى."
   },
@@ -78,11 +88,15 @@
   "Users": {
     "FullNameEmpty": "الاسم الكامل لا يمكن أن يكون فارغاً.",
     "PasswordResetTokenEmpty": "رمز إعادة تعيين كلمة المرور لا يمكن أن يكون فارغاً.",
-    "VerificationCodeEmpty": "رمز التحقق لا يمكن أن يكون فارغاً."
+    "VerificationCodeEmpty": "رمز التحقق لا يمكن أن يكون فارغاً.",
+    "GoogleUserIdEmpty": "معرّف مستخدم Google لا يمكن أن يكون فارغاً.",
+    "GoogleAccountAlreadyLinked": "هذا المستخدم مرتبط مسبقاً بحساب Google مختلف."
   },
   "Errors": {
     "FullNameEmpty": "الاسم الكامل لا يمكن أن يكون فارغاً.",
     "PasswordResetTokenEmpty": "رمز إعادة تعيين كلمة المرور لا يمكن أن يكون فارغاً.",
-    "VerificationCodeEmpty": "رمز التحقق لا يمكن أن يكون فارغاً."
+    "VerificationCodeEmpty": "رمز التحقق لا يمكن أن يكون فارغاً.",
+    "GoogleUserIdEmpty": "معرّف مستخدم Google لا يمكن أن يكون فارغاً.",
+    "GoogleAccountAlreadyLinked": "هذا المستخدم مرتبط مسبقاً بحساب Google مختلف."
   }
 }

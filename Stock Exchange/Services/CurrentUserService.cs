@@ -31,6 +31,8 @@ namespace Stock_Exchange.Services
 
         public string? IpAddress => _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
 
+        public string CorrelationId => _httpContextAccessor.HttpContext?.TraceIdentifier ?? string.Empty;
+
         public int? UserTypes
         {
             get

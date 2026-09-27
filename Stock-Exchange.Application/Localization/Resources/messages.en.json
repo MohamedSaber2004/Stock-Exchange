@@ -38,7 +38,8 @@
     "RequestTimeout": "The request timed out. Please try again later.",
     "EmailAuthenticationFailed": "Email service authentication failed. Please verify SMTP credentials.",
     "EmailServerRejected": "The mail server rejected the delivery request.",
-    "NetworkConnectionFailed": "Failed to connect to the external network service."
+    "NetworkConnectionFailed": "Failed to connect to the external network service.",
+    "GoogleAuthNotConfigured": "Google sign-in is not configured on the server."
   },
   "AuthMessages": {
     "InvalidCredentials": "Invalid email or password.",
@@ -69,6 +70,15 @@
     "InvalidRefreshToken": "Invalid refresh token.",
     "RefreshTokenExpired": "Refresh token has expired. Please login again.",
     "RefreshTokenRevoked": "Refresh token has been revoked. Please login again.",
+    "GoogleIdTokenRequired": "Google ID token is required.",
+    "GoogleIdTokenTooLong": "Google ID token exceeds the maximum allowed length.",
+    "InvalidGoogleToken": "The Google token is invalid or has expired.",
+    "GoogleEmailRequired": "The Google account did not provide an email address.",
+    "GoogleEmailNotVerified": "The Google account email address is not verified.",
+    "GoogleUserCreationFailed": "Failed to create a user account from the Google account.",
+    "GoogleAccountAlreadyLinked": "This account is already linked to a different Google account.",
+    "GoogleAccountLinkFailed": "Failed to link the Google account to the user.",
+    "GoogleProfileUpdateFailed": "Failed to update the user profile from Google.",
     "SessionExpired": "Your session has expired. Please log in again.",
     "SessionRevoked": "Your session is no longer valid. Please log in again."
   },
@@ -78,11 +88,15 @@
   "Users": {
     "FullNameEmpty": "Full name cannot be empty.",
     "PasswordResetTokenEmpty": "Password reset token cannot be empty.",
-    "VerificationCodeEmpty": "Verification code cannot be empty."
+    "VerificationCodeEmpty": "Verification code cannot be empty.",
+    "GoogleUserIdEmpty": "Google user id cannot be empty.",
+    "GoogleAccountAlreadyLinked": "This user is already linked to a different Google account."
   },
   "Errors": {
     "FullNameEmpty": "Full name cannot be empty.",
     "PasswordResetTokenEmpty": "Password reset token cannot be empty.",
-    "VerificationCodeEmpty": "Verification code cannot be empty."
+    "VerificationCodeEmpty": "Verification code cannot be empty.",
+    "GoogleUserIdEmpty": "Google user id cannot be empty.",
+    "GoogleAccountAlreadyLinked": "This user is already linked to a different Google account."
   }
 }

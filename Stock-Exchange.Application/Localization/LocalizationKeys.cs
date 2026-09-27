@@ -47,6 +47,7 @@ namespace Stock_Exchange.Application.Localization
             public const string EmailAuthenticationFailed = "ExceptionMessages.EmailAuthenticationFailed";
             public const string EmailServerRejected = "ExceptionMessages.EmailServerRejected";
             public const string NetworkConnectionFailed = "ExceptionMessages.NetworkConnectionFailed";
+            public const string GoogleAuthNotConfigured = "ExceptionMessages.GoogleAuthNotConfigured";
         }
 
         public static class AuthMessages
@@ -81,6 +82,15 @@ namespace Stock_Exchange.Application.Localization
             public const string RefreshTokenRevoked = "AuthMessages.RefreshTokenRevoked";
             public const string SessionExpired = "AuthMessages.SessionExpired";
             public const string SessionRevoked = "AuthMessages.SessionRevoked";
+            public const string GoogleIdTokenRequired = "AuthMessages.GoogleIdTokenRequired";
+            public const string GoogleIdTokenTooLong = "AuthMessages.GoogleIdTokenTooLong";
+            public const string InvalidGoogleToken = "AuthMessages.InvalidGoogleToken";
+            public const string GoogleEmailRequired = "AuthMessages.GoogleEmailRequired";
+            public const string GoogleEmailNotVerified = "AuthMessages.GoogleEmailNotVerified";
+            public const string GoogleUserCreationFailed = "AuthMessages.GoogleUserCreationFailed";
+            public const string GoogleAccountAlreadyLinked = "AuthMessages.GoogleAccountAlreadyLinked";
+            public const string GoogleAccountLinkFailed = "AuthMessages.GoogleAccountLinkFailed";
+            public const string GoogleProfileUpdateFailed = "AuthMessages.GoogleProfileUpdateFailed";
         }
 
         public static class EmailMessages

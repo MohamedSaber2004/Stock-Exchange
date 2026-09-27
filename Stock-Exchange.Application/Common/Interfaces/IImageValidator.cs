@@ -13,6 +13,6 @@ namespace Stock_Exchange.Application.Common.Interfaces
         bool IsValidImage(IFormFile? file);
         bool IsValidImage(string? imageName, string? placeHolder);
 
-        Task<IFormFile?> ConvertImageToFormFile(string? imageUrl);
+        Task<IFormFile?> ConvertImageToFormFile(string? imageUrl, CancellationToken cancellationToken = default);
     }
 }
