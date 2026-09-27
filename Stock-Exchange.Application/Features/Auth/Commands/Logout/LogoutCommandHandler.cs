@@ -13,6 +13,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Logout
 {
     public sealed class LogoutCommandHandler : IRequestHandler<LogoutCommand, bool>
     {
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserRefreshTokenRepository _refreshTokenRepository;
         private readonly IUnitOfWork _unitOfWork;
