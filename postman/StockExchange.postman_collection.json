@@ -307,7 +307,7 @@
       "description": "",
       "item": [
         {
-          "name": "Authenticates a user with email and password and returns JWT access and refresh tokens.",
+          "name": "Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.",
           "request": {
             "method": "POST",
             "header": [
@@ -323,7 +323,7 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/api/v1/authentication/login",
+              "raw": "{{baseUrl}}/api/v1/authentication/login-with-google",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -331,15 +331,15 @@
                 "api",
                 "v1",
                 "authentication",
-                "login"
+                "login-with-google"
               ],
               "query": [],
               "variable": []
             },
-            "description": "Authenticates a user with email and password and returns JWT access and refresh tokens.",
+            "description": "Authenticates a user with a Google ID token, provisioning the account on first sign-in, and returns JWT access and refresh tokens.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"string\",\n  \"password\": \"string\"\n}",
+              "raw": "{\n  \"idToken\": \"string\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -356,16 +356,16 @@
               "body": ""
             },
             {
-              "name": "400 Validation error occurred.",
+              "name": "400 Validation error occurred, or Google did not supply a usable email address.",
               "code": 400,
-              "description": "Validation error occurred.",
+              "description": "Validation error occurred, or Google did not supply a usable email address.",
               "header": [],
               "body": ""
             },
             {
-              "name": "401 Invalid email or password.",
+              "name": "401 The Google token is invalid, expired, or its email is unverified.",
               "code": 401,
-              "description": "Invalid email or password.",
+              "description": "The Google token is invalid, expired, or its email is unverified.",
               "header": [],
               "body": ""
             },
@@ -373,6 +373,20 @@
               "name": "403 Account is deleted or deactivated.",
               "code": 403,
               "description": "Account is deleted or deactivated.",
+              "header": [],
+              "body": ""
+            },
+            {
+              "name": "409 The account is already linked to a different Google account.",
+              "code": 409,
+              "description": "The account is already linked to a different Google account.",
+              "header": [],
+              "body": ""
+            },
+            {
+              "name": "503 Google sign-in is not configured on the server.",
+              "code": 503,
+              "description": "Google sign-in is not configured on the server.",
               "header": [],
               "body": ""
             }
