@@ -106,63 +106,6 @@ jobs:
           head -c 500 /tmp/swagger.json || true
           exit 1
 
-  # Keeps the committed API contract in step with the API without anyone touching it by hand.
-  # It runs after a successful deploy, takes the document the deployed site already serves,
-  # and regenerates the Bruno collection from it. Bruno stores its collection as plain .bru
-  # files in the repository, so there is nothing to publish: every team member opens
-  # bruno/StockExchange from their clone and it is already up to date.
-  sync-api-clients:
-    name: Sync OpenAPI document and Bruno collection
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Save the document served by the deployed API
-        shell: pwsh
-        env:
-          SITE_URL: ${{ vars.SITE_URL || 'https://stock-exchange.runasp.net' }}
-        run: |
-          # The smoke test above already proved the endpoint answers. The document is
-          # downloaded again in this job so the artifacts never depend on the previous
-          # job's runner, and the resolved URL is exported for the next steps.
-          $siteUrl = $env:SITE_URL
-          if (-not $siteUrl -or $siteUrl -notmatch '^https?://') {
-            $siteUrl = 'https://stock-exchange.runasp.net'
-          }
-          Write-Host "Using site URL: $siteUrl"
-
-          $specPath = Join-Path $env:RUNNER_TEMP 'swagger.json'
-          Invoke-WebRequest -Uri "$siteUrl/swagger/v1/swagger.json" -OutFile $specPath -UseBasicParsing
-          ./scripts/Save-OpenApiDocument.ps1 -InputPath $specPath -Version v1
-
-      - name: Rebuild the Bruno collection
-        shell: pwsh
-        env:
-          SITE_URL: ${{ vars.SITE_URL || 'https://stock-exchange.runasp.net' }}
-        run: ./scripts/Update-BrunoCollection.ps1 -TestBaseUrl $env:SITE_URL
-
-      # openapi/v1.json and bruno/ are committed on purpose: they are the reviewed history of
-      # the API surface and the collection the team works from. '[skip ci]' keeps this commit
-      # from starting another deploy.
-      - name: Commit the refreshed artifacts
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          if git diff --quiet -- openapi bruno; then
-            echo 'The API surface did not change; nothing to commit.'
-            exit 0
-          fi
-          git add openapi bruno
-          git commit -m 'chore(api): sync OpenAPI document and Bruno collection [skip ci]'
-          git push origin "HEAD:${{ github.ref_name }}"
+  # The OpenAPI document and the Bruno collection are not refreshed here. They are built from
+  # the source tree by .github/workflows/openapi-bruno-sync.yml, which triggers on the same
+  # pushes, so the collection never describes a deployed build that is older than the branch.

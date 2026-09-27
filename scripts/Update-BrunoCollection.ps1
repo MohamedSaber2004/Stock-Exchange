@@ -24,7 +24,7 @@ param(
     [string]$SpecFile = '',
     [string]$OutputRoot = '',
     [string]$CollectionName = 'StockExchange',
-    [string]$LocalBaseUrl = 'http://localhost:7059',
+    [string]$LocalBaseUrl = 'https://localhost:44308',
     [string]$TestBaseUrl = 'https://stock-exchange.runasp.net',
     [string]$CliVersion = '4.2.0'
 )

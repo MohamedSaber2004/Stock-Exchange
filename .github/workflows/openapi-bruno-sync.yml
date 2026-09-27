@@ -1,0 +1,104 @@
+name: OpenAPI / Bruno Sync
+
+# Keeps the committed API contract and the Bruno collection in step with the code, with no
+# manual step anywhere: the document is produced from the API built in this job, the collection
+# is produced from the document, and the two are committed back on the default branch.
+#
+# The document is generated from the source tree rather than downloaded from the deployed site,
+# so the collection describes the commit that is being built and never lags a deploy behind.
+# That is possible because Program.cs loads every appsettings file as optional: the API boots
+# and serves /swagger/v1/swagger.json with no configuration present at all.
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'Stock Exchange/**'
+      - 'Stock-Exchange.Application/**'
+      - 'Stock-Exchange.Domain/**'
+      - 'Stock-Exchange.Infrastructure/**'
+      - 'Stock-Exchange.Persistance/**'
+      - 'openapi/**'
+      - 'bruno/**'
+      - 'scripts/**'
+      - '.github/workflows/openapi-bruno-sync.yml'
+  pull_request:
+    paths:
+      - 'Stock Exchange/**'
+      - 'Stock-Exchange.Application/**'
+      - 'Stock-Exchange.Domain/**'
+      - 'Stock-Exchange.Infrastructure/**'
+      - 'Stock-Exchange.Persistance/**'
+      - 'openapi/**'
+      - 'bruno/**'
+      - 'scripts/**'
+      - '.github/workflows/openapi-bruno-sync.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: openapi-bruno-sync-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync OpenAPI document and Bruno collection
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # appsettings*.json are git-ignored, so this checkout has no configuration and needs no
+      # secrets. The API boots anyway and serves the document; the script starts it, waits for
+      # the endpoint, downloads the document, and stops the API again.
+      - name: Generate the OpenAPI document from the API built here
+        shell: pwsh
+        run: ./scripts/Update-OpenApi.ps1 -Launch -TimeoutSeconds 240
+
+      - name: Rebuild the Bruno collection from the document
+        shell: pwsh
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://stock-exchange.runasp.net' }}
+        run: ./scripts/Update-BrunoCollection.ps1 -TestBaseUrl $env:SITE_URL
+
+      # On a pull request this only reports the drift, it never fails the build: nobody has to
+      # regenerate anything by hand, because the push job below rewrites both artifacts as soon
+      # as the pull request lands on the default branch.
+      - name: Report drift on a pull request
+        if: github.event_name == 'pull_request'
+        shell: pwsh
+        run: |
+          $changed = @(git status --porcelain -- openapi bruno)
+          if ($changed.Count -gt 0) {
+            $changed | ForEach-Object { Write-Host "::warning::stale artifact: $($_)" }
+            Write-Host "openapi\ or bruno\ does not match the API yet. Merging is enough: the push run of this workflow regenerates and commits both."
+          } else {
+            Write-Host "openapi\ and bruno\ match the API in this pull request."
+          }
+
+      - name: Commit the refreshed artifacts
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet -- openapi bruno && [ -z "$(git status --porcelain -- openapi bruno)" ]; then
+            echo 'The API surface did not change; nothing to commit.'
+            exit 0
+          fi
+          git add openapi bruno
+          git commit -m 'chore(api): sync OpenAPI document and Bruno collection [skip ci]'
+          git push origin "HEAD:${{ github.ref_name }}"

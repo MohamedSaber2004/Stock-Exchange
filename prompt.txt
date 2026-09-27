@@ -1,11 +1,1 @@
-﻿Run ./scripts/Verify-PostmanCollection.ps1 -FromPostman
-  
-Reading collection *** from Postman...
-Verify-PostmanCollection.ps1: /home/runner/work/_temp/da1a6e4a-5641-4dc7-a754-45438667d2db.ps1:2
-Line |
-   2 |  ./scripts/Verify-PostmanCollection.ps1 -FromPostman
-     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | The term 'Get-CollectionName' is not recognized as a name of a cmdlet,
-     | function, script file, or executable program. Check the spelling of the
-     | name, or if a path was included, verify that the path is correct and try
-     | again.
+﻿i add the collection in bruno and i want to link it with that swagger api to listen updates and update collection directly how to make that
