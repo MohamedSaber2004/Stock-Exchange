@@ -127,10 +127,10 @@
             }
           },
           "401": {
-            "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
           },
           "403": {
-            "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated."
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
         },
         "security": [
@@ -264,10 +264,10 @@
             }
           },
           "401": {
-            "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
           },
           "403": {
-            "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated."
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
         },
         "security": [
@@ -352,10 +352,10 @@
             }
           },
           "401": {
-            "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
           },
           "403": {
-            "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated."
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
         },
         "security": [
@@ -492,10 +492,10 @@
             }
           },
           "401": {
-            "description": "Unauthorized â€” missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
           },
           "403": {
-            "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated."
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
         },
         "security": [
@@ -645,7 +645,7 @@
                     }
                   },
                   "expiredOrRevokedSession": {
-                    "summary": "Expired session â€” log in (or refresh) again",
+                    "summary": "Expired session — log in (or refresh) again",
                     "description": "The access token expired, was killed by logout/refresh rotation, or belongs to a deactivated account. Obtain a new token via login or refresh-token.",
                     "value": {
                       "success": false,
@@ -673,7 +673,7 @@
                 },
                 "examples": {
                   "error": {
-                    "summary": "Forbidden â€” missing role/permission",
+                    "summary": "Forbidden — missing role/permission",
                     "value": {
                       "success": false,
                       "isSuccess": false,
@@ -834,7 +834,7 @@
                     }
                   },
                   "expiredOrRevokedSession": {
-                    "summary": "Expired session â€” log in (or refresh) again",
+                    "summary": "Expired session — log in (or refresh) again",
                     "description": "The access token expired, was killed by logout/refresh rotation, or belongs to a deactivated account. Obtain a new token via login or refresh-token.",
                     "value": {
                       "success": false,
@@ -862,7 +862,7 @@
                 },
                 "examples": {
                   "error": {
-                    "summary": "Forbidden â€” missing role/permission",
+                    "summary": "Forbidden — missing role/permission",
                     "value": {
                       "success": false,
                       "isSuccess": false,
@@ -1628,7 +1628,7 @@
                     }
                   },
                   "expiredOrRevokedSession": {
-                    "summary": "Expired session â€” log in (or refresh) again",
+                    "summary": "Expired session — log in (or refresh) again",
                     "description": "The access token expired, was killed by logout/refresh rotation, or belongs to a deactivated account. Obtain a new token via login or refresh-token.",
                     "value": {
                       "success": false,
@@ -1656,7 +1656,7 @@
                 },
                 "examples": {
                   "error": {
-                    "summary": "Forbidden â€” missing role/permission",
+                    "summary": "Forbidden — missing role/permission",
                     "value": {
                       "success": false,
                       "isSuccess": false,
@@ -1808,7 +1808,7 @@
                     }
                   },
                   "expiredOrRevokedSession": {
-                    "summary": "Expired session â€” log in (or refresh) again",
+                    "summary": "Expired session — log in (or refresh) again",
                     "description": "The access token expired, was killed by logout/refresh rotation, or belongs to a deactivated account. Obtain a new token via login or refresh-token.",
                     "value": {
                       "success": false,
@@ -1855,7 +1855,7 @@
             }
           },
           "403": {
-            "description": "Forbidden â€” valid token, but the account lacks the required role/permission or is deactivated."
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
         },
         "security": [
