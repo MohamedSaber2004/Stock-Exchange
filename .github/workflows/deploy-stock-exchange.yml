@@ -106,21 +106,27 @@ jobs:
           head -c 500 /tmp/swagger.json || true
           exit 1
 
-  # Keeps the team Postman collection in step with the API without anyone importing anything.
+  # Keeps the committed API contract in step with the API without anyone touching it by hand.
   # It runs after a successful deploy, takes the document the deployed site already serves,
-  # refreshes the committed artifacts, and pushes the collection to Postman through the
-  # Postman API. Requires the repository secrets POSTMAN_API_KEY and POSTMAN_COLLECTION_ID.
-  sync-postman:
-    name: Sync OpenAPI document and Postman collection
+  # and regenerates the Bruno collection from it. Bruno stores its collection as plain .bru
+  # files in the repository, so there is nothing to publish: every team member opens
+  # bruno/StockExchange from their clone and it is already up to date.
+  sync-api-clients:
+    name: Sync OpenAPI document and Bruno collection
     needs: build-and-deploy
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       contents: write
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Save the document served by the deployed API
         shell: pwsh
@@ -135,44 +141,28 @@ jobs:
             $siteUrl = 'https://stock-exchange.runasp.net'
           }
           Write-Host "Using site URL: $siteUrl"
-          "SITE_URL=$siteUrl" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
           $specPath = Join-Path $env:RUNNER_TEMP 'swagger.json'
           Invoke-WebRequest -Uri "$siteUrl/swagger/v1/swagger.json" -OutFile $specPath -UseBasicParsing
           ./scripts/Save-OpenApiDocument.ps1 -InputPath $specPath -Version v1
 
-      - name: Rebuild the Postman collection
+      - name: Rebuild the Bruno collection
         shell: pwsh
-        run: ./scripts/Update-PostmanCollection.ps1 -BaseUrl $env:SITE_URL
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://stock-exchange.runasp.net' }}
+        run: ./scripts/Update-BrunoCollection.ps1 -TestBaseUrl $env:SITE_URL
 
-      # openapi/v1.json and postman/StockExchange.postman_collection.json are committed on
-      # purpose: they are the reviewed history of the API surface. '[skip ci]' keeps this
-      # commit from starting another deploy.
+      # openapi/v1.json and bruno/ are committed on purpose: they are the reviewed history of
+      # the API surface and the collection the team works from. '[skip ci]' keeps this commit
+      # from starting another deploy.
       - name: Commit the refreshed artifacts
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          if git diff --quiet -- openapi postman; then
+          if git diff --quiet -- openapi bruno; then
             echo 'The API surface did not change; nothing to commit.'
             exit 0
           fi
-          git add openapi postman
-          git commit -m 'chore(api): sync OpenAPI document and Postman collection [skip ci]'
+          git add openapi bruno
+          git commit -m 'chore(api): sync OpenAPI document and Bruno collection [skip ci]'
           git push origin "HEAD:${{ github.ref_name }}"
-
-      - name: Publish the collection to Postman
-        shell: pwsh
-        env:
-          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
-          POSTMAN_COLLECTION_ID: ${{ secrets.POSTMAN_COLLECTION_ID }}
-        run: ./scripts/Publish-PostmanCollection.ps1
-
-      # Reads the collection back out of Postman and compares it with the document the
-      # deployed site serves, so the job fails if the collection in Postman is not the one
-      # that was just published.
-      - name: Verify Postman matches the deployed API
-        shell: pwsh
-        env:
-          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
-          POSTMAN_COLLECTION_ID: ${{ secrets.POSTMAN_COLLECTION_ID }}
-        run: ./scripts/Verify-PostmanCollection.ps1 -FromPostman

@@ -31,17 +31,17 @@ public class AuthenticationController : BaseController
     /// <response code="400">Validation error occurred.</response>
     /// <response code="401">Invalid email or password.</response>
     /// <response code="403">Account is deleted or deactivated.</response>
-    [HttpPost]
-    [Route(ApiRoutes.Authentication.Login)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status403Forbidden)]
-    public async Task<ActionResult> Login([FromBody] LoginCommand command)
-    {
-        var result = await Mediator.Send(command);
-        return OkResult(result, LocalizationKeys.ActionResults.Ok);
-    }
+    //[HttpPost]
+    //[Route(ApiRoutes.Authentication.Login)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status200OK)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status400BadRequest)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status401Unauthorized)]
+    //[ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status403Forbidden)]
+    //public async Task<ActionResult> Login([FromBody] LoginCommand command)
+    //{
+    //    var result = await Mediator.Send(command);
+    //    return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    //}
 
 
     /// <summary>

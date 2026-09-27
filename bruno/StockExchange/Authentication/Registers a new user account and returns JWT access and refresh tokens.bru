@@ -1,0 +1,248 @@
+meta {
+  name: Registers a new user account and returns JWT access and refresh tokens
+  type: http
+  seq: 3
+  tags: [
+    Authentication
+  ]
+}
+
+post {
+  url: {{baseUrl}}/api/v1/authentication/register
+  body: json
+  auth: inherit
+}
+
+headers {
+  @description('Preferred language for the response. Supported values: `ar`, `en`.')
+  Accept-Language: ar
+  @description('Preferred language for the response. Supported values: `ar`, `en`.')
+  ~Accept-Language: en
+}
+
+body:json {
+  {
+    "fullName": "",
+    "email": "",
+    "password": "",
+    "confirmPassword": "",
+    "phoneNumber": ""
+  }
+}
+
+example {
+  name: Success
+  
+  request: {
+    url: {{baseUrl}}/api/v1/authentication/register
+    method: POST
+    mode: json
+    headers: {
+      Accept-Language: ar
+      ~Accept-Language: en
+    }
+  
+    body:json: {
+      {
+        "fullName": "",
+        "email": "",
+        "password": "",
+        "confirmPassword": "",
+        "phoneNumber": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": true,
+          "isSuccess": true,
+          "errors": {},
+          "data": {
+            "accessToken": "string",
+            "refreshToken": "string",
+            "fullName": "string",
+            "email": "string",
+            "phoneNumber": "string",
+            "roles": "string",
+            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "profilePictureUrl": "string"
+          },
+          "message": "Resource created successfully.",
+          "statusCode": 201
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Validation error (field-level)
+  
+  request: {
+    url: {{baseUrl}}/api/v1/authentication/register
+    method: POST
+    mode: json
+    headers: {
+      Accept-Language: ar
+      ~Accept-Language: en
+    }
+  
+    body:json: {
+      {
+        "fullName": "",
+        "email": "",
+        "password": "",
+        "confirmPassword": "",
+        "phoneNumber": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "isSuccess": false,
+          "errors": {
+            "email": [
+              "Invalid email address format."
+            ]
+          },
+          "data": null,
+          "message": "One or more validation errors occurred.",
+          "statusCode": 400
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Business rule violation
+  
+  request: {
+    url: {{baseUrl}}/api/v1/authentication/register
+    method: POST
+    mode: json
+    headers: {
+      Accept-Language: ar
+      ~Accept-Language: en
+    }
+  
+    body:json: {
+      {
+        "fullName": "",
+        "email": "",
+        "password": "",
+        "confirmPassword": "",
+        "phoneNumber": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "isSuccess": false,
+          "errors": {
+            "General": [
+              "Invalid refresh token."
+            ]
+          },
+          "data": null,
+          "message": "The request is invalid.",
+          "statusCode": 400
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Conflict
+  
+  request: {
+    url: {{baseUrl}}/api/v1/authentication/register
+    method: POST
+    mode: json
+    headers: {
+      Accept-Language: ar
+      ~Accept-Language: en
+    }
+  
+    body:json: {
+      {
+        "fullName": "",
+        "email": "",
+        "password": "",
+        "confirmPassword": "",
+        "phoneNumber": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": false,
+          "isSuccess": false,
+          "errors": {
+            "General": [
+              "A conflict occurred with the current state of the resource."
+            ]
+          },
+          "data": null,
+          "message": "A conflict occurred with the current state of the resource.",
+          "statusCode": 409
+        }
+      '''
+    }
+  }
+}

@@ -4,10 +4,10 @@
 * text=auto
 
 # Generated API artifacts. The generators always write LF so that a file produced on
-# Windows matches one produced on the Linux GitHub runner byte for byte; the drift check
-# in .github/workflows/openapi-sync.yml compares the working tree against the commit.
+# Windows matches one produced on the Linux GitHub runner byte for byte; the sync job in
+# .github/workflows/deploy-stock-exchange.yml commits them after a deploy.
 openapi/*.json text eol=lf
-postman/*.json text eol=lf
+bruno/** text eol=lf
 
 ###############################################################################
 # Set default behavior for command prompt diff.
