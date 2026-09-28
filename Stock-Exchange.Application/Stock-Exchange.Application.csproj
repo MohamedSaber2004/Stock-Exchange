@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Common\Behaviours\" />
+    <Folder Include="Features\Auth\Queries\GetUserInfo\" />
     <Folder Include="Localization\" />
   </ItemGroup>
 

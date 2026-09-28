@@ -81,7 +81,15 @@
     "GoogleAccountLinkFailed": "فشل ربط حساب Google بالمستخدم.",
     "GoogleProfileUpdateFailed": "فشل تحديث ملف المستخدم من Google.",
     "SessionExpired": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
-    "SessionRevoked": "لم تعد جلستك صالحة. يرجى تسجيل الدخول مرة أخرى."
+    "SessionRevoked": "لم تعد جلستك صالحة. يرجى تسجيل الدخول مرة أخرى.",
+    "UserNotFound": "المستخدم غير موجود.",
+    "UserInfoUpdated": "تم تحديث بيانات المستخدم بنجاح."
+  },
+  "CountryMessages": {
+    "CountryNotFound": "رمز الدولة المحدد غير موجود.",
+    "CountryCodeRequired": "رمز الدولة مطلوب.",
+    "CountryArNameRequired": "اسم الدولة بالعربية مطلوب.",
+    "CountryEnNameRequired": "اسم الدولة بالإنجليزية مطلوب."
   },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"

@@ -81,7 +81,15 @@
     "GoogleAccountLinkFailed": "Failed to link the Google account to the user.",
     "GoogleProfileUpdateFailed": "Failed to update the user profile from Google.",
     "SessionExpired": "Your session has expired. Please log in again.",
-    "SessionRevoked": "Your session is no longer valid. Please log in again."
+    "SessionRevoked": "Your session is no longer valid. Please log in again.",
+    "UserNotFound": "User was not found.",
+    "UserInfoUpdated": "User information updated successfully."
+  },
+  "CountryMessages": {
+    "CountryNotFound": "The specified country code was not found.",
+    "CountryCodeRequired": "Country code is required.",
+    "CountryArNameRequired": "Country Arabic name is required.",
+    "CountryEnNameRequired": "Country English name is required."
   },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"

@@ -9,6 +9,7 @@ using Stock_Exchange.Application.Features.Auth.Commands.Logout;
 using Stock_Exchange.Application.Features.Auth.Commands.RefreshToken;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
+using Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo;
 using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
 using Stock_Exchange.Application.Features.Auth.DTOs;
 using Stock_Exchange.Application.Localization;
@@ -185,5 +186,27 @@ public class AuthenticationController : BaseController
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Updates the authenticated user's profile information.
+    /// </summary>
+    /// <param name="command">The updated profile details including full name, email, phone number, and country ID.</param>
+    /// <returns>A confirmation message indicating successful update.</returns>
+    /// <response code="200">User profile updated successfully.</response>
+    /// <response code="400">Validation error occurred.</response>
+    /// <response code="401">User is not authenticated.</response>
+    /// <response code="404">User or country not found.</response>
+    [HttpPut]
+    [RoleAuthorize]
+    [Route(ApiRoutes.Authentication.UpdateProfile)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> UpdateProfile([FromBody] UpdateUserInfoCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.ActionResults.Updated);
     }
 }

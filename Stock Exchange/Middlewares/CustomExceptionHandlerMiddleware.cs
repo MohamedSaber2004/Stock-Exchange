@@ -269,27 +269,6 @@ namespace Stock_Exchange.Middlewares
                     statusCode = StatusCodes.Status500InternalServerError;
                     message = Localize(LocalizationKeys.ExceptionMessages.InternalServerError);
                     errorsDict["General"] = new[] { message };
-
-                    // Fail closed: exception detail is attached only when the host explicitly says
-                    // it is Development. An unknown environment name, Staging or Test must not
-                    // leak exception type, message, inner exception or stack trace to the caller.
-                    var webHostEnv = context.RequestServices.GetService<IWebHostEnvironment>();
-                    bool isDevelopmentEnv = webHostEnv != null
-                        && webHostEnv.EnvironmentName.Equals(Environments.Development, StringComparison.OrdinalIgnoreCase);
-
-                    if (isDevelopmentEnv)
-                    {
-                        errorsDict["Exception_Type"] = new[] { exception.GetType().FullName ?? "Unknown" };
-                        errorsDict["Exception_Message"] = new[] { exception.Message };
-                        if (exception.InnerException != null)
-                        {
-                            errorsDict["Inner_Exception"] = new[] { exception.InnerException.Message };
-                        }
-                        if (!string.IsNullOrWhiteSpace(exception.StackTrace))
-                        {
-                            errorsDict["StackTrace"] = new[] { exception.StackTrace };
-                        }
-                    }
                     break;
             }
 

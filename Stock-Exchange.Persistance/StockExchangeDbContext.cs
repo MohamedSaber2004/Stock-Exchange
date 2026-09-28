@@ -14,6 +14,7 @@ namespace Stock_Exchange.Persistance
         private readonly ICurrentUserService _currentUserService;
 
         public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
+        public DbSet<Country> Countries { get; set; }
 
         public StockExchangeDbContext(ICurrentUserService currentUserService, DbContextOptions<StockExchangeDbContext> options)
             : base(options)

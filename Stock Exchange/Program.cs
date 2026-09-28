@@ -15,6 +15,7 @@ using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Infrastructure;
 using Stock_Exchange.Middlewares;
 using Stock_Exchange.Persistance;
+using Stock_Exchange.Persistance.Seeding;
 using Stock_Exchange.Services;
 using Stock_Exchange.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -25,7 +26,7 @@ namespace Stock_Exchange
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -272,11 +273,25 @@ namespace Stock_Exchange
 
             app.MapControllers();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var dbContext = services.GetRequiredService<StockExchangeDbContext>();
+                    await CountrySeeder.SeedCountriesAsync(dbContext);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "An error occurred while seeding countries.");
+                }
+            }
+
             try
             {
                 Log.Information("=== Stock Exchange API Started === Environment: {Environment}, BaseDir: {BaseDir}, ContentRoot: {ContentRoot}", 
                     app.Environment.EnvironmentName, AppContext.BaseDirectory, app.Environment.ContentRootPath);
-                app.Run();
+                await app.RunAsync();
             }
             catch (Exception ex)
             {

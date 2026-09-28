@@ -74,6 +74,11 @@ namespace Stock_Exchange.Persistance.Configurations
 
             builder.HasIndex(u => u.IsDeleted);
 
+            builder.HasOne(u => u.Country)
+                .WithMany(c => c.Users)
+                .HasForeignKey(u => u.CountryId)
+                .OnDelete(DeleteBehavior.SetNull);
+
             builder.HasQueryFilter(u => !u.IsDeleted);
         }
     }

@@ -41,10 +41,14 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
 
         public async Task<AuthResponseDto> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userManager.FindByEmailAsync(request.Email);
+            if (string.IsNullOrWhiteSpace(request.Email))
+                throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidCredentials]);
 
+            var user = await _userManager.Users
+                .IgnoreQueryFilters()
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == request.Email.Trim().ToUpperInvariant(), cancellationToken);
 
-            if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password))
+            if (user is null)
                 throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidCredentials]);
 
             if (user.IsDeleted)
@@ -52,6 +56,9 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
 
             if (!user.IsActive)
                 throw new ForbiddenException(_localizer[LocalizationKeys.AuthMessages.AccountDeactivated]);
+
+            if (string.IsNullOrWhiteSpace(request.Password) || !await _userManager.CheckPasswordAsync(user, request.Password))
+                throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidCredentials]);
 
             var roles = await _userManager.GetRolesAsync(user);
             var accessToken = _jwtTokenService.GenerateAccessToken(user, roles);

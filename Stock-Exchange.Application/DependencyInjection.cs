@@ -17,6 +17,7 @@ using Stock_Exchange.Application.Features.Auth.Commands.Logout;
 using Stock_Exchange.Application.Features.Auth.Commands.RefreshToken;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
+using Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo;
 using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
 using Stock_Exchange.Application.Localization;
 
@@ -55,6 +56,7 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<ResetPasswordCommand>, ResetPasswordCommandValidator>();
             services.AddTransient<IValidator<RefreshTokenCommand>, RefreshTokenCommandValidator>();
             services.AddTransient<IValidator<LogoutCommand>, LogoutCommandValidator>();
+            services.AddTransient<IValidator<UpdateUserInfoCommand>, UpdateUserInfoCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

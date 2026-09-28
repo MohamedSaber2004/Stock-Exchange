@@ -92,6 +92,16 @@ namespace Stock_Exchange.Application.Localization
             public const string GoogleAccountAlreadyLinked = "AuthMessages.GoogleAccountAlreadyLinked";
             public const string GoogleAccountLinkFailed = "AuthMessages.GoogleAccountLinkFailed";
             public const string GoogleProfileUpdateFailed = "AuthMessages.GoogleProfileUpdateFailed";
+            public const string UserNotFound = "AuthMessages.UserNotFound";
+            public const string UserInfoUpdated = "AuthMessages.UserInfoUpdated";
+        }
+
+        public static class CountryMessages
+        {
+            public const string CountryNotFound = "CountryMessages.CountryNotFound";
+            public const string CountryCodeRequired = "CountryMessages.CountryCodeRequired";
+            public const string CountryArNameRequired = "CountryMessages.CountryArNameRequired";
+            public const string CountryEnNameRequired = "CountryMessages.CountryEnNameRequired";
         }
 
         public static class EmailMessages

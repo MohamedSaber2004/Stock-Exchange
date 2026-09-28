@@ -9,6 +9,7 @@ namespace Stock_Exchange.Application.Common.Interfaces
         DbSet<IdentityUserRole<Guid>> UserRoles { get; }
         DbSet<IdentityRole<Guid>> Roles { get; }
         DbSet<UserRefreshToken> UserRefreshTokens { get; }
+        DbSet<Country> Countries { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

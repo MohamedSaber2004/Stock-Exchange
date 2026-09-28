@@ -6,7 +6,6 @@ using Microsoft.Extensions.Options;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Options;
-using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.DTOs;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Entities;
@@ -18,9 +17,9 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
 {
     public sealed class SignupCommandHandler : IRequestHandler<SignupCommand, AuthResponseDto>
     {
-        private readonly IMediator _mediator;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
+        private readonly ICountryRepository _countryRepository;
         private readonly IJwtTokenService _jwtTokenService;
         private readonly IUserRefreshTokenRepository _refreshTokenRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -28,18 +27,18 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
         private readonly IStringLocalizer<Messages> _localizer;
 
         public SignupCommandHandler(
-            IMediator mediator,
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole<Guid>> roleManager,
+            ICountryRepository countryRepository,
             IJwtTokenService jwtTokenService,
             IUserRefreshTokenRepository refreshTokenRepository,
             IUnitOfWork unitOfWork,
             IOptions<JwtSettings> jwtSettings,
             IStringLocalizer<Messages> localizer)
         {
-            _mediator = mediator;
             _userManager = userManager;
             _roleManager = roleManager;
+            _countryRepository = countryRepository;
             _jwtTokenService = jwtTokenService;
             _refreshTokenRepository = refreshTokenRepository;
             _unitOfWork = unitOfWork;
@@ -49,28 +48,38 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
 
         public async Task<AuthResponseDto> Handle(SignupCommand request, CancellationToken cancellationToken)
         {
-            var existingUser = await _userManager.FindByEmailAsync(request.Email);
-            if (existingUser != null)
-            {
-                return await _mediator.Send(
-                    new LoginCommand(request.Email, request.Password),
-                    cancellationToken);
-            }
+            var country = await _countryRepository.GetFirstAsync(
+                c => c.Id == request.CountryId && !c.IsDeleted && c.IsActive,
+                cancellationToken);
 
-            if (!string.IsNullOrWhiteSpace(request.PhoneNumber))
-            {
-                var existingPhone = await _userManager.Users
-                    .AnyAsync(u => u.PhoneNumber == request.PhoneNumber && !u.IsDeleted, cancellationToken);
+            if (country == null)
+                throw new NotFoundException(_localizer[LocalizationKeys.CountryMessages.CountryNotFound]);
 
-                if (existingPhone)
-                    throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists]);
-            }
+            var normalizedEmail = request.Email.Trim().ToUpperInvariant();
+            var emailExists = await _userManager.Users
+                .IgnoreQueryFilters()
+                .AnyAsync(u => u.NormalizedEmail == normalizedEmail, cancellationToken);
+
+            if (emailExists)
+                throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.EmailAlreadyExists]);
+
+            var cleanPhone = CleanPhoneNumber(request.PhoneNumber);
+            var rawPhone = request.PhoneNumber.Trim();
+
+            var phoneExists = await _userManager.Users
+                .IgnoreQueryFilters()
+                .AnyAsync(u => u.PhoneNumber == rawPhone || u.PhoneNumber == cleanPhone,
+                          cancellationToken);
+
+            if (phoneExists)
+                throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists]);
 
             var user = new ApplicationUser
             {
-                UserName = request.Email,
-                Email = request.Email,
-                PhoneNumber = request.PhoneNumber
+                UserName = request.Email.Trim(),
+                Email = request.Email.Trim(),
+                PhoneNumber = cleanPhone,
+                CountryId = country.Id
             };
             user.UpdateFullName(request.FullName);
 
@@ -115,6 +124,11 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
                 customerRole,
                 user.Id,
                 user.ProfilePictureUrl);
+        }
+
+        private static string CleanPhoneNumber(string phoneNumber)
+        {
+            return phoneNumber.Trim().Replace(" ", "").Replace("-", "");
         }
     }
 }

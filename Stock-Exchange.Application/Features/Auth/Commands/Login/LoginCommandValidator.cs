@@ -14,7 +14,6 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
         {
             _userManager = userManager;
 
-
             RuleFor(x => x.Email)
                 .NotEmpty()
                 .WithMessage(LocalizationKeys.AuthMessages.EmailRequired)
@@ -30,7 +29,12 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
 
         private async Task<bool> EmailExists(string email, CancellationToken cancellationToken)
         {
-            return await _userManager.Users.AnyAsync(u => u.Email == email);
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            return await _userManager.Users
+                .AsNoTracking()
+                .AnyAsync(u => u.Email == email.Trim() && !u.IsDeleted, cancellationToken);
         }
     }
 }

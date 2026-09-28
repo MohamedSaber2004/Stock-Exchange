@@ -3,22 +3,57 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Entities;
+using Stock_Exchange.Domain.Repositories.Interfaces;
 
 namespace Stock_Exchange.Application.Features.Auth.Commands.Register
 {
     public class SignupCommandValidator : AbstractValidator<SignupCommand>
     {
-        public SignupCommandValidator(UserManager<ApplicationUser> userManager)
+        public SignupCommandValidator(
+            UserManager<ApplicationUser> userManager,
+            ICountryRepository countryRepository)
         {
             RuleFor(x => x.FullName)
                 .NotEmpty()
+                .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired)
+                .MinimumLength(2)
+                .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired)
+                .MaximumLength(150)
                 .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired);
+
+            RuleFor(x => x.CountryId)
+                .NotEmpty()
+                .WithMessage(LocalizationKeys.CountryMessages.CountryNotFound)
+                .MustAsync(async (countryId, cancellationToken) =>
+                {
+                    if (countryId == Guid.Empty)
+                        return false;
+
+                    return await countryRepository.ExistsAsync(
+                        c => c.Id == countryId && !c.IsDeleted && c.IsActive,
+                        cancellationToken);
+                })
+                .WithMessage(LocalizationKeys.CountryMessages.CountryNotFound);
 
             RuleFor(x => x.Email)
                 .NotEmpty()
                 .WithMessage(LocalizationKeys.AuthMessages.EmailRequired)
                 .EmailAddress()
-                .WithMessage(LocalizationKeys.AuthMessages.InvalidEmail);
+                .WithMessage(LocalizationKeys.AuthMessages.InvalidEmail)
+                .MustAsync(async (email, cancellationToken) =>
+                {
+                    if (string.IsNullOrWhiteSpace(email))
+                        return true;
+
+                    var normalizedEmail = email.Trim().ToUpperInvariant();
+                    var emailExists = await userManager.Users
+                        .IgnoreQueryFilters()
+                        .AsNoTracking()
+                        .AnyAsync(u => u.NormalizedEmail == normalizedEmail, cancellationToken);
+
+                    return !emailExists;
+                })
+                .WithMessage(LocalizationKeys.AuthMessages.EmailAlreadyExists);
 
             RuleFor(x => x.Password)
                 .NotEmpty()
@@ -33,42 +68,30 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty()
                 .WithMessage(LocalizationKeys.AuthMessages.PhoneNumberRequired)
-                .Matches(@"^(?:\+20|0020)?0?1[0125][0-9]{8}$")
+                .Matches(@"^[0-9+\-\s()]{6,20}$")
                 .WithMessage(LocalizationKeys.AuthMessages.InvalidPhoneNumber)
-                .MustAsync(async (command, phoneNumber, cancellationToken) =>
+                .MustAsync(async (phoneNumber, cancellationToken) =>
                 {
                     if (string.IsNullOrWhiteSpace(phoneNumber))
                         return true;
 
                     var rawPhone = phoneNumber.Trim();
-                    var normalizedPhone = NormalizePhoneNumber(rawPhone);
-                    var internationalPhone = "+20" + (normalizedPhone.StartsWith("0") ? normalizedPhone[1..] : normalizedPhone);
+                    var cleanPhone = CleanPhoneNumber(rawPhone);
 
-                    var isTakenByOtherClient = await userManager.Users
-                        .AnyAsync(u => !u.IsDeleted &&
-                                       u.Email != command.Email &&
-                                       (u.PhoneNumber == rawPhone ||
-                                        u.PhoneNumber == normalizedPhone ||
-                                        u.PhoneNumber == internationalPhone),
+                    var phoneExists = await userManager.Users
+                        .IgnoreQueryFilters()
+                        .AsNoTracking()
+                        .AnyAsync(u => u.PhoneNumber == rawPhone || u.PhoneNumber == cleanPhone,
                                   cancellationToken);
 
-                    return !isTakenByOtherClient;
+                    return !phoneExists;
                 })
                 .WithMessage(LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists);
         }
 
-        private static string NormalizePhoneNumber(string phoneNumber)
+        private static string CleanPhoneNumber(string phoneNumber)
         {
-            var cleaned = phoneNumber.Trim().Replace(" ", "").Replace("-", "");
-            if (cleaned.StartsWith("+20"))
-                cleaned = cleaned[3..];
-            else if (cleaned.StartsWith("0020"))
-                cleaned = cleaned[4..];
-
-            if (!cleaned.StartsWith("0") && cleaned.StartsWith("1"))
-                cleaned = "0" + cleaned;
-
-            return cleaned;
+            return phoneNumber.Trim().Replace(" ", "").Replace("-", "");
         }
     }
 }
