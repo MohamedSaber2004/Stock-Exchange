@@ -1865,6 +1865,249 @@
         ]
       }
     },
+    "/api/v1/authentication/update/myprofile": {
+      "put": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Updates the authenticated user's profile information.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The updated profile details including full name, email, phone number, and country ID.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserInfoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserInfoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserInfoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User profile updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": "string",
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User is not authenticated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "missingOrMalformed": {
+                    "summary": "Missing or malformed token",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "You are not authorized to perform this action."
+                        ]
+                      },
+                      "data": null,
+                      "message": "You are not authorized to perform this action.",
+                      "statusCode": 401
+                    }
+                  },
+                  "expiredOrRevokedSession": {
+                    "summary": "Expired session — log in (or refresh) again",
+                    "description": "The access token expired, was killed by logout/refresh rotation, or belongs to a deactivated account. Obtain a new token via login or refresh-token.",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "You are not authorized to perform this action."
+                        ]
+                      },
+                      "data": null,
+                      "message": "You are not authorized to perform this action.",
+                      "statusCode": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User or country not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/countries": {
+      "get": {
+        "tags": [
+          "Countries"
+        ],
+        "summary": "Retrieves all active countries with their names and codes.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Countries retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountryDtoListApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": [
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "countryArName": "string",
+                          "countryEnName": "string",
+                          "code": "string"
+                        }
+                      ],
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/": {
       "get": {
         "tags": [
@@ -1989,6 +2232,66 @@
           },
           "data": {
             "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CountryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "countryArName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryEnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CountryDtoListApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryDto"
+            },
+            "nullable": true
           },
           "message": {
             "type": "string",
@@ -2157,6 +2460,10 @@
           "phoneNumber": {
             "type": "string",
             "nullable": true
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
@@ -2192,6 +2499,28 @@
           "statusCode": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUserInfoCommand": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false

@@ -1998,7 +1998,7 @@
             "description": "Registers a new user account and returns JWT access and refresh tokens.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\"\n}",
+              "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -2040,7 +2040,7 @@
                 "description": "Registers a new user account and returns JWT access and refresh tokens.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2092,7 +2092,7 @@
                 "description": "Registers a new user account and returns JWT access and refresh tokens.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2144,7 +2144,7 @@
                 "description": "Registers a new user account and returns JWT access and refresh tokens.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2196,7 +2196,7 @@
                 "description": "Registers a new user account and returns JWT access and refresh tokens.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3729,6 +3729,491 @@
               "header": [],
               "body": "",
               "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Updates the authenticated user's profile information.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/authentication/update/myprofile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "authentication",
+                "update",
+                "myprofile"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Updates the authenticated user's profile information.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 User profile updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/update/myprofile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "update",
+                    "myprofile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the authenticated user's profile information.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User profile updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": \"string\",\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Validation error occurred. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/update/myprofile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "update",
+                    "myprofile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the authenticated user's profile information.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Validation error occurred.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Validation error occurred. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/update/myprofile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "update",
+                    "myprofile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the authenticated user's profile information.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Validation error occurred.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 User is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/update/myprofile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "update",
+                    "myprofile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the authenticated user's profile information.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 User is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/update/myprofile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "update",
+                    "myprofile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the authenticated user's profile information.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 User or country not found. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/update/myprofile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "update",
+                    "myprofile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the authenticated user's profile information.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User or country not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/update/myprofile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "update",
+                    "myprofile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the authenticated user's profile information.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Countries",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves all active countries with their names and codes.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/countries",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "countries"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Retrieves all active countries with their names and codes.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Countries retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/countries",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "countries"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves all active countries with their names and codes.",
+                "body": null
+              },
+              "status": "Countries retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"countryArName\": \"string\",\n      \"countryEnName\": \"string\",\n      \"code\": \"string\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
             }
           ]
         }
