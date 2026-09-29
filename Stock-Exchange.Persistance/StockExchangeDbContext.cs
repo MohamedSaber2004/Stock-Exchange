@@ -15,6 +15,10 @@ namespace Stock_Exchange.Persistance
 
         public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<AboutUs> AboutUs { get; set; }
+        public DbSet<AboutUsFeature> AboutUsFeatures { get; set; }
+        public DbSet<HelpCenter> HelpCenters { get; set; }
+        public DbSet<HelpCenterCategory> HelpCenterCategories { get; set; }
 
         public StockExchangeDbContext(ICurrentUserService currentUserService, DbContextOptions<StockExchangeDbContext> options)
             : base(options)

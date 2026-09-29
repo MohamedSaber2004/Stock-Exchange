@@ -30,6 +30,18 @@ namespace Stock_Exchange.Routes.V1
             public const string UpdateProfile = "update/myprofile";
         }
 
+        public static class AboutUs
+        {
+            public const string Base = BaseRoutes.Base + "/about-us";
+        }
+
+        public static class HelpCenter
+        {
+            public const string Base = BaseRoutes.Base + "/help-center";
+
+            public const string GetById = "{id}";
+        }
+
         public static class Countries
         {
             public const string Base = BaseRoutes.Base + "/countries";

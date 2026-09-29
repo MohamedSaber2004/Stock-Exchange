@@ -10,6 +10,12 @@ using Stock_Exchange.Application.Features.Attachments.Commands.DownloadFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UpdateFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadFile;
 using Stock_Exchange.Application.Features.Attachments.Commands.UploadMultipleFiles;
+using Stock_Exchange.Application.Features.AboutUs.Commands.UpdateAboutUs;
+using Stock_Exchange.Application.Features.HelpCenter.Commands.AddHelpCenter;
+using Stock_Exchange.Application.Features.HelpCenter.Commands.DeleteHelpCenter;
+using Stock_Exchange.Application.Features.HelpCenter.Commands.UpdateHelpCenter;
+using Stock_Exchange.Application.Features.HelpCenter.Queries.GetAllHelpCenters;
+using Stock_Exchange.Application.Features.HelpCenter.Queries.GetHelpCenterById;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle;
@@ -57,6 +63,12 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<RefreshTokenCommand>, RefreshTokenCommandValidator>();
             services.AddTransient<IValidator<LogoutCommand>, LogoutCommandValidator>();
             services.AddTransient<IValidator<UpdateUserInfoCommand>, UpdateUserInfoCommandValidator>();
+            services.AddTransient<IValidator<UpdateAboutUsCommand>, UpdateAboutUsCommandValidator>();
+            services.AddTransient<IValidator<AddHelpCenterCommand>, AddHelpCenterCommandValidator>();
+            services.AddTransient<IValidator<UpdateHelpCenterCommand>, UpdateHelpCenterCommandValidator>();
+            services.AddTransient<IValidator<DeleteHelpCenterCommand>, DeleteHelpCenterCommandValidator>();
+            services.AddTransient<IValidator<GetAllHelpCentersQuery>, GetAllHelpCentersQueryValidator>();
+            services.AddTransient<IValidator<GetHelpCenterByIdQuery>, GetHelpCenterByIdQueryValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

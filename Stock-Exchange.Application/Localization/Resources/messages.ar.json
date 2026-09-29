@@ -91,6 +91,31 @@
     "CountryArNameRequired": "اسم الدولة بالعربية مطلوب.",
     "CountryEnNameRequired": "اسم الدولة بالإنجليزية مطلوب."
   },
+  "AboutUsMessages": {
+    "AboutUsNotFound": "محتوى من نحن غير موجود.",
+    "StoryRequired": "القصة مطلوبة بإحدى اللغتين على الأقل.",
+    "StoryTooLong": "يجب ألا يزيد طول القصة عن 4000 حرف.",
+    "MissionRequired": "الرسالة مطلوبة بإحدى اللغتين على الأقل.",
+    "MissionTooLong": "يجب ألا يزيد طول الرسالة عن 4000 حرف.",
+    "VisionRequired": "الرؤية مطلوبة بإحدى اللغتين على الأقل.",
+    "VisionTooLong": "يجب ألا يزيد طول الرؤية عن 4000 حرف.",
+    "FeatureTitleRequired": "عنوان الميزة مطلوب بإحدى اللغتين على الأقل.",
+    "FeatureTitleTooLong": "يجب ألا يزيد طول عنوان الميزة عن 200 حرف.",
+    "FeatureDescriptionRequired": "وصف الميزة مطلوب بإحدى اللغتين على الأقل.",
+    "FeatureDescriptionTooLong": "يجب ألا يزيد طول وصف الميزة عن 500 حرف.",
+    "FeatureCategoryTooLong": "يجب ألا يزيد طول تصنيف الميزة عن 50 حرف."
+  },
+  "HelpCenterMessages": {
+    "HelpCenterNotFound": "محتوى مركز المساعدة غير موجود.",
+    "IdRequired": "معرّف عنصر مركز المساعدة مطلوب.",
+    "InvalidCategoryId": "معرّف التصنيف المحدد غير صالح.",
+    "CategoryNotFound": "تصنيف مركز المساعدة المحدد غير موجود.",
+    "TitleRequired": "العنوان مطلوب بإحدى اللغتين على الأقل.",
+    "TitleTooLong": "يجب ألا يزيد طول العنوان عن 200 حرف.",
+    "ContentRequired": "المحتوى مطلوب بإحدى اللغتين على الأقل.",
+    "ContentTooLong": "يجب ألا يزيد طول المحتوى عن 4000 حرف.",
+    "SearchTooLong": "يجب ألا يزيد طول كلمة البحث عن 200 حرف."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"
   },

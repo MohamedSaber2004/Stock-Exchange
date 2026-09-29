@@ -211,6 +211,7 @@ namespace Stock_Exchange
 
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+            builder.Services.AddScoped<ICurrentLanguageService, CurrentLanguageService>();
 
             builder.Services.AddHsts(options =>
             {

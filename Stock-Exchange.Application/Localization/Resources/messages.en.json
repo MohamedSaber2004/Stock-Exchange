@@ -91,6 +91,31 @@
     "CountryArNameRequired": "Country Arabic name is required.",
     "CountryEnNameRequired": "Country English name is required."
   },
+  "AboutUsMessages": {
+    "AboutUsNotFound": "About us content was not found.",
+    "StoryRequired": "The story is required in at least one language.",
+    "StoryTooLong": "The story cannot exceed 4000 characters.",
+    "MissionRequired": "The mission is required in at least one language.",
+    "MissionTooLong": "The mission cannot exceed 4000 characters.",
+    "VisionRequired": "The vision is required in at least one language.",
+    "VisionTooLong": "The vision cannot exceed 4000 characters.",
+    "FeatureTitleRequired": "The feature title is required in at least one language.",
+    "FeatureTitleTooLong": "The feature title cannot exceed 200 characters.",
+    "FeatureDescriptionRequired": "The feature description is required in at least one language.",
+    "FeatureDescriptionTooLong": "The feature description cannot exceed 500 characters.",
+    "FeatureCategoryTooLong": "The feature category cannot exceed 50 characters."
+  },
+  "HelpCenterMessages": {
+    "HelpCenterNotFound": "The help center entry was not found.",
+    "IdRequired": "The help center id is required.",
+    "InvalidCategoryId": "The provided category id is not valid.",
+    "CategoryNotFound": "The specified help center category was not found.",
+    "TitleRequired": "The title is required in at least one language.",
+    "TitleTooLong": "The title cannot exceed 200 characters.",
+    "ContentRequired": "The content is required in at least one language.",
+    "ContentTooLong": "The content cannot exceed 4000 characters.",
+    "SearchTooLong": "The search term cannot exceed 200 characters."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"
   },

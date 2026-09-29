@@ -10,6 +10,10 @@ namespace Stock_Exchange.Application.Common.Interfaces
         DbSet<IdentityRole<Guid>> Roles { get; }
         DbSet<UserRefreshToken> UserRefreshTokens { get; }
         DbSet<Country> Countries { get; }
+        DbSet<AboutUs> AboutUs { get; }
+        DbSet<AboutUsFeature> AboutUsFeatures { get; }
+        DbSet<HelpCenter> HelpCenters { get; }
+        DbSet<HelpCenterCategory> HelpCenterCategories { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

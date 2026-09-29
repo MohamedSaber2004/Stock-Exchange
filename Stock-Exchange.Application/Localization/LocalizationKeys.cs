@@ -104,6 +104,35 @@ namespace Stock_Exchange.Application.Localization
             public const string CountryEnNameRequired = "CountryMessages.CountryEnNameRequired";
         }
 
+        public static class AboutUsMessages
+        {
+            public const string AboutUsNotFound = "AboutUsMessages.AboutUsNotFound";
+            public const string StoryRequired = "AboutUsMessages.StoryRequired";
+            public const string StoryTooLong = "AboutUsMessages.StoryTooLong";
+            public const string MissionRequired = "AboutUsMessages.MissionRequired";
+            public const string MissionTooLong = "AboutUsMessages.MissionTooLong";
+            public const string VisionRequired = "AboutUsMessages.VisionRequired";
+            public const string VisionTooLong = "AboutUsMessages.VisionTooLong";
+            public const string FeatureTitleRequired = "AboutUsMessages.FeatureTitleRequired";
+            public const string FeatureTitleTooLong = "AboutUsMessages.FeatureTitleTooLong";
+            public const string FeatureDescriptionRequired = "AboutUsMessages.FeatureDescriptionRequired";
+            public const string FeatureDescriptionTooLong = "AboutUsMessages.FeatureDescriptionTooLong";
+            public const string FeatureCategoryTooLong = "AboutUsMessages.FeatureCategoryTooLong";
+        }
+
+        public static class HelpCenterMessages
+        {
+            public const string HelpCenterNotFound = "HelpCenterMessages.HelpCenterNotFound";
+            public const string IdRequired = "HelpCenterMessages.IdRequired";
+            public const string InvalidCategoryId = "HelpCenterMessages.InvalidCategoryId";
+            public const string CategoryNotFound = "HelpCenterMessages.CategoryNotFound";
+            public const string TitleRequired = "HelpCenterMessages.TitleRequired";
+            public const string TitleTooLong = "HelpCenterMessages.TitleTooLong";
+            public const string ContentRequired = "HelpCenterMessages.ContentRequired";
+            public const string ContentTooLong = "HelpCenterMessages.ContentTooLong";
+            public const string SearchTooLong = "HelpCenterMessages.SearchTooLong";
+        }
+
         public static class EmailMessages
         {
             public const string ResetPasswordSubject = "EmailMessages.ResetPasswordSubject";

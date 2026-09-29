@@ -55,6 +55,10 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
             services.AddScoped<IUserRefreshTokenRepository, UserRefreshTokenRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<IAboutUsRepository, AboutUsRepository>();
+            services.AddScoped<IAboutUsFeatureRepository, AboutUsFeatureRepository>();
+            services.AddScoped<IHelpCenterRepository, HelpCenterRepository>();
+            services.AddScoped<IHelpCenterCategoryRepository, HelpCenterCategoryRepository>();
 
             services.Configure<Application.Common.Options.IdentityOptions>(configuration.GetSection("IdentityOptions"));
             var identityOptionsConfig = configuration.GetSection("IdentityOptions").Get<Application.Common.Options.IdentityOptions>()
