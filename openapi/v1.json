@@ -249,145 +249,6 @@
             "Bearer": []
           }
         ]
-      },
-      "patch": {
-        "tags": [
-          "AboutUs"
-        ],
-        "summary": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The about us fields, support email, and core pillars to update.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAboutUsCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAboutUsCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAboutUsCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "About us content saved successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AboutUsDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "storyEn": "string",
-                        "storyAr": "string",
-                        "missionEn": "string",
-                        "missionAr": "string",
-                        "visionEn": "string",
-                        "visionAr": "string",
-                        "supportEmail": "string",
-                        "features": [
-                          {
-                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                            "titleEn": "string",
-                            "titleAr": "string",
-                            "descriptionEn": "string",
-                            "descriptionAr": "string",
-                            "category": "string",
-                            "displayOrder": 0
-                          }
-                        ]
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more fields exceed the allowed length or are invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AboutUsDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "The caller is not authenticated."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
       }
     },
     "/api/v1/attachments/upload": {
@@ -3594,6 +3455,558 @@
         ]
       }
     },
+    "/api/v1/privacy-policy": {
+      "get": {
+        "tags": [
+          "PrivacyPolicy"
+        ],
+        "summary": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Privacy policy retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrivacyPolicyDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "titleEn": "string",
+                        "titleAr": "string",
+                        "descriptionEn": "string",
+                        "descriptionAr": "string",
+                        "sections": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "titleEn": "string",
+                            "titleAr": "string",
+                            "contentEn": "string",
+                            "contentAr": "string",
+                            "displayOrder": 0
+                          }
+                        ]
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Privacy policy was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrivacyPolicyDtoApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "PrivacyPolicy"
+        ],
+        "summary": "Creates or updates the privacy policy content and its sections.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The privacy policy titles and sections to update.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivacyCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivacyCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivacyCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Privacy policy saved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrivacyPolicyDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "titleEn": "string",
+                        "titleAr": "string",
+                        "descriptionEn": "string",
+                        "descriptionAr": "string",
+                        "sections": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "titleEn": "string",
+                            "titleAr": "string",
+                            "contentEn": "string",
+                            "contentAr": "string",
+                            "displayOrder": 0
+                          }
+                        ]
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more fields exceed the allowed length or are invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrivacyPolicyDtoApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The caller is not authenticated."
+          },
+          "403": {
+            "description": "The caller is not authorized."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "PrivacyPolicy"
+        ],
+        "summary": "Creates or updates the privacy policy content and its sections.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The privacy policy titles and sections to update.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivacyCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivacyCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivacyCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Privacy policy saved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrivacyPolicyDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "titleEn": "string",
+                        "titleAr": "string",
+                        "descriptionEn": "string",
+                        "descriptionAr": "string",
+                        "sections": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "titleEn": "string",
+                            "titleAr": "string",
+                            "contentEn": "string",
+                            "contentAr": "string",
+                            "displayOrder": 0
+                          }
+                        ]
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more fields exceed the allowed length or are invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrivacyPolicyDtoApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The caller is not authenticated."
+          },
+          "403": {
+            "description": "The caller is not authorized."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "PrivacyPolicy"
+        ],
+        "summary": "Soft deletes the active privacy policy.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Privacy policy deleted successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": true,
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Privacy policy was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/privacy-policy/{id}": {
+      "delete": {
+        "tags": [
+          "PrivacyPolicy"
+        ],
+        "summary": "Soft deletes a specific privacy policy section or the privacy policy by id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the section or policy to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entry deleted successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": true,
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entry was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/": {
       "get": {
         "tags": [
@@ -4221,6 +4634,125 @@
         "type": "integer",
         "format": "int32"
       },
+      "PrivacyPolicyDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "titleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "titleAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivacyPolicySectionDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrivacyPolicyDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/PrivacyPolicyDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrivacyPolicySectionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "titleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "titleAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrivacyPolicySectionRequest": {
+        "type": "object",
+        "properties": {
+          "titleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "titleAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "RefreshTokenCommand": {
         "type": "object",
         "properties": {
@@ -4451,6 +4983,35 @@
           "categoryId": {
             "type": "string",
             "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePrivacyCommand": {
+        "type": "object",
+        "properties": {
+          "titleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "titleAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivacyPolicySectionRequest"
+            },
             "nullable": true
           }
         },

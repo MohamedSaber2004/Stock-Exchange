@@ -468,294 +468,6 @@
               "_postman_previewlanguage": "text"
             }
           ]
-        },
-        {
-          "name": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Accept-Language",
-                "value": "ar",
-                "description": "Preferred language for the response. Supported values: `ar`, `en`."
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/about-us",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "about-us"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "name": "200 About us content saved successfully. - success",
-              "originalRequest": {
-                "method": "PATCH",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/about-us",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "about-us"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "About us content saved successfully.",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"storyEn\": \"string\",\n    \"storyAr\": \"string\",\n    \"missionEn\": \"string\",\n    \"missionAr\": \"string\",\n    \"visionEn\": \"string\",\n    \"visionAr\": \"string\",\n    \"supportEmail\": \"string\",\n    \"features\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"category\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
-              "originalRequest": {
-                "method": "PATCH",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/about-us",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "about-us"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "One or more fields exceed the allowed length or are invalid.",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
-              "originalRequest": {
-                "method": "PATCH",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/about-us",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "about-us"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "One or more fields exceed the allowed length or are invalid.",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 The caller is not authenticated.",
-              "originalRequest": {
-                "method": "PATCH",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/about-us",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "about-us"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "The caller is not authenticated.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "PATCH",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/about-us",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "about-us"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            }
-          ]
         }
       ]
     },
@@ -7391,6 +7103,1139 @@
                   ]
                 },
                 "description": "Soft deletes a help center category.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PrivacyPolicy",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/privacy-policy",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "privacy-policy"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Privacy policy retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
+                "body": null
+              },
+              "status": "Privacy policy retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"sections\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"contentEn\": \"string\",\n        \"contentAr\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Privacy policy was not found. - error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
+                "body": null
+              },
+              "status": "Privacy policy was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Creates or updates the privacy policy content and its sections.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/privacy-policy",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "privacy-policy"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Creates or updates the privacy policy content and its sections.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Privacy policy saved successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Privacy policy saved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"sections\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"contentEn\": \"string\",\n        \"contentAr\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 The caller is not authorized.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Creates or updates the privacy policy content and its sections.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/privacy-policy",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "privacy-policy"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Creates or updates the privacy policy content and its sections.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Privacy policy saved successfully. - success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Privacy policy saved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"sections\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"contentEn\": \"string\",\n        \"contentAr\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 The caller is not authorized.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the privacy policy content and its sections.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Soft deletes the active privacy policy.",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/privacy-policy",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "privacy-policy"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Soft deletes the active privacy policy.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Privacy policy deleted successfully. - success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Soft deletes the active privacy policy.",
+                "body": null
+              },
+              "status": "Privacy policy deleted successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Privacy policy was not found. - error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Soft deletes the active privacy policy.",
+                "body": null
+              },
+              "status": "Privacy policy was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Soft deletes the active privacy policy.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Soft deletes the active privacy policy.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Soft deletes a specific privacy policy section or the privacy policy by id.",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/privacy-policy/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "privacy-policy",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The id of the section or policy to delete."
+                }
+              ]
+            },
+            "description": "Soft deletes a specific privacy policy section or the privacy policy by id.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Entry deleted successfully. - success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The id of the section or policy to delete."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a specific privacy policy section or the privacy policy by id.",
+                "body": null
+              },
+              "status": "Entry deleted successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Entry was not found. - error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The id of the section or policy to delete."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a specific privacy policy section or the privacy policy by id.",
+                "body": null
+              },
+              "status": "Entry was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The id of the section or policy to delete."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a specific privacy policy section or the privacy policy by id.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The id of the section or policy to delete."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a specific privacy policy section or the privacy policy by id.",
                 "body": null
               },
               "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
