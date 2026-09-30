@@ -9,13 +9,13 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles
         {
             RuleFor(x => x.PageNumber)
                 .GreaterThan(0)
-                .WithMessage("Page number must be greater than 0.");
+                .WithMessage(LocalizationKeys.ArticleMessages.PageNumberInvalid);
 
             RuleFor(x => x.PageSize)
                 .GreaterThan(0)
-                .WithMessage("Page size must be greater than 0.")
+                .WithMessage(LocalizationKeys.ArticleMessages.PageSizeInvalid)
                 .LessThanOrEqualTo(100)
-                .WithMessage("Page size must not exceed 100.");
+                .WithMessage(LocalizationKeys.ArticleMessages.PageSizeTooLarge);
 
             RuleFor(x => x.Search)
                 .MaximumLength(100)

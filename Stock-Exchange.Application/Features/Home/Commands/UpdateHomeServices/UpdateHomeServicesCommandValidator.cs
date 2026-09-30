@@ -1,5 +1,6 @@
 using FluentValidation;
 using Stock_Exchange.Application.Features.Home.DTOs;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeServices
 {
@@ -16,27 +17,27 @@ namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeServices
         public HomeServiceItemRequestValidator()
         {
             RuleFor(x => x.TitleEn)
-                .NotEmpty().WithMessage("Service English title is required.")
-                .MaximumLength(200).WithMessage("Service English title must not exceed 200 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeServiceTitleEnRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeServiceTitleEnTooLong);
 
             RuleFor(x => x.TitleAr)
-                .NotEmpty().WithMessage("Service Arabic title is required.")
-                .MaximumLength(200).WithMessage("Service Arabic title must not exceed 200 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeServiceTitleArRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeServiceTitleArTooLong);
 
             RuleFor(x => x.DescriptionEn)
-                .MaximumLength(1000).WithMessage("Service English description must not exceed 1000 characters.");
+                .MaximumLength(1000).WithMessage(LocalizationKeys.HomeMessages.HomeServiceDescriptionEnTooLong);
 
             RuleFor(x => x.DescriptionAr)
-                .MaximumLength(1000).WithMessage("Service Arabic description must not exceed 1000 characters.");
+                .MaximumLength(1000).WithMessage(LocalizationKeys.HomeMessages.HomeServiceDescriptionArTooLong);
 
             RuleFor(x => x.IconName)
-                .MaximumLength(100).WithMessage("Icon name must not exceed 100 characters.");
+                .MaximumLength(100).WithMessage(LocalizationKeys.HomeMessages.HomeServiceIconNameTooLong);
 
             RuleFor(x => x.ImageUrl)
-                .MaximumLength(1024).WithMessage("Image URL must not exceed 1024 characters.");
+                .MaximumLength(1024).WithMessage(LocalizationKeys.HomeMessages.HomeServiceImageUrlTooLong);
 
             RuleFor(x => x.LinkRoute)
-                .MaximumLength(500).WithMessage("Link route must not exceed 500 characters.");
+                .MaximumLength(500).WithMessage(LocalizationKeys.HomeMessages.HomeServiceLinkRouteTooLong);
         }
     }
 }

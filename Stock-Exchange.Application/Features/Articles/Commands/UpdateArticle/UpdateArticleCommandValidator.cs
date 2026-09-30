@@ -35,7 +35,7 @@ namespace Stock_Exchange.Application.Features.Articles.Commands.UpdateArticle
                 .When(x => !string.IsNullOrEmpty(x.ImageUrl));
 
             RuleFor(x => x.DisplayOrder)
-                .GreaterThanOrEqualTo(0).WithMessage("Display order must be 0 or greater.");
+                .GreaterThanOrEqualTo(0).WithMessage(LocalizationKeys.ArticleMessages.DisplayOrderInvalid);
         }
     }
 }

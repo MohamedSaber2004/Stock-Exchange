@@ -139,6 +139,7 @@ namespace Stock_Exchange.Application.Localization
         public static class PrivacyPolicyMessages
         {
             public const string PrivacyPolicyNotFound = "PrivacyPolicyMessages.PrivacyPolicyNotFound";
+            public const string PrivacyPolicyIdRequired = "PrivacyPolicyMessages.PrivacyPolicyIdRequired";
             public const string TitleRequired = "PrivacyPolicyMessages.TitleRequired";
             public const string TitleTooLong = "PrivacyPolicyMessages.TitleTooLong";
             public const string DescriptionTooLong = "PrivacyPolicyMessages.DescriptionTooLong";
@@ -167,6 +168,66 @@ namespace Stock_Exchange.Application.Localization
             public const string HeroTitleTooLong = "HomeMessages.HeroTitleTooLong";
             public const string HeroSubtitleTooLong = "HomeMessages.HeroSubtitleTooLong";
             public const string HeroImageUrlTooLong = "HomeMessages.HeroImageUrlTooLong";
+
+            public const string HomeArticleTitleEnRequired = "HomeMessages.HomeArticleTitleEnRequired";
+            public const string HomeArticleTitleEnTooLong = "HomeMessages.HomeArticleTitleEnTooLong";
+            public const string HomeArticleTitleArRequired = "HomeMessages.HomeArticleTitleArRequired";
+            public const string HomeArticleTitleArTooLong = "HomeMessages.HomeArticleTitleArTooLong";
+            public const string HomeArticleExcerptEnTooLong = "HomeMessages.HomeArticleExcerptEnTooLong";
+            public const string HomeArticleExcerptArTooLong = "HomeMessages.HomeArticleExcerptArTooLong";
+            public const string HomeArticleAuthorNameTooLong = "HomeMessages.HomeArticleAuthorNameTooLong";
+            public const string HomeArticleReadMinutesInvalid = "HomeMessages.HomeArticleReadMinutesInvalid";
+            public const string HomeArticleImageUrlTooLong = "HomeMessages.HomeArticleImageUrlTooLong";
+
+            public const string HomeExpertFullNameEnRequired = "HomeMessages.HomeExpertFullNameEnRequired";
+            public const string HomeExpertFullNameEnTooLong = "HomeMessages.HomeExpertFullNameEnTooLong";
+            public const string HomeExpertFullNameArRequired = "HomeMessages.HomeExpertFullNameArRequired";
+            public const string HomeExpertFullNameArTooLong = "HomeMessages.HomeExpertFullNameArTooLong";
+            public const string HomeExpertTitleEnRequired = "HomeMessages.HomeExpertTitleEnRequired";
+            public const string HomeExpertTitleEnTooLong = "HomeMessages.HomeExpertTitleEnTooLong";
+            public const string HomeExpertTitleArRequired = "HomeMessages.HomeExpertTitleArRequired";
+            public const string HomeExpertTitleArTooLong = "HomeMessages.HomeExpertTitleArTooLong";
+            public const string HomeExpertAvatarUrlTooLong = "HomeMessages.HomeExpertAvatarUrlTooLong";
+
+            public const string HomeNewsTitleEnRequired = "HomeMessages.HomeNewsTitleEnRequired";
+            public const string HomeNewsTitleEnTooLong = "HomeMessages.HomeNewsTitleEnTooLong";
+            public const string HomeNewsTitleArRequired = "HomeMessages.HomeNewsTitleArRequired";
+            public const string HomeNewsTitleArTooLong = "HomeMessages.HomeNewsTitleArTooLong";
+            public const string HomeNewsSummaryEnTooLong = "HomeMessages.HomeNewsSummaryEnTooLong";
+            public const string HomeNewsSummaryArTooLong = "HomeMessages.HomeNewsSummaryArTooLong";
+            public const string HomeNewsCategoryEnTooLong = "HomeMessages.HomeNewsCategoryEnTooLong";
+            public const string HomeNewsCategoryArTooLong = "HomeMessages.HomeNewsCategoryArTooLong";
+            public const string HomeNewsImageUrlTooLong = "HomeMessages.HomeNewsImageUrlTooLong";
+
+            public const string HomePlanNameEnRequired = "HomeMessages.HomePlanNameEnRequired";
+            public const string HomePlanNameEnTooLong = "HomeMessages.HomePlanNameEnTooLong";
+            public const string HomePlanNameArRequired = "HomeMessages.HomePlanNameArRequired";
+            public const string HomePlanNameArTooLong = "HomeMessages.HomePlanNameArTooLong";
+            public const string HomePlanPriceInvalid = "HomeMessages.HomePlanPriceInvalid";
+            public const string HomePlanFeatureTextEnRequired = "HomeMessages.HomePlanFeatureTextEnRequired";
+            public const string HomePlanFeatureTextEnTooLong = "HomeMessages.HomePlanFeatureTextEnTooLong";
+            public const string HomePlanFeatureTextArRequired = "HomeMessages.HomePlanFeatureTextArRequired";
+            public const string HomePlanFeatureTextArTooLong = "HomeMessages.HomePlanFeatureTextArTooLong";
+
+            public const string HomeServiceTitleEnRequired = "HomeMessages.HomeServiceTitleEnRequired";
+            public const string HomeServiceTitleEnTooLong = "HomeMessages.HomeServiceTitleEnTooLong";
+            public const string HomeServiceTitleArRequired = "HomeMessages.HomeServiceTitleArRequired";
+            public const string HomeServiceTitleArTooLong = "HomeMessages.HomeServiceTitleArTooLong";
+            public const string HomeServiceDescriptionEnTooLong = "HomeMessages.HomeServiceDescriptionEnTooLong";
+            public const string HomeServiceDescriptionArTooLong = "HomeMessages.HomeServiceDescriptionArTooLong";
+            public const string HomeServiceIconNameTooLong = "HomeMessages.HomeServiceIconNameTooLong";
+            public const string HomeServiceImageUrlTooLong = "HomeMessages.HomeServiceImageUrlTooLong";
+            public const string HomeServiceLinkRouteTooLong = "HomeMessages.HomeServiceLinkRouteTooLong";
+
+            public const string HomeVideoTitleEnRequired = "HomeMessages.HomeVideoTitleEnRequired";
+            public const string HomeVideoTitleEnTooLong = "HomeMessages.HomeVideoTitleEnTooLong";
+            public const string HomeVideoTitleArRequired = "HomeMessages.HomeVideoTitleArRequired";
+            public const string HomeVideoTitleArTooLong = "HomeMessages.HomeVideoTitleArTooLong";
+            public const string HomeVideoInstructorNameTooLong = "HomeMessages.HomeVideoInstructorNameTooLong";
+            public const string HomeVideoCategoryEnTooLong = "HomeMessages.HomeVideoCategoryEnTooLong";
+            public const string HomeVideoCategoryArTooLong = "HomeMessages.HomeVideoCategoryArTooLong";
+            public const string HomeVideoThumbnailUrlTooLong = "HomeMessages.HomeVideoThumbnailUrlTooLong";
+            public const string HomeVideoUrlTooLong = "HomeMessages.HomeVideoUrlTooLong";
         }
 
         public static class ArticleMessages
@@ -185,6 +246,10 @@ namespace Stock_Exchange.Application.Localization
             public const string ImageUrlTooLong = "ArticleMessages.ImageUrlTooLong";
             public const string IdRequired = "ArticleMessages.IdRequired";
             public const string SearchTooLong = "ArticleMessages.SearchTooLong";
+            public const string DisplayOrderInvalid = "ArticleMessages.DisplayOrderInvalid";
+            public const string PageNumberInvalid = "ArticleMessages.PageNumberInvalid";
+            public const string PageSizeInvalid = "ArticleMessages.PageSizeInvalid";
+            public const string PageSizeTooLarge = "ArticleMessages.PageSizeTooLarge";
         }
 
         public static class EmailMessages

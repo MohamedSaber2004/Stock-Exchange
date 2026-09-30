@@ -1,5 +1,6 @@
 using FluentValidation;
 using Stock_Exchange.Application.Features.Home.DTOs;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeVideos
 {
@@ -16,27 +17,27 @@ namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeVideos
         public HomeVideoItemRequestValidator()
         {
             RuleFor(x => x.TitleEn)
-                .NotEmpty().WithMessage("Video English title is required.")
-                .MaximumLength(500).WithMessage("Video English title must not exceed 500 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeVideoTitleEnRequired)
+                .MaximumLength(500).WithMessage(LocalizationKeys.HomeMessages.HomeVideoTitleEnTooLong);
 
             RuleFor(x => x.TitleAr)
-                .NotEmpty().WithMessage("Video Arabic title is required.")
-                .MaximumLength(500).WithMessage("Video Arabic title must not exceed 500 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeVideoTitleArRequired)
+                .MaximumLength(500).WithMessage(LocalizationKeys.HomeMessages.HomeVideoTitleArTooLong);
 
             RuleFor(x => x.InstructorName)
-                .MaximumLength(200).WithMessage("Instructor name must not exceed 200 characters.");
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeVideoInstructorNameTooLong);
 
             RuleFor(x => x.CategoryEn)
-                .MaximumLength(200).WithMessage("Video English category must not exceed 200 characters.");
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeVideoCategoryEnTooLong);
 
             RuleFor(x => x.CategoryAr)
-                .MaximumLength(200).WithMessage("Video Arabic category must not exceed 200 characters.");
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeVideoCategoryArTooLong);
 
             RuleFor(x => x.ThumbnailUrl)
-                .MaximumLength(1024).WithMessage("Thumbnail URL must not exceed 1024 characters.");
+                .MaximumLength(1024).WithMessage(LocalizationKeys.HomeMessages.HomeVideoThumbnailUrlTooLong);
 
             RuleFor(x => x.VideoUrl)
-                .MaximumLength(1024).WithMessage("Video URL must not exceed 1024 characters.");
+                .MaximumLength(1024).WithMessage(LocalizationKeys.HomeMessages.HomeVideoUrlTooLong);
         }
     }
 }

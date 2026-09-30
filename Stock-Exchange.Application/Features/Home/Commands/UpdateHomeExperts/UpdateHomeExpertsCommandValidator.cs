@@ -1,5 +1,6 @@
 using FluentValidation;
 using Stock_Exchange.Application.Features.Home.DTOs;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeExperts
 {
@@ -16,23 +17,23 @@ namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeExperts
         public HomeExpertItemRequestValidator()
         {
             RuleFor(x => x.FullNameEn)
-                .NotEmpty().WithMessage("Expert English full name is required.")
-                .MaximumLength(200).WithMessage("Expert English full name must not exceed 200 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeExpertFullNameEnRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeExpertFullNameEnTooLong);
 
             RuleFor(x => x.FullNameAr)
-                .NotEmpty().WithMessage("Expert Arabic full name is required.")
-                .MaximumLength(200).WithMessage("Expert Arabic full name must not exceed 200 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeExpertFullNameArRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeExpertFullNameArTooLong);
 
             RuleFor(x => x.TitleEn)
-                .NotEmpty().WithMessage("Expert English title/specialty is required.")
-                .MaximumLength(200).WithMessage("Expert English title must not exceed 200 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeExpertTitleEnRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeExpertTitleEnTooLong);
 
             RuleFor(x => x.TitleAr)
-                .NotEmpty().WithMessage("Expert Arabic title/specialty is required.")
-                .MaximumLength(200).WithMessage("Expert Arabic title must not exceed 200 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeExpertTitleArRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeExpertTitleArTooLong);
 
             RuleFor(x => x.AvatarUrl)
-                .MaximumLength(1024).WithMessage("Avatar URL must not exceed 1024 characters.");
+                .MaximumLength(1024).WithMessage(LocalizationKeys.HomeMessages.HomeExpertAvatarUrlTooLong);
         }
     }
 }

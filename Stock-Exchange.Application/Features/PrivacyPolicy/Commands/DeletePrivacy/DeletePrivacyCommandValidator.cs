@@ -1,4 +1,5 @@
 using FluentValidation;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.PrivacyPolicy.Commands.DeletePrivacy
 {
@@ -8,7 +9,7 @@ namespace Stock_Exchange.Application.Features.PrivacyPolicy.Commands.DeletePriva
         {
             RuleFor(x => x.Id)
                 .Must(id => !id.HasValue || id.Value != Guid.Empty)
-                .WithMessage("Id cannot be empty when provided.");
+                .WithMessage(LocalizationKeys.PrivacyPolicyMessages.PrivacyPolicyIdRequired);
         }
     }
 }

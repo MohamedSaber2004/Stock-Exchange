@@ -1,5 +1,6 @@
 using FluentValidation;
 using Stock_Exchange.Application.Features.Home.DTOs;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeArticles
 {
@@ -16,27 +17,27 @@ namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeArticles
         public HomeArticleItemRequestValidator()
         {
             RuleFor(x => x.TitleEn)
-                .NotEmpty().WithMessage("Article English title is required.")
-                .MaximumLength(500).WithMessage("Article English title must not exceed 500 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeArticleTitleEnRequired)
+                .MaximumLength(500).WithMessage(LocalizationKeys.HomeMessages.HomeArticleTitleEnTooLong);
 
             RuleFor(x => x.TitleAr)
-                .NotEmpty().WithMessage("Article Arabic title is required.")
-                .MaximumLength(500).WithMessage("Article Arabic title must not exceed 500 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomeArticleTitleArRequired)
+                .MaximumLength(500).WithMessage(LocalizationKeys.HomeMessages.HomeArticleTitleArTooLong);
 
             RuleFor(x => x.ExcerptEn)
-                .MaximumLength(2000).WithMessage("Article English excerpt must not exceed 2000 characters.");
+                .MaximumLength(2000).WithMessage(LocalizationKeys.HomeMessages.HomeArticleExcerptEnTooLong);
 
             RuleFor(x => x.ExcerptAr)
-                .MaximumLength(2000).WithMessage("Article Arabic excerpt must not exceed 2000 characters.");
+                .MaximumLength(2000).WithMessage(LocalizationKeys.HomeMessages.HomeArticleExcerptArTooLong);
 
             RuleFor(x => x.AuthorName)
-                .MaximumLength(200).WithMessage("Author name must not exceed 200 characters.");
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomeArticleAuthorNameTooLong);
 
             RuleFor(x => x.ReadMinutes)
-                .GreaterThanOrEqualTo(0).WithMessage("Read minutes must be non-negative.");
+                .GreaterThanOrEqualTo(0).WithMessage(LocalizationKeys.HomeMessages.HomeArticleReadMinutesInvalid);
 
             RuleFor(x => x.ImageUrl)
-                .MaximumLength(1024).WithMessage("Image URL must not exceed 1024 characters.");
+                .MaximumLength(1024).WithMessage(LocalizationKeys.HomeMessages.HomeArticleImageUrlTooLong);
         }
     }
 }

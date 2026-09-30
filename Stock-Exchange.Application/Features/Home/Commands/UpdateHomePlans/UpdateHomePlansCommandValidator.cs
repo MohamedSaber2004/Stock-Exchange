@@ -1,5 +1,6 @@
 using FluentValidation;
 using Stock_Exchange.Application.Features.Home.DTOs;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomePlans
 {
@@ -16,15 +17,15 @@ namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomePlans
         public HomePlanItemRequestValidator()
         {
             RuleFor(x => x.NameEn)
-                .NotEmpty().WithMessage("Plan English name is required.")
-                .MaximumLength(200).WithMessage("Plan English name must not exceed 200 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomePlanNameEnRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomePlanNameEnTooLong);
 
             RuleFor(x => x.NameAr)
-                .NotEmpty().WithMessage("Plan Arabic name is required.")
-                .MaximumLength(200).WithMessage("Plan Arabic name must not exceed 200 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomePlanNameArRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.HomeMessages.HomePlanNameArTooLong);
 
             RuleFor(x => x.PriceEgp)
-                .GreaterThanOrEqualTo(0).WithMessage("Plan price must be non-negative.");
+                .GreaterThanOrEqualTo(0).WithMessage(LocalizationKeys.HomeMessages.HomePlanPriceInvalid);
 
             RuleForEach(x => x.Features).SetValidator(new HomePlanFeatureItemRequestValidator());
         }
@@ -35,12 +36,12 @@ namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomePlans
         public HomePlanFeatureItemRequestValidator()
         {
             RuleFor(x => x.TextEn)
-                .NotEmpty().WithMessage("Plan feature English text is required.")
-                .MaximumLength(500).WithMessage("Plan feature English text must not exceed 500 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomePlanFeatureTextEnRequired)
+                .MaximumLength(500).WithMessage(LocalizationKeys.HomeMessages.HomePlanFeatureTextEnTooLong);
 
             RuleFor(x => x.TextAr)
-                .NotEmpty().WithMessage("Plan feature Arabic text is required.")
-                .MaximumLength(500).WithMessage("Plan feature Arabic text must not exceed 500 characters.");
+                .NotEmpty().WithMessage(LocalizationKeys.HomeMessages.HomePlanFeatureTextArRequired)
+                .MaximumLength(500).WithMessage(LocalizationKeys.HomeMessages.HomePlanFeatureTextArTooLong);
         }
     }
 }
