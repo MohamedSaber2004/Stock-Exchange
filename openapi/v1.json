@@ -2321,7 +2321,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "User profile retrieved successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2352,7 +2352,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "User is not authenticated.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2395,7 +2395,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "Validation error occurred.",
             "content": {
               "application/json": {
                 "schema": {
