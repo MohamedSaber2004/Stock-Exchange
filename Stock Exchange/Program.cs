@@ -280,11 +280,11 @@ namespace Stock_Exchange
                 try
                 {
                     var dbContext = services.GetRequiredService<StockExchangeDbContext>();
-                    await CountrySeeder.SeedCountriesAsync(dbContext);
+                    await DataSeeder.SeedAllAsync(dbContext);
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, "An error occurred while seeding countries.");
+                    Log.Error(ex, "An error occurred while seeding the database.");
                 }
             }
 

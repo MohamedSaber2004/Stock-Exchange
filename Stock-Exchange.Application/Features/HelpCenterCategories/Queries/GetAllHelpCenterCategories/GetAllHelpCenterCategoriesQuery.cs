@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
+using Stock_Exchange.Application.Common.Models;
+using Stock_Exchange.Application.Features.HelpCenterCategories.DTOs;
 
 namespace Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAllHelpCenterCategories
 {
-    internal class GetAllHelpCenterCategoriesQuery
+    public class GetAllHelpCenterCategoriesQuery : IRequest<Result<List<HelpCenterCategoryDto>>>
     {
+        public string? Search { get; set; }
+
+        public GetAllHelpCenterCategoriesQuery()
+        {
+        }
+
+        public GetAllHelpCenterCategoriesQuery(string? search)
+        {
+            Search = search;
+        }
     }
 }

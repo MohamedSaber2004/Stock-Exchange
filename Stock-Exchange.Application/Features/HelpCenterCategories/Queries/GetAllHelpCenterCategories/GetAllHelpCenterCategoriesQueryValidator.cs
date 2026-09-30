@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAllHelpCenterCategories
 {
-    internal class GetAllHelpCenterCategoriesQueryValidator
+    public class GetAllHelpCenterCategoriesQueryValidator : AbstractValidator<GetAllHelpCenterCategoriesQuery>
     {
+        public GetAllHelpCenterCategoriesQueryValidator()
+        {
+            RuleFor(x => x.Search)
+                .MaximumLength(200)
+                .WithMessage(LocalizationKeys.HelpCenterMessages.SearchTooLong);
+        }
     }
 }

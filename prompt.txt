@@ -1,7 +1,1 @@
-﻿Run ./scripts/Update-OpenApi.ps1 -Launch -TimeoutSeconds 240
-Update-OpenApi.ps1: /home/runner/work/_temp/b62838c0-6b71-4721-89fc-ca60d8ca8b9a.ps1:2
-Line |
-   2 |  ./scripts/Update-OpenApi.ps1 -Launch -TimeoutSeconds 240
-     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | Cannot bind argument to parameter 'Path' because it is null.
-Error: Process completed with exit code 1.
+﻿there is an exceptioon occured why i try to run project

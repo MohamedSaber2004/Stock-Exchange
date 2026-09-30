@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
+using Stock_Exchange.Application.Common.Models;
 
 namespace Stock_Exchange.Application.Features.HelpCenterCategories.Commands.DeleteHelpCenterCategory
 {
-    internal class DeleteHelpCenterCategoryCommand
+    public class DeleteHelpCenterCategoryCommand : IRequest<Result<bool>>
     {
+        public Guid Id { get; set; }
+
+        public DeleteHelpCenterCategoryCommand()
+        {
+        }
+
+        public DeleteHelpCenterCategoryCommand(Guid id)
+        {
+            Id = id;
+        }
     }
 }

@@ -20,9 +20,6 @@ namespace Stock_Exchange.Persistance.Configurations
                 .HasMaxLength(150)
                 .IsRequired();
 
-            builder.Property(c => c.DisplayOrder)
-                .IsRequired();
-
             builder.Property(c => c.IsActive)
                 .HasDefaultValue(true)
                 .IsRequired();

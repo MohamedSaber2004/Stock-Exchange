@@ -1,16 +1,12 @@
 using FluentValidation;
 using Stock_Exchange.Application.Localization;
 
-namespace Stock_Exchange.Application.Features.HelpCenterCategories.Commands.UpdateHelpCenterCategory
+namespace Stock_Exchange.Application.Features.HelpCenterCategories.Commands.AddHelpCenterCategory
 {
-    public class UpdateHelpCenterCategoryCommandValidator : AbstractValidator<UpdateHelpCenterCategoryCommand>
+    public class AddHelpCenterCategoryCommandValidator : AbstractValidator<AddHelpCenterCategoryCommand>
     {
-        public UpdateHelpCenterCategoryCommandValidator()
+        public AddHelpCenterCategoryCommandValidator()
         {
-            RuleFor(x => x.Id)
-                .NotEmpty()
-                .WithMessage(LocalizationKeys.HelpCenterMessages.IdRequired);
-
             RuleFor(x => x)
                 .Must(x => !string.IsNullOrWhiteSpace(x.TitleEn) || !string.IsNullOrWhiteSpace(x.TitleAr))
                 .WithMessage(LocalizationKeys.HelpCenterMessages.TitleRequired);

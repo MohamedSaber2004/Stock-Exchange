@@ -16,6 +16,11 @@ using Stock_Exchange.Application.Features.HelpCenter.Commands.DeleteHelpCenter;
 using Stock_Exchange.Application.Features.HelpCenter.Commands.UpdateHelpCenter;
 using Stock_Exchange.Application.Features.HelpCenter.Queries.GetAllHelpCenters;
 using Stock_Exchange.Application.Features.HelpCenter.Queries.GetHelpCenterById;
+using Stock_Exchange.Application.Features.HelpCenterCategories.Commands.AddHelpCenterCategory;
+using Stock_Exchange.Application.Features.HelpCenterCategories.Commands.DeleteHelpCenterCategory;
+using Stock_Exchange.Application.Features.HelpCenterCategories.Commands.UpdateHelpCenterCategory;
+using Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAllHelpCenterCategories;
+using Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAllHelpCenterCategoryById;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle;
@@ -69,6 +74,12 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<DeleteHelpCenterCommand>, DeleteHelpCenterCommandValidator>();
             services.AddTransient<IValidator<GetAllHelpCentersQuery>, GetAllHelpCentersQueryValidator>();
             services.AddTransient<IValidator<GetHelpCenterByIdQuery>, GetHelpCenterByIdQueryValidator>();
+            services.AddTransient<IValidator<AddHelpCenterCategoryCommand>, AddHelpCenterCategoryCommandValidator>();
+            services.AddTransient<IValidator<UpdateHelpCenterCategoryCommand>, UpdateHelpCenterCategoryCommandValidator>();
+            services.AddTransient<IValidator<DeleteHelpCenterCategoryCommand>, DeleteHelpCenterCategoryCommandValidator>();
+            services.AddTransient<IValidator<GetAllHelpCenterCategoriesQuery>, GetAllHelpCenterCategoriesQueryValidator>();
+            services.AddTransient<IValidator<GetHelpCenterCategoryByIdQuery>, GetHelpCenterCategoryByIdQueryValidator>();
+            services.AddTransient<IValidator<GetAllHelpCenterCategoryQueryById>, GetAllHelpCenterCategoryQueryValidatorById>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

@@ -42,6 +42,13 @@ namespace Stock_Exchange.Routes.V1
             public const string GetById = "{id}";
         }
 
+        public static class HelpCenterCategories
+        {
+            public const string Base = BaseRoutes.Base + "/help-center-categories";
+
+            public const string GetById = "{id}";
+        }
+
         public static class Countries
         {
             public const string Base = BaseRoutes.Base + "/countries";
