@@ -12,6 +12,7 @@ using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo;
 using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
 using Stock_Exchange.Application.Features.Auth.DTOs;
+using Stock_Exchange.Application.Features.Auth.Queries.GetUserProfile;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Filters;
 using Stock_Exchange.Routes.V1;
@@ -189,15 +190,15 @@ public class AuthenticationController : BaseController
     }
 
     /// <summary>
-    /// Updates the authenticated user's profile information.
+    /// Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.
     /// </summary>
-    /// <param name="command">The updated profile details including full name, email, phone number, and country ID.</param>
+    /// <param name="command">The profile details to update.</param>
     /// <returns>A confirmation message indicating successful update.</returns>
     /// <response code="200">User profile updated successfully.</response>
     /// <response code="400">Validation error occurred.</response>
     /// <response code="401">User is not authenticated.</response>
     /// <response code="404">User or country not found.</response>
-    [HttpPut]
+    [HttpPatch]
     [RoleAuthorize]
     [Route(ApiRoutes.Authentication.UpdateProfile)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status200OK)]
@@ -208,5 +209,21 @@ public class AuthenticationController : BaseController
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Updated);
+    }
+
+    /// <summary>
+    /// Get User Profile information for the authenticated user.
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [Route(ApiRoutes.Authentication.GetUserProfile)]
+    [RoleAuthorize]
+    [ProducesResponseType(typeof(ApiResponse<UserProfileDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<UserProfileDto>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ApiResponse<UserProfileDto>), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetUserProfile()
+    {
+        var result = await Mediator.Send(new GetUserProfileQuery());
+        return OkResult(result, LocalizationKeys.ActionResults.Ok);
     }
 }

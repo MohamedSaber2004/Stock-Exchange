@@ -38,39 +38,61 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
             if (user == null || user.IsDeleted || !user.IsActive)
                 throw new NotFoundException(_localizer[LocalizationKeys.ExceptionMessages.NotFound]);
 
-            var country = await _countryRepository.GetFirstAsync(
-                c => c.Id == request.CountryId && !c.IsDeleted && c.IsActive,
-                cancellationToken);
+            if (request.CountryId.HasValue)
+            {
+                var country = await _countryRepository.GetFirstAsync(
+                    c => c.Id == request.CountryId.Value && !c.IsDeleted && c.IsActive,
+                    cancellationToken);
 
-            if (country == null)
-                throw new NotFoundException(_localizer[LocalizationKeys.CountryMessages.CountryNotFound]);
+                if (country == null)
+                    throw new NotFoundException(_localizer[LocalizationKeys.CountryMessages.CountryNotFound]);
 
-            var normalizedEmail = request.Email.Trim().ToUpperInvariant();
-            var emailExists = await _userManager.Users
-                .IgnoreQueryFilters()
-                .AnyAsync(u => u.Id != user.Id && u.NormalizedEmail == normalizedEmail, cancellationToken);
+                user.CountryId = country.Id;
+            }
 
-            if (emailExists)
-                throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.EmailAlreadyExists]);
+            if (!string.IsNullOrWhiteSpace(request.Email))
+            {
+                var trimmedEmail = request.Email.Trim();
+                var normalizedEmail = trimmedEmail.ToUpperInvariant();
+                var emailExists = await _userManager.Users
+                    .IgnoreQueryFilters()
+                    .AnyAsync(u => u.Id != user.Id && u.NormalizedEmail == normalizedEmail, cancellationToken);
 
-            var cleanPhone = CleanPhoneNumber(request.PhoneNumber);
-            var rawPhone = request.PhoneNumber.Trim();
+                if (emailExists)
+                    throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.EmailAlreadyExists]);
 
-            var phoneExists = await _userManager.Users
-                .IgnoreQueryFilters()
-                .AnyAsync(u => u.Id != user.Id && (u.PhoneNumber == rawPhone || u.PhoneNumber == cleanPhone),
-                          cancellationToken);
+                user.Email = trimmedEmail;
+                user.NormalizedEmail = normalizedEmail;
+                user.UserName = trimmedEmail;
+                user.NormalizedUserName = normalizedEmail;
+            }
 
-            if (phoneExists)
-                throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists]);
+            if (!string.IsNullOrWhiteSpace(request.PhoneNumber))
+            {
+                var cleanPhone = CleanPhoneNumber(request.PhoneNumber);
+                var rawPhone = request.PhoneNumber.Trim();
 
-            user.UpdateFullName(request.FullName);
-            user.Email = request.Email.Trim();
-            user.NormalizedEmail = normalizedEmail;
-            user.UserName = request.Email.Trim();
-            user.NormalizedUserName = normalizedEmail;
-            user.PhoneNumber = cleanPhone;
-            user.CountryId = country.Id;
+                var phoneExists = await _userManager.Users
+                    .IgnoreQueryFilters()
+                    .AnyAsync(u => u.Id != user.Id && (u.PhoneNumber == rawPhone || u.PhoneNumber == cleanPhone),
+                              cancellationToken);
+
+                if (phoneExists)
+                    throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists]);
+
+                user.PhoneNumber = cleanPhone;
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.FullName))
+            {
+                user.UpdateFullName(request.FullName);
+            }
+
+            if (request.Language.HasValue)
+            {
+                user.ChangeLanguage(request.Language.Value);
+            }
+
             user.MarkAsUpdated(_currentUserService.UserId.ToString());
 
             var updateResult = await _userManager.UpdateAsync(user);

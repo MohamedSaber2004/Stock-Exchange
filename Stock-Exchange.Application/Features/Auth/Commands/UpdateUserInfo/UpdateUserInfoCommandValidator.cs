@@ -44,21 +44,23 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
                         .MinimumLength(2)
                         .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired)
                         .MaximumLength(150)
-                        .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired);
+                        .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired)
+                        .When(x => x.FullName != null);
 
                     RuleFor(x => x.CountryId)
                         .NotEmpty()
                         .WithMessage(LocalizationKeys.CountryMessages.CountryNotFound)
                         .MustAsync(async (countryId, cancellationToken) =>
                         {
-                            if (countryId == Guid.Empty)
+                            if (!countryId.HasValue || countryId.Value == Guid.Empty)
                                 return false;
 
                             return await _countryRepository.ExistsAsync(
-                                c => c.Id == countryId && !c.IsDeleted && c.IsActive,
+                                c => c.Id == countryId.Value && !c.IsDeleted && c.IsActive,
                                 cancellationToken);
                         })
-                        .WithMessage(LocalizationKeys.CountryMessages.CountryNotFound);
+                        .WithMessage(LocalizationKeys.CountryMessages.CountryNotFound)
+                        .When(x => x.CountryId.HasValue);
 
                     RuleFor(x => x.Email)
                         .NotEmpty()
@@ -82,7 +84,8 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
 
                             return !isTakenByOther;
                         })
-                        .WithMessage(LocalizationKeys.AuthMessages.EmailAlreadyExists);
+                        .WithMessage(LocalizationKeys.AuthMessages.EmailAlreadyExists)
+                        .When(x => x.Email != null);
 
                     RuleFor(x => x.PhoneNumber)
                         .NotEmpty()
@@ -107,7 +110,12 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
 
                             return !isTakenByOther;
                         })
-                        .WithMessage(LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists);
+                        .WithMessage(LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists)
+                        .When(x => x.PhoneNumber != null);
+
+                    RuleFor(x => x.Language)
+                        .IsInEnum()
+                        .When(x => x.Language.HasValue);
                 });
         }
 

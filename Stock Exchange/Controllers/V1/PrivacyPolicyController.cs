@@ -48,7 +48,6 @@ public class PrivacyPolicyController : BaseController
     /// <response code="400">One or more fields exceed the allowed length or are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     /// <response code="403">The caller is not authorized.</response>
-    [HttpPut]
     [HttpPatch]
     [Route(ApiRoutes.PrivacyPolicy.Update)]
     [RoleAuthorize(UserType.Admin)]

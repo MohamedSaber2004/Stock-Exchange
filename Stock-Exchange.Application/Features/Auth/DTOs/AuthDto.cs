@@ -1,4 +1,4 @@
-﻿using FluentValidation.Resources;
+﻿using Stock_Exchange.Domain.Enums;
 
 namespace Stock_Exchange.Application.Features.Auth.DTOs
 {
@@ -22,6 +22,7 @@ namespace Stock_Exchange.Application.Features.Auth.DTOs
         string FullName,
         string Email,
         string PhoneNumber,
+        string? PhoneCode,
         string? ProfilePictureUrl,
         Language Language);
 }
