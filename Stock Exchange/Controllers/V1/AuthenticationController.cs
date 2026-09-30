@@ -214,7 +214,10 @@ public class AuthenticationController : BaseController
     /// <summary>
     /// Get User Profile information for the authenticated user.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>A UserProfileDto object containing the user's profile information.</returns>
+    /// <response code="200">User profile retrieved successfully.</response>
+    /// <response code="400">Validation error occurred.</response>
+    /// <response code="401">User is not authenticated.</response>
     [HttpGet]
     [Route(ApiRoutes.Authentication.GetUserProfile)]
     [RoleAuthorize]
