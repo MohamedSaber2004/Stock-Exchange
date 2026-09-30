@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.HelpCenter.Commands.AddHelpCenter;
@@ -11,6 +12,7 @@ using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Enums;
 using Stock_Exchange.Filters;
 using Stock_Exchange.Routes.V1;
+using System.Text;
 
 namespace Stock_Exchange.Controllers.V1;
 
@@ -37,6 +39,79 @@ public class HelpCenterController : BaseController
             return FromResult(result);
 
         return OkResult(result.Data, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Returns a styled HTML page displaying all help center entries as an FAQ accordion.
+    /// The display language is determined by the Accept-Language request header.
+    /// </summary>
+    /// <returns>An HTML page rendering the help center FAQ accordion in the requested language.</returns>
+    /// <response code="200">HTML page returned successfully.</response>
+    [HttpGet]
+    [Route(ApiRoutes.HelpCenter.View)]
+    [AllowAnonymous]
+    [Produces("text/html")]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetView()
+    {
+        var result = await Mediator.Send(new GetAllHelpCentersQuery());
+
+        if (!result.IsSuccess)
+            return NotFound("Help center not found.");
+
+        var items = result.Data ?? new List<HelpCenterDto>();
+
+        var firstWithAr = items.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.TitleAr));
+        var firstWithEn = items.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.TitleEn));
+        var isAr = firstWithAr != null && firstWithEn == null;
+        var dir = isAr ? "rtl" : "ltr";
+        var lang = isAr ? "ar" : "en";
+        var pageTitle = isAr ? "مركز المساعدة" : "Help Center";
+        var emptyMsg = isAr ? "لا توجد إدخالات متاحة." : "No help center entries found.";
+
+        var sb = new StringBuilder();
+        sb.Append($"<!DOCTYPE html><html lang='{lang}' dir='{dir}'><head>");
+        sb.Append("<meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
+        sb.Append($"<title>{System.Net.WebUtility.HtmlEncode(pageTitle)}</title>");
+        sb.Append("<link rel='stylesheet' href='/pages/pages.css'/></head><body>");
+        sb.Append("<header class='page-header'>");
+        sb.Append("<a href='javascript:history.back()' class='back-btn' aria-label='Back'>");
+        sb.Append("<svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'/></svg>");
+        sb.Append("</a>");
+        sb.Append($"<span class='page-title'>{System.Net.WebUtility.HtmlEncode(pageTitle)}</span>");
+        sb.Append("</header>");
+        sb.Append("<main class='page-container'><div id='faq-list'>");
+
+        if (!items.Any())
+        {
+            sb.Append($"<div class='empty-state'><p>{emptyMsg}</p></div>");
+        }
+        else
+        {
+            foreach (var item in items.OrderBy(x => x.DisplayOrder))
+            {
+                var idSafe = item.Id.ToString("N");
+                var title = isAr ? item.TitleAr : item.TitleEn;
+                var content = isAr ? item.ContentAr : item.ContentEn;
+                sb.Append($"<div class='faq-item' id='faq-{idSafe}'>");
+                sb.Append($"<div class='faq-question' onclick='toggleFaq(\"{idSafe}\")'>");
+                sb.Append($"<span class='faq-question-text'>{System.Net.WebUtility.HtmlEncode(title)}</span>");
+                sb.Append("<span class='faq-chevron'><svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg></span>");
+                sb.Append("</div>");
+                sb.Append("<div class='faq-answer'><p>");
+                sb.Append(System.Net.WebUtility.HtmlEncode(content));
+                sb.Append("</p></div>");
+                sb.Append("</div>");
+            }
+        }
+
+        sb.Append("</div></main>");
+        sb.Append("<script>");
+        sb.Append("function toggleFaq(id){var el=document.getElementById('faq-'+id);if(!el)return;var isOpen=el.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open');});if(!isOpen)el.classList.add('open');}");
+        sb.Append("</script>");
+        sb.Append("</body></html>");
+
+        return Content(sb.ToString(), "text/html", Encoding.UTF8);
     }
 
     /// <summary>

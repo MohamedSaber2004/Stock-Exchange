@@ -36,6 +36,7 @@ namespace Stock_Exchange.Routes.V1
             public const string Base = BaseRoutes.Base + "/about-us";
 
             public const string Get = "";
+            public const string View = "view";
             public const string Update = "";
         }
 
@@ -45,6 +46,7 @@ namespace Stock_Exchange.Routes.V1
 
             public const string GetAll = "";
             public const string GetById = "{id}";
+            public const string View = "view";
             public const string Add = "";
             public const string Update = "";
             public const string Delete = "{id}";
@@ -66,6 +68,7 @@ namespace Stock_Exchange.Routes.V1
             public const string Base = BaseRoutes.Base + "/privacy-policy";
 
             public const string Get = "";
+            public const string View = "view";
             public const string Update = "";
             public const string Delete = "";
             public const string DeleteById = "{id}";
@@ -76,6 +79,7 @@ namespace Stock_Exchange.Routes.V1
             public const string Base = BaseRoutes.Base + "/terms-and-conditions";
 
             public const string Get = "";
+            public const string View = "view";
             public const string Update = "";
             public const string Delete = "";
             public const string DeleteById = "{id}";

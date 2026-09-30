@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.AboutUs.Commands.UpdateAboutUs;
@@ -8,6 +9,7 @@ using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Enums;
 using Stock_Exchange.Filters;
 using Stock_Exchange.Routes.V1;
+using System.Text;
 
 namespace Stock_Exchange.Controllers.V1;
 
@@ -35,6 +37,112 @@ public class AboutUsController : BaseController
             return FromResult(result);
 
         return OkResult(result.Data, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Returns a styled HTML page displaying the active About Us content.
+    /// The display language is determined by the Accept-Language request header.
+    /// </summary>
+    /// <returns>An HTML page rendering the About Us content in the requested language.</returns>
+    /// <response code="200">HTML page returned successfully.</response>
+    /// <response code="404">About Us content was not found.</response>
+    [HttpGet]
+    [Route(ApiRoutes.AboutUs.View)]
+    [AllowAnonymous]
+    [Produces("text/html")]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetView()
+    {
+        var result = await Mediator.Send(new GetAboutUsQuery());
+
+        if (!result.IsSuccess)
+            return NotFound("About us content not found.");
+
+        var data = result.Data!;
+
+        var isAr = !string.IsNullOrWhiteSpace(data.StoryAr);
+        var dir = isAr ? "rtl" : "ltr";
+        var lang = isAr ? "ar" : "en";
+        var pageTitle = isAr ? "من نحن" : "About Us";
+
+        var sb = new StringBuilder();
+        sb.Append($"<!DOCTYPE html><html lang='{lang}' dir='{dir}'><head>");
+        sb.Append("<meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
+        sb.Append($"<title>{System.Net.WebUtility.HtmlEncode(pageTitle)}</title>");
+        sb.Append("<link rel='stylesheet' href='/pages/pages.css'/></head><body>");
+        sb.Append("<header class='page-header'>");
+        sb.Append("<a href='javascript:history.back()' class='back-btn' aria-label='Back'>");
+        sb.Append("<svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'/></svg>");
+        sb.Append("</a>");
+        sb.Append($"<span class='page-title'>{System.Net.WebUtility.HtmlEncode(pageTitle)}</span>");
+        sb.Append("</header>");
+        sb.Append("<main class='page-container'>");
+
+        var story = isAr ? data.StoryAr : data.StoryEn;
+        sb.Append("<div class='about-hero'>");
+        sb.Append($"<h1>{System.Net.WebUtility.HtmlEncode(pageTitle)}</h1>");
+        if (!string.IsNullOrWhiteSpace(story))
+            sb.Append($"<p>{System.Net.WebUtility.HtmlEncode(story)}</p>");
+        sb.Append("</div>");
+
+        var mission = isAr ? data.MissionAr : data.MissionEn;
+        if (!string.IsNullOrWhiteSpace(mission))
+        {
+            var missionLabel = isAr ? "مهمتنا" : "Our Mission";
+            sb.Append($"<p class='section-label'>{System.Net.WebUtility.HtmlEncode(missionLabel)}</p>");
+            sb.Append("<div class='section-card'>");
+            sb.Append($"<p class='section-content'>{System.Net.WebUtility.HtmlEncode(mission)}</p>");
+            sb.Append("</div>");
+        }
+
+        var vision = isAr ? data.VisionAr : data.VisionEn;
+        if (!string.IsNullOrWhiteSpace(vision))
+        {
+            var visionLabel = isAr ? "رؤيتنا" : "Our Vision";
+            sb.Append($"<p class='section-label'>{System.Net.WebUtility.HtmlEncode(visionLabel)}</p>");
+            sb.Append("<div class='section-card'>");
+            sb.Append($"<p class='section-content'>{System.Net.WebUtility.HtmlEncode(vision)}</p>");
+            sb.Append("</div>");
+        }
+
+        if (data.Features.Any())
+        {
+            var featuresLabel = isAr ? "ميزاتنا" : "Our Features";
+            sb.Append($"<p class='section-label'>{System.Net.WebUtility.HtmlEncode(featuresLabel)}</p>");
+            sb.Append("<div class='section-card'>");
+            foreach (var feature in data.Features)
+            {
+                var featureTitle = isAr ? feature.TitleAr : feature.TitleEn;
+                sb.Append("<div class='feature-row'>");
+                sb.Append("<span class='feature-check'><svg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='#16a34a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg></span>");
+                sb.Append($"<span class='feature-text'>{System.Net.WebUtility.HtmlEncode(featureTitle)}</span>");
+                sb.Append("</div>");
+            }
+            sb.Append("</div>");
+        }
+
+        if (!string.IsNullOrWhiteSpace(data.SupportEmail))
+        {
+            var connectLabel = isAr ? "تواصل معنا" : "Connect With Us";
+            var emailLabel = isAr ? "بريد الدعم" : "Support Email";
+            sb.Append($"<p class='section-label'>{System.Net.WebUtility.HtmlEncode(connectLabel)}</p>");
+            sb.Append("<div class='section-card'>");
+            sb.Append("<div class='connect-row'>");
+            sb.Append("<div class='connect-row-left'>");
+            sb.Append("<span class='connect-icon'><svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#6c47ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'/><polyline points='22,6 12,13 2,6'/></svg></span>");
+            sb.Append("<div>");
+            sb.Append($"<div class='connect-label'>{System.Net.WebUtility.HtmlEncode(emailLabel)}</div>");
+            sb.Append($"<div class='connect-sub'>{System.Net.WebUtility.HtmlEncode(data.SupportEmail)}</div>");
+            sb.Append("</div></div>");
+            sb.Append("<span class='connect-chevron'><svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg></span>");
+            sb.Append("</div>");
+            sb.Append("</div>");
+        }
+
+        sb.Append("</main></body></html>");
+
+        return Content(sb.ToString(), "text/html", Encoding.UTF8);
     }
 
     /// <summary>

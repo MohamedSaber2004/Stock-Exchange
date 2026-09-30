@@ -10,6 +10,7 @@ using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Enums;
 using Stock_Exchange.Filters;
 using Stock_Exchange.Routes.V1;
+using System.Text;
 
 namespace Stock_Exchange.Controllers.V1;
 
@@ -37,6 +38,75 @@ public class TermsAndConditionsController : BaseController
             return FromResult(result);
 
         return OkResult(result.Data, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Returns a styled HTML page displaying the active terms and conditions.
+    /// The display language is determined by the Accept-Language request header.
+    /// </summary>
+    /// <returns>An HTML page rendering the terms and conditions content in the requested language.</returns>
+    /// <response code="200">HTML page returned successfully.</response>
+    /// <response code="404">Terms and conditions was not found.</response>
+    [HttpGet]
+    [Route(ApiRoutes.TermsAndConditions.View)]
+    [AllowAnonymous]
+    [Produces("text/html")]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetView()
+    {
+        var result = await Mediator.Send(new GetTermsAndConditionsQuery());
+
+        if (!result.IsSuccess)
+            return NotFound("Terms and conditions not found.");
+
+        var data = result.Data!;
+
+        var isAr = !string.IsNullOrWhiteSpace(data.TitleAr);
+        var dir = isAr ? "rtl" : "ltr";
+        var lang = isAr ? "ar" : "en";
+        var pageTitle = isAr ? "الشروط والأحكام" : "Terms & Conditions";
+        var emptyMsg = isAr ? "لا يوجد محتوى متاح." : "No content available.";
+
+        var sb = new StringBuilder();
+        sb.Append($"<!DOCTYPE html><html lang='{lang}' dir='{dir}'><head>");
+        sb.Append("<meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
+        sb.Append($"<title>{System.Net.WebUtility.HtmlEncode(pageTitle)}</title>");
+        sb.Append("<link rel='stylesheet' href='/pages/pages.css'/></head><body>");
+        sb.Append("<header class='page-header'>");
+        sb.Append("<a href='javascript:history.back()' class='back-btn' aria-label='Back'>");
+        sb.Append("<svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'/></svg>");
+        sb.Append("</a>");
+        sb.Append($"<span class='page-title'>{System.Net.WebUtility.HtmlEncode(pageTitle)}</span>");
+        sb.Append("</header>");
+        sb.Append("<main class='page-container'>");
+
+        var description = isAr ? data.DescriptionAr : data.DescriptionEn;
+        if (!string.IsNullOrWhiteSpace(description))
+            sb.Append($"<div class='intro-banner'><p>{System.Net.WebUtility.HtmlEncode(description)}</p></div>");
+
+        int idx = 1;
+        foreach (var section in data.Sections)
+        {
+            var title = isAr ? section.TitleAr : section.TitleEn;
+            var content = isAr ? section.ContentAr : section.ContentEn;
+            sb.Append("<div class='section-card'>");
+            sb.Append($"<div class='section-title'><span class='section-number'>{idx}</span>");
+            if (!string.IsNullOrWhiteSpace(title))
+                sb.Append($"<h2>{System.Net.WebUtility.HtmlEncode(title)}</h2>");
+            sb.Append("</div>");
+            if (!string.IsNullOrWhiteSpace(content))
+                sb.Append($"<p class='section-content'>{System.Net.WebUtility.HtmlEncode(content)}</p>");
+            sb.Append("</div>");
+            idx++;
+        }
+
+        if (!data.Sections.Any())
+            sb.Append($"<div class='empty-state'><p>{emptyMsg}</p></div>");
+
+        sb.Append("</main></body></html>");
+
+        return Content(sb.ToString(), "text/html", Encoding.UTF8);
     }
 
     /// <summary>

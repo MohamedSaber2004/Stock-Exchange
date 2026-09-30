@@ -100,11 +100,9 @@ namespace Stock_Exchange
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
 
-            if (builder.Environment.IsProduction())
+            var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
+            if (corsConfig?.Enabled == true)
             {
-                var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
-                if (corsConfig?.Enabled == true)
-                {
                     builder.Services.AddCors(options =>
                     {
                         options.AddPolicy(corsConfig.PolicyName, policy =>
@@ -128,7 +126,6 @@ namespace Stock_Exchange
                                 policy.AllowCredentials();
                         });
                     });
-                }
             }
 
             builder.Services.AddControllers()
@@ -234,13 +231,10 @@ namespace Stock_Exchange
 
             app.UseRouting();
 
-            if (app.Environment.IsProduction())
+            var corsSettings = app.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
+            if (corsSettings?.Enabled == true)
             {
-                var corsSettings = app.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
-                if (corsSettings?.Enabled == true)
-                {
-                    app.UseCors(corsSettings.PolicyName);
-                }
+                app.UseCors(corsSettings.PolicyName);
             }
 
             app.UseHttpsRedirection();
