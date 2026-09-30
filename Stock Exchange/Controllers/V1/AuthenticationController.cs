@@ -211,6 +211,7 @@ public class AuthenticationController : BaseController
         return OkResult(result, LocalizationKeys.ActionResults.Updated);
     }
 
+
     /// <summary>
     /// Get User Profile information for the authenticated user.
     /// </summary>
