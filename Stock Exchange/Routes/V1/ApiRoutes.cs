@@ -90,7 +90,6 @@ namespace Stock_Exchange.Routes.V1
             public const string Base = BaseRoutes.Base + "/home";
 
             public const string Get = "";
-            public const string Update = "";
             public const string UpdateHero = "hero";
             public const string UpdateNews = "news";
             public const string UpdateServices = "services";

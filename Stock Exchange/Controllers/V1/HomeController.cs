@@ -56,7 +56,6 @@ public class HomeController : BaseController
     /// <response code="403">The caller is not authorized as Admin.</response>
     [HttpPatch]
     [Route(ApiRoutes.Home.UpdateHero)]
-    [Route(ApiRoutes.Home.Update)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HomeHeroDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HomeHeroDto>), StatusCodes.Status400BadRequest)]
