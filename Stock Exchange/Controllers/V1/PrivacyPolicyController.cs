@@ -73,6 +73,7 @@ public class PrivacyPolicyController : BaseController
         sb.Append($"<!DOCTYPE html><html lang='{lang}' dir='{dir}'><head>");
         sb.Append("<meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
         sb.Append($"<title>{System.Net.WebUtility.HtmlEncode(pageTitle)}</title>");
+        sb.Append("<link rel='icon' href='/favicon.ico' type='image/x-icon'/>");
         sb.Append("<link rel='stylesheet' href='/pages/pages.css'/></head><body>");
         sb.Append("<header class='page-header'>");
         sb.Append("<a href='javascript:history.back()' class='back-btn' aria-label='Back'>");
