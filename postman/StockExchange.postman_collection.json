@@ -491,7 +491,13 @@
                 "about-us",
                 "view"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "string",
+                  "description": ""
+                }
+              ],
               "variable": []
             },
             "description": "Returns a styled HTML page displaying the active About Us content.\r\nThe display language is determined by the Accept-Language request header.",
@@ -520,7 +526,13 @@
                     "about-us",
                     "view"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "string",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Returns a styled HTML page displaying the active About Us content.\r\nThe display language is determined by the Accept-Language request header.",
@@ -559,7 +571,13 @@
                     "about-us",
                     "view"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "string",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Returns a styled HTML page displaying the active About Us content.\r\nThe display language is determined by the Accept-Language request header.",
@@ -6288,7 +6306,13 @@
                 "help-center",
                 "view"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "string",
+                  "description": ""
+                }
+              ],
               "variable": []
             },
             "description": "Returns a styled HTML page displaying all help center entries as an FAQ accordion.\r\nThe display language is determined by the Accept-Language request header.",
@@ -6317,7 +6341,13 @@
                     "help-center",
                     "view"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "string",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Returns a styled HTML page displaying all help center entries as an FAQ accordion.\r\nThe display language is determined by the Accept-Language request header.",
@@ -11290,7 +11320,13 @@
                 "privacy-policy",
                 "view"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "string",
+                  "description": ""
+                }
+              ],
               "variable": []
             },
             "description": "Returns a styled HTML page displaying the active privacy policy.\r\nThe display language is determined by the Accept-Language request header.",
@@ -11319,7 +11355,13 @@
                     "privacy-policy",
                     "view"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "string",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Returns a styled HTML page displaying the active privacy policy.\r\nThe display language is determined by the Accept-Language request header.",
@@ -11358,7 +11400,13 @@
                     "privacy-policy",
                     "view"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "string",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Returns a styled HTML page displaying the active privacy policy.\r\nThe display language is determined by the Accept-Language request header.",
@@ -12244,7 +12292,13 @@
                 "terms-and-conditions",
                 "view"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "string",
+                  "description": ""
+                }
+              ],
               "variable": []
             },
             "description": "Returns a styled HTML page displaying the active terms and conditions.\r\nThe display language is determined by the Accept-Language request header.",
@@ -12273,7 +12327,13 @@
                     "terms-and-conditions",
                     "view"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "string",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Returns a styled HTML page displaying the active terms and conditions.\r\nThe display language is determined by the Accept-Language request header.",
@@ -12312,7 +12372,13 @@
                     "terms-and-conditions",
                     "view"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "string",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Returns a styled HTML page displaying the active terms and conditions.\r\nThe display language is determined by the Accept-Language request header.",
