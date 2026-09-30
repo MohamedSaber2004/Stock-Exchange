@@ -94,6 +94,9 @@ namespace Stock_Exchange.Application.Localization
             public const string GoogleProfileUpdateFailed = "AuthMessages.GoogleProfileUpdateFailed";
             public const string UserNotFound = "AuthMessages.UserNotFound";
             public const string UserInfoUpdated = "AuthMessages.UserInfoUpdated";
+            public const string CurrentPasswordRequired = "AuthMessages.CurrentPasswordRequired";
+            public const string PasswordChangeFailed = "AuthMessages.PasswordChangeFailed";
+            public const string PasswordChangeSuccess = "AuthMessages.PasswordChangeSuccess";
         }
 
         public static class CountryMessages

@@ -26,6 +26,7 @@ namespace Stock_Exchange.Routes.V1
             public const string ForgetPassword = "forget-password";
             public const string VerifyOtp = "verify-otp";
             public const string ResetPassword = "reset-password";
+            public const string ChangePassword = "change-password";
             public const string GetUserProfile = "my-profile";
             public const string UpdateProfile = "update/myprofile";
         }

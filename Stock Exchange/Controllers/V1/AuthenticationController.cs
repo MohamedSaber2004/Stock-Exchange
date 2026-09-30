@@ -2,6 +2,7 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
+using Stock_Exchange.Application.Features.Auth.Commands.ChangePassword;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle;
@@ -187,6 +188,28 @@ public class AuthenticationController : BaseController
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Changes the password for the currently authenticated user.
+    /// </summary>
+    /// <param name="command">The current password, new password, and confirmation.</param>
+    /// <returns>Confirmation that password change succeeded.</returns>
+    /// <response code="200">Password changed successfully.</response>
+    /// <response code="400">Validation error or invalid current password.</response>
+    /// <response code="401">User is not authenticated.</response>
+    /// <response code="404">User not found.</response>
+    [HttpPost]
+    [RoleAuthorize]
+    [Route(ApiRoutes.Authentication.ChangePassword)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.AuthMessages.PasswordChangeSuccess);
     }
 
     /// <summary>

@@ -83,7 +83,10 @@
     "SessionExpired": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
     "SessionRevoked": "لم تعد جلستك صالحة. يرجى تسجيل الدخول مرة أخرى.",
     "UserNotFound": "المستخدم غير موجود.",
-    "UserInfoUpdated": "تم تحديث بيانات المستخدم بنجاح."
+    "UserInfoUpdated": "تم تحديث بيانات المستخدم بنجاح.",
+    "CurrentPasswordRequired": "كلمة المرور الحالية مطلوبة.",
+    "PasswordChangeFailed": "فشل تغيير كلمة المرور. يرجى التحقق من كلمة المرور الحالية.",
+    "PasswordChangeSuccess": "تم تغيير كلمة المرور بنجاح."
   },
   "CountryMessages": {
     "CountryNotFound": "رمز الدولة المحدد غير موجود.",
