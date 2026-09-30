@@ -1,6 +1,4 @@
 using Asp.Versioning;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.AboutUs.Commands.UpdateAboutUs;
@@ -25,7 +23,7 @@ public class AboutUsController : BaseController
     /// <response code="200">About us content retrieved successfully.</response>
     /// <response code="404">About us content was not found.</response>
     [HttpGet]
-    [AllowAnonymous]
+    [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Get()

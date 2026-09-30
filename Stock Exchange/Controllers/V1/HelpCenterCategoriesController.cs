@@ -28,7 +28,7 @@ public class HelpCenterCategoriesController : BaseController
     /// <returns>The matching help center categories.</returns>
     /// <response code="200">Help center categories retrieved successfully.</response>
     [HttpGet]
-    [AllowAnonymous]
+    [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<List<HelpCenterCategoryDto>>), StatusCodes.Status200OK)]
     public async Task<ActionResult> GetAll([FromQuery] GetAllHelpCenterCategoriesQuery query)
     {
@@ -50,7 +50,7 @@ public class HelpCenterCategoriesController : BaseController
     /// <response code="404">The help center category was not found.</response>
     [HttpGet]
     [Route(ApiRoutes.HelpCenterCategories.GetById)]
-    [AllowAnonymous]
+    [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult> GetById(Guid id)
