@@ -42,11 +42,11 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ResetPassword
 
             if (!string.IsNullOrWhiteSpace(user.VerificationCode) && user.VerificationCode == inputCode)
             {
-                if (user.VerificationCodeExpiry == null || user.VerificationCodeExpiry < DateTime.Now)
+                if (user.VerificationCodeExpiry == null || user.VerificationCodeExpiry < DateTime.UtcNow)
                     throw new BadRequestException(LocalizationKeys.AuthMessages.VerificationCodeExpired);
 
                 if (!string.IsNullOrWhiteSpace(user.PasswordResetToken) &&
-                    (user.PasswordResetTokenExpiry == null || user.PasswordResetTokenExpiry >= DateTime.Now))
+                    (user.PasswordResetTokenExpiry == null || user.PasswordResetTokenExpiry >= DateTime.UtcNow))
                 {
                     tokenToUse = user.PasswordResetToken;
                 }
@@ -57,7 +57,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ResetPassword
             }
             else if (!string.IsNullOrWhiteSpace(user.PasswordResetToken) && user.PasswordResetToken == inputCode)
             {
-                if (user.PasswordResetTokenExpiry != null && user.PasswordResetTokenExpiry < DateTime.Now)
+                if (user.PasswordResetTokenExpiry != null && user.PasswordResetTokenExpiry < DateTime.UtcNow)
                     throw new BadRequestException(LocalizationKeys.AuthMessages.ResetTokenExpired);
 
                 tokenToUse = user.PasswordResetToken;
@@ -66,14 +66,14 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ResetPassword
             {
                 if (!string.IsNullOrWhiteSpace(user.VerificationCode) &&
                     user.VerificationCodeExpiry != null &&
-                    user.VerificationCodeExpiry < DateTime.Now)
+                    user.VerificationCodeExpiry < DateTime.UtcNow)
                 {
                     throw new BadRequestException(LocalizationKeys.AuthMessages.VerificationCodeExpired);
                 }
 
                 if (!string.IsNullOrWhiteSpace(user.PasswordResetToken) &&
                     user.PasswordResetTokenExpiry != null &&
-                    user.PasswordResetTokenExpiry < DateTime.Now)
+                    user.PasswordResetTokenExpiry < DateTime.UtcNow)
                 {
                     throw new BadRequestException(LocalizationKeys.AuthMessages.ResetTokenExpired);
                 }

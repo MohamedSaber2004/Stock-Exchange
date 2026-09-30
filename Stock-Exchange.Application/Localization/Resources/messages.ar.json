@@ -86,7 +86,11 @@
     "UserInfoUpdated": "تم تحديث بيانات المستخدم بنجاح.",
     "CurrentPasswordRequired": "كلمة المرور الحالية مطلوبة.",
     "PasswordChangeFailed": "فشل تغيير كلمة المرور. يرجى التحقق من كلمة المرور الحالية.",
-    "PasswordChangeSuccess": "تم تغيير كلمة المرور بنجاح."
+    "PasswordChangeSuccess": "تم تغيير كلمة المرور بنجاح.",
+    "CannotDeleteSelf": "لا يمكنك حذف حسابك الشخصي المسجل به حالياً."
+  },
+  "ActivityLogMessages": {
+    "ActivityLogNotFound": "سجل النشاط المطلوب غير موجود."
   },
   "CountryMessages": {
     "CountryNotFound": "رمز الدولة المحدد غير موجود.",

@@ -86,7 +86,11 @@
     "UserInfoUpdated": "User information updated successfully.",
     "CurrentPasswordRequired": "Current password is required.",
     "PasswordChangeFailed": "Failed to change password. Please check your current password.",
-    "PasswordChangeSuccess": "Password changed successfully."
+    "PasswordChangeSuccess": "Password changed successfully.",
+    "CannotDeleteSelf": "You cannot delete your own account while logged in."
+  },
+  "ActivityLogMessages": {
+    "ActivityLogNotFound": "The requested activity log was not found."
   },
   "CountryMessages": {
     "CountryNotFound": "The specified country code was not found.",

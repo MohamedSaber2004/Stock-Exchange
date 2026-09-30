@@ -117,6 +117,18 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<UpdateVideoCommand>, UpdateVideoCommandValidator>();
             services.AddTransient<IValidator<DeleteVideoCommand>, DeleteVideoCommandValidator>();
 
+            // Users Validators
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.Users.Queries.GetAllUsers.GetAllUsersQuery>, Stock_Exchange.Application.Features.Users.Queries.GetAllUsers.GetAllUsersQueryValidator>();
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.Users.Queries.GetUserById.GetUserByIdQuery>, Stock_Exchange.Application.Features.Users.Queries.GetUserById.GetUserByIdQueryValidator>();
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.Users.Commands.AddUser.AddUserCommand>, Stock_Exchange.Application.Features.Users.Commands.AddUser.AddUserCommandValidator>();
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.Users.Commands.UpdateUser.UpdateUserCommand>, Stock_Exchange.Application.Features.Users.Commands.UpdateUser.UpdateUserCommandValidator>();
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.Users.Commands.DeleteUser.DeleteUserCommand>, Stock_Exchange.Application.Features.Users.Commands.DeleteUser.DeleteUserCommandValidator>();
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.Users.Commands.AdminChangePassword.AdminChangePasswordCommand>, Stock_Exchange.Application.Features.Users.Commands.AdminChangePassword.AdminChangePasswordCommandValidator>();
+
+            // ActivityLogs Validators
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.ActivityLogs.Queries.GetAllActivityLogs.GetAllActivityLogsQuery>, Stock_Exchange.Application.Features.ActivityLogs.Queries.GetAllActivityLogs.GetAllActivityLogsQueryValidator>();
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.ActivityLogs.Queries.GetActivityLogById.GetActivityLogByIdQuery>, Stock_Exchange.Application.Features.ActivityLogs.Queries.GetActivityLogById.GetActivityLogByIdQueryValidator>();
+
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 
             UploadPaths.Configure(configuration);

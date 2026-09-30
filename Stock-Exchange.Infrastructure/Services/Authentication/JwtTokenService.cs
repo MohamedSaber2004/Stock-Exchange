@@ -58,7 +58,7 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expiry = DateTime.Now.AddDays(expiryDays);
+            var expiry = DateTime.UtcNow.AddDays(expiryDays);
 
             var token = new JwtSecurityToken(
                 issuer,
@@ -99,7 +99,7 @@ namespace Stock_Exchange.Infrastructure.Services.Authentication
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expiry = DateTime.Now.AddDays(refreshDays);
+            var expiry = DateTime.UtcNow.AddDays(refreshDays);
 
             var token = new JwtSecurityToken(
                 issuer,

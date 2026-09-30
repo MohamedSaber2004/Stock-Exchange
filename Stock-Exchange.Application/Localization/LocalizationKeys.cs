@@ -97,6 +97,12 @@ namespace Stock_Exchange.Application.Localization
             public const string CurrentPasswordRequired = "AuthMessages.CurrentPasswordRequired";
             public const string PasswordChangeFailed = "AuthMessages.PasswordChangeFailed";
             public const string PasswordChangeSuccess = "AuthMessages.PasswordChangeSuccess";
+            public const string CannotDeleteSelf = "AuthMessages.CannotDeleteSelf";
+        }
+
+        public static class ActivityLogMessages
+        {
+            public const string ActivityLogNotFound = "ActivityLogMessages.ActivityLogNotFound";
         }
 
         public static class CountryMessages

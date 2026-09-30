@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -51,7 +51,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.RefreshToken
             var userRefreshToken = UserRefreshToken.Create(
                 user.Id,
                 newRefreshToken,
-                DateTime.Now.AddDays(_jwtSettings.RefreshTokenExpiryDays));
+                DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenExpiryDays));
 
             await _refreshTokenRepository.AddAsync(userRefreshToken);
             await _unitOfWork.SaveChangesAsync();

@@ -47,7 +47,7 @@ namespace Stock_Exchange.Domain.Entities
 
         public void MarkAsCreated(string createdBy)
         {
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.UtcNow;
             CreatedBy = createdBy ?? string.Empty;
             IsActive = true;
             IsDeleted = false;
@@ -55,13 +55,13 @@ namespace Stock_Exchange.Domain.Entities
 
         public void MarkAsUpdated(string updatedBy)
         {
-            UpdatedAt = DateTime.Now;
+            UpdatedAt = DateTime.UtcNow;
             UpdatedBy = updatedBy ?? string.Empty;
         }
 
         public void MarkAsDeleted(string deletedBy)
         {
-            DeletedAt = DateTime.Now;
+            DeletedAt = DateTime.UtcNow;
             DeletedBy = deletedBy ?? string.Empty;
             IsDeleted = true;
             IsActive = false;

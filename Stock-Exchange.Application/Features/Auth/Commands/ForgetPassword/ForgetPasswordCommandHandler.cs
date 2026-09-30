@@ -47,7 +47,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword
             var expiryMinutes = _emailSettings.VerificationCodeExpiryMinutes > 0
                 ? _emailSettings.VerificationCodeExpiryMinutes
                 : 10;
-            var expiryTime = DateTime.Now.AddMinutes(expiryMinutes);
+            var expiryTime = DateTime.UtcNow.AddMinutes(expiryMinutes);
 
             user.SetVerificationCode(otpCode, expiryTime);
 

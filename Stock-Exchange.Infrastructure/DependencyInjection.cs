@@ -15,6 +15,7 @@ using Stock_Exchange.Domain.Repositories.Interfaces;
 using Stock_Exchange.Domain.Repositories.Interfaces.Base;
 using Stock_Exchange.Infrastructure.Repositories.Implementations;
 using Stock_Exchange.Infrastructure.Repositories.Implementations.Base;
+using Stock_Exchange.Infrastructure.Services;
 using Stock_Exchange.Infrastructure.Services.Attachment;
 using Stock_Exchange.Infrastructure.Services.Authentication;
 using Stock_Exchange.Infrastructure.Services.Email;
@@ -71,6 +72,8 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<ISubscriptionPlanRepository, SubscriptionPlanRepository>();
             services.AddScoped<IPlanFeatureRepository, PlanFeatureRepository>();
             services.AddScoped<IExpertRepository, ExpertRepository>();
+            services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
+            services.AddScoped<IActivityLogService, ActivityLogService>();
 
             services.Configure<Application.Common.Options.IdentityOptions>(configuration.GetSection("IdentityOptions"));
             var identityOptionsConfig = configuration.GetSection("IdentityOptions").Get<Application.Common.Options.IdentityOptions>()

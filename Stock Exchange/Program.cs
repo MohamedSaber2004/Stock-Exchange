@@ -8,6 +8,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Stock_Exchange.Application;
+using Stock_Exchange.Application.Common.Converters;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Common.Options;
@@ -19,6 +20,8 @@ using Stock_Exchange.Persistance.Seeding;
 using Stock_Exchange.Services;
 using Stock_Exchange.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.AspNetCore.Identity;
+using Stock_Exchange.Domain.Entities;
 using System.Globalization;
 using System.Reflection;
 
@@ -129,6 +132,11 @@ namespace Stock_Exchange
             }
 
             builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new IsoUtcDateTimeConverter());
+                    options.JsonSerializerOptions.Converters.Add(new IsoUtcNullableDateTimeConverter());
+                })
                 .ConfigureApiBehaviorOptions(options =>
                 {
                     options.InvalidModelStateResponseFactory = context =>
@@ -274,7 +282,9 @@ namespace Stock_Exchange
                 try
                 {
                     var dbContext = services.GetRequiredService<StockExchangeDbContext>();
-                    await DataSeeder.SeedAllAsync(dbContext);
+                    var userManager = services.GetService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetService<RoleManager<IdentityRole<Guid>>>();
+                    await DataSeeder.SeedAllAsync(dbContext, userManager, roleManager);
                 }
                 catch (Exception ex)
                 {

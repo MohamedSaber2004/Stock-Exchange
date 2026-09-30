@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -228,13 +228,13 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
         private async Task<string> ResolveRefreshTokenAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
             var existingToken = await _refreshTokenRepository
-                .GetFirstAsync(x => x.UserId == user.Id && !x.IsRevoked && !x.IsDeleted && x.IsActive && x.ExpiryDate > DateTime.Now, cancellationToken);
+                .GetFirstAsync(x => x.UserId == user.Id && !x.IsRevoked && !x.IsDeleted && x.IsActive && x.ExpiryDate > DateTime.UtcNow, cancellationToken);
 
             if (existingToken is not null)
                 return existingToken.Token;
 
             var expiredTokens = await _refreshTokenRepository
-                .GetAllAsync(x => x.UserId == user.Id && (x.IsRevoked || x.ExpiryDate <= DateTime.Now))
+                .GetAllAsync(x => x.UserId == user.Id && (x.IsRevoked || x.ExpiryDate <= DateTime.UtcNow))
                 .ToListAsync(cancellationToken);
 
             foreach (var token in expiredTokens)
@@ -244,7 +244,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
             var userRefreshToken = UserRefreshToken.Create(
                 user.Id,
                 refreshToken,
-                DateTime.Now.AddDays(_jwtSettings.RefreshTokenExpiryDays));
+                DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenExpiryDays));
 
             await _refreshTokenRepository.AddAsync(userRefreshToken);
             await _unitOfWork.SaveChangesAsync();

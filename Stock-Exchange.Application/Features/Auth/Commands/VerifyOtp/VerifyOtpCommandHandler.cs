@@ -36,7 +36,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp
             if (string.IsNullOrWhiteSpace(user.VerificationCode) || user.VerificationCode != request.OtpCode)
                 throw new BadRequestException(LocalizationKeys.AuthMessages.InvalidVerificationCode);
 
-            if (user.VerificationCodeExpiry == null || user.VerificationCodeExpiry < DateTime.Now)
+            if (user.VerificationCodeExpiry == null || user.VerificationCodeExpiry < DateTime.UtcNow)
                 throw new BadRequestException(LocalizationKeys.AuthMessages.VerificationCodeExpired);
 
             var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
@@ -44,7 +44,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp
             var expiryMinutes = _emailSettings.VerificationCodeExpiryMinutes > 0
                 ? _emailSettings.VerificationCodeExpiryMinutes
                 : 10;
-            var expiryTime = DateTime.Now.AddMinutes(expiryMinutes);
+            var expiryTime = DateTime.UtcNow.AddMinutes(expiryMinutes);
 
             user.SetPasswordResetToken(resetToken, expiryTime);
 

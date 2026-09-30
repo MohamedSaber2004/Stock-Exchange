@@ -64,7 +64,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
             var accessToken = _jwtTokenService.GenerateAccessToken(user, roles);
 
             var existingToken = await _refreshTokenRepository
-                .GetFirstAsync(x => x.UserId == user.Id && !x.IsRevoked && !x.IsDeleted && x.IsActive && x.ExpiryDate > DateTime.Now, cancellationToken);
+                .GetFirstAsync(x => x.UserId == user.Id && !x.IsRevoked && !x.IsDeleted && x.IsActive && x.ExpiryDate > DateTime.UtcNow, cancellationToken);
 
             string refreshToken;
             if (existingToken != null)
@@ -74,7 +74,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
             else
             {
                 var expiredTokens = await _refreshTokenRepository
-                    .GetAllAsync(x => x.UserId == user.Id && (x.IsRevoked || x.ExpiryDate <= DateTime.Now))
+                    .GetAllAsync(x => x.UserId == user.Id && (x.IsRevoked || x.ExpiryDate <= DateTime.UtcNow))
                     .ToListAsync(cancellationToken);
 
                 foreach (var token in expiredTokens)
@@ -84,7 +84,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
                 var userRefreshToken = UserRefreshToken.Create(
                     user.Id,
                     refreshToken,
-                    DateTime.Now.AddDays(_jwtSettings.RefreshTokenExpiryDays));
+                    DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenExpiryDays));
 
                 await _refreshTokenRepository.AddAsync(userRefreshToken);
                 await _unitOfWork.SaveChangesAsync();

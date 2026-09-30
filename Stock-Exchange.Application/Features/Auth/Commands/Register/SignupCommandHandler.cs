@@ -110,7 +110,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
             var userRefreshToken = UserRefreshToken.Create(
                 user.Id,
                 refreshToken,
-                DateTime.Now.AddDays(_jwtSettings.RefreshTokenExpiryDays));
+                DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenExpiryDays));
 
             await _refreshTokenRepository.AddAsync(userRefreshToken);
             await _unitOfWork.SaveChangesAsync();

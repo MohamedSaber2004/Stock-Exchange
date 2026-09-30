@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -21,6 +21,7 @@ namespace Stock_Exchange.Persistance
             });
 
             services.AddScoped<IStockExchangeDbContext>(provider => provider.GetRequiredService<StockExchangeDbContext>());
+            services.AddScoped<Services.IActivityLogGenerator, Services.ActivityLogGenerator>();
 
             return services;
         }

@@ -134,6 +134,27 @@ namespace Stock_Exchange.Routes.V1
 
             public const string GetAll = "";
         }
+
+        public static class Users
+        {
+            public const string Base = BaseRoutes.Base + "/users";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "{id}";
+            public const string Delete = "{id}";
+            public const string ChangePassword = "{id}/change-password";
+        }
+
+        public static class ActivityLogs
+        {
+            public const string Base = BaseRoutes.Base + "/activity-logs";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
+            public const string Summary = "summary";
+        }
     }
 }
 

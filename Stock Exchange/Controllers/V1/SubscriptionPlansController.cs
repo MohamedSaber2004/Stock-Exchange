@@ -11,7 +11,6 @@ namespace Stock_Exchange.Controllers.V1;
 
 [ApiVersion("1.0")]
 [Route(ApiRoutes.SubscriptionPlans.Base)]
-[Route("api/v{version:apiVersion}/subscriptions")]
 public class SubscriptionPlansController : BaseController
 {
     /// <summary>

@@ -1,4 +1,4 @@
-﻿using Stock_Exchange.Application.Common.Interfaces;
+using Stock_Exchange.Application.Common.Interfaces;
 using System.Security.Claims;
 
 namespace Stock_Exchange.Services
@@ -29,9 +29,50 @@ namespace Stock_Exchange.Services
 
         public bool IsAuthenticated => User?.Identity?.IsAuthenticated ?? false;
 
-        public string? IpAddress => _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+        public string? IpAddress
+        {
+            get
+            {
+                var context = _httpContextAccessor.HttpContext;
+                if (context == null) return "127.0.0.1";
+
+                var forwardedFor = context.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+                if (!string.IsNullOrWhiteSpace(forwardedFor))
+                {
+                    var ips = forwardedFor.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                    if (ips.Length > 0 && !string.IsNullOrWhiteSpace(ips[0]))
+                    {
+                        return ips[0];
+                    }
+                }
+
+                var remoteIp = context.Connection.RemoteIpAddress?.ToString();
+                if (!string.IsNullOrWhiteSpace(remoteIp))
+                {
+                    if (remoteIp == "::1") return "127.0.0.1";
+                    return remoteIp;
+                }
+
+                return "127.0.0.1";
+            }
+        }
 
         public string CorrelationId => _httpContextAccessor.HttpContext?.TraceIdentifier ?? string.Empty;
+
+        public string? Email => User?.FindFirst(ClaimTypes.Email)?.Value
+            ?? User?.FindFirst("email")?.Value;
+
+        public string? FullName => User?.FindFirst("FullName")?.Value
+            ?? User?.FindFirst(ClaimTypes.Name)?.Value;
+
+        public string? Device
+        {
+            get
+            {
+                var userAgent = _httpContextAccessor.HttpContext?.Request.Headers["User-Agent"].ToString();
+                return ParseUserAgent(userAgent);
+            }
+        }
 
         public int? UserTypes
         {
@@ -42,6 +83,40 @@ namespace Stock_Exchange.Services
                     ? userTypes
                     : null;
             }
+        }
+
+        private static string ParseUserAgent(string? userAgent)
+        {
+            if (string.IsNullOrWhiteSpace(userAgent))
+                return "Unknown Device";
+
+            var browser = "Browser";
+            if (userAgent.Contains("Edg/", StringComparison.OrdinalIgnoreCase))
+                browser = "Edge";
+            else if (userAgent.Contains("Chrome", StringComparison.OrdinalIgnoreCase) && !userAgent.Contains("Edg", StringComparison.OrdinalIgnoreCase))
+                browser = "Chrome";
+            else if (userAgent.Contains("Safari", StringComparison.OrdinalIgnoreCase) && !userAgent.Contains("Chrome", StringComparison.OrdinalIgnoreCase))
+                browser = "Safari";
+            else if (userAgent.Contains("Firefox", StringComparison.OrdinalIgnoreCase))
+                browser = "Firefox";
+
+            var os = string.Empty;
+            if (userAgent.Contains("Windows NT 10.0", StringComparison.OrdinalIgnoreCase))
+                os = "Windows 11/10";
+            else if (userAgent.Contains("Windows", StringComparison.OrdinalIgnoreCase))
+                os = "Windows";
+            else if (userAgent.Contains("iPhone", StringComparison.OrdinalIgnoreCase))
+                os = "iPhone";
+            else if (userAgent.Contains("iPad", StringComparison.OrdinalIgnoreCase))
+                os = "iPad";
+            else if (userAgent.Contains("Macintosh", StringComparison.OrdinalIgnoreCase) || userAgent.Contains("Mac OS", StringComparison.OrdinalIgnoreCase))
+                os = "macOS";
+            else if (userAgent.Contains("Android", StringComparison.OrdinalIgnoreCase))
+                os = "Android";
+            else if (userAgent.Contains("Linux", StringComparison.OrdinalIgnoreCase))
+                os = "Linux";
+
+            return string.IsNullOrEmpty(os) ? browser : $"{browser} on {os}";
         }
     }
 }

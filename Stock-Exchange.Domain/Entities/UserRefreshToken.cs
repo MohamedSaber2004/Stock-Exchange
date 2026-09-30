@@ -20,6 +20,6 @@ namespace Stock_Exchange.Domain.Entities
 
         public void Revoke() => IsRevoked = true;
 
-        public bool IsValid => !IsRevoked && !IsDeleted && IsActive && ExpiryDate > DateTime.Now;
+        public bool IsValid => !IsRevoked && !IsDeleted && IsActive && ExpiryDate > DateTime.UtcNow;
     }
 }

@@ -1,4 +1,4 @@
-﻿using Stock_Exchange.Domain.Common.Base;
+using Stock_Exchange.Domain.Common.Base;
 using System.ComponentModel.DataAnnotations;
 
 namespace Stock_Exchange.Domain.Common
@@ -16,7 +16,7 @@ namespace Stock_Exchange.Domain.Common
         [Timestamp]
         public byte[]? Version { get; internal set; }
 
-        public static DateTime AppNow => DateTime.Now;
+        public static DateTime AppNow => DateTime.UtcNow;
 
         public void Deactive()
         {
@@ -50,9 +50,9 @@ namespace Stock_Exchange.Domain.Common
             UpdatedBy = updatedBy;
         }
 
-        public virtual void MarkAsCreated(string createdBy)
+        public virtual void MarkAsCreated(string createdBy, DateTime? createdAt = null)
         {
-            CreatedAt = AppNow;
+            CreatedAt = createdAt ?? AppNow;
             CreatedBy = createdBy;
             IsActive = true;
             IsDeleted = false;

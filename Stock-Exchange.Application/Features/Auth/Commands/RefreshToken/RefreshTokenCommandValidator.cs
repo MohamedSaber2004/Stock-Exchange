@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Entities;
@@ -84,7 +84,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.RefreshToken
         private async Task<bool> TokenNotExpired(string token, CancellationToken cancellationToken)
         {
             var storedToken = await GetTokenAsync(token, cancellationToken);
-            return storedToken is null || storedToken.ExpiryDate > DateTime.Now;
+            return storedToken is null || storedToken.ExpiryDate > DateTime.UtcNow;
         }
 
         private async Task<bool> TokenIsUsable(string token, CancellationToken cancellationToken)

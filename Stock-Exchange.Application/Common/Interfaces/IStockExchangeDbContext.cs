@@ -26,6 +26,8 @@ namespace Stock_Exchange.Application.Common.Interfaces
         DbSet<SubscriptionPlan> SubscriptionPlans { get; }
         DbSet<PlanFeature> PlanFeatures { get; }
         DbSet<Expert> Experts { get; }
+        DbSet<ApplicationUser> Users { get; }
+        DbSet<ActivityLog> ActivityLogs { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
