@@ -111,7 +111,7 @@
           }
         ]
       },
-      "put": {
+      "patch": {
         "tags": [
           "AboutUs"
         ],
@@ -2111,11 +2111,11 @@
       }
     },
     "/api/v1/authentication/update/myprofile": {
-      "put": {
+      "patch": {
         "tags": [
           "Authentication"
         ],
-        "summary": "Updates the authenticated user's profile information.",
+        "summary": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
         "parameters": [
           {
             "name": "Accept-Language",
@@ -2132,7 +2132,7 @@
           }
         ],
         "requestBody": {
-          "description": "The updated profile details including full name, email, phone number, and country ID.",
+          "description": "The profile details to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -2281,6 +2281,155 @@
                       "data": null,
                       "message": "The requested resource was not found.",
                       "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/authentication/my-profile": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get User Profile information for the authenticated user.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "fullName": "string",
+                        "email": "string",
+                        "phoneNumber": "string",
+                        "phoneCode": "string",
+                        "profilePictureUrl": "string",
+                        "language": "ar"
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileDtoApiResponse"
+                },
+                "examples": {
+                  "missingOrMalformed": {
+                    "summary": "Missing or malformed token",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "You are not authorized to perform this action."
+                        ]
+                      },
+                      "data": null,
+                      "message": "You are not authorized to perform this action.",
+                      "statusCode": 401
+                    }
+                  },
+                  "expiredOrRevokedSession": {
+                    "summary": "Expired session — log in (or refresh) again",
+                    "description": "The access token expired, was killed by logout/refresh rotation, or belongs to a deactivated account. Obtain a new token via login or refresh-token.",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "You are not authorized to perform this action."
+                        ]
+                      },
+                      "data": null,
+                      "message": "You are not authorized to perform this action.",
+                      "statusCode": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileDtoApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
                     }
                   }
                 }
@@ -3556,141 +3705,6 @@
           }
         ]
       },
-      "put": {
-        "tags": [
-          "PrivacyPolicy"
-        ],
-        "summary": "Creates or updates the privacy policy content and its sections.",
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The privacy policy titles and sections to update.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePrivacyCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePrivacyCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePrivacyCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Privacy policy saved successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PrivacyPolicyDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "titleEn": "string",
-                        "titleAr": "string",
-                        "descriptionEn": "string",
-                        "descriptionAr": "string",
-                        "sections": [
-                          {
-                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                            "titleEn": "string",
-                            "titleAr": "string",
-                            "contentEn": "string",
-                            "contentAr": "string",
-                            "displayOrder": 0
-                          }
-                        ]
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more fields exceed the allowed length or are invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PrivacyPolicyDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "The caller is not authenticated."
-          },
-          "403": {
-            "description": "The caller is not authorized."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
       "patch": {
         "tags": [
           "PrivacyPolicy"
@@ -4590,6 +4604,14 @@
         },
         "additionalProperties": false
       },
+      "Language": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "LoginCommand": {
         "type": "object",
         "properties": {
@@ -5034,7 +5056,78 @@
           },
           "countryId": {
             "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "language": {
+            "$ref": "#/components/schemas/Language"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserProfileDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
             "format": "uuid"
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "profilePictureUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "language": {
+            "$ref": "#/components/schemas/Language"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserProfileDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserProfileDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
