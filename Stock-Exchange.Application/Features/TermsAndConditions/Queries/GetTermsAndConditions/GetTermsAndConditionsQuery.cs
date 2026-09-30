@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
+using Stock_Exchange.Application.Common.Models;
+using Stock_Exchange.Application.Features.TermsAndConditions.DTOs;
 
 namespace Stock_Exchange.Application.Features.TermsAndConditions.Queries.GetTermsAndConditions
 {
-    internal class GetTermsAndConditionsQuery
+    public class GetTermsAndConditionsQuery : IRequest<Result<TermsAndConditionsDto>>
     {
     }
 }

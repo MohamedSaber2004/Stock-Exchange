@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
 
 namespace Stock_Exchange.Application.Features.TermsAndConditions.Queries.GetTermsAndConditions
 {
-    internal class GetTermsAndConditionsQueryValidator
+    public class GetTermsAndConditionsQueryValidator : AbstractValidator<GetTermsAndConditionsQuery>
     {
+        public GetTermsAndConditionsQueryValidator()
+        {
+        }
     }
 }

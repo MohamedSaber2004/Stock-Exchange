@@ -29,7 +29,6 @@
     <Folder Include="Features\HelpCenterCategories\DTOs\" />
     <Folder Include="Features\HelpCenter\DTOs\" />
     <Folder Include="Features\PrivacyPolicy\DTOs\" />
-    <Folder Include="Features\TermsAndConditions\DTOs\" />
     <Folder Include="Localization\" />
   </ItemGroup>
 

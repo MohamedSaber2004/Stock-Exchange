@@ -45,7 +45,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
                         .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired)
                         .MaximumLength(150)
                         .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired)
-                        .When(x => x.FullName != null);
+                        .When(x => x.FullName != null, ApplyConditionTo.AllValidators);
 
                     RuleFor(x => x.CountryId)
                         .NotEmpty()
@@ -60,7 +60,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
                                 cancellationToken);
                         })
                         .WithMessage(LocalizationKeys.CountryMessages.CountryNotFound)
-                        .When(x => x.CountryId.HasValue);
+                        .When(x => x.CountryId.HasValue, ApplyConditionTo.AllValidators);
 
                     RuleFor(x => x.Email)
                         .NotEmpty()
@@ -85,7 +85,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
                             return !isTakenByOther;
                         })
                         .WithMessage(LocalizationKeys.AuthMessages.EmailAlreadyExists)
-                        .When(x => x.Email != null);
+                        .When(x => x.Email != null, ApplyConditionTo.AllValidators);
 
                     RuleFor(x => x.PhoneNumber)
                         .NotEmpty()
@@ -111,11 +111,11 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
                             return !isTakenByOther;
                         })
                         .WithMessage(LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists)
-                        .When(x => x.PhoneNumber != null);
+                        .When(x => x.PhoneNumber != null, ApplyConditionTo.AllValidators);
 
                     RuleFor(x => x.Language)
                         .IsInEnum()
-                        .When(x => x.Language.HasValue);
+                        .When(x => x.Language.HasValue, ApplyConditionTo.AllValidators);
                 });
         }
 

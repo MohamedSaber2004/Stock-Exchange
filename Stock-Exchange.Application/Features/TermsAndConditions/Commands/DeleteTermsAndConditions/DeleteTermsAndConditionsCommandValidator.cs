@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.TermsAndConditions.Commands.DeleteTermsAndConditions
 {
-    internal class DeleteTermsAndConditionsCommandValidator
+    public class DeleteTermsAndConditionsCommandValidator : AbstractValidator<DeleteTermsAndConditionsCommand>
     {
+        public DeleteTermsAndConditionsCommandValidator()
+        {
+            RuleFor(x => x.Id)
+                .Must(id => !id.HasValue || id.Value != Guid.Empty)
+                .WithMessage(LocalizationKeys.TermsAndConditionsMessages.TermsAndConditionsIdRequired);
+        }
     }
 }

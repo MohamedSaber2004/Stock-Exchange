@@ -145,6 +145,19 @@ namespace Stock_Exchange.Application.Localization
             public const string SectionContentTooLong = "PrivacyPolicyMessages.SectionContentTooLong";
         }
 
+        public static class TermsAndConditionsMessages
+        {
+            public const string TermsAndConditionsNotFound = "TermsAndConditionsMessages.TermsAndConditionsNotFound";
+            public const string TitleRequired = "TermsAndConditionsMessages.TitleRequired";
+            public const string TitleTooLong = "TermsAndConditionsMessages.TitleTooLong";
+            public const string DescriptionTooLong = "TermsAndConditionsMessages.DescriptionTooLong";
+            public const string SectionTitleRequired = "TermsAndConditionsMessages.SectionTitleRequired";
+            public const string SectionTitleTooLong = "TermsAndConditionsMessages.SectionTitleTooLong";
+            public const string SectionContentRequired = "TermsAndConditionsMessages.SectionContentRequired";
+            public const string SectionContentTooLong = "TermsAndConditionsMessages.SectionContentTooLong";
+            public const string TermsAndConditionsIdRequired = "TermsAndConditionsMessages.TermsAndConditionsIdRequired";
+        }
+
         public static class EmailMessages
         {
             public const string ResetPasswordSubject = "EmailMessages.ResetPasswordSubject";

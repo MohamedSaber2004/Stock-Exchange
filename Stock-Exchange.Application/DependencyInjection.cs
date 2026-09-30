@@ -34,6 +34,9 @@ using Stock_Exchange.Application.Features.Auth.Queries.GetUserProfile;
 using Stock_Exchange.Application.Features.PrivacyPolicy.Commands.DeletePrivacy;
 using Stock_Exchange.Application.Features.PrivacyPolicy.Commands.UpdatePrivacy;
 using Stock_Exchange.Application.Features.PrivacyPolicy.Queries.GetPrivacy;
+using Stock_Exchange.Application.Features.TermsAndConditions.Commands.DeleteTermsAndConditions;
+using Stock_Exchange.Application.Features.TermsAndConditions.Commands.UpdateTermsAndConditions;
+using Stock_Exchange.Application.Features.TermsAndConditions.Queries.GetTermsAndConditions;
 using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application
@@ -88,6 +91,9 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<GetPrivacyQuery>, GetPrivacyQueryValidator>();
             services.AddTransient<IValidator<UpdatePrivacyCommand>, UpdatePrivacyCommandValidator>();
             services.AddTransient<IValidator<DeletePrivacyCommand>, DeletePrivacyCommandValidator>();
+            services.AddTransient<IValidator<GetTermsAndConditionsQuery>, GetTermsAndConditionsQueryValidator>();
+            services.AddTransient<IValidator<UpdateTermsAndConditionsCommand>, UpdateTermsAndConditionsCommandValidator>();
+            services.AddTransient<IValidator<DeleteTermsAndConditionsCommand>, DeleteTermsAndConditionsCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

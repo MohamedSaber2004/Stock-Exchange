@@ -73,6 +73,11 @@ namespace Stock_Exchange.Routes.V1
         public static class TermsAndConditions
         {
             public const string Base = BaseRoutes.Base + "/terms-and-conditions";
+
+            public const string Get = "";
+            public const string Update = "";
+            public const string Delete = "";
+            public const string DeleteById = "{id}";
         }
 
         public static class Countries
