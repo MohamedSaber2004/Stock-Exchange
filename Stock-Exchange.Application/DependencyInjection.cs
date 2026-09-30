@@ -30,6 +30,9 @@ using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo;
 using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
+using Stock_Exchange.Application.Features.PrivacyPolicy.Commands.DeletePrivacy;
+using Stock_Exchange.Application.Features.PrivacyPolicy.Commands.UpdatePrivacy;
+using Stock_Exchange.Application.Features.PrivacyPolicy.Queries.GetPrivacy;
 using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application
@@ -80,6 +83,9 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<GetAllHelpCenterCategoriesQuery>, GetAllHelpCenterCategoriesQueryValidator>();
             services.AddTransient<IValidator<GetHelpCenterCategoryByIdQuery>, GetHelpCenterCategoryByIdQueryValidator>();
             services.AddTransient<IValidator<GetAllHelpCenterCategoryQueryById>, GetAllHelpCenterCategoryQueryValidatorById>();
+            services.AddTransient<IValidator<GetPrivacyQuery>, GetPrivacyQueryValidator>();
+            services.AddTransient<IValidator<UpdatePrivacyCommand>, UpdatePrivacyCommandValidator>();
+            services.AddTransient<IValidator<DeletePrivacyCommand>, DeletePrivacyCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

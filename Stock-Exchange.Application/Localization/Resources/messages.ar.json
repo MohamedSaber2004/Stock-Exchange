@@ -116,6 +116,16 @@
     "ContentTooLong": "يجب ألا يزيد طول المحتوى عن 4000 حرف.",
     "SearchTooLong": "يجب ألا يزيد طول كلمة البحث عن 200 حرف."
   },
+  "PrivacyPolicyMessages": {
+    "PrivacyPolicyNotFound": "سياسة الخصوصية غير موجودة.",
+    "TitleRequired": "العنوان مطلوب بإحدى اللغتين على الأقل.",
+    "TitleTooLong": "يجب ألا يزيد طول العنوان عن 200 حرف.",
+    "DescriptionTooLong": "يجب ألا يزيد طول الوصف عن 4000 حرف.",
+    "SectionTitleRequired": "عنوان القسم مطلوب بإحدى اللغتين على الأقل.",
+    "SectionTitleTooLong": "يجب ألا يزيد طول عنوان القسم عن 250 حرف.",
+    "SectionContentRequired": "محتوى القسم مطلوب بإحدى اللغتين على الأقل.",
+    "SectionContentTooLong": "يجب ألا يزيد طول محتوى القسم عن 8000 حرف."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"
   },

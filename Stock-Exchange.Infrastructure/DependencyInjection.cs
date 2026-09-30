@@ -59,6 +59,8 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<IAboutUsFeatureRepository, AboutUsFeatureRepository>();
             services.AddScoped<IHelpCenterRepository, HelpCenterRepository>();
             services.AddScoped<IHelpCenterCategoryRepository, HelpCenterCategoryRepository>();
+            services.AddScoped<IPrivacyPolicyRepository, PrivacyPolicyRepository>();
+            services.AddScoped<IPrivacyPolicySectionRepository, PrivacyPolicySectionRepository>();
 
             services.Configure<Application.Common.Options.IdentityOptions>(configuration.GetSection("IdentityOptions"));
             var identityOptionsConfig = configuration.GetSection("IdentityOptions").Get<Application.Common.Options.IdentityOptions>()

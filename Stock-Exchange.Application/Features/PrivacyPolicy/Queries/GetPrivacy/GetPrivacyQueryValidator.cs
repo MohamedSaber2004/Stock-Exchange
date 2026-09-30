@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
 
 namespace Stock_Exchange.Application.Features.PrivacyPolicy.Queries.GetPrivacy
 {
-    internal class GetPrivacyQueryValidator
+    public class GetPrivacyQueryValidator : AbstractValidator<GetPrivacyQuery>
     {
+        public GetPrivacyQueryValidator()
+        {
+        }
     }
 }

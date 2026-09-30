@@ -63,6 +63,11 @@ namespace Stock_Exchange.Routes.V1
         public static class PrivacyPolicy
         {
             public const string Base = BaseRoutes.Base + "/privacy-policy";
+
+            public const string Get = "";
+            public const string Update = "";
+            public const string Delete = "";
+            public const string DeleteById = "{id}";
         }
 
         public static class TermsAndConditions

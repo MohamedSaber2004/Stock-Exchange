@@ -19,6 +19,8 @@ namespace Stock_Exchange.Persistance
         public DbSet<AboutUsFeature> AboutUsFeatures { get; set; }
         public DbSet<HelpCenter> HelpCenters { get; set; }
         public DbSet<HelpCenterCategory> HelpCenterCategories { get; set; }
+        public DbSet<PrivacyPolicy> PrivacyPolicies { get; set; }
+        public DbSet<PrivacyPolicySection> PrivacyPolicySections { get; set; }
 
         public StockExchangeDbContext(ICurrentUserService currentUserService, DbContextOptions<StockExchangeDbContext> options)
             : base(options)

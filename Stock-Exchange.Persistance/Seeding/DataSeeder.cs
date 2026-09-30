@@ -9,6 +9,7 @@ namespace Stock_Exchange.Persistance.Seeding
             await AboutUsFeatureSeeder.SeedFeaturesAsync(context);
             await HelpCenterCategorySeeder.SeedCategoriesAsync(context);
             await HelpCenterSeeder.SeedHelpCenterAsync(context);
+            await PrivacyPolicySeeder.SeedPrivacyPolicyAsync(context);
         }
     }
 }

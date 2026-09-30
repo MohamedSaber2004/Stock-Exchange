@@ -14,6 +14,8 @@ namespace Stock_Exchange.Application.Common.Interfaces
         DbSet<AboutUsFeature> AboutUsFeatures { get; }
         DbSet<HelpCenter> HelpCenters { get; }
         DbSet<HelpCenterCategory> HelpCenterCategories { get; }
+        DbSet<PrivacyPolicy> PrivacyPolicies { get; }
+        DbSet<PrivacyPolicySection> PrivacyPolicySections { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

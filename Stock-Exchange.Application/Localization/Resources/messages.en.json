@@ -116,6 +116,16 @@
     "ContentTooLong": "The content cannot exceed 4000 characters.",
     "SearchTooLong": "The search term cannot exceed 200 characters."
   },
+  "PrivacyPolicyMessages": {
+    "PrivacyPolicyNotFound": "The privacy policy was not found.",
+    "TitleRequired": "The title is required in at least one language.",
+    "TitleTooLong": "The title cannot exceed 200 characters.",
+    "DescriptionTooLong": "The description cannot exceed 4000 characters.",
+    "SectionTitleRequired": "The section title is required in at least one language.",
+    "SectionTitleTooLong": "The section title cannot exceed 250 characters.",
+    "SectionContentRequired": "The section content is required in at least one language.",
+    "SectionContentTooLong": "The section content cannot exceed 8000 characters."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"
   },

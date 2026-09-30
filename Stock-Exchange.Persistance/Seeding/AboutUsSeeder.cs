@@ -5,10 +5,20 @@ namespace Stock_Exchange.Persistance.Seeding
 {
     public static class AboutUsSeeder
     {
+        public const string DefaultSupportEmail = "support@stockexchange.com";
+
         public static async Task SeedAboutUsAsync(StockExchangeDbContext context)
         {
-            if (await context.AboutUs.AnyAsync())
+            var existing = await context.AboutUs.FirstOrDefaultAsync();
+
+            if (existing is not null)
             {
+                if (string.IsNullOrWhiteSpace(existing.SupportEmail))
+                {
+                    existing.SupportEmail = DefaultSupportEmail;
+                    await context.SaveChangesAsync();
+                }
+
                 return;
             }
 
@@ -20,7 +30,7 @@ namespace Stock_Exchange.Persistance.Seeding
                 MissionAr = "تمكين الأفراد والمؤسسات من تنمية ثرواتهم وتحقيق الاستقلال المالي عبر التقنيات المبتكرة وبيانات السوق الموثوقة وفرص الاستثمار المتاحة للجميع.",
                 VisionEn = "To become the leading and most trusted global digital financial exchange, setting the highest standards for market integrity, security, and continuous technological innovation.",
                 VisionAr = "أن نكون المنصة المالية الرقمية الرائدة والأكثر موثوقية عالمياً، مع وضع أعلى معايير النزاهة والأمان والابتكار التقني المستمر في الأسواق المالية.",
-                SupportEmail = "support@stockexchange.com"
+                SupportEmail = DefaultSupportEmail
             };
 
             await context.AboutUs.AddAsync(aboutUs);

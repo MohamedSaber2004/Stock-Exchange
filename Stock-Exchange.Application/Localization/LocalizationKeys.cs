@@ -133,6 +133,18 @@ namespace Stock_Exchange.Application.Localization
             public const string SearchTooLong = "HelpCenterMessages.SearchTooLong";
         }
 
+        public static class PrivacyPolicyMessages
+        {
+            public const string PrivacyPolicyNotFound = "PrivacyPolicyMessages.PrivacyPolicyNotFound";
+            public const string TitleRequired = "PrivacyPolicyMessages.TitleRequired";
+            public const string TitleTooLong = "PrivacyPolicyMessages.TitleTooLong";
+            public const string DescriptionTooLong = "PrivacyPolicyMessages.DescriptionTooLong";
+            public const string SectionTitleRequired = "PrivacyPolicyMessages.SectionTitleRequired";
+            public const string SectionTitleTooLong = "PrivacyPolicyMessages.SectionTitleTooLong";
+            public const string SectionContentRequired = "PrivacyPolicyMessages.SectionContentRequired";
+            public const string SectionContentTooLong = "PrivacyPolicyMessages.SectionContentTooLong";
+        }
+
         public static class EmailMessages
         {
             public const string ResetPasswordSubject = "EmailMessages.ResetPasswordSubject";

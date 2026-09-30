@@ -46,7 +46,6 @@ public class AboutUsController : BaseController
     /// <response code="400">One or more fields exceed the allowed length or are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     [HttpPut]
-    [HttpPatch]
     [Route(ApiRoutes.AboutUs.Update)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status200OK)]

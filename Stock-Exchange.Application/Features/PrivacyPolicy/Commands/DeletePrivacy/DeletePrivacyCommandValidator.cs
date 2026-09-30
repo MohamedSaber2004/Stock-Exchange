@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
 
 namespace Stock_Exchange.Application.Features.PrivacyPolicy.Commands.DeletePrivacy
 {
-    internal class DeletePrivacyCommandValidator
+    public class DeletePrivacyCommandValidator : AbstractValidator<DeletePrivacyCommand>
     {
+        public DeletePrivacyCommandValidator()
+        {
+            RuleFor(x => x.Id)
+                .Must(id => !id.HasValue || id.Value != Guid.Empty)
+                .WithMessage("Id cannot be empty when provided.");
+        }
     }
 }
