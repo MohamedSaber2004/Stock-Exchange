@@ -8497,7 +8497,7 @@
         {
           "name": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept-Language",
@@ -8539,7 +8539,7 @@
             {
               "name": "200 News items updated successfully. - success",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -8591,7 +8591,7 @@
             {
               "name": "400 One or more fields are invalid. - validationError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -8643,7 +8643,7 @@
             {
               "name": "400 One or more fields are invalid. - businessError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -8695,7 +8695,7 @@
             {
               "name": "401 The caller is not authenticated. - missingOrMalformed",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -8747,7 +8747,7 @@
             {
               "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -8799,7 +8799,7 @@
             {
               "name": "403 The caller is not authorized as Admin. - error",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -8853,7 +8853,7 @@
         {
           "name": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept-Language",
@@ -8895,7 +8895,7 @@
             {
               "name": "200 Services updated successfully. - success",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -8947,7 +8947,7 @@
             {
               "name": "400 One or more fields are invalid. - validationError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -8999,7 +8999,7 @@
             {
               "name": "400 One or more fields are invalid. - businessError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9051,7 +9051,7 @@
             {
               "name": "401 The caller is not authenticated. - missingOrMalformed",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9103,7 +9103,7 @@
             {
               "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9155,7 +9155,7 @@
             {
               "name": "403 The caller is not authorized as Admin. - error",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9209,7 +9209,7 @@
         {
           "name": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept-Language",
@@ -9251,7 +9251,7 @@
             {
               "name": "200 Articles updated successfully. - success",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9303,7 +9303,7 @@
             {
               "name": "400 One or more fields are invalid. - validationError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9355,7 +9355,7 @@
             {
               "name": "400 One or more fields are invalid. - businessError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9407,7 +9407,7 @@
             {
               "name": "401 The caller is not authenticated. - missingOrMalformed",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9459,7 +9459,7 @@
             {
               "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9511,7 +9511,7 @@
             {
               "name": "403 The caller is not authorized as Admin. - error",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9565,7 +9565,7 @@
         {
           "name": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept-Language",
@@ -9607,7 +9607,7 @@
             {
               "name": "200 Videos updated successfully. - success",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9659,7 +9659,7 @@
             {
               "name": "400 One or more fields are invalid. - validationError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9711,7 +9711,7 @@
             {
               "name": "400 One or more fields are invalid. - businessError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9763,7 +9763,7 @@
             {
               "name": "401 The caller is not authenticated. - missingOrMalformed",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9815,7 +9815,7 @@
             {
               "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9867,7 +9867,7 @@
             {
               "name": "403 The caller is not authorized as Admin. - error",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -9921,7 +9921,7 @@
         {
           "name": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept-Language",
@@ -9963,7 +9963,7 @@
             {
               "name": "200 Subscription plans updated successfully. - success",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10015,7 +10015,7 @@
             {
               "name": "400 One or more fields are invalid. - validationError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10067,7 +10067,7 @@
             {
               "name": "400 One or more fields are invalid. - businessError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10119,7 +10119,7 @@
             {
               "name": "401 The caller is not authenticated. - missingOrMalformed",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10171,7 +10171,7 @@
             {
               "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10223,7 +10223,7 @@
             {
               "name": "403 The caller is not authorized as Admin. - error",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10277,7 +10277,7 @@
         {
           "name": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept-Language",
@@ -10319,7 +10319,7 @@
             {
               "name": "200 Experts updated successfully. - success",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10371,7 +10371,7 @@
             {
               "name": "400 One or more fields are invalid. - validationError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10423,7 +10423,7 @@
             {
               "name": "400 One or more fields are invalid. - businessError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10475,7 +10475,7 @@
             {
               "name": "401 The caller is not authenticated. - missingOrMalformed",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10527,7 +10527,7 @@
             {
               "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -10579,7 +10579,7 @@
             {
               "name": "403 The caller is not authorized as Admin. - error",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
