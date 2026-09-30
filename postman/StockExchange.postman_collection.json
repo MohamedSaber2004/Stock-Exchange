@@ -4639,7 +4639,7 @@
           },
           "response": [
             {
-              "name": "200 OK - success",
+              "name": "200 User profile retrieved successfully. - success",
               "originalRequest": {
                 "method": "GET",
                 "header": [
@@ -4666,7 +4666,7 @@
                 "description": "Get User Profile information for the authenticated user.",
                 "body": null
               },
-              "status": "OK",
+              "status": "User profile retrieved successfully.",
               "code": 200,
               "header": [
                 {
@@ -4678,7 +4678,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "name": "401 Unauthorized - missingOrMalformed",
+              "name": "401 User is not authenticated. - missingOrMalformed",
               "originalRequest": {
                 "method": "GET",
                 "header": [
@@ -4705,7 +4705,7 @@
                 "description": "Get User Profile information for the authenticated user.",
                 "body": null
               },
-              "status": "Unauthorized",
+              "status": "User is not authenticated.",
               "code": 401,
               "header": [
                 {
@@ -4717,7 +4717,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "name": "401 Unauthorized - expiredOrRevokedSession",
+              "name": "401 User is not authenticated. - expiredOrRevokedSession",
               "originalRequest": {
                 "method": "GET",
                 "header": [
@@ -4744,7 +4744,7 @@
                 "description": "Get User Profile information for the authenticated user.",
                 "body": null
               },
-              "status": "Unauthorized",
+              "status": "User is not authenticated.",
               "code": 401,
               "header": [
                 {
@@ -4756,7 +4756,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "name": "400 Bad Request - validationError",
+              "name": "400 Validation error occurred. - validationError",
               "originalRequest": {
                 "method": "GET",
                 "header": [
@@ -4783,7 +4783,7 @@
                 "description": "Get User Profile information for the authenticated user.",
                 "body": null
               },
-              "status": "Bad Request",
+              "status": "Validation error occurred.",
               "code": 400,
               "header": [
                 {
@@ -4795,7 +4795,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "name": "400 Bad Request - businessError",
+              "name": "400 Validation error occurred. - businessError",
               "originalRequest": {
                 "method": "GET",
                 "header": [
@@ -4822,7 +4822,7 @@
                 "description": "Get User Profile information for the authenticated user.",
                 "body": null
               },
-              "status": "Bad Request",
+              "status": "Validation error occurred.",
               "code": 400,
               "header": [
                 {
