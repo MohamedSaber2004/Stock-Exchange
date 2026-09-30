@@ -23,6 +23,14 @@ namespace Stock_Exchange.Persistance
         public DbSet<PrivacyPolicySection> PrivacyPolicySections { get; set; }
         public DbSet<TermsAndConditions> TermsAndConditions { get; set; }
         public DbSet<TermsAndConditionsSection> TermsAndConditionsSections { get; set; }
+        public DbSet<Home> Homes { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
+        public DbSet<PlanFeature> PlanFeatures { get; set; }
+        public DbSet<Expert> Experts { get; set; }
 
         public StockExchangeDbContext(ICurrentUserService currentUserService, DbContextOptions<StockExchangeDbContext> options)
             : base(options)

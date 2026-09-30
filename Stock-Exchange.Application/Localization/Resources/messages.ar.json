@@ -140,6 +140,12 @@
     "SectionContentTooLong": "يجب ألا يزيد طول محتوى القسم عن 8000 حرف.",
     "TermsAndConditionsIdRequired": "مُعرف الشروط والأحكام مطلوب"
   },
+  "HomeMessages": {
+    "HomeNotFound": "إعدادات الصفحة الرئيسية غير موجودة.",
+    "HeroTitleTooLong": "يجب ألا يزيد طول العنوان الرئيسي عن 500 حرف.",
+    "HeroSubtitleTooLong": "يجب ألا يزيد طول العنوان الفرعي عن 2000 حرف.",
+    "HeroImageUrlTooLong": "يجب ألا يزيد طول رابط الصورة عن 1024 حرف."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"
   },

@@ -7958,6 +7958,3030 @@
       ]
     },
     {
+      "name": "Home",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves the aggregated home feed for the authenticated user, including greeting name,\r\nhero banner, latest news, services, articles, featured videos, subscription plans, and experts.\r\nThe response language is determined by the Accept-Language request header.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Retrieves the aggregated home feed for the authenticated user, including greeting name,\r\nhero banner, latest news, services, articles, featured videos, subscription plans, and experts.\r\nThe response language is determined by the Accept-Language request header.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Home feed retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves the aggregated home feed for the authenticated user, including greeting name,\r\nhero banner, latest news, services, articles, featured videos, subscription plans, and experts.\r\nThe response language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "Home feed retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"greetingName\": \"string\",\n    \"hero\": {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"subtitleEn\": \"string\",\n      \"subtitleAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"title\": \"string\",\n      \"subtitle\": \"string\"\n    },\n    \"latestNews\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"summaryEn\": \"string\",\n        \"summaryAr\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"publishedAt\": \"2026-09-26T22:32:00\",\n        \"title\": \"string\",\n        \"summary\": \"string\",\n        \"category\": \"string\"\n      }\n    ],\n    \"services\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"iconName\": \"string\",\n        \"imageUrl\": \"string\",\n        \"linkRoute\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"articles\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"excerptEn\": \"string\",\n        \"excerptAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"authorName\": \"string\",\n        \"readMinutes\": 0,\n        \"publishedAt\": \"2026-09-26T22:32:00\",\n        \"title\": \"string\",\n        \"excerpt\": \"string\"\n      }\n    ],\n    \"videos\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"videoUrl\": \"string\",\n        \"instructorName\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"isPreviewable\": true,\n        \"isFeaturedOnHome\": true,\n        \"title\": \"string\",\n        \"category\": \"string\"\n      }\n    ],\n    \"plans\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"nameEn\": \"string\",\n        \"nameAr\": \"string\",\n        \"priceEgp\": 0,\n        \"period\": \"string\",\n        \"isHighlighted\": true,\n        \"displayOrder\": 0,\n        \"features\": [\n          \"...\"\n        ],\n        \"featureItems\": [\n          \"...\"\n        ],\n        \"name\": \"string\"\n      }\n    ],\n    \"experts\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"fullNameEn\": \"string\",\n        \"fullNameAr\": \"string\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"avatarUrl\": \"string\",\n        \"fullName\": \"string\",\n        \"title\": \"string\"\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves the aggregated home feed for the authenticated user, including greeting name,\r\nhero banner, latest news, services, articles, featured videos, subscription plans, and experts.\r\nThe response language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves the aggregated home feed for the authenticated user, including greeting name,\r\nhero banner, latest news, services, articles, featured videos, subscription plans, and experts.\r\nThe response language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves the aggregated home feed for the authenticated user, including greeting name,\r\nhero banner, latest news, services, articles, featured videos, subscription plans, and experts.\r\nThe response language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Home hero section updated successfully. - success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Home hero section updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"subtitleEn\": \"string\",\n    \"subtitleAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"title\": \"string\",\n    \"subtitle\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 The caller is not authorized as Admin. - error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized as Admin.",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You do not have permission to access this resource.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You do not have permission to access this resource.\",\n  \"statusCode\": 403\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "name": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home/hero",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home",
+                "hero"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Home hero section updated successfully. - success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/hero",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "hero"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Home hero section updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"subtitleEn\": \"string\",\n    \"subtitleAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"title\": \"string\",\n    \"subtitle\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/hero",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "hero"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/hero",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "hero"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/hero",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "hero"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/hero",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "hero"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 The caller is not authorized as Admin. - error",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/hero",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "hero"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Partially updates the Home hero section (admin only).\r\nFields provided as null will remain unchanged.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"heroTitleEn\": \"string\",\n  \"heroTitleAr\": \"string\",\n  \"heroSubtitleEn\": \"string\",\n  \"heroSubtitleAr\": \"string\",\n  \"heroImageUrl\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized as Admin.",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You do not have permission to access this resource.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You do not have permission to access this resource.\",\n  \"statusCode\": 403\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "name": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home/news",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home",
+                "news"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"summaryEn\": \"string\",\n      \"summaryAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 News items updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"summaryEn\": \"string\",\n      \"summaryAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "News items updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"summaryEn\": \"string\",\n      \"summaryAr\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"publishedAt\": \"2026-09-26T22:32:00\",\n      \"title\": \"string\",\n      \"summary\": \"string\",\n      \"category\": \"string\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"summaryEn\": \"string\",\n      \"summaryAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"summaryEn\": \"string\",\n      \"summaryAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"summaryEn\": \"string\",\n      \"summaryAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"summaryEn\": \"string\",\n      \"summaryAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 The caller is not authorized as Admin. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of latest news items displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed news items.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"summaryEn\": \"string\",\n      \"summaryAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized as Admin.",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You do not have permission to access this resource.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You do not have permission to access this resource.\",\n  \"statusCode\": 403\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "name": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home/services",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home",
+                "services"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"iconName\": \"string\",\n      \"imageUrl\": \"string\",\n      \"linkRoute\": \"string\",\n      \"displayOrder\": 0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Services updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"iconName\": \"string\",\n      \"imageUrl\": \"string\",\n      \"linkRoute\": \"string\",\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Services updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"iconName\": \"string\",\n      \"imageUrl\": \"string\",\n      \"linkRoute\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"iconName\": \"string\",\n      \"imageUrl\": \"string\",\n      \"linkRoute\": \"string\",\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"iconName\": \"string\",\n      \"imageUrl\": \"string\",\n      \"linkRoute\": \"string\",\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"iconName\": \"string\",\n      \"imageUrl\": \"string\",\n      \"linkRoute\": \"string\",\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"iconName\": \"string\",\n      \"imageUrl\": \"string\",\n      \"linkRoute\": \"string\",\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 The caller is not authorized as Admin. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of services displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed services.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"iconName\": \"string\",\n      \"imageUrl\": \"string\",\n      \"linkRoute\": \"string\",\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized as Admin.",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You do not have permission to access this resource.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You do not have permission to access this resource.\",\n  \"statusCode\": 403\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "name": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home/articles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home",
+                "articles"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"excerptEn\": \"string\",\n      \"excerptAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"authorName\": \"string\",\n      \"readMinutes\": 0,\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Articles updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"excerptEn\": \"string\",\n      \"excerptAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"authorName\": \"string\",\n      \"readMinutes\": 0,\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Articles updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"excerptEn\": \"string\",\n      \"excerptAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"authorName\": \"string\",\n      \"readMinutes\": 0,\n      \"publishedAt\": \"2026-09-26T22:32:00\",\n      \"title\": \"string\",\n      \"excerpt\": \"string\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"excerptEn\": \"string\",\n      \"excerptAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"authorName\": \"string\",\n      \"readMinutes\": 0,\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"excerptEn\": \"string\",\n      \"excerptAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"authorName\": \"string\",\n      \"readMinutes\": 0,\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"excerptEn\": \"string\",\n      \"excerptAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"authorName\": \"string\",\n      \"readMinutes\": 0,\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"excerptEn\": \"string\",\n      \"excerptAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"authorName\": \"string\",\n      \"readMinutes\": 0,\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 The caller is not authorized as Admin. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of articles displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed articles.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"excerptEn\": \"string\",\n      \"excerptAr\": \"string\",\n      \"imageUrl\": \"string\",\n      \"authorName\": \"string\",\n      \"readMinutes\": 0,\n      \"publishedAt\": \"2026-01-01T00:00:00Z\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized as Admin.",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You do not have permission to access this resource.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You do not have permission to access this resource.\",\n  \"statusCode\": 403\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "name": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home/videos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home",
+                "videos"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"videoUrl\": \"string\",\n      \"instructorName\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"isPreviewable\": false,\n      \"isFeaturedOnHome\": false,\n      \"displayOrder\": 0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Videos updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "videos"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"videoUrl\": \"string\",\n      \"instructorName\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"isPreviewable\": false,\n      \"isFeaturedOnHome\": false,\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Videos updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"videoUrl\": \"string\",\n      \"instructorName\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"isPreviewable\": true,\n      \"isFeaturedOnHome\": true,\n      \"title\": \"string\",\n      \"category\": \"string\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "videos"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"videoUrl\": \"string\",\n      \"instructorName\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"isPreviewable\": false,\n      \"isFeaturedOnHome\": false,\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "videos"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"videoUrl\": \"string\",\n      \"instructorName\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"isPreviewable\": false,\n      \"isFeaturedOnHome\": false,\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "videos"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"videoUrl\": \"string\",\n      \"instructorName\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"isPreviewable\": false,\n      \"isFeaturedOnHome\": false,\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "videos"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"videoUrl\": \"string\",\n      \"instructorName\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"isPreviewable\": false,\n      \"isFeaturedOnHome\": false,\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 The caller is not authorized as Admin. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "videos"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of videos displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed videos.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"videoUrl\": \"string\",\n      \"instructorName\": \"string\",\n      \"categoryEn\": \"string\",\n      \"categoryAr\": \"string\",\n      \"isPreviewable\": false,\n      \"isFeaturedOnHome\": false,\n      \"displayOrder\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized as Admin.",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You do not have permission to access this resource.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You do not have permission to access this resource.\",\n  \"statusCode\": 403\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "name": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home/plans",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home",
+                "plans"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": 1,\n      \"isHighlighted\": false,\n      \"displayOrder\": 0,\n      \"features\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"textEn\": \"string\",\n          \"textAr\": \"string\",\n          \"displayOrder\": 0\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Subscription plans updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "plans"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": 1,\n      \"isHighlighted\": false,\n      \"displayOrder\": 0,\n      \"features\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"textEn\": \"string\",\n          \"textAr\": \"string\",\n          \"displayOrder\": 0\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Subscription plans updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": \"string\",\n      \"isHighlighted\": true,\n      \"displayOrder\": 0,\n      \"features\": [\n        \"string\"\n      ],\n      \"featureItems\": [\n        {\n          \"id\": \"...\",\n          \"textEn\": \"...\",\n          \"textAr\": \"...\",\n          \"displayOrder\": \"...\",\n          \"text\": \"...\"\n        }\n      ],\n      \"name\": \"string\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "plans"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": 1,\n      \"isHighlighted\": false,\n      \"displayOrder\": 0,\n      \"features\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"textEn\": \"string\",\n          \"textAr\": \"string\",\n          \"displayOrder\": 0\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "plans"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": 1,\n      \"isHighlighted\": false,\n      \"displayOrder\": 0,\n      \"features\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"textEn\": \"string\",\n          \"textAr\": \"string\",\n          \"displayOrder\": 0\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "plans"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": 1,\n      \"isHighlighted\": false,\n      \"displayOrder\": 0,\n      \"features\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"textEn\": \"string\",\n          \"textAr\": \"string\",\n          \"displayOrder\": 0\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "plans"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": 1,\n      \"isHighlighted\": false,\n      \"displayOrder\": 0,\n      \"features\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"textEn\": \"string\",\n          \"textAr\": \"string\",\n          \"displayOrder\": 0\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 The caller is not authorized as Admin. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "plans"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the subscription plans and their features displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed plans and features.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": 1,\n      \"isHighlighted\": false,\n      \"displayOrder\": 0,\n      \"features\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"textEn\": \"string\",\n          \"textAr\": \"string\",\n          \"displayOrder\": 0\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized as Admin.",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You do not have permission to access this resource.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You do not have permission to access this resource.\",\n  \"statusCode\": 403\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "name": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/home/experts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "home",
+                "experts"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"fullNameEn\": \"string\",\n      \"fullNameAr\": \"string\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"avatarUrl\": \"string\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Experts updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"fullNameEn\": \"string\",\n      \"fullNameAr\": \"string\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"avatarUrl\": \"string\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Experts updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"fullNameEn\": \"string\",\n      \"fullNameAr\": \"string\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"avatarUrl\": \"string\",\n      \"fullName\": \"string\",\n      \"title\": \"string\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"fullNameEn\": \"string\",\n      \"fullNameAr\": \"string\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"avatarUrl\": \"string\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"fullNameEn\": \"string\",\n      \"fullNameAr\": \"string\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"avatarUrl\": \"string\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"fullNameEn\": \"string\",\n      \"fullNameAr\": \"string\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"avatarUrl\": \"string\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"fullNameEn\": \"string\",\n      \"fullNameAr\": \"string\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"avatarUrl\": \"string\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 The caller is not authorized as Admin. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/home/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "home",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates the list of experts displayed on the Home feed (admin only).\r\nSyncs existing, new, and removed experts.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"fullNameEn\": \"string\",\n      \"fullNameAr\": \"string\",\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"avatarUrl\": \"string\",\n      \"displayOrder\": 0,\n      \"isFeaturedOnHome\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authorized as Admin.",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You do not have permission to access this resource.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You do not have permission to access this resource.\",\n  \"statusCode\": 403\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "PrivacyPolicy",
       "description": "",
       "item": [

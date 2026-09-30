@@ -63,6 +63,14 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<IPrivacyPolicySectionRepository, PrivacyPolicySectionRepository>();
             services.AddScoped<ITermsAndConditionsRepository, TermsAndConditionsRepository>();
             services.AddScoped<ITermsAndConditionsSectionRepository, TermsAndConditionsSectionRepository>();
+            services.AddScoped<IHomeRepository, HomeRepository>();
+            services.AddScoped<INewsRepository, NewsRepository>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<IVideoRepository, VideoRepository>();
+            services.AddScoped<ISubscriptionPlanRepository, SubscriptionPlanRepository>();
+            services.AddScoped<IPlanFeatureRepository, PlanFeatureRepository>();
+            services.AddScoped<IExpertRepository, ExpertRepository>();
 
             services.Configure<Application.Common.Options.IdentityOptions>(configuration.GetSection("IdentityOptions"));
             var identityOptionsConfig = configuration.GetSection("IdentityOptions").Get<Application.Common.Options.IdentityOptions>()

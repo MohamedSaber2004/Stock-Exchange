@@ -161,6 +161,14 @@ namespace Stock_Exchange.Application.Localization
             public const string TermsAndConditionsIdRequired = "TermsAndConditionsMessages.TermsAndConditionsIdRequired";
         }
 
+        public static class HomeMessages
+        {
+            public const string HomeNotFound = "HomeMessages.HomeNotFound";
+            public const string HeroTitleTooLong = "HomeMessages.HeroTitleTooLong";
+            public const string HeroSubtitleTooLong = "HomeMessages.HeroSubtitleTooLong";
+            public const string HeroImageUrlTooLong = "HomeMessages.HeroImageUrlTooLong";
+        }
+
         public static class EmailMessages
         {
             public const string ResetPasswordSubject = "EmailMessages.ResetPasswordSubject";

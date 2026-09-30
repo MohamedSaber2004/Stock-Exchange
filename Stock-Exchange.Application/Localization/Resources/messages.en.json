@@ -140,6 +140,12 @@
     "SectionContentTooLong": "The section content cannot exceed 8000 characters.",
     "TermsAndConditionsIdRequired": "Terms and conditions id cannot be empty when provided."
   },
+  "HomeMessages": {
+    "HomeNotFound": "Home configuration not found.",
+    "HeroTitleTooLong": "Hero title cannot exceed 500 characters.",
+    "HeroSubtitleTooLong": "Hero subtitle cannot exceed 2000 characters.",
+    "HeroImageUrlTooLong": "Hero image URL cannot exceed 1024 characters."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"
   },

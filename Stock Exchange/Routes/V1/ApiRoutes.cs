@@ -85,6 +85,21 @@ namespace Stock_Exchange.Routes.V1
             public const string DeleteById = "{id}";
         }
 
+        public static class Home
+        {
+            public const string Base = BaseRoutes.Base + "/home";
+
+            public const string Get = "";
+            public const string Update = "";
+            public const string UpdateHero = "hero";
+            public const string UpdateNews = "news";
+            public const string UpdateServices = "services";
+            public const string UpdateArticles = "articles";
+            public const string UpdateVideos = "videos";
+            public const string UpdatePlans = "plans";
+            public const string UpdateExperts = "experts";
+        }
+
         public static class Countries
         {
             public const string Base = BaseRoutes.Base + "/countries";

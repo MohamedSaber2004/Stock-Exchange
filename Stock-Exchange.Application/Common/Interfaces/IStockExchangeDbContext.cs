@@ -18,6 +18,14 @@ namespace Stock_Exchange.Application.Common.Interfaces
         DbSet<PrivacyPolicySection> PrivacyPolicySections { get; }
         DbSet<TermsAndConditions> TermsAndConditions { get; }
         DbSet<TermsAndConditionsSection> TermsAndConditionsSections { get; }
+        DbSet<Home> Homes { get; }
+        DbSet<News> News { get; }
+        DbSet<Service> Services { get; }
+        DbSet<Article> Articles { get; }
+        DbSet<Video> Videos { get; }
+        DbSet<SubscriptionPlan> SubscriptionPlans { get; }
+        DbSet<PlanFeature> PlanFeatures { get; }
+        DbSet<Expert> Experts { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

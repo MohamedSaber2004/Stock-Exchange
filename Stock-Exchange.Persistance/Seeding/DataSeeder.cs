@@ -11,6 +11,7 @@ namespace Stock_Exchange.Persistance.Seeding
             await HelpCenterSeeder.SeedHelpCenterAsync(context);
             await PrivacyPolicySeeder.SeedPrivacyPolicyAsync(context);
             await TermsAndConditionsSeeder.SeedTermsAndConditionsAsync(context);
+            await HomeSeeder.SeedHomeAsync(context);
         }
     }
 }
