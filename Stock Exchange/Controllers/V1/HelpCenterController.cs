@@ -28,9 +28,10 @@ public class HelpCenterController : BaseController
     /// <returns>The matching help center entries.</returns>
     /// <response code="200">Help center entries retrieved successfully.</response>
     [HttpGet]
+    [Route(ApiRoutes.HelpCenter.GetAll)]
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<List<HelpCenterDto>>), StatusCodes.Status200OK)]
-    public async Task<ActionResult> GetAll([FromQuery] GetAllHelpCentersQuery query)
+    public async Task<IActionResult> GetAll([FromQuery] GetAllHelpCentersQuery query)
     {
         var result = await Mediator.Send(query);
 
@@ -53,7 +54,7 @@ public class HelpCenterController : BaseController
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> GetById(Guid id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var result = await Mediator.Send(new GetHelpCenterByIdQuery(id));
 
@@ -71,10 +72,11 @@ public class HelpCenterController : BaseController
     /// <response code="201">Help center entry created successfully.</response>
     /// <response code="400">One or more fields are missing or exceed the allowed length.</response>
     [HttpPost]
+    [Route(ApiRoutes.HelpCenter.Add)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> Add([FromBody] AddHelpCenterCommand command)
+    public async Task<IActionResult> Add([FromBody] AddHelpCenterCommand command)
     {
         var result = await Mediator.Send(command);
 
@@ -93,11 +95,12 @@ public class HelpCenterController : BaseController
     /// <response code="400">One or more fields are missing or exceed the allowed length.</response>
     /// <response code="404">The help center entry was not found.</response>
     [HttpPut]
+    [Route(ApiRoutes.HelpCenter.Update)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Update([FromBody] UpdateHelpCenterCommand command)
+    public async Task<IActionResult> Update([FromBody] UpdateHelpCenterCommand command)
     {
         var result = await Mediator.Send(command);
 
@@ -115,11 +118,11 @@ public class HelpCenterController : BaseController
     /// <response code="200">Help center entry deleted successfully.</response>
     /// <response code="404">The help center entry was not found.</response>
     [HttpDelete]
-    [Route(ApiRoutes.HelpCenter.GetById)]
+    [Route(ApiRoutes.HelpCenter.Delete)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Delete(Guid id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         var result = await Mediator.Send(new DeleteHelpCenterCommand(id));
 

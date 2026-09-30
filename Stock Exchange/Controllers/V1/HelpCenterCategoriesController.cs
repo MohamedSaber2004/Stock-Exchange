@@ -28,9 +28,10 @@ public class HelpCenterCategoriesController : BaseController
     /// <returns>The matching help center categories.</returns>
     /// <response code="200">Help center categories retrieved successfully.</response>
     [HttpGet]
+    [Route(ApiRoutes.HelpCenterCategories.GetAll)]
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<List<HelpCenterCategoryDto>>), StatusCodes.Status200OK)]
-    public async Task<ActionResult> GetAll([FromQuery] GetAllHelpCenterCategoriesQuery query)
+    public async Task<IActionResult> GetAll([FromQuery] GetAllHelpCenterCategoriesQuery query)
     {
         var result = await Mediator.Send(query);
 
@@ -53,7 +54,7 @@ public class HelpCenterCategoriesController : BaseController
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> GetById(Guid id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var result = await Mediator.Send(new GetHelpCenterCategoryByIdQuery(id));
 
@@ -71,10 +72,11 @@ public class HelpCenterCategoriesController : BaseController
     /// <response code="201">Help center category created successfully.</response>
     /// <response code="400">One or more fields are missing or exceed the allowed length.</response>
     [HttpPost]
+    [Route(ApiRoutes.HelpCenterCategories.Add)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> Add([FromBody] AddHelpCenterCategoryCommand command)
+    public async Task<IActionResult> Add([FromBody] AddHelpCenterCategoryCommand command)
     {
         var result = await Mediator.Send(command);
 
@@ -93,11 +95,12 @@ public class HelpCenterCategoriesController : BaseController
     /// <response code="400">One or more fields are missing or exceed the allowed length.</response>
     /// <response code="404">The help center category was not found.</response>
     [HttpPut]
+    [Route(ApiRoutes.HelpCenterCategories.Update)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Update([FromBody] UpdateHelpCenterCategoryCommand command)
+    public async Task<IActionResult> Update([FromBody] UpdateHelpCenterCategoryCommand command)
     {
         var result = await Mediator.Send(command);
 
@@ -115,11 +118,11 @@ public class HelpCenterCategoriesController : BaseController
     /// <response code="200">Help center category deleted successfully.</response>
     /// <response code="404">The help center category was not found.</response>
     [HttpDelete]
-    [Route(ApiRoutes.HelpCenterCategories.GetById)]
+    [Route(ApiRoutes.HelpCenterCategories.Delete)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Delete(Guid id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         var result = await Mediator.Send(new DeleteHelpCenterCategoryCommand(id));
 

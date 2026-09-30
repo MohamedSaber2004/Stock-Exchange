@@ -37,7 +37,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status403Forbidden)]
-    public async Task<ActionResult> Login([FromBody] LoginCommand command)
+    public async Task<IActionResult> Login([FromBody] LoginCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
@@ -63,7 +63,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status409Conflict)]
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status503ServiceUnavailable)]
-    public async Task<ActionResult> LoginWithGoogle([FromBody] LoginWithGoogleCommand command)
+    public async Task<IActionResult> LoginWithGoogle([FromBody] LoginWithGoogleCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
@@ -82,7 +82,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status409Conflict)]
-    public async Task<ActionResult> Register([FromBody] SignupCommand command)
+    public async Task<IActionResult> Register([FromBody] SignupCommand command)
     {
         var result = await Mediator.Send(command);
         return CreatedResult(result, LocalizationKeys.ActionResults.Created);
@@ -101,7 +101,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> ForgetPassword([FromBody] ForgetPasswordCommand command)
+    public async Task<IActionResult> ForgetPassword([FromBody] ForgetPasswordCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
@@ -120,7 +120,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> VerifyOtp([FromBody] VerifyOtpCommand command)
+    public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
@@ -139,7 +139,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordCommand command)
+    public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.AuthMessages.PasswordResetSuccess);
@@ -160,7 +160,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<RefreshTokenResponseDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<RefreshTokenResponseDto>), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ApiResponse<RefreshTokenResponseDto>), StatusCodes.Status403Forbidden)]
-    public async Task<ActionResult> RefreshToken([FromBody] RefreshTokenCommand command)
+    public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
@@ -182,7 +182,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Logout([FromBody] LogoutCommand command)
+    public async Task<IActionResult> Logout([FromBody] LogoutCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
@@ -204,7 +204,7 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> UpdateProfile([FromBody] UpdateUserInfoCommand command)
+    public async Task<IActionResult> UpdateProfile([FromBody] UpdateUserInfoCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Updated);

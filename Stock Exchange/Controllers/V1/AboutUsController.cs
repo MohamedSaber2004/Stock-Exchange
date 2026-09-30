@@ -23,10 +23,11 @@ public class AboutUsController : BaseController
     /// <response code="200">About us content retrieved successfully.</response>
     /// <response code="404">About us content was not found.</response>
     [HttpGet]
+    [Route(ApiRoutes.AboutUs.Get)]
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Get()
+    public async Task<IActionResult> Get()
     {
         var result = await Mediator.Send(new GetAboutUsQuery());
 
@@ -45,10 +46,11 @@ public class AboutUsController : BaseController
     /// <response code="400">One or more fields are missing or exceed the allowed length.</response>
     /// <response code="401">The caller is not authenticated.</response>
     [HttpPut]
+    [Route(ApiRoutes.AboutUs.Update)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> Update([FromBody] UpdateAboutUsCommand command)
+    public async Task<IActionResult> Update([FromBody] UpdateAboutUsCommand command)
     {
         var result = await Mediator.Send(command);
 

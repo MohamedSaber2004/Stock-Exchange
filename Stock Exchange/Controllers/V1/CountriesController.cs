@@ -1,6 +1,5 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Countries.DTOs;
@@ -20,9 +19,10 @@ public class CountriesController : BaseController
     /// <returns>A list of active countries.</returns>
     /// <response code="200">Countries retrieved successfully.</response>
     [HttpGet]
+    [Route(ApiRoutes.Countries.GetAll)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ApiResponse<List<CountryDto>>), StatusCodes.Status200OK)]
-    public async Task<ActionResult> GetAll()
+    public async Task<IActionResult> GetAll()
     {
         var result = await Mediator.Send(new GetAllCountriesQuery());
         return OkResult(result, LocalizationKeys.ActionResults.Ok);

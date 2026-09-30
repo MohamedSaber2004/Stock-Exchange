@@ -63,7 +63,7 @@ function Get-NormalizedPath {
     $raw = $raw -replace '^[a-zA-Z][a-zA-Z0-9+.-]*://[^/]*', ''          # absolute URL: drop scheme and host
     foreach ($segment in $raw.Split('/')) {
         if (-not $segment) { continue }
-        if ($segment -match '^\{\{[^}]+\}\}$') { continue }                  # the baseUrl variable
+        if ($segment -match '(?i)^\{\{(?:baseUrl|base_url|host|siteUrl|site_url)\}\}$') { continue }                  # the baseUrl variable
         $segments += ($segment -replace '^\{\{([^}]+)\}\}$', '{$1}' -replace '^:([A-Za-z0-9_]+)$', '{$1}')
     }
 

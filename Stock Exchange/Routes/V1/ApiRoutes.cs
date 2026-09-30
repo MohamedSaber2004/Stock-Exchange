@@ -33,25 +33,48 @@ namespace Stock_Exchange.Routes.V1
         public static class AboutUs
         {
             public const string Base = BaseRoutes.Base + "/about-us";
+
+            public const string Get = "";
+            public const string Update = "";
         }
 
         public static class HelpCenter
         {
             public const string Base = BaseRoutes.Base + "/help-center";
 
+            public const string GetAll = "";
             public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "";
+            public const string Delete = "{id}";
         }
 
         public static class HelpCenterCategories
         {
             public const string Base = BaseRoutes.Base + "/help-center-categories";
 
+            public const string GetAll = "";
             public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "";
+            public const string Delete = "{id}";
+        }
+
+        public static class PrivacyPolicy
+        {
+            public const string Base = BaseRoutes.Base + "/privacy-policy";
+        }
+
+        public static class TermsAndConditions
+        {
+            public const string Base = BaseRoutes.Base + "/terms-and-conditions";
         }
 
         public static class Countries
         {
             public const string Base = BaseRoutes.Base + "/countries";
+
+            public const string GetAll = "";
         }
     }
 }
