@@ -599,6 +599,1709 @@
       ]
     },
     {
+      "name": "Articles",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves paginated articles (default page size: 10), with optional search and active status filter.\r\nGeneral authorization: Accessible to any authenticated user.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/articles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "articles"
+              ],
+              "query": [
+                {
+                  "key": "PageNumber",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "PageSize",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "Retrieves paginated articles (default page size: 10), with optional search and active status filter.\r\nGeneral authorization: Accessible to any authenticated user.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Articles retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated articles (default page size: 10), with optional search and active status filter.\r\nGeneral authorization: Accessible to any authenticated user.",
+                "body": null
+              },
+              "status": "Articles retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"excerptEn\": \"string\",\n        \"excerptAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"authorName\": \"string\",\n        \"publishedAt\": \"09/26/2026 22:32:00\",\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"excerpt\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated articles (default page size: 10), with optional search and active status filter.\r\nGeneral authorization: Accessible to any authenticated user.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated articles (default page size: 10), with optional search and active status filter.\r\nGeneral authorization: Accessible to any authenticated user.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Creates a new article.\r\nAdmin authorization only.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/articles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "articles"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Creates a new article.\r\nAdmin authorization only.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 Article created successfully. - success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Article created successfully.",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid or exceed allowed lengths. - validationError",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid or exceed allowed lengths.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid or exceed allowed lengths. - businessError",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid or exceed allowed lengths.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 User is unauthorized.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is unauthorized.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 User is forbidden (admin only).",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is forbidden (admin only).",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Updates an existing article.\r\nAdmin authorization only.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/articles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "articles"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Updates an existing article.\r\nAdmin authorization only.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Article updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Article updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid or exceed allowed lengths. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid or exceed allowed lengths.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid or exceed allowed lengths. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid or exceed allowed lengths.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Article was not found. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Article was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 User is unauthorized.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is unauthorized.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 User is forbidden (admin only).",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is forbidden (admin only).",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Retrieves a single article by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "articles",
+                "{{id}}"
+              ],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The article id."
+                }
+              ]
+            },
+            "description": "Retrieves a single article by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Article retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id."
+                    }
+                  ]
+                },
+                "description": "Retrieves a single article by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
+                "body": null
+              },
+              "status": "Article retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Article was not found. - error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id."
+                    }
+                  ]
+                },
+                "description": "Retrieves a single article by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
+                "body": null
+              },
+              "status": "Article was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id."
+                    }
+                  ]
+                },
+                "description": "Retrieves a single article by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id."
+                    }
+                  ]
+                },
+                "description": "Retrieves a single article by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Updates an existing article by route id.\r\nAdmin authorization only.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "articles",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The article id from route."
+                }
+              ]
+            },
+            "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Article updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ]
+                },
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Article updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid or exceed allowed lengths. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ]
+                },
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid or exceed allowed lengths.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are invalid or exceed allowed lengths. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ]
+                },
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are invalid or exceed allowed lengths.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Article was not found. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ]
+                },
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Article was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 User is unauthorized.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ]
+                },
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is unauthorized.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 User is forbidden (admin only).",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ]
+                },
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is forbidden (admin only).",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Hard deletes an article permanently from the database.\r\nAdmin authorization only.",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "articles",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The article id to permanently delete."
+                }
+              ]
+            },
+            "description": "Hard deletes an article permanently from the database.\r\nAdmin authorization only.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Article permanently deleted successfully. - success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id to permanently delete."
+                    }
+                  ]
+                },
+                "description": "Hard deletes an article permanently from the database.\r\nAdmin authorization only.",
+                "body": null
+              },
+              "status": "Article permanently deleted successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Article was not found. - error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id to permanently delete."
+                    }
+                  ]
+                },
+                "description": "Hard deletes an article permanently from the database.\r\nAdmin authorization only.",
+                "body": null
+              },
+              "status": "Article was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 User is unauthorized.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id to permanently delete."
+                    }
+                  ]
+                },
+                "description": "Hard deletes an article permanently from the database.\r\nAdmin authorization only.",
+                "body": null
+              },
+              "status": "User is unauthorized.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 User is forbidden (admin only).",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id to permanently delete."
+                    }
+                  ]
+                },
+                "description": "Hard deletes an article permanently from the database.\r\nAdmin authorization only.",
+                "body": null
+              },
+              "status": "User is forbidden (admin only).",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Attachments",
       "description": "",
       "item": [
