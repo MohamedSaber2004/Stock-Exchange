@@ -89,33 +89,6 @@ public class ArticlesController : BaseController
     }
 
     /// <summary>
-    /// Updates an existing article.
-    /// Admin authorization only.
-    /// </summary>
-    /// <param name="command">The article id and updated properties.</param>
-    /// <returns>The updated article.</returns>
-    /// <response code="200">Article updated successfully.</response>
-    /// <response code="400">One or more fields are invalid or exceed allowed lengths.</response>
-    /// <response code="401">User is unauthorized.</response>
-    /// <response code="403">User is forbidden (admin only).</response>
-    /// <response code="404">Article was not found.</response>
-    [HttpPut]
-    [Route(ApiRoutes.Articles.Update)]
-    [RoleAuthorize(UserType.Admin)]
-    [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromBody] UpdateArticleCommand command)
-    {
-        var result = await Mediator.Send(command);
-
-        if (!result.IsSuccess)
-            return FromResult(result);
-
-        return OkResult(result.Data, LocalizationKeys.ActionResults.Updated);
-    }
-
-    /// <summary>
     /// Updates an existing article by route id.
     /// Admin authorization only.
     /// </summary>
@@ -127,7 +100,8 @@ public class ArticlesController : BaseController
     /// <response code="401">User is unauthorized.</response>
     /// <response code="403">User is forbidden (admin only).</response>
     /// <response code="404">Article was not found.</response>
-    [HttpPut("{id}")]
+    [HttpPut]
+    [Route(ApiRoutes.Articles.Update)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status400BadRequest)]
