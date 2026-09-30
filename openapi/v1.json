@@ -2110,6 +2110,194 @@
         ]
       }
     },
+    "/api/v1/authentication/change-password": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Changes the password for the currently authenticated user.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The current password, new password, and confirmation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Password changed successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": true,
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error or invalid current password.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User is not authenticated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "missingOrMalformed": {
+                    "summary": "Missing or malformed token",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "You are not authorized to perform this action."
+                        ]
+                      },
+                      "data": null,
+                      "message": "You are not authorized to perform this action.",
+                      "statusCode": 401
+                    }
+                  },
+                  "expiredOrRevokedSession": {
+                    "summary": "Expired session — log in (or refresh) again",
+                    "description": "The access token expired, was killed by logout/refresh rotation, or belongs to a deactivated account. Obtain a new token via login or refresh-token.",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "You are not authorized to perform this action."
+                        ]
+                      },
+                      "data": null,
+                      "message": "You are not authorized to perform this action.",
+                      "statusCode": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/authentication/update/myprofile": {
       "patch": {
         "tags": [
@@ -4750,6 +4938,24 @@
           "statusCode": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChangePasswordCommand": {
+        "type": "object",
+        "properties": {
+          "currentPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "newPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "confirmNewPassword": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

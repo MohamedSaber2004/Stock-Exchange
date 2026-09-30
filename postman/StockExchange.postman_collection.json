@@ -4199,6 +4199,409 @@
           ]
         },
         {
+          "name": "Changes the password for the currently authenticated user.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/authentication/change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "authentication",
+                "change-password"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Changes the password for the currently authenticated user.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"string\",\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Password changed successfully. - success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Changes the password for the currently authenticated user.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"string\",\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Password changed successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Validation error or invalid current password. - validationError",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Changes the password for the currently authenticated user.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"string\",\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Validation error or invalid current password.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Validation error or invalid current password. - businessError",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Changes the password for the currently authenticated user.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"string\",\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Validation error or invalid current password.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 User is not authenticated. - missingOrMalformed",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Changes the password for the currently authenticated user.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"string\",\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 User is not authenticated. - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Changes the password for the currently authenticated user.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"string\",\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User is not authenticated.",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 User not found. - error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Changes the password for the currently authenticated user.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"string\",\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "User not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Changes the password for the currently authenticated user.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currentPassword\": \"string\",\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
           "name": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
           "request": {
             "method": "PATCH",
