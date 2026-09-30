@@ -81,7 +81,7 @@ public class HomeController : BaseController
     /// <response code="400">One or more fields are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     /// <response code="403">The caller is not authorized as Admin.</response>
-    [HttpPut]
+    [HttpPatch]
     [Route(ApiRoutes.Home.UpdateNews)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<List<HomeNewsDto>>), StatusCodes.Status200OK)]
@@ -108,7 +108,7 @@ public class HomeController : BaseController
     /// <response code="400">One or more fields are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     /// <response code="403">The caller is not authorized as Admin.</response>
-    [HttpPut]
+    [HttpPatch]
     [Route(ApiRoutes.Home.UpdateServices)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<List<HomeServiceDto>>), StatusCodes.Status200OK)]
@@ -135,7 +135,7 @@ public class HomeController : BaseController
     /// <response code="400">One or more fields are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     /// <response code="403">The caller is not authorized as Admin.</response>
-    [HttpPut]
+    [HttpPatch]
     [Route(ApiRoutes.Home.UpdateArticles)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<List<HomeArticleDto>>), StatusCodes.Status200OK)]
@@ -162,7 +162,7 @@ public class HomeController : BaseController
     /// <response code="400">One or more fields are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     /// <response code="403">The caller is not authorized as Admin.</response>
-    [HttpPut]
+    [HttpPatch]
     [Route(ApiRoutes.Home.UpdateVideos)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<List<HomeVideoDto>>), StatusCodes.Status200OK)]
@@ -189,7 +189,7 @@ public class HomeController : BaseController
     /// <response code="400">One or more fields are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     /// <response code="403">The caller is not authorized as Admin.</response>
-    [HttpPut]
+    [HttpPatch]
     [Route(ApiRoutes.Home.UpdatePlans)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<List<HomePlanDto>>), StatusCodes.Status200OK)]
@@ -216,7 +216,7 @@ public class HomeController : BaseController
     /// <response code="400">One or more fields are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     /// <response code="403">The caller is not authorized as Admin.</response>
-    [HttpPut]
+    [HttpPatch]
     [Route(ApiRoutes.Home.UpdateExperts)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<List<HomeExpertDto>>), StatusCodes.Status200OK)]
