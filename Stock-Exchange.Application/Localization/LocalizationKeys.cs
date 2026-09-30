@@ -252,6 +252,27 @@ namespace Stock_Exchange.Application.Localization
             public const string PageSizeTooLarge = "ArticleMessages.PageSizeTooLarge";
         }
 
+        public static class VideoMessages
+        {
+            public const string VideoNotFound = "VideoMessages.VideoNotFound";
+            public const string TitleEnRequired = "VideoMessages.TitleEnRequired";
+            public const string TitleEnTooLong = "VideoMessages.TitleEnTooLong";
+            public const string TitleArRequired = "VideoMessages.TitleArRequired";
+            public const string TitleArTooLong = "VideoMessages.TitleArTooLong";
+            public const string InstructorNameRequired = "VideoMessages.InstructorNameRequired";
+            public const string InstructorNameTooLong = "VideoMessages.InstructorNameTooLong";
+            public const string CategoryEnRequired = "VideoMessages.CategoryEnRequired";
+            public const string CategoryEnTooLong = "VideoMessages.CategoryEnTooLong";
+            public const string CategoryArRequired = "VideoMessages.CategoryArRequired";
+            public const string CategoryArTooLong = "VideoMessages.CategoryArTooLong";
+            public const string ThumbnailUrlTooLong = "VideoMessages.ThumbnailUrlTooLong";
+            public const string VideoUrlTooLong = "VideoMessages.VideoUrlTooLong";
+            public const string IdRequired = "VideoMessages.IdRequired";
+            public const string SearchTooLong = "VideoMessages.SearchTooLong";
+            public const string DurationSecondsInvalid = "VideoMessages.DurationSecondsInvalid";
+            public const string DisplayOrderInvalid = "VideoMessages.DisplayOrderInvalid";
+        }
+
         public static class EmailMessages
         {
             public const string ResetPasswordSubject = "EmailMessages.ResetPasswordSubject";

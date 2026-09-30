@@ -116,5 +116,24 @@ namespace Stock_Exchange.Routes.V1
             public const string Update = "";
             public const string Delete = "{id}";
         }
+
+        public static class Videos
+        {
+            public const string Base = BaseRoutes.Base + "/videos";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "";
+            public const string Delete = "{id}";
+        }
+
+        public static class SubscriptionPlans
+        {
+            public const string Base = BaseRoutes.Base + "/subscription-plans";
+
+            public const string GetAll = "";
+        }
     }
 }
+

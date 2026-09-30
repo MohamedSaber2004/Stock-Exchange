@@ -221,6 +221,25 @@
     "PageSizeInvalid": "Page size must be greater than 0.",
     "PageSizeTooLarge": "Page size must not exceed 100."
   },
+  "VideoMessages": {
+    "VideoNotFound": "Video not found.",
+    "TitleEnRequired": "Video English title is required.",
+    "TitleEnTooLong": "Video English title cannot exceed 500 characters.",
+    "TitleArRequired": "Video Arabic title is required.",
+    "TitleArTooLong": "Video Arabic title must not exceed 500 characters.",
+    "InstructorNameRequired": "Instructor name is required.",
+    "InstructorNameTooLong": "Instructor name cannot exceed 200 characters.",
+    "CategoryEnRequired": "English category is required.",
+    "CategoryEnTooLong": "English category cannot exceed 100 characters.",
+    "CategoryArRequired": "Arabic category is required.",
+    "CategoryArTooLong": "Arabic category cannot exceed 100 characters.",
+    "ThumbnailUrlTooLong": "Thumbnail URL cannot exceed 1024 characters.",
+    "VideoUrlTooLong": "Video URL cannot exceed 1024 characters.",
+    "IdRequired": "Video id cannot be empty when provided.",
+    "SearchTooLong": "Search term cannot exceed 100 characters.",
+    "DurationSecondsInvalid": "Duration must be greater than 0.",
+    "DisplayOrderInvalid": "Display order must be 0 or greater."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"
   },

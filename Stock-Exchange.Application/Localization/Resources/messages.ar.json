@@ -221,6 +221,25 @@
     "PageSizeInvalid": "يجب أن يكون حجم الصفحة أكبر من 0.",
     "PageSizeTooLarge": "يجب ألا يتجاوز حجم الصفحة 100."
   },
+  "VideoMessages": {
+    "VideoNotFound": "الفيديو غير موجود.",
+    "TitleEnRequired": "عنوان الفيديو بالإنجليزية مطلوب.",
+    "TitleEnTooLong": "يجب ألا يزيد طول عنوان الفيديو بالإنجليزية عن 500 حرف.",
+    "TitleArRequired": "عنوان الفيديو بالعربية مطلوب.",
+    "TitleArTooLong": "يجب ألا يزيد طول عنوان الفيديو بالعربية عن 500 حرف.",
+    "InstructorNameRequired": "اسم المدرب مطلوب.",
+    "InstructorNameTooLong": "يجب ألا يزيد طول اسم المدرب عن 200 حرف.",
+    "CategoryEnRequired": "التصنيف بالإنجليزية مطلوب.",
+    "CategoryEnTooLong": "يجب ألا يزيد طول التصنيف بالإنجليزية عن 100 حرف.",
+    "CategoryArRequired": "التصنيف بالعربية مطلوب.",
+    "CategoryArTooLong": "يجب ألا يزيد طول التصنيف بالعربية عن 100 حرف.",
+    "ThumbnailUrlTooLong": "يجب ألا يزيد طول رابط الصورة المصغرة عن 1024 حرف.",
+    "VideoUrlTooLong": "يجب ألا يزيد طول رابط الفيديو عن 1024 حرف.",
+    "IdRequired": "مُعرف الفيديو مطلوب.",
+    "SearchTooLong": "يجب ألا يتجاوز نص البحث 100 حرف.",
+    "DurationSecondsInvalid": "يجب أن تكون مدة الفيديو أكبر من 0.",
+    "DisplayOrderInvalid": "يجب أن يكون ترتيب العرض 0 أو أكبر."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"
   },

@@ -43,6 +43,11 @@ using Stock_Exchange.Application.Features.Articles.Commands.DeleteArticle;
 using Stock_Exchange.Application.Features.Articles.Commands.UpdateArticle;
 using Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles;
 using Stock_Exchange.Application.Features.Articles.Queries.GetArticleById;
+using Stock_Exchange.Application.Features.Videos.Commands.AddVideo;
+using Stock_Exchange.Application.Features.Videos.Commands.DeleteVideo;
+using Stock_Exchange.Application.Features.Videos.Commands.UpdateVideo;
+using Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos;
+using Stock_Exchange.Application.Features.Videos.Queries.GetVideoById;
 using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application
@@ -106,6 +111,11 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<AddArticleCommand>, AddArticleCommandValidator>();
             services.AddTransient<IValidator<UpdateArticleCommand>, UpdateArticleCommandValidator>();
             services.AddTransient<IValidator<DeleteArticleCommand>, DeleteArticleCommandValidator>();
+            services.AddTransient<IValidator<GetAllVideosQuery>, GetAllVideosQueryValidator>();
+            services.AddTransient<IValidator<GetVideoByIdQuery>, GetVideoByIdQueryValidator>();
+            services.AddTransient<IValidator<AddVideoCommand>, AddVideoCommandValidator>();
+            services.AddTransient<IValidator<UpdateVideoCommand>, UpdateVideoCommandValidator>();
+            services.AddTransient<IValidator<DeleteVideoCommand>, DeleteVideoCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 
