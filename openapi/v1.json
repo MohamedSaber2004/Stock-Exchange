@@ -50,6 +50,7 @@
                         "missionAr": "string",
                         "visionEn": "string",
                         "visionAr": "string",
+                        "supportEmail": "string",
                         "features": [
                           {
                             "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -114,7 +115,7 @@
         "tags": [
           "AboutUs"
         ],
-        "summary": "Creates or replaces the about us content along with its core pillars.",
+        "summary": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
         "parameters": [
           {
             "name": "Accept-Language",
@@ -131,7 +132,7 @@
           }
         ],
         "requestBody": {
-          "description": "The story, mission, vision and the list of core pillars to save.",
+          "description": "The about us fields, support email, and core pillars to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -173,6 +174,7 @@
                         "missionAr": "string",
                         "visionEn": "string",
                         "visionAr": "string",
+                        "supportEmail": "string",
                         "features": [
                           {
                             "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -194,7 +196,146 @@
             }
           },
           "400": {
-            "description": "One or more fields are missing or exceed the allowed length.",
+            "description": "One or more fields exceed the allowed length or are invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AboutUsDtoApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The caller is not authenticated."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "AboutUs"
+        ],
+        "summary": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The about us fields, support email, and core pillars to update.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAboutUsCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAboutUsCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAboutUsCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "About us content saved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AboutUsDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "storyEn": "string",
+                        "storyAr": "string",
+                        "missionEn": "string",
+                        "missionAr": "string",
+                        "visionEn": "string",
+                        "visionAr": "string",
+                        "supportEmail": "string",
+                        "features": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "titleEn": "string",
+                            "titleAr": "string",
+                            "descriptionEn": "string",
+                            "descriptionAr": "string",
+                            "category": "string",
+                            "displayOrder": 0
+                          }
+                        ]
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more fields exceed the allowed length or are invalid.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3514,6 +3655,10 @@
             "type": "string",
             "nullable": true
           },
+          "supportEmail": {
+            "type": "string",
+            "nullable": true
+          },
           "features": {
             "type": "array",
             "items": {
@@ -4245,6 +4390,10 @@
             "nullable": true
           },
           "visionAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "supportEmail": {
             "type": "string",
             "nullable": true
           },
