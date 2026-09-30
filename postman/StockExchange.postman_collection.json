@@ -184,7 +184,7 @@
         {
           "name": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept-Language",
@@ -225,7 +225,7 @@
             {
               "name": "200 About us content saved successfully. - success",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -276,7 +276,7 @@
             {
               "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -327,7 +327,7 @@
             {
               "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -378,7 +378,7 @@
             {
               "name": "401 The caller is not authenticated.",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -424,7 +424,7 @@
             {
               "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -4199,9 +4199,9 @@
           ]
         },
         {
-          "name": "Updates the authenticated user's profile information.",
+          "name": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Accept-Language",
@@ -4229,10 +4229,10 @@
               "query": [],
               "variable": []
             },
-            "description": "Updates the authenticated user's profile information.",
+            "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -4244,7 +4244,7 @@
             {
               "name": "200 User profile updated successfully. - success",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -4272,10 +4272,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Updates the authenticated user's profile information.",
+                "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4297,7 +4297,7 @@
             {
               "name": "400 Validation error occurred. - validationError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -4325,10 +4325,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Updates the authenticated user's profile information.",
+                "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4350,7 +4350,7 @@
             {
               "name": "400 Validation error occurred. - businessError",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -4378,10 +4378,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Updates the authenticated user's profile information.",
+                "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4403,7 +4403,7 @@
             {
               "name": "401 User is not authenticated. - missingOrMalformed",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -4431,10 +4431,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Updates the authenticated user's profile information.",
+                "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4456,7 +4456,7 @@
             {
               "name": "401 User is not authenticated. - expiredOrRevokedSession",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -4484,10 +4484,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Updates the authenticated user's profile information.",
+                "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4509,7 +4509,7 @@
             {
               "name": "404 User or country not found. - error",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -4537,10 +4537,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Updates the authenticated user's profile information.",
+                "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4562,7 +4562,7 @@
             {
               "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "originalRequest": {
-                "method": "PUT",
+                "method": "PATCH",
                 "header": [
                   {
                     "key": "Accept-Language",
@@ -4590,16 +4590,276 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Updates the authenticated user's profile information.",
+                "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
                     }
                   }
                 }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Get User Profile information for the authenticated user.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/authentication/my-profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "authentication",
+                "my-profile"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Get User Profile information for the authenticated user.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/my-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "my-profile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Get User Profile information for the authenticated user.",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"phoneCode\": \"string\",\n    \"profilePictureUrl\": \"string\",\n    \"language\": \"ar\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized - missingOrMalformed",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/my-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "my-profile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Get User Profile information for the authenticated user.",
+                "body": null
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized - expiredOrRevokedSession",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/my-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "my-profile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Get User Profile information for the authenticated user.",
+                "body": null
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"You are not authorized to perform this action.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"You are not authorized to perform this action.\",\n  \"statusCode\": 401\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - validationError",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/my-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "my-profile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Get User Profile information for the authenticated user.",
+                "body": null
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - businessError",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/my-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "my-profile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Get User Profile information for the authenticated user.",
+                "body": null
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/authentication/my-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "authentication",
+                    "my-profile"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Get User Profile information for the authenticated user.",
+                "body": null
               },
               "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
@@ -7284,294 +7544,6 @@
                 "body": null
               },
               "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            }
-          ]
-        },
-        {
-          "name": "Creates or updates the privacy policy content and its sections.",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Accept-Language",
-                "value": "ar",
-                "description": "Preferred language for the response. Supported values: `ar`, `en`."
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/privacy-policy",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "privacy-policy"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "description": "Creates or updates the privacy policy content and its sections.",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "name": "200 Privacy policy saved successfully. - success",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "privacy-policy"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the privacy policy content and its sections.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Privacy policy saved successfully.",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"sections\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"contentEn\": \"string\",\n        \"contentAr\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "privacy-policy"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the privacy policy content and its sections.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "One or more fields exceed the allowed length or are invalid.",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "privacy-policy"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the privacy policy content and its sections.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "One or more fields exceed the allowed length or are invalid.",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 The caller is not authenticated.",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "privacy-policy"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the privacy policy content and its sections.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "The caller is not authenticated.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 The caller is not authorized.",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/privacy-policy",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "privacy-policy"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "Creates or updates the privacy policy content and its sections.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"sections\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"contentEn\": \"string\",\n      \"contentAr\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "The caller is not authorized.",
               "code": 403,
               "header": [],
               "body": "",
