@@ -468,6 +468,115 @@
               "_postman_previewlanguage": "text"
             }
           ]
+        },
+        {
+          "name": "Returns a styled HTML page displaying the active About Us content.\r\nThe display language is determined by the Accept-Language request header.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about-us/view",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "about-us",
+                "view"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Returns a styled HTML page displaying the active About Us content.\r\nThe display language is determined by the Accept-Language request header.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 HTML page returned successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/about-us/view",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "about-us",
+                    "view"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Returns a styled HTML page displaying the active About Us content.\r\nThe display language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "HTML page returned successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": \"string\",\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 About Us content was not found. - error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/about-us/view",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "about-us",
+                    "view"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Returns a styled HTML page displaying the active About Us content.\r\nThe display language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "About Us content was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
         }
       ]
     },
@@ -6158,6 +6267,76 @@
           ]
         },
         {
+          "name": "Returns a styled HTML page displaying all help center entries as an FAQ accordion.\r\nThe display language is determined by the Accept-Language request header.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/help-center/view",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "help-center",
+                "view"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Returns a styled HTML page displaying all help center entries as an FAQ accordion.\r\nThe display language is determined by the Accept-Language request header.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 HTML page returned successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center/view",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center",
+                    "view"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Returns a styled HTML page displaying all help center entries as an FAQ accordion.\r\nThe display language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "HTML page returned successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": \"string\",\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
           "name": "Retrieves a single help center entry by its id.\r\nThe response language is taken from the request Accept-Language header.",
           "request": {
             "method": "GET",
@@ -8415,6 +8594,115 @@
           ]
         },
         {
+          "name": "Returns a styled HTML page displaying the active privacy policy.\r\nThe display language is determined by the Accept-Language request header.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/privacy-policy/view",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "privacy-policy",
+                "view"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Returns a styled HTML page displaying the active privacy policy.\r\nThe display language is determined by the Accept-Language request header.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 HTML page returned successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy/view",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy",
+                    "view"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Returns a styled HTML page displaying the active privacy policy.\r\nThe display language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "HTML page returned successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": \"string\",\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Privacy policy was not found. - error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/privacy-policy/view",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "privacy-policy",
+                    "view"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Returns a styled HTML page displaying the active privacy policy.\r\nThe display language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "Privacy policy was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
           "name": "Soft deletes a specific privacy policy section or the privacy policy by id.",
           "request": {
             "method": "DELETE",
@@ -9256,6 +9544,115 @@
               "header": [],
               "body": "",
               "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Returns a styled HTML page displaying the active terms and conditions.\r\nThe display language is determined by the Accept-Language request header.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/terms-and-conditions/view",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "terms-and-conditions",
+                "view"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Returns a styled HTML page displaying the active terms and conditions.\r\nThe display language is determined by the Accept-Language request header.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 HTML page returned successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/terms-and-conditions/view",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "terms-and-conditions",
+                    "view"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Returns a styled HTML page displaying the active terms and conditions.\r\nThe display language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "HTML page returned successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": \"string\",\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Terms and conditions was not found. - error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/terms-and-conditions/view",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "terms-and-conditions",
+                    "view"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Returns a styled HTML page displaying the active terms and conditions.\r\nThe display language is determined by the Accept-Language request header.",
+                "body": null
+              },
+              "status": "Terms and conditions was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
             }
           ]
         },
