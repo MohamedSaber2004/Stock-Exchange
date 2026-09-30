@@ -259,6 +259,13 @@
         "summary": "Returns a styled HTML page displaying the active About Us content.\r\nThe display language is determined by the Accept-Language request header.",
         "parameters": [
           {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -3148,6 +3155,13 @@
         "summary": "Returns a styled HTML page displaying all help center entries as an FAQ accordion.\r\nThe display language is determined by the Accept-Language request header.",
         "parameters": [
           {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -5854,6 +5868,13 @@
         "summary": "Returns a styled HTML page displaying the active privacy policy.\r\nThe display language is determined by the Accept-Language request header.",
         "parameters": [
           {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -6382,6 +6403,13 @@
         ],
         "summary": "Returns a styled HTML page displaying the active terms and conditions.\r\nThe display language is determined by the Accept-Language request header.",
         "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "Accept-Language",
             "in": "header",
