@@ -1129,7 +1129,7 @@
           ]
         },
         {
-          "name": "Updates an existing article.\r\nAdmin authorization only.",
+          "name": "Updates an existing article by route id.\r\nAdmin authorization only.",
           "request": {
             "method": "PUT",
             "header": [
@@ -1154,10 +1154,16 @@
                 "v1",
                 "articles"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The article id from route."
+                }
+              ],
               "variable": []
             },
-            "description": "Updates an existing article.\r\nAdmin authorization only.",
+            "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
               "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
@@ -1195,10 +1201,16 @@
                     "v1",
                     "articles"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ],
                   "variable": []
                 },
-                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
@@ -1246,10 +1258,16 @@
                     "v1",
                     "articles"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ],
                   "variable": []
                 },
-                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
@@ -1297,10 +1315,16 @@
                     "v1",
                     "articles"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ],
                   "variable": []
                 },
-                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
@@ -1348,10 +1372,16 @@
                     "v1",
                     "articles"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ],
                   "variable": []
                 },
-                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
@@ -1399,10 +1429,16 @@
                     "v1",
                     "articles"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ],
                   "variable": []
                 },
-                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
@@ -1445,10 +1481,16 @@
                     "v1",
                     "articles"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The article id from route."
+                    }
+                  ],
                   "variable": []
                 },
-                "description": "Updates an existing article.\r\nAdmin authorization only.",
+                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
@@ -1697,394 +1739,6 @@
                 "body": null
               },
               "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            }
-          ]
-        },
-        {
-          "name": "Updates an existing article by route id.\r\nAdmin authorization only.",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Accept-Language",
-                "value": "ar",
-                "description": "Preferred language for the response. Supported values: `ar`, `en`."
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "description": ""
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "articles",
-                "{{id}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": "00000000-0000-0000-0000-000000000000",
-                  "description": "The article id from route."
-                }
-              ]
-            },
-            "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "name": "200 Article updated successfully. - success",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles",
-                    "{{id}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The article id from route."
-                    }
-                  ]
-                },
-                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Article updated successfully.",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "400 One or more fields are invalid or exceed allowed lengths. - validationError",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles",
-                    "{{id}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The article id from route."
-                    }
-                  ]
-                },
-                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "One or more fields are invalid or exceed allowed lengths.",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "400 One or more fields are invalid or exceed allowed lengths. - businessError",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles",
-                    "{{id}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The article id from route."
-                    }
-                  ]
-                },
-                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "One or more fields are invalid or exceed allowed lengths.",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "404 Article was not found. - error",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles",
-                    "{{id}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The article id from route."
-                    }
-                  ]
-                },
-                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Article was not found.",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 User is unauthorized.",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles",
-                    "{{id}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The article id from route."
-                    }
-                  ]
-                },
-                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "User is unauthorized.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 User is forbidden (admin only).",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles",
-                    "{{id}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The article id from route."
-                    }
-                  ]
-                },
-                "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "User is forbidden (admin only).",
               "code": 403,
               "header": [],
               "body": "",
