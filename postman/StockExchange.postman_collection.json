@@ -72,7 +72,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"storyEn\": \"string\",\n    \"storyAr\": \"string\",\n    \"missionEn\": \"string\",\n    \"missionAr\": \"string\",\n    \"visionEn\": \"string\",\n    \"visionAr\": \"string\",\n    \"features\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"category\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"storyEn\": \"string\",\n    \"storyAr\": \"string\",\n    \"missionEn\": \"string\",\n    \"missionAr\": \"string\",\n    \"visionEn\": \"string\",\n    \"visionAr\": \"string\",\n    \"supportEmail\": \"string\",\n    \"features\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"category\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -182,7 +182,7 @@
           ]
         },
         {
-          "name": "Creates or replaces the about us content along with its core pillars.",
+          "name": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
           "request": {
             "method": "PUT",
             "header": [
@@ -210,10 +210,10 @@
               "query": [],
               "variable": []
             },
-            "description": "Creates or replaces the about us content along with its core pillars.",
+            "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+              "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -251,10 +251,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Creates or replaces the about us content along with its core pillars.",
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -270,11 +270,11 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"storyEn\": \"string\",\n    \"storyAr\": \"string\",\n    \"missionEn\": \"string\",\n    \"missionAr\": \"string\",\n    \"visionEn\": \"string\",\n    \"visionAr\": \"string\",\n    \"features\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"category\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"storyEn\": \"string\",\n    \"storyAr\": \"string\",\n    \"missionEn\": \"string\",\n    \"missionAr\": \"string\",\n    \"visionEn\": \"string\",\n    \"visionAr\": \"string\",\n    \"supportEmail\": \"string\",\n    \"features\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"category\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
-              "name": "400 One or more fields are missing or exceed the allowed length. - validationError",
+              "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
               "originalRequest": {
                 "method": "PUT",
                 "header": [
@@ -302,10 +302,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Creates or replaces the about us content along with its core pillars.",
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -313,7 +313,7 @@
                   }
                 }
               },
-              "status": "One or more fields are missing or exceed the allowed length.",
+              "status": "One or more fields exceed the allowed length or are invalid.",
               "code": 400,
               "header": [
                 {
@@ -325,7 +325,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "name": "400 One or more fields are missing or exceed the allowed length. - businessError",
+              "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
               "originalRequest": {
                 "method": "PUT",
                 "header": [
@@ -353,10 +353,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Creates or replaces the about us content along with its core pillars.",
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -364,7 +364,7 @@
                   }
                 }
               },
-              "status": "One or more fields are missing or exceed the allowed length.",
+              "status": "One or more fields exceed the allowed length or are invalid.",
               "code": 400,
               "header": [
                 {
@@ -404,10 +404,10 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Creates or replaces the about us content along with its core pillars.",
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -450,10 +450,298 @@
                   "query": [],
                   "variable": []
                 },
-                "description": "Creates or replaces the about us content along with its core pillars.",
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/about-us",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "about-us"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 About us content saved successfully. - success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/about-us",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "about-us"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "About us content saved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"storyEn\": \"string\",\n    \"storyAr\": \"string\",\n    \"missionEn\": \"string\",\n    \"missionAr\": \"string\",\n    \"visionEn\": \"string\",\n    \"visionAr\": \"string\",\n    \"supportEmail\": \"string\",\n    \"features\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"category\": \"string\",\n        \"displayOrder\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - validationError",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/about-us",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "about-us"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields exceed the allowed length or are invalid. - businessError",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/about-us",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "about-us"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields exceed the allowed length or are invalid.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 The caller is not authenticated.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/about-us",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "about-us"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The caller is not authenticated.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/about-us",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "about-us"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates or updates the about us content (supports partial update) along with its core pillars and support email.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storyEn\": \"string\",\n  \"storyAr\": \"string\",\n  \"missionEn\": \"string\",\n  \"missionAr\": \"string\",\n  \"visionEn\": \"string\",\n  \"visionAr\": \"string\",\n  \"supportEmail\": \"string\",\n  \"features\": [\n    {\n      \"titleEn\": \"string\",\n      \"titleAr\": \"string\",\n      \"descriptionEn\": \"string\",\n      \"descriptionAr\": \"string\",\n      \"category\": \"string\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
