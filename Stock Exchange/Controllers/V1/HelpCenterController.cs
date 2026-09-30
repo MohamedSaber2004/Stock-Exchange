@@ -52,8 +52,9 @@ public class HelpCenterController : BaseController
     [AllowAnonymous]
     [Produces("text/html")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetView()
+    public async Task<IActionResult> GetView([FromQuery] string? lang = null)
     {
+        var languageService = HttpContext.RequestServices.GetRequiredService<Stock_Exchange.Application.Common.Interfaces.ICurrentLanguageService>();
         var result = await Mediator.Send(new GetAllHelpCentersQuery());
 
         if (!result.IsSuccess)
@@ -61,24 +62,20 @@ public class HelpCenterController : BaseController
 
         var items = result.Data ?? new List<HelpCenterDto>();
 
-        var firstWithAr = items.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.TitleAr));
-        var firstWithEn = items.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.TitleEn));
-        var isAr = firstWithAr != null && firstWithEn == null;
+        var isAr = languageService.Language == Language.ar;
         var dir = isAr ? "rtl" : "ltr";
-        var lang = isAr ? "ar" : "en";
+        var pageLang = isAr ? "ar" : "en";
         var pageTitle = isAr ? "مركز المساعدة" : "Help Center";
         var emptyMsg = isAr ? "لا توجد إدخالات متاحة." : "No help center entries found.";
 
         var sb = new StringBuilder();
-        sb.Append($"<!DOCTYPE html><html lang='{lang}' dir='{dir}'><head>");
+        sb.Append($"<!DOCTYPE html><html lang='{pageLang}' dir='{dir}'><head>");
         sb.Append("<meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
         sb.Append($"<title>{System.Net.WebUtility.HtmlEncode(pageTitle)}</title>");
         sb.Append("<link rel='icon' href='/favicon.ico' type='image/x-icon'/>");
         sb.Append("<link rel='stylesheet' href='/pages/pages.css'/></head><body>");
         sb.Append("<header class='page-header'>");
-        sb.Append("<svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'/></svg>");
-        sb.Append("</a>");
-        sb.Append($"<span class='page-title'>{System.Net.WebUtility.HtmlEncode(pageTitle)}</span>");
+        sb.Append($"<h1 class='page-title'>{System.Net.WebUtility.HtmlEncode(pageTitle)}</h1>");
         sb.Append("</header>");
         sb.Append("<main class='page-container'><div id='faq-list'>");
 
