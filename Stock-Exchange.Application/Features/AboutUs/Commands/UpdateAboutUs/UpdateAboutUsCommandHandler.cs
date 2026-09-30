@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -42,53 +42,86 @@ namespace Stock_Exchange.Application.Features.AboutUs.Commands.UpdateAboutUs
             {
                 aboutUs = new AboutUsEntity
                 {
-                    StoryEn = request.StoryEn.Trim(),
-                    StoryAr = request.StoryAr.Trim(),
-                    MissionEn = request.MissionEn.Trim(),
-                    MissionAr = request.MissionAr.Trim(),
-                    VisionEn = request.VisionEn.Trim(),
-                    VisionAr = request.VisionAr.Trim()
+                    StoryEn = request.StoryEn?.Trim() ?? string.Empty,
+                    StoryAr = request.StoryAr?.Trim() ?? string.Empty,
+                    MissionEn = request.MissionEn?.Trim() ?? string.Empty,
+                    MissionAr = request.MissionAr?.Trim() ?? string.Empty,
+                    VisionEn = request.VisionEn?.Trim() ?? string.Empty,
+                    VisionAr = request.VisionAr?.Trim() ?? string.Empty,
+                    SupportEmail = string.IsNullOrWhiteSpace(request.SupportEmail) ? null : request.SupportEmail.Trim()
                 };
 
                 await _aboutUsRepository.AddAsync(aboutUs);
             }
             else
             {
-                aboutUs.StoryEn = request.StoryEn.Trim();
-                aboutUs.StoryAr = request.StoryAr.Trim();
-                aboutUs.MissionEn = request.MissionEn.Trim();
-                aboutUs.MissionAr = request.MissionAr.Trim();
-                aboutUs.VisionEn = request.VisionEn.Trim();
-                aboutUs.VisionAr = request.VisionAr.Trim();
+                if (request.StoryEn is not null)
+                    aboutUs.StoryEn = request.StoryEn.Trim();
+
+                if (request.StoryAr is not null)
+                    aboutUs.StoryAr = request.StoryAr.Trim();
+
+                if (request.MissionEn is not null)
+                    aboutUs.MissionEn = request.MissionEn.Trim();
+
+                if (request.MissionAr is not null)
+                    aboutUs.MissionAr = request.MissionAr.Trim();
+
+                if (request.VisionEn is not null)
+                    aboutUs.VisionEn = request.VisionEn.Trim();
+
+                if (request.VisionAr is not null)
+                    aboutUs.VisionAr = request.VisionAr.Trim();
+
+                if (request.SupportEmail is not null)
+                    aboutUs.SupportEmail = string.IsNullOrWhiteSpace(request.SupportEmail) ? null : request.SupportEmail.Trim();
 
                 _aboutUsRepository.Update(aboutUs);
+            }
 
+            if (request.Features is not null)
+            {
                 var existingFeatures = await _aboutUsFeatureRepository
                     .GetAllAsync(f => f.AboutUsId == aboutUs.Id)
                     .ToListAsync(cancellationToken);
 
                 foreach (var existingFeature in existingFeatures)
                     _aboutUsFeatureRepository.Delete(existingFeature);
+
+                var newFeatures = request.Features
+                    .Where(f => !string.IsNullOrWhiteSpace(f.TitleEn) || !string.IsNullOrWhiteSpace(f.TitleAr))
+                    .Select((f, index) => new AboutUsFeature
+                    {
+                        AboutUsId = aboutUs.Id,
+                        TitleEn = f.TitleEn?.Trim() ?? string.Empty,
+                        TitleAr = f.TitleAr?.Trim() ?? string.Empty,
+                        DescriptionEn = f.DescriptionEn?.Trim() ?? string.Empty,
+                        DescriptionAr = f.DescriptionAr?.Trim() ?? string.Empty,
+                        Category = f.Category?.Trim() ?? string.Empty,
+                        DisplayOrder = index
+                    })
+                    .ToList();
+
+                if (newFeatures.Count > 0)
+                    await _aboutUsFeatureRepository.AddRangeAsync(newFeatures);
             }
 
-            var features = request.Features
-                .Where(f => !string.IsNullOrWhiteSpace(f.TitleEn) || !string.IsNullOrWhiteSpace(f.TitleAr))
-                .Select((f, index) => new AboutUsFeature
-                {
-                    AboutUsId = aboutUs.Id,
-                    TitleEn = f.TitleEn?.Trim() ?? string.Empty,
-                    TitleAr = f.TitleAr?.Trim() ?? string.Empty,
-                    DescriptionEn = f.DescriptionEn?.Trim() ?? string.Empty,
-                    DescriptionAr = f.DescriptionAr?.Trim() ?? string.Empty,
-                    Category = f.Category?.Trim() ?? string.Empty,
-                    DisplayOrder = index
-                })
-                .ToList();
-
-            if (features.Count > 0)
-                await _aboutUsFeatureRepository.AddRangeAsync(features);
-
             await _unitOfWork.SaveChangesAsync();
+
+            var features = await _aboutUsFeatureRepository
+                .GetAllAsync(f => f.AboutUsId == aboutUs.Id)
+                .OrderBy(f => f.DisplayOrder)
+                .Select(f => new AboutUsFeatureDto
+                {
+                    Id = f.Id,
+                    TitleEn = f.TitleEn,
+                    TitleAr = f.TitleAr,
+                    DescriptionEn = f.DescriptionEn,
+                    DescriptionAr = f.DescriptionAr,
+                    Category = f.Category,
+                    DisplayOrder = f.DisplayOrder
+                })
+                .ToListAsync(cancellationToken);
 
             return Result<AboutUsDto>.Success(new AboutUsDto
             {
@@ -99,19 +132,8 @@ namespace Stock_Exchange.Application.Features.AboutUs.Commands.UpdateAboutUs
                 MissionAr = aboutUs.MissionAr,
                 VisionEn = aboutUs.VisionEn,
                 VisionAr = aboutUs.VisionAr,
+                SupportEmail = aboutUs.SupportEmail,
                 Features = features
-                    .OrderBy(f => f.DisplayOrder)
-                    .Select(f => new AboutUsFeatureDto
-                    {
-                        Id = f.Id,
-                        TitleEn = f.TitleEn,
-                        TitleAr = f.TitleAr,
-                        DescriptionEn = f.DescriptionEn,
-                        DescriptionAr = f.DescriptionAr,
-                        Category = f.Category,
-                        DisplayOrder = f.DisplayOrder
-                    })
-                    .ToList()
             });
         }
     }

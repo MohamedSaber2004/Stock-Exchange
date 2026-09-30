@@ -9,6 +9,7 @@ namespace Stock_Exchange.Application.Features.AboutUs.DTOs
         public string MissionAr { get; set; } = string.Empty;
         public string VisionEn { get; set; } = string.Empty;
         public string VisionAr { get; set; } = string.Empty;
+        public string? SupportEmail { get; set; }
         public List<AboutUsFeatureDto> Features { get; set; } = new();
     }
 }

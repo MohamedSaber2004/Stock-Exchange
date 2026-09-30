@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.AboutUs.DTOs;
 
@@ -6,26 +6,28 @@ namespace Stock_Exchange.Application.Features.AboutUs.Commands.UpdateAboutUs
 {
     public class UpdateAboutUsCommand : IRequest<Result<AboutUsDto>>
     {
-        public string StoryEn { get; set; } = string.Empty;
-        public string StoryAr { get; set; } = string.Empty;
-        public string MissionEn { get; set; } = string.Empty;
-        public string MissionAr { get; set; } = string.Empty;
-        public string VisionEn { get; set; } = string.Empty;
-        public string VisionAr { get; set; } = string.Empty;
-        public List<AboutUsFeatureRequest> Features { get; set; } = new();
+        public string? StoryEn { get; set; }
+        public string? StoryAr { get; set; }
+        public string? MissionEn { get; set; }
+        public string? MissionAr { get; set; }
+        public string? VisionEn { get; set; }
+        public string? VisionAr { get; set; }
+        public string? SupportEmail { get; set; }
+        public List<AboutUsFeatureRequest>? Features { get; set; }
 
         public UpdateAboutUsCommand()
         {
         }
 
         public UpdateAboutUsCommand(
-            string storyEn,
-            string storyAr,
-            string missionEn,
-            string missionAr,
-            string visionEn,
-            string visionAr,
-            List<AboutUsFeatureRequest> features)
+            string? storyEn = null,
+            string? storyAr = null,
+            string? missionEn = null,
+            string? missionAr = null,
+            string? visionEn = null,
+            string? visionAr = null,
+            string? supportEmail = null,
+            List<AboutUsFeatureRequest>? features = null)
         {
             StoryEn = storyEn;
             StoryAr = storyAr;
@@ -33,6 +35,7 @@ namespace Stock_Exchange.Application.Features.AboutUs.Commands.UpdateAboutUs
             MissionAr = missionAr;
             VisionEn = visionEn;
             VisionAr = visionAr;
+            SupportEmail = supportEmail;
             Features = features;
         }
     }

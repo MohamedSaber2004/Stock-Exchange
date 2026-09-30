@@ -38,14 +38,15 @@ public class AboutUsController : BaseController
     }
 
     /// <summary>
-    /// Creates or replaces the about us content along with its core pillars.
+    /// Creates or updates the about us content (supports partial update) along with its core pillars and support email.
     /// </summary>
-    /// <param name="command">The story, mission, vision and the list of core pillars to save.</param>
+    /// <param name="command">The about us fields, support email, and core pillars to update.</param>
     /// <returns>The saved about us content.</returns>
     /// <response code="200">About us content saved successfully.</response>
-    /// <response code="400">One or more fields are missing or exceed the allowed length.</response>
+    /// <response code="400">One or more fields exceed the allowed length or are invalid.</response>
     /// <response code="401">The caller is not authenticated.</response>
     [HttpPut]
+    [HttpPatch]
     [Route(ApiRoutes.AboutUs.Update)]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status200OK)]

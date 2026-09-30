@@ -19,7 +19,8 @@ namespace Stock_Exchange.Persistance.Seeding
                 MissionEn = "To empower individuals and organizations to build wealth and achieve financial independence through innovative technology, reliable market data, and accessible investment opportunities.",
                 MissionAr = "تمكين الأفراد والمؤسسات من تنمية ثرواتهم وتحقيق الاستقلال المالي عبر التقنيات المبتكرة وبيانات السوق الموثوقة وفرص الاستثمار المتاحة للجميع.",
                 VisionEn = "To become the leading and most trusted global digital financial exchange, setting the highest standards for market integrity, security, and continuous technological innovation.",
-                VisionAr = "أن نكون المنصة المالية الرقمية الرائدة والأكثر موثوقية عالمياً، مع وضع أعلى معايير النزاهة والأمان والابتكار التقني المستمر في الأسواق المالية."
+                VisionAr = "أن نكون المنصة المالية الرقمية الرائدة والأكثر موثوقية عالمياً، مع وضع أعلى معايير النزاهة والأمان والابتكار التقني المستمر في الأسواق المالية.",
+                SupportEmail = "support@stockexchange.com"
             };
 
             await context.AboutUs.AddAsync(aboutUs);

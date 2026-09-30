@@ -36,6 +36,10 @@ namespace Stock_Exchange.Persistance.Configurations
                 .HasMaxLength(4000)
                 .IsRequired();
 
+            builder.Property(a => a.SupportEmail)
+                .HasMaxLength(256)
+                .IsRequired(false);
+
             builder.Property(a => a.IsActive)
                 .HasDefaultValue(true)
                 .IsRequired();

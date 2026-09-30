@@ -10,6 +10,7 @@ namespace Stock_Exchange.Domain.Entities
         public string MissionAr { get; set; } = string.Empty;
         public string VisionEn { get; set; } = string.Empty;
         public string VisionAr { get; set; } = string.Empty;
+        public string? SupportEmail { get; set; }
 
         public virtual ICollection<AboutUsFeature> Features { get; set; } = new List<AboutUsFeature>();
     }

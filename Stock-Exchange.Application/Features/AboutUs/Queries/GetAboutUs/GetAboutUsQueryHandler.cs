@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -37,6 +37,7 @@ namespace Stock_Exchange.Application.Features.AboutUs.Queries.GetAboutUs
                     MissionAr = a.MissionAr,
                     VisionEn = a.VisionEn,
                     VisionAr = a.VisionAr,
+                    SupportEmail = a.SupportEmail,
                     Features = a.Features
                         .OrderBy(f => f.DisplayOrder)
                         .Select(f => new AboutUsFeatureDto
