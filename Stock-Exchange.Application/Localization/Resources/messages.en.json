@@ -146,6 +146,22 @@
     "HeroSubtitleTooLong": "Hero subtitle cannot exceed 2000 characters.",
     "HeroImageUrlTooLong": "Hero image URL cannot exceed 1024 characters."
   },
+  "ArticleMessages": {
+    "ArticleNotFound": "Article not found.",
+    "TitleEnRequired": "English title is required.",
+    "TitleEnTooLong": "English title cannot exceed 500 characters.",
+    "TitleArRequired": "Arabic title is required.",
+    "TitleArTooLong": "Arabic title cannot exceed 500 characters.",
+    "ExcerptEnRequired": "English excerpt is required.",
+    "ExcerptEnTooLong": "English excerpt cannot exceed 2000 characters.",
+    "ExcerptArRequired": "Arabic excerpt is required.",
+    "ExcerptArTooLong": "Arabic excerpt cannot exceed 2000 characters.",
+    "AuthorNameRequired": "Author name is required.",
+    "AuthorNameTooLong": "Author name cannot exceed 200 characters.",
+    "ImageUrlTooLong": "Image URL cannot exceed 1024 characters.",
+    "IdRequired": "Article id cannot be empty when provided.",
+    "SearchTooLong": "Search term cannot exceed 100 characters."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - Password Reset Verification Code"
   },

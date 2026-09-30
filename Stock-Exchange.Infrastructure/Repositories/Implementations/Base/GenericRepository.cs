@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Domain.Common.Base;
 using Stock_Exchange.Domain.Repositories.Interfaces.Base;
@@ -106,6 +106,34 @@ namespace Stock_Exchange.Infrastructure.Repositories.Implementations.Base
         public void Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
+        }
+
+        public async Task<int> HardDeleteAsync(T entity, CancellationToken cancellationToken = default)
+        {
+            var entry = _context.Entry(entity);
+            if (entry.State != EntityState.Detached)
+            {
+                entry.State = EntityState.Detached;
+            }
+
+            return await _context.Set<T>()
+                .IgnoreQueryFilters()
+                .Where(e => e.Id.Equals(entity.Id))
+                .ExecuteDeleteAsync(cancellationToken);
+        }
+
+        public async Task<int> HardDeleteByIdAsync(TKey id, CancellationToken cancellationToken = default)
+        {
+            var tracked = _context.ChangeTracker.Entries<T>().FirstOrDefault(e => e.Entity.Id.Equals(id));
+            if (tracked != null)
+            {
+                tracked.State = EntityState.Detached;
+            }
+
+            return await _context.Set<T>()
+                .IgnoreQueryFilters()
+                .Where(e => e.Id.Equals(id))
+                .ExecuteDeleteAsync(cancellationToken);
         }
     }
 }

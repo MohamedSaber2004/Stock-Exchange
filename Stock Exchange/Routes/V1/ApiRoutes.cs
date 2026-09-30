@@ -105,5 +105,16 @@ namespace Stock_Exchange.Routes.V1
 
             public const string GetAll = "";
         }
+
+        public static class Articles
+        {
+            public const string Base = BaseRoutes.Base + "/articles";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "";
+            public const string Delete = "{id}";
+        }
     }
 }

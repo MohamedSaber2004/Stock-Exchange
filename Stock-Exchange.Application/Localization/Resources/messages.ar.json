@@ -146,6 +146,22 @@
     "HeroSubtitleTooLong": "يجب ألا يزيد طول العنوان الفرعي عن 2000 حرف.",
     "HeroImageUrlTooLong": "يجب ألا يزيد طول رابط الصورة عن 1024 حرف."
   },
+  "ArticleMessages": {
+    "ArticleNotFound": "المقال غير موجود.",
+    "TitleEnRequired": "عنوان المقال بالإنجليزية مطلوب.",
+    "TitleEnTooLong": "يجب ألا يزيد طول العنوان بالإنجليزية عن 500 حرف.",
+    "TitleArRequired": "عنوان المقال بالعربية مطلوب.",
+    "TitleArTooLong": "يجب ألا يزيد طول العنوان بالعربية عن 500 حرف.",
+    "ExcerptEnRequired": "مقتطف المقال بالإنجليزية مطلوب.",
+    "ExcerptEnTooLong": "يجب ألا يزيد طول مقتطف المقال بالإنجليزية عن 2000 حرف.",
+    "ExcerptArRequired": "مقتطف المقال بالعربية مطلوب.",
+    "ExcerptArTooLong": "يجب ألا يزيد طول مقتطف المقال بالعربية عن 2000 حرف.",
+    "AuthorNameRequired": "اسم الكاتب مطلوب.",
+    "AuthorNameTooLong": "يجب ألا يزيد طول اسم الكاتب عن 200 حرف.",
+    "ImageUrlTooLong": "يجب ألا يزيد طول رابط الصورة عن 1024 حرف.",
+    "IdRequired": "مُعرف المقال مطلوب.",
+    "SearchTooLong": "يجب ألا يتجاوز نص البحث 100 حرف."
+  },
   "EmailMessages": {
     "ResetPasswordSubject": "Stock Exchange - رمز التحقق لإعادة تعيين كلمة المرور"
   },

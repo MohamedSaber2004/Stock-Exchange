@@ -38,6 +38,11 @@ using Stock_Exchange.Application.Features.PrivacyPolicy.Queries.GetPrivacy;
 using Stock_Exchange.Application.Features.TermsAndConditions.Commands.DeleteTermsAndConditions;
 using Stock_Exchange.Application.Features.TermsAndConditions.Commands.UpdateTermsAndConditions;
 using Stock_Exchange.Application.Features.TermsAndConditions.Queries.GetTermsAndConditions;
+using Stock_Exchange.Application.Features.Articles.Commands.AddArticle;
+using Stock_Exchange.Application.Features.Articles.Commands.DeleteArticle;
+using Stock_Exchange.Application.Features.Articles.Commands.UpdateArticle;
+using Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles;
+using Stock_Exchange.Application.Features.Articles.Queries.GetArticleById;
 using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application
@@ -96,6 +101,11 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<GetTermsAndConditionsQuery>, GetTermsAndConditionsQueryValidator>();
             services.AddTransient<IValidator<UpdateTermsAndConditionsCommand>, UpdateTermsAndConditionsCommandValidator>();
             services.AddTransient<IValidator<DeleteTermsAndConditionsCommand>, DeleteTermsAndConditionsCommandValidator>();
+            services.AddTransient<IValidator<GetAllArticlesQuery>, GetAllArticlesQueryValidator>();
+            services.AddTransient<IValidator<GetArticleByIdQuery>, GetArticleByIdQueryValidator>();
+            services.AddTransient<IValidator<AddArticleCommand>, AddArticleCommandValidator>();
+            services.AddTransient<IValidator<UpdateArticleCommand>, UpdateArticleCommandValidator>();
+            services.AddTransient<IValidator<DeleteArticleCommand>, DeleteArticleCommandValidator>();
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 

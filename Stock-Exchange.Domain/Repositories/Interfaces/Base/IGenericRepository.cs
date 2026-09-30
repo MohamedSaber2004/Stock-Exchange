@@ -1,4 +1,4 @@
-﻿using Stock_Exchange.Domain.Common.Base;
+using Stock_Exchange.Domain.Common.Base;
 using System.Linq.Expressions;
 
 namespace Stock_Exchange.Domain.Repositories.Interfaces.Base
@@ -20,8 +20,8 @@ namespace Stock_Exchange.Domain.Repositories.Interfaces.Base
         Task UpdateRange(IEnumerable<T> entities);
 
         void Delete(T entity);
-
-
+        Task<int> HardDeleteAsync(T entity, CancellationToken cancellationToken = default);
+        Task<int> HardDeleteByIdAsync(TKey id, CancellationToken cancellationToken = default);
         Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
         Task<bool> ExistsByKeyAsync(TKey key, CancellationToken cancellationToken = default);
         Task<T?> FindByKeyAsync(TKey key, CancellationToken cancellationToken = default);

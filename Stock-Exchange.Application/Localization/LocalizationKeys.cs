@@ -169,6 +169,24 @@ namespace Stock_Exchange.Application.Localization
             public const string HeroImageUrlTooLong = "HomeMessages.HeroImageUrlTooLong";
         }
 
+        public static class ArticleMessages
+        {
+            public const string ArticleNotFound = "ArticleMessages.ArticleNotFound";
+            public const string TitleEnRequired = "ArticleMessages.TitleEnRequired";
+            public const string TitleEnTooLong = "ArticleMessages.TitleEnTooLong";
+            public const string TitleArRequired = "ArticleMessages.TitleArRequired";
+            public const string TitleArTooLong = "ArticleMessages.TitleArTooLong";
+            public const string ExcerptEnRequired = "ArticleMessages.ExcerptEnRequired";
+            public const string ExcerptEnTooLong = "ArticleMessages.ExcerptEnTooLong";
+            public const string ExcerptArRequired = "ArticleMessages.ExcerptArRequired";
+            public const string ExcerptArTooLong = "ArticleMessages.ExcerptArTooLong";
+            public const string AuthorNameRequired = "ArticleMessages.AuthorNameRequired";
+            public const string AuthorNameTooLong = "ArticleMessages.AuthorNameTooLong";
+            public const string ImageUrlTooLong = "ArticleMessages.ImageUrlTooLong";
+            public const string IdRequired = "ArticleMessages.IdRequired";
+            public const string SearchTooLong = "ArticleMessages.SearchTooLong";
+        }
+
         public static class EmailMessages
         {
             public const string ResetPasswordSubject = "EmailMessages.ResetPasswordSubject";

@@ -38,13 +38,11 @@ namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeExperts
             var existingExperts = await _expertRepository.GetAllAsync(e => e.IsActive).ToListAsync(cancellationToken);
             var requestIds = request.Items.Where(i => i.Id.HasValue).Select(i => i.Id!.Value).ToHashSet();
 
-            // Soft-delete items that were omitted
             foreach (var item in existingExperts.Where(e => !requestIds.Contains(e.Id)))
             {
                 _expertRepository.Delete(item);
             }
 
-            // Upsert items from request
             foreach (var item in request.Items)
             {
                 if (item.Id.HasValue && existingExperts.FirstOrDefault(e => e.Id == item.Id.Value) is { } entity)
