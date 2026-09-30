@@ -4325,7 +4325,7 @@
       }
     },
     "/api/v1/home/news": {
-      "put": {
+      "patch": {
         "tags": [
           "Home"
         ],
@@ -4525,7 +4525,7 @@
       }
     },
     "/api/v1/home/services": {
-      "put": {
+      "patch": {
         "tags": [
           "Home"
         ],
@@ -4723,7 +4723,7 @@
       }
     },
     "/api/v1/home/articles": {
-      "put": {
+      "patch": {
         "tags": [
           "Home"
         ],
@@ -4922,7 +4922,7 @@
       }
     },
     "/api/v1/home/videos": {
-      "put": {
+      "patch": {
         "tags": [
           "Home"
         ],
@@ -5122,7 +5122,7 @@
       }
     },
     "/api/v1/home/plans": {
-      "put": {
+      "patch": {
         "tags": [
           "Home"
         ],
@@ -5330,7 +5330,7 @@
       }
     },
     "/api/v1/home/experts": {
-      "put": {
+      "patch": {
         "tags": [
           "Home"
         ],
