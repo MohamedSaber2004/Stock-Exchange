@@ -601,8 +601,17 @@
         "tags": [
           "Articles"
         ],
-        "summary": "Updates an existing article.\r\nAdmin authorization only.",
+        "summary": "Updates an existing article by route id.\r\nAdmin authorization only.",
         "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The article id from route.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
           {
             "name": "Accept-Language",
             "in": "header",
@@ -618,7 +627,7 @@
           }
         ],
         "requestBody": {
-          "description": "The article id and updated properties.",
+          "description": "The updated properties.",
           "content": {
             "application/json": {
               "schema": {
@@ -869,177 +878,6 @@
           },
           "403": {
             "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Articles"
-        ],
-        "summary": "Updates an existing article by route id.\r\nAdmin authorization only.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The article id from route.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The updated properties.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Article updated successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "titleEn": "string",
-                        "titleAr": "string",
-                        "excerptEn": "string",
-                        "excerptAr": "string",
-                        "imageUrl": "string",
-                        "authorName": "string",
-                        "publishedAt": "09/26/2026 22:32:00",
-                        "isFeaturedOnHome": true,
-                        "displayOrder": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00",
-                        "title": "string",
-                        "excerpt": "string"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more fields are invalid or exceed allowed lengths.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Article was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User is unauthorized."
-          },
-          "403": {
-            "description": "User is forbidden (admin only)."
           }
         },
         "security": [
