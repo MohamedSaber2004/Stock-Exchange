@@ -343,6 +343,342 @@
         }
       }
     },
+    "/api/v1/activity-logs": {
+      "get": {
+        "tags": [
+          "ActivityLogs"
+        ],
+        "summary": "Retrieves paginated activity logs along with summary statistics for the admin dashboard.",
+        "parameters": [
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ResourceType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ActivityResourceType"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityLogsListResponseApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "logs": {
+                          "items": [
+                            {
+                              "id": "...",
+                              "formattedId": "...",
+                              "userId": "...",
+                              "userName": "...",
+                              "userEmail": "...",
+                              "userProfilePictureUrl": "...",
+                              "action": "...",
+                              "actionAr": "...",
+                              "actionEn": "...",
+                              "resourceType": "...",
+                              "resourceTypeArabic": "...",
+                              "resourceTypeEnglish": "...",
+                              "resourceTypeName": "...",
+                              "resourceTypeTitle": "...",
+                              "ipAddress": "...",
+                              "device": "...",
+                              "createdAt": "...",
+                              "timeAgo": "...",
+                              "timeAgoArabic": "...",
+                              "timeAgoEnglish": "...",
+                              "details": "...",
+                              "detailsAr": "...",
+                              "detailsEn": "..."
+                            }
+                          ],
+                          "pageNumber": 0,
+                          "pageSize": 0,
+                          "totalPages": 0,
+                          "totalCount": 0,
+                          "hasPreviousPage": true,
+                          "hasNextPage": true
+                        },
+                        "summary": {
+                          "totalLogs": 0,
+                          "userRegistrationsCount": 0,
+                          "contentOperationsCount": 0,
+                          "articlesCount": 0,
+                          "videosCount": 0,
+                          "usersCount": 0,
+                          "cards": [
+                            {
+                              "key": "...",
+                              "titleAr": "...",
+                              "titleEn": "...",
+                              "title": "...",
+                              "count": "..."
+                            }
+                          ]
+                        }
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/activity-logs/summary": {
+      "get": {
+        "tags": [
+          "ActivityLogs"
+        ],
+        "summary": "Retrieves summary statistics for the activity logs cards (Total, User Registrations, Articles, Videos, Content Ops).",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityLogsSummaryDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "totalLogs": 0,
+                        "userRegistrationsCount": 0,
+                        "contentOperationsCount": 0,
+                        "articlesCount": 0,
+                        "videosCount": 0,
+                        "usersCount": 0,
+                        "cards": [
+                          {
+                            "key": "string",
+                            "titleAr": "string",
+                            "titleEn": "string",
+                            "title": "string",
+                            "count": 0
+                          }
+                        ]
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/activity-logs/{id}": {
+      "get": {
+        "tags": [
+          "ActivityLogs"
+        ],
+        "summary": "Retrieves a specific activity log event by its ID or formatted code (e.g. act-001).\r\nUsed for the Event Data Inspector modal (\"فاحص بيانات الحدث\").",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The log Guid or formatted code (e.g. act-001).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityLogDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "formattedId": "string",
+                        "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "userName": "string",
+                        "userEmail": "string",
+                        "userProfilePictureUrl": "string",
+                        "action": "string",
+                        "actionAr": "string",
+                        "actionEn": "string",
+                        "resourceType": "UserRegistrations",
+                        "resourceTypeArabic": "string",
+                        "resourceTypeEnglish": "string",
+                        "resourceTypeName": "string",
+                        "resourceTypeTitle": "string",
+                        "ipAddress": "string",
+                        "device": "string",
+                        "createdAt": "09/26/2026 22:32:00",
+                        "timeAgo": "string",
+                        "timeAgoArabic": "string",
+                        "timeAgoEnglish": "string",
+                        "details": "string",
+                        "detailsAr": "string",
+                        "detailsEn": "string"
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/articles": {
       "get": {
         "tags": [
@@ -6810,103 +7146,6 @@
         ]
       }
     },
-    "/api/v1/subscriptions": {
-      "get": {
-        "tags": [
-          "SubscriptionPlans"
-        ],
-        "summary": "Retrieves all active subscription plans along with their features.\r\nGeneral authorization: Accessible to any authenticated user.",
-        "parameters": [
-          {
-            "name": "IsActive",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "ApplyLanguageFilter",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Subscription plans retrieved successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SubscriptionPlanDtoListApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": [
-                        {
-                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                          "nameEn": "string",
-                          "nameAr": "string",
-                          "priceEgp": 0,
-                          "period": "string",
-                          "isHighlighted": true,
-                          "displayOrder": 0,
-                          "isActive": true,
-                          "features": [
-                            "string"
-                          ],
-                          "featureItems": [
-                            {
-                              "id": "...",
-                              "textEn": "...",
-                              "textAr": "...",
-                              "displayOrder": "...",
-                              "text": "..."
-                            }
-                          ],
-                          "name": "string"
-                        }
-                      ],
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      }
-    },
     "/api/v1/terms-and-conditions": {
       "get": {
         "tags": [
@@ -7381,6 +7620,864 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Retrieves paginated list of users with search and filter capabilities for admin dashboard.",
+        "parameters": [
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "UserType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/UserType"
+            }
+          },
+          {
+            "name": "IsActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoPagginatedResultApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "items": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "fullName": "string",
+                            "email": "string",
+                            "phoneNumber": "string",
+                            "profilePictureUrl": "string",
+                            "userType": "Customer",
+                            "userTypeArabic": "string",
+                            "userTypeEnglish": "string",
+                            "userTypeTitle": "string",
+                            "role": "string",
+                            "isActive": true,
+                            "statusArabic": "string",
+                            "statusEnglish": "string",
+                            "statusTitle": "string",
+                            "createdAt": "09/26/2026 22:32:00",
+                            "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "countryArName": "string",
+                            "countryEnName": "string",
+                            "countryName": "string",
+                            "countryCode": "string"
+                          }
+                        ],
+                        "pageNumber": 0,
+                        "pageSize": 0,
+                        "totalPages": 0,
+                        "totalCount": 0,
+                        "hasPreviousPage": true,
+                        "hasNextPage": true
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Creates a new user account with specified role (Admin or Customer).",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "User registration details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "fullName": "string",
+                        "email": "string",
+                        "phoneNumber": "string",
+                        "profilePictureUrl": "string",
+                        "userType": "Customer",
+                        "userTypeArabic": "string",
+                        "userTypeEnglish": "string",
+                        "userTypeTitle": "string",
+                        "role": "string",
+                        "isActive": true,
+                        "statusArabic": "string",
+                        "statusEnglish": "string",
+                        "statusTitle": "string",
+                        "createdAt": "09/26/2026 22:32:00",
+                        "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "countryArName": "string",
+                        "countryEnName": "string",
+                        "countryName": "string",
+                        "countryCode": "string"
+                      },
+                      "message": "Resource created successfully.",
+                      "statusCode": 201
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Retrieves user details by user ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "fullName": "string",
+                        "email": "string",
+                        "phoneNumber": "string",
+                        "profilePictureUrl": "string",
+                        "userType": "Customer",
+                        "userTypeArabic": "string",
+                        "userTypeEnglish": "string",
+                        "userTypeTitle": "string",
+                        "role": "string",
+                        "isActive": true,
+                        "statusArabic": "string",
+                        "statusEnglish": "string",
+                        "statusTitle": "string",
+                        "emailConfirmed": true,
+                        "createdAt": "09/26/2026 22:32:00",
+                        "updatedAt": "09/26/2026 22:32:00",
+                        "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "countryArName": "string",
+                        "countryEnName": "string",
+                        "countryName": "string",
+                        "countryCode": "string",
+                        "language": "ar"
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Updates an existing user's information and role/status.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated user information.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "fullName": "string",
+                        "email": "string",
+                        "phoneNumber": "string",
+                        "profilePictureUrl": "string",
+                        "userType": "Customer",
+                        "userTypeArabic": "string",
+                        "userTypeEnglish": "string",
+                        "userTypeTitle": "string",
+                        "role": "string",
+                        "isActive": true,
+                        "statusArabic": "string",
+                        "statusEnglish": "string",
+                        "statusTitle": "string",
+                        "createdAt": "09/26/2026 22:32:00",
+                        "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "countryArName": "string",
+                        "countryEnName": "string",
+                        "countryName": "string",
+                        "countryCode": "string"
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Soft deletes a user account and revokes their active tokens.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": true,
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{id}/change-password": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Resets/changes a user's password directly by admin.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The user ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New password and confirmation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminChangePasswordRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminChangePasswordRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminChangePasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": true,
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
                 },
                 "examples": {
                   "error": {
@@ -8375,6 +9472,315 @@
         },
         "additionalProperties": false
       },
+      "ActivityLogDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "formattedId": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "userProfilePictureUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "action": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "resourceType": {
+            "$ref": "#/components/schemas/ActivityResourceType"
+          },
+          "resourceTypeArabic": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "resourceTypeEnglish": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "resourceTypeName": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "resourceTypeTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "ipAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "device": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "timeAgo": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeAgoArabic": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "timeAgoEnglish": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "details": {
+            "type": "string",
+            "nullable": true
+          },
+          "detailsAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "detailsEn": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActivityLogDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ActivityLogDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActivityLogDtoPagginatedResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActivityLogDto"
+            },
+            "nullable": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "hasPreviousPage": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "hasNextPage": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActivityLogsListResponse": {
+        "type": "object",
+        "properties": {
+          "logs": {
+            "$ref": "#/components/schemas/ActivityLogDtoPagginatedResult"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/ActivityLogsSummaryDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActivityLogsListResponseApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ActivityLogsListResponse"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActivityLogsSummaryDto": {
+        "type": "object",
+        "properties": {
+          "totalLogs": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userRegistrationsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contentOperationsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "articlesCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "videosCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usersCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SummaryCardDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActivityLogsSummaryDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ActivityLogsSummaryDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActivityResourceType": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "AddArticleCommand": {
         "type": "object",
         "properties": {
@@ -8461,6 +9867,43 @@
         },
         "additionalProperties": false
       },
+      "AddUserCommand": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "confirmPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "userType": {
+            "$ref": "#/components/schemas/UserType"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "AddVideoCommand": {
         "type": "object",
         "properties": {
@@ -8508,6 +9951,20 @@
           },
           "isActive": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdminChangePasswordRequest": {
+        "type": "object",
+        "properties": {
+          "newPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "confirmNewPassword": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -10136,6 +11593,40 @@
         "type": "integer",
         "format": "int32"
       },
+      "ObjectApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "PlanFeatureDto": {
         "type": "object",
         "properties": {
@@ -10549,6 +12040,32 @@
             "nullable": true
           },
           "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SummaryCardDto": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "titleAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "titleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
             "type": "integer",
             "format": "int32"
           }
@@ -10975,6 +12492,39 @@
         },
         "additionalProperties": false
       },
+      "UpdateUserCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "userType": {
+            "$ref": "#/components/schemas/UserType"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateUserInfoCommand": {
         "type": "object",
         "properties": {
@@ -11056,6 +12606,338 @@
         },
         "additionalProperties": false
       },
+      "UserDetailsDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "profilePictureUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "userType": {
+            "$ref": "#/components/schemas/UserType"
+          },
+          "userTypeArabic": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "userTypeEnglish": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "userTypeTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "statusArabic": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "statusEnglish": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "statusTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailConfirmed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "countryArName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryEnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "language": {
+            "$ref": "#/components/schemas/Language"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDetailsDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserDetailsDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "profilePictureUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "userType": {
+            "$ref": "#/components/schemas/UserType"
+          },
+          "userTypeArabic": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "userTypeEnglish": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "userTypeTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "statusArabic": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "statusEnglish": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "statusTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "countryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "countryArName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryEnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDtoPagginatedResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserDto"
+            },
+            "nullable": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "hasPreviousPage": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "hasNextPage": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDtoPagginatedResultApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserDtoPagginatedResult"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "UserProfileDto": {
         "type": "object",
         "properties": {
@@ -11122,6 +13004,14 @@
           }
         },
         "additionalProperties": false
+      },
+      "UserType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
       },
       "VerifyOtpCommand": {
         "type": "object",

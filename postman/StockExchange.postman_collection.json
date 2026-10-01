@@ -599,6 +599,575 @@
       ]
     },
     {
+      "name": "ActivityLogs",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves paginated activity logs along with summary statistics for the admin dashboard.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/activity-logs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "activity-logs"
+              ],
+              "query": [
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "ResourceType",
+                  "value": "1",
+                  "description": ""
+                },
+                {
+                  "key": "PageNumber",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "PageSize",
+                  "value": "0",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "Retrieves paginated activity logs along with summary statistics for the admin dashboard.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ResourceType",
+                      "value": "1",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated activity logs along with summary statistics for the admin dashboard.",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"logs\": {\n      \"items\": [\n        {\n          \"id\": \"...\",\n          \"formattedId\": \"...\",\n          \"userId\": \"...\",\n          \"userName\": \"...\",\n          \"userEmail\": \"...\",\n          \"userProfilePictureUrl\": \"...\",\n          \"action\": \"...\",\n          \"actionAr\": \"...\",\n          \"actionEn\": \"...\",\n          \"resourceType\": \"...\",\n          \"resourceTypeArabic\": \"...\",\n          \"resourceTypeEnglish\": \"...\",\n          \"resourceTypeName\": \"...\",\n          \"resourceTypeTitle\": \"...\",\n          \"ipAddress\": \"...\",\n          \"device\": \"...\",\n          \"createdAt\": \"...\",\n          \"timeAgo\": \"...\",\n          \"timeAgoArabic\": \"...\",\n          \"timeAgoEnglish\": \"...\",\n          \"details\": \"...\",\n          \"detailsAr\": \"...\",\n          \"detailsEn\": \"...\"\n        }\n      ],\n      \"pageNumber\": 0,\n      \"pageSize\": 0,\n      \"totalPages\": 0,\n      \"totalCount\": 0,\n      \"hasPreviousPage\": true,\n      \"hasNextPage\": true\n    },\n    \"summary\": {\n      \"totalLogs\": 0,\n      \"userRegistrationsCount\": 0,\n      \"contentOperationsCount\": 0,\n      \"articlesCount\": 0,\n      \"videosCount\": 0,\n      \"usersCount\": 0,\n      \"cards\": [\n        {\n          \"key\": \"...\",\n          \"titleAr\": \"...\",\n          \"titleEn\": \"...\",\n          \"title\": \"...\",\n          \"count\": \"...\"\n        }\n      ]\n    }\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ResourceType",
+                      "value": "1",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated activity logs along with summary statistics for the admin dashboard.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ResourceType",
+                      "value": "1",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated activity logs along with summary statistics for the admin dashboard.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Retrieves summary statistics for the activity logs cards (Total, User Registrations, Articles, Videos, Content Ops).",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/activity-logs/summary",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "activity-logs",
+                "summary"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Retrieves summary statistics for the activity logs cards (Total, User Registrations, Articles, Videos, Content Ops).",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs/summary",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs",
+                    "summary"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves summary statistics for the activity logs cards (Total, User Registrations, Articles, Videos, Content Ops).",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"totalLogs\": 0,\n    \"userRegistrationsCount\": 0,\n    \"contentOperationsCount\": 0,\n    \"articlesCount\": 0,\n    \"videosCount\": 0,\n    \"usersCount\": 0,\n    \"cards\": [\n      {\n        \"key\": \"string\",\n        \"titleAr\": \"string\",\n        \"titleEn\": \"string\",\n        \"title\": \"string\",\n        \"count\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs/summary",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs",
+                    "summary"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves summary statistics for the activity logs cards (Total, User Registrations, Articles, Videos, Content Ops).",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs/summary",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs",
+                    "summary"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves summary statistics for the activity logs cards (Total, User Registrations, Articles, Videos, Content Ops).",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Retrieves a specific activity log event by its ID or formatted code (e.g. act-001).\r\nUsed for the Event Data Inspector modal (\"فاحص بيانات الحدث\").",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/activity-logs/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "activity-logs",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "string",
+                  "description": "The log Guid or formatted code (e.g. act-001)."
+                }
+              ]
+            },
+            "description": "Retrieves a specific activity log event by its ID or formatted code (e.g. act-001).\r\nUsed for the Event Data Inspector modal (\"فاحص بيانات الحدث\").",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "string",
+                      "description": "The log Guid or formatted code (e.g. act-001)."
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific activity log event by its ID or formatted code (e.g. act-001).\r\nUsed for the Event Data Inspector modal (\"فاحص بيانات الحدث\").",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"formattedId\": \"string\",\n    \"userId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"userName\": \"string\",\n    \"userEmail\": \"string\",\n    \"userProfilePictureUrl\": \"string\",\n    \"action\": \"string\",\n    \"actionAr\": \"string\",\n    \"actionEn\": \"string\",\n    \"resourceType\": \"UserRegistrations\",\n    \"resourceTypeArabic\": \"string\",\n    \"resourceTypeEnglish\": \"string\",\n    \"resourceTypeName\": \"string\",\n    \"resourceTypeTitle\": \"string\",\n    \"ipAddress\": \"string\",\n    \"device\": \"string\",\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"timeAgo\": \"string\",\n    \"timeAgoArabic\": \"string\",\n    \"timeAgoEnglish\": \"string\",\n    \"details\": \"string\",\n    \"detailsAr\": \"string\",\n    \"detailsEn\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Not Found - error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "string",
+                      "description": "The log Guid or formatted code (e.g. act-001)."
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific activity log event by its ID or formatted code (e.g. act-001).\r\nUsed for the Event Data Inspector modal (\"فاحص بيانات الحدث\").",
+                "body": null
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "string",
+                      "description": "The log Guid or formatted code (e.g. act-001)."
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific activity log event by its ID or formatted code (e.g. act-001).\r\nUsed for the Event Data Inspector modal (\"فاحص بيانات الحدث\").",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/activity-logs/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "activity-logs",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "string",
+                      "description": "The log Guid or formatted code (e.g. act-001)."
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific activity log event by its ID or formatted code (e.g. act-001).\r\nUsed for the Event Data Inspector modal (\"فاحص بيانات الحدث\").",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Articles",
       "description": "",
       "item": [
@@ -13172,184 +13741,6 @@
               "_postman_previewlanguage": "text"
             }
           ]
-        },
-        {
-          "name": "Retrieves all active subscription plans along with their features.\r\nGeneral authorization: Accessible to any authenticated user.",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept-Language",
-                "value": "ar",
-                "description": "Preferred language for the response. Supported values: `ar`, `en`."
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/subscriptions",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "subscriptions"
-              ],
-              "query": [
-                {
-                  "key": "IsActive",
-                  "value": "false",
-                  "description": ""
-                },
-                {
-                  "key": "ApplyLanguageFilter",
-                  "value": "false",
-                  "description": ""
-                }
-              ],
-              "variable": []
-            },
-            "description": "Retrieves all active subscription plans along with their features.\r\nGeneral authorization: Accessible to any authenticated user.",
-            "body": null
-          },
-          "response": [
-            {
-              "name": "200 Subscription plans retrieved successfully. - success",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/subscriptions",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "subscriptions"
-                  ],
-                  "query": [
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "Retrieves all active subscription plans along with their features.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Subscription plans retrieved successfully.",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"nameEn\": \"string\",\n      \"nameAr\": \"string\",\n      \"priceEgp\": 0,\n      \"period\": \"string\",\n      \"isHighlighted\": true,\n      \"displayOrder\": 0,\n      \"isActive\": true,\n      \"features\": [\n        \"string\"\n      ],\n      \"featureItems\": [\n        {\n          \"id\": \"...\",\n          \"textEn\": \"...\",\n          \"textAr\": \"...\",\n          \"displayOrder\": \"...\",\n          \"text\": \"...\"\n        }\n      ],\n      \"name\": \"string\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/subscriptions",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "subscriptions"
-                  ],
-                  "query": [
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "Retrieves all active subscription plans along with their features.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/subscriptions",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "subscriptions"
-                  ],
-                  "query": [
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "Retrieves all active subscription plans along with their features.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            }
-          ]
         }
       ]
     },
@@ -14314,6 +14705,1825 @@
                 },
                 "description": "Soft deletes a specific terms and conditions section or the terms and conditions by id.",
                 "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves paginated list of users with search and filter capabilities for admin dashboard.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "UserType",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "PageNumber",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "PageSize",
+                  "value": "0",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "Retrieves paginated list of users with search and filter capabilities for admin dashboard.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "UserType",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated list of users with search and filter capabilities for admin dashboard.",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"fullName\": \"string\",\n        \"email\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"profilePictureUrl\": \"string\",\n        \"userType\": \"Customer\",\n        \"userTypeArabic\": \"string\",\n        \"userTypeEnglish\": \"string\",\n        \"userTypeTitle\": \"string\",\n        \"role\": \"string\",\n        \"isActive\": true,\n        \"statusArabic\": \"string\",\n        \"statusEnglish\": \"string\",\n        \"statusTitle\": \"string\",\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"countryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"countryArName\": \"string\",\n        \"countryEnName\": \"string\",\n        \"countryName\": \"string\",\n        \"countryCode\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "UserType",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated list of users with search and filter capabilities for admin dashboard.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "UserType",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves paginated list of users with search and filter capabilities for admin dashboard.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Creates a new user account with specified role (Admin or Customer).",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Creates a new user account with specified role (Admin or Customer).",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 Created - success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new user account with specified role (Admin or Customer).",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"profilePictureUrl\": \"string\",\n    \"userType\": \"Customer\",\n    \"userTypeArabic\": \"string\",\n    \"userTypeEnglish\": \"string\",\n    \"userTypeTitle\": \"string\",\n    \"role\": \"string\",\n    \"isActive\": true,\n    \"statusArabic\": \"string\",\n    \"statusEnglish\": \"string\",\n    \"statusTitle\": \"string\",\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"countryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"countryArName\": \"string\",\n    \"countryEnName\": \"string\",\n    \"countryName\": \"string\",\n    \"countryCode\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - validationError",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new user account with specified role (Admin or Customer).",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - businessError",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new user account with specified role (Admin or Customer).",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new user account with specified role (Admin or Customer).",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Creates a new user account with specified role (Admin or Customer).",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Retrieves user details by user ID.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The user ID."
+                }
+              ]
+            },
+            "description": "Retrieves user details by user ID.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Retrieves user details by user ID.",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"profilePictureUrl\": \"string\",\n    \"userType\": \"Customer\",\n    \"userTypeArabic\": \"string\",\n    \"userTypeEnglish\": \"string\",\n    \"userTypeTitle\": \"string\",\n    \"role\": \"string\",\n    \"isActive\": true,\n    \"statusArabic\": \"string\",\n    \"statusEnglish\": \"string\",\n    \"statusTitle\": \"string\",\n    \"emailConfirmed\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"updatedAt\": \"09/26/2026 22:32:00\",\n    \"countryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"countryArName\": \"string\",\n    \"countryEnName\": \"string\",\n    \"countryName\": \"string\",\n    \"countryCode\": \"string\",\n    \"language\": \"ar\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Not Found - error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Retrieves user details by user ID.",
+                "body": null
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Retrieves user details by user ID.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Retrieves user details by user ID.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Updates an existing user's information and role/status.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The user ID."
+                }
+              ]
+            },
+            "description": "Updates an existing user's information and role/status.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Updates an existing user's information and role/status.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"profilePictureUrl\": \"string\",\n    \"userType\": \"Customer\",\n    \"userTypeArabic\": \"string\",\n    \"userTypeEnglish\": \"string\",\n    \"userTypeTitle\": \"string\",\n    \"role\": \"string\",\n    \"isActive\": true,\n    \"statusArabic\": \"string\",\n    \"statusEnglish\": \"string\",\n    \"statusTitle\": \"string\",\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"countryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"countryArName\": \"string\",\n    \"countryEnName\": \"string\",\n    \"countryName\": \"string\",\n    \"countryCode\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Updates an existing user's information and role/status.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Updates an existing user's information and role/status.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Not Found - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Updates an existing user's information and role/status.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Updates an existing user's information and role/status.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Updates an existing user's information and role/status.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"userType\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Soft deletes a user account and revokes their active tokens.",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The user ID."
+                }
+              ]
+            },
+            "description": "Soft deletes a user account and revokes their active tokens.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a user account and revokes their active tokens.",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - validationError",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a user account and revokes their active tokens.",
+                "body": null
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - businessError",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a user account and revokes their active tokens.",
+                "body": null
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Not Found - error",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a user account and revokes their active tokens.",
+                "body": null
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a user account and revokes their active tokens.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Soft deletes a user account and revokes their active tokens.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Resets/changes a user's password directly by admin.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users/{{id}}/change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "{{id}}",
+                "change-password"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": "The user ID."
+                }
+              ]
+            },
+            "description": "Resets/changes a user's password directly by admin.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Resets/changes a user's password directly by admin.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Resets/changes a user's password directly by admin.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Resets/changes a user's password directly by admin.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 Not Found - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Resets/changes a user's password directly by admin.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Resets/changes a user's password directly by admin.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/users/{{id}}/change-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    "{{id}}",
+                    "change-password"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": "The user ID."
+                    }
+                  ]
+                },
+                "description": "Resets/changes a user's password directly by admin.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newPassword\": \"string\",\n  \"confirmNewPassword\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
