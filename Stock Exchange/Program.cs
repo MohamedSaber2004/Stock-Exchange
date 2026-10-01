@@ -1,4 +1,4 @@
-
+﻿
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using AspNetCoreRateLimit;
@@ -136,6 +136,7 @@ namespace Stock_Exchange
                 {
                     options.JsonSerializerOptions.Converters.Add(new IsoUtcDateTimeConverter());
                     options.JsonSerializerOptions.Converters.Add(new IsoUtcNullableDateTimeConverter());
+                    options.JsonSerializerOptions.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All);
                 })
                 .ConfigureApiBehaviorOptions(options =>
                 {

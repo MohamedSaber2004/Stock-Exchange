@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -154,16 +154,17 @@ namespace Stock_Exchange.Infrastructure
                     {
                         context.HandleResponse();
                         context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                        context.Response.ContentType = "application/json";
+                        context.Response.ContentType = "application/json; charset=utf-8";
 
                         var localizedMessage = ResolveChallengeMessage(context);
                         var response = ApiResponse<object?>.Error(new Dictionary<string, string[]>(), localizedMessage, StatusCodes.Status401Unauthorized);
                         var jsonOptions = new System.Text.Json.JsonSerializerOptions
                         {
-                            PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
+                            PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase,
+                            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All)
                         };
 
-                        return context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(response, jsonOptions));
+                        return context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(response, jsonOptions), System.Text.Encoding.UTF8);
                     },
                     OnTokenValidated = async context =>
                     {

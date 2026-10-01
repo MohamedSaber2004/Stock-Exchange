@@ -1,4 +1,4 @@
-using Stock_Exchange.Application.Common.Exceptions;
+﻿using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Extensions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -281,17 +281,18 @@ namespace Stock_Exchange.Middlewares
                 _logger.LogWarning(exception, "Handled exception occurred with status {StatusCode}: {Message} | Errors: {Errors}", statusCode, message, string.Join("; ", errorsDict.Select(kv => $"{kv.Key}: [{string.Join(", ", kv.Value)}]")));
             }
 
-            context.Response.ContentType = MediaTypeNames.Application.Json;
+            context.Response.ContentType = "application/json; charset=utf-8";
             context.Response.StatusCode = statusCode;
 
             var response = ApiResponse<object?>.Error(errorsDict, message, statusCode);
 
             var jsonOptions = new JsonSerializerOptions
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All)
             };
 
-            await context.Response.WriteAsync(JsonSerializer.Serialize(response, jsonOptions));
+            await context.Response.WriteAsync(JsonSerializer.Serialize(response, jsonOptions), System.Text.Encoding.UTF8);
         }
 
         private static string GetRequestCulture(HttpContext context)
