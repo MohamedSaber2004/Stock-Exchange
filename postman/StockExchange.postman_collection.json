@@ -6688,7 +6688,7 @@
             "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
+              "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0,\n  \"profilePictureUrl\": \"string\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -6731,7 +6731,7 @@
                 "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0,\n  \"profilePictureUrl\": \"string\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6784,7 +6784,7 @@
                 "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0,\n  \"profilePictureUrl\": \"string\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6837,7 +6837,7 @@
                 "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0,\n  \"profilePictureUrl\": \"string\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6890,7 +6890,7 @@
                 "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0,\n  \"profilePictureUrl\": \"string\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6943,7 +6943,7 @@
                 "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0,\n  \"profilePictureUrl\": \"string\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6996,7 +6996,7 @@
                 "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0,\n  \"profilePictureUrl\": \"string\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -7049,7 +7049,7 @@
                 "description": "Updates the authenticated user's profile information (supports partial update) including full name, email, phone number, country ID, and language.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0\n}",
+                  "raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"countryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"language\": 0,\n  \"profilePictureUrl\": \"string\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"

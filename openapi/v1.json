@@ -12547,6 +12547,10 @@
           },
           "language": {
             "$ref": "#/components/schemas/Language"
+          },
+          "profilePictureUrl": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
