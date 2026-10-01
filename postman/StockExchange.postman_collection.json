@@ -7130,7 +7130,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"phoneCode\": \"string\",\n    \"profilePictureUrl\": \"string\",\n    \"language\": \"ar\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"countryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"profilePictureUrl\": \"string\",\n    \"language\": \"ar\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
