@@ -1,4 +1,4 @@
-using MediatR;
+﻿using MediatR;
 using Stock_Exchange.Domain.Enums;
 
 namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
@@ -10,6 +10,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
         public string? PhoneNumber { get; set; }
         public Guid? CountryId { get; set; }
         public Language? Language { get; set; }
+        public string? ProfilePictureUrl { get; set; }
 
         public UpdateUserInfoCommand()
         {
@@ -20,13 +21,15 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
             string? email = null,
             string? phoneNumber = null,
             Guid? countryId = null,
-            Language? language = null)
+            Language? language = null,
+            string? profilePictureUrl = null)
         {
             FullName = fullName;
             Email = email;
             PhoneNumber = phoneNumber;
             CountryId = countryId;
             Language = language;
+            ProfilePictureUrl = profilePictureUrl;
         }
     }
 }

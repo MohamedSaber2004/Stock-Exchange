@@ -1,4 +1,4 @@
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -88,6 +88,11 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
                 user.UpdateFullName(request.FullName);
             }
 
+            if (request.ProfilePictureUrl != null)
+            {
+                user.UpdateProfilePicture(string.IsNullOrWhiteSpace(request.ProfilePictureUrl) ? null : request.ProfilePictureUrl.Trim());
+            }
+
             if (request.Language.HasValue)
             {
                 user.ChangeLanguage(request.Language.Value);
@@ -114,3 +119,4 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
         }
     }
 }
+
