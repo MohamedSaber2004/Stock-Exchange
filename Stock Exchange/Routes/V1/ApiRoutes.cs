@@ -104,6 +104,11 @@ namespace Stock_Exchange.Routes.V1
             public const string Base = BaseRoutes.Base + "/countries";
 
             public const string GetAll = "";
+            public const string GetAllPaginated = "paginated";
+            public const string GetById = "{id:guid}";
+            public const string Create = "";
+            public const string Update = "{id:guid}";
+            public const string Delete = "{id:guid}";
         }
 
         public static class Articles

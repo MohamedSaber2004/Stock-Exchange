@@ -37,6 +37,14 @@ namespace Stock_Exchange.Application.Features.Users.Commands.AdminChangePassword
             if (user == null || user.IsDeleted)
                 throw new NotFoundException(LocalizationKeys.AuthMessages.UserNotFound);
 
+            // Security Rule: An admin cannot change password of another admin
+            var targetRoles = await _userManager.GetRolesAsync(user);
+            var isTargetAdmin = targetRoles.Contains(UserType.Admin.ToString());
+            if (isTargetAdmin && user.Id != _currentUserService.UserId)
+            {
+                throw new ForbiddenException(LocalizationKeys.AuthMessages.CannotModifyOtherAdmin);
+            }
+
             var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
             var resetResult = await _userManager.ResetPasswordAsync(user, resetToken, request.NewPassword);
 

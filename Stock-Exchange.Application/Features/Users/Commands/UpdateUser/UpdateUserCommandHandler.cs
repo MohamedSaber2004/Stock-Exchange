@@ -47,6 +47,14 @@ namespace Stock_Exchange.Application.Features.Users.Commands.UpdateUser
             if (user == null || user.IsDeleted)
                 throw new NotFoundException(LocalizationKeys.AuthMessages.UserNotFound);
 
+            // Security Rule: An admin cannot modify details of another admin
+            var targetRoles = await _userManager.GetRolesAsync(user);
+            var isTargetAdmin = targetRoles.Contains(UserType.Admin.ToString());
+            if (isTargetAdmin && user.Id != _currentUserService.UserId)
+            {
+                throw new ForbiddenException(LocalizationKeys.AuthMessages.CannotModifyOtherAdmin);
+            }
+
             var trimmedEmail = request.Email.Trim();
             if (!string.Equals(user.Email, trimmedEmail, StringComparison.OrdinalIgnoreCase))
             {

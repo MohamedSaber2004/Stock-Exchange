@@ -87,7 +87,8 @@
     "CurrentPasswordRequired": "Current password is required.",
     "PasswordChangeFailed": "Failed to change password. Please check your current password.",
     "PasswordChangeSuccess": "Password changed successfully.",
-    "CannotDeleteSelf": "You cannot delete your own account while logged in."
+    "CannotDeleteSelf": "You cannot delete your own account while logged in.",
+    "CannotModifyOtherAdmin": "You cannot modify, change password, or manage another administrator account."
   },
   "ActivityLogMessages": {
     "ActivityLogNotFound": "The requested activity log was not found."
@@ -96,7 +97,9 @@
     "CountryNotFound": "The specified country code was not found.",
     "CountryCodeRequired": "Country code is required.",
     "CountryArNameRequired": "Country Arabic name is required.",
-    "CountryEnNameRequired": "Country English name is required."
+    "CountryEnNameRequired": "Country English name is required.",
+    "CountryAlreadyExists": "A country with this code or name already exists.",
+    "CountryCannotBeDeleted": "Cannot delete this country because it is linked to registered users."
   },
   "AboutUsMessages": {
     "AboutUsNotFound": "About us content was not found.",

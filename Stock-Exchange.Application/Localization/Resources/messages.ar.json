@@ -87,7 +87,8 @@
     "CurrentPasswordRequired": "كلمة المرور الحالية مطلوبة.",
     "PasswordChangeFailed": "فشل تغيير كلمة المرور. يرجى التحقق من كلمة المرور الحالية.",
     "PasswordChangeSuccess": "تم تغيير كلمة المرور بنجاح.",
-    "CannotDeleteSelf": "لا يمكنك حذف حسابك الشخصي المسجل به حالياً."
+    "CannotDeleteSelf": "لا يمكنك حذف حسابك الشخصي المسجل به حالياً.",
+    "CannotModifyOtherAdmin": "لا يمكنك تعديل بيانات أو تغيير كلمة مرور أو إدارة حساب مسؤول آخر."
   },
   "ActivityLogMessages": {
     "ActivityLogNotFound": "سجل النشاط المطلوب غير موجود."
@@ -96,7 +97,9 @@
     "CountryNotFound": "رمز الدولة المحدد غير موجود.",
     "CountryCodeRequired": "رمز الدولة مطلوب.",
     "CountryArNameRequired": "اسم الدولة بالعربية مطلوب.",
-    "CountryEnNameRequired": "اسم الدولة بالإنجليزية مطلوب."
+    "CountryEnNameRequired": "اسم الدولة بالإنجليزية مطلوب.",
+    "CountryAlreadyExists": "توجد دولة مسجلة بالفعل بهذا الكود أو الاسم.",
+    "CountryCannotBeDeleted": "لا يمكن حذف هذه الدولة لارتباطها بمستخدمين مسجلين في النظام."
   },
   "AboutUsMessages": {
     "AboutUsNotFound": "محتوى من نحن غير موجود.",

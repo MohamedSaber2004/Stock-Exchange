@@ -98,6 +98,7 @@ namespace Stock_Exchange.Application.Localization
             public const string PasswordChangeFailed = "AuthMessages.PasswordChangeFailed";
             public const string PasswordChangeSuccess = "AuthMessages.PasswordChangeSuccess";
             public const string CannotDeleteSelf = "AuthMessages.CannotDeleteSelf";
+            public const string CannotModifyOtherAdmin = "AuthMessages.CannotModifyOtherAdmin";
         }
 
         public static class ActivityLogMessages
@@ -111,6 +112,8 @@ namespace Stock_Exchange.Application.Localization
             public const string CountryCodeRequired = "CountryMessages.CountryCodeRequired";
             public const string CountryArNameRequired = "CountryMessages.CountryArNameRequired";
             public const string CountryEnNameRequired = "CountryMessages.CountryEnNameRequired";
+            public const string CountryAlreadyExists = "CountryMessages.CountryAlreadyExists";
+            public const string CountryCannotBeDeleted = "CountryMessages.CountryCannotBeDeleted";
         }
 
         public static class AboutUsMessages
