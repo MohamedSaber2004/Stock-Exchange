@@ -129,49 +129,7 @@ namespace Stock_Exchange.Persistance.Seeding
                 await context.News.AddRangeAsync(newsList);
             }
 
-            // ── 5. Initial Articles ──
-            if (!await context.Articles.AnyAsync())
-            {
-                var articles = new List<Article>
-                {
-                    new()
-                    {
-                        TitleEn = "The Beginner's Guide to Building Wealth",
-                        TitleAr = "دليل المبتدئين لبناء الثروة والاستثمار",
-                        ExcerptEn = "Learn the foundational principles of compounding, diversification, and disciplined saving.",
-                        ExcerptAr = "تعرّف على المبادئ الأساسية للعائد التراكمي، وتنويع المحفظة، والادخار المنضبط.",
-                        AuthorName = "Emily Carter",
-                        ReadMinutes = 5,
-                        PublishedAt = DateTime.UtcNow.AddDays(-1),
-                        DisplayOrder = 1,
-                        IsFeaturedOnHome = true
-                    }
-                };
 
-                await context.Articles.AddRangeAsync(articles);
-            }
-
-            // ── 6. Initial Videos ──
-            if (!await context.Videos.AnyAsync())
-            {
-                var videos = new List<Video>
-                {
-                    new()
-                    {
-                        TitleEn = "Investing 101: Where to Start",
-                        TitleAr = "أساسيات الاستثمار 101: من أين تبدأ",
-                        DurationSeconds = 750, // 12:30
-                        InstructorName = "Marcus Ali",
-                        CategoryEn = "Technical Analysis",
-                        CategoryAr = "التحليل الفني",
-                        IsPreviewable = true,
-                        IsFeaturedOnHome = true,
-                        DisplayOrder = 1
-                    }
-                };
-
-                await context.Videos.AddRangeAsync(videos);
-            }
 
             // ── 7. Initial Experts ──
             if (!await context.Experts.AnyAsync())

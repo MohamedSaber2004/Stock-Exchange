@@ -53,8 +53,11 @@ namespace Stock_Exchange.Persistance.Seeding
             await HelpCenterSeeder.SeedHelpCenterAsync(context);
             await PrivacyPolicySeeder.SeedPrivacyPolicyAsync(context);
             await TermsAndConditionsSeeder.SeedTermsAndConditionsAsync(context);
+            await VideoSeeder.SeedVideosAsync(context);
+            await ArticleSeeder.SeedArticlesAsync(context);
             await HomeSeeder.SeedHomeAsync(context);
             await ActivityLogSeeder.SeedActivityLogsAsync(context);
+
         }
     }
 }

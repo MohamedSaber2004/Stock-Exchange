@@ -38,6 +38,7 @@ namespace Stock_Exchange.Persistance.Configurations
 
             builder.Property(a => a.ReadMinutes)
                 .HasDefaultValue(5)
+                .ValueGeneratedNever()
                 .IsRequired();
 
             builder.Property(a => a.PublishedAt)
@@ -45,6 +46,7 @@ namespace Stock_Exchange.Persistance.Configurations
 
             builder.Property(a => a.IsFeaturedOnHome)
                 .HasDefaultValue(true)
+                .ValueGeneratedNever()
                 .IsRequired();
 
             builder.Property(a => a.DisplayOrder)

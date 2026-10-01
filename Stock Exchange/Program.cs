@@ -1,4 +1,4 @@
-﻿
+
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using AspNetCoreRateLimit;
@@ -277,8 +277,11 @@ namespace Stock_Exchange
 
             app.MapControllers();
 
-            using (var scope = app.Services.CreateScope())
+            // تشتغل بس لو شغّلت البروجيكت بـ: dotnet run --seed
+            if (args.Contains("--seed"))
             {
+                Log.Information("=== Running Database Seeding ===");
+                using var scope = app.Services.CreateScope();
                 var services = scope.ServiceProvider;
                 try
                 {
@@ -286,6 +289,7 @@ namespace Stock_Exchange
                     var userManager = services.GetService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetService<RoleManager<IdentityRole<Guid>>>();
                     await DataSeeder.SeedAllAsync(dbContext, userManager, roleManager);
+                    Log.Information("=== Database Seeding Completed Successfully ===");
                 }
                 catch (Exception ex)
                 {

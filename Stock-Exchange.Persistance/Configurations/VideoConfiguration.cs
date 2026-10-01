@@ -45,10 +45,12 @@ namespace Stock_Exchange.Persistance.Configurations
 
             builder.Property(v => v.IsPreviewable)
                 .HasDefaultValue(true)
+                .ValueGeneratedNever()
                 .IsRequired();
 
             builder.Property(v => v.IsFeaturedOnHome)
                 .HasDefaultValue(true)
+                .ValueGeneratedNever()
                 .IsRequired();
 
             builder.Property(v => v.DisplayOrder)
