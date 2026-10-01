@@ -1,4 +1,4 @@
-﻿using Stock_Exchange.Domain.Enums;
+using Stock_Exchange.Domain.Enums;
 
 namespace Stock_Exchange.Application.Features.Auth.DTOs
 {
@@ -22,7 +22,7 @@ namespace Stock_Exchange.Application.Features.Auth.DTOs
         string FullName,
         string Email,
         string PhoneNumber,
-        string? PhoneCode,
+        Guid? CountryId,
         string? ProfilePictureUrl,
         Language Language);
 }

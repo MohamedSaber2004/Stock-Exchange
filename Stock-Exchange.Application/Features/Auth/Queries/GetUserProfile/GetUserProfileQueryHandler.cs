@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +38,7 @@ namespace Stock_Exchange.Application.Features.Auth.Queries.GetUserProfile
                     u.FullName,
                     u.Email ?? string.Empty,
                     u.PhoneNumber ?? string.Empty,
-                    u.Country != null ? u.Country.Code : null,
+                    u.CountryId,
                     u.ProfilePictureUrl,
                     u.Language))
                 .FirstOrDefaultAsync(cancellationToken);
