@@ -35,10 +35,13 @@ namespace Stock_Exchange.Infrastructure.Services
             string? details = null,
             string? actionEn = null,
             string? detailsEn = null,
+            string? userName = null,
             CancellationToken cancellationToken = default)
         {
             var ipAddress = _currentUserService.IpAddress ?? string.Empty;
             var targetUserId = userId ?? (_currentUserService.IsAuthenticated ? _currentUserService.UserId : (Guid?)null);
+            var targetUserName = userName ?? (_currentUserService.IsAuthenticated ? _currentUserService.FullName : null) ?? string.Empty;
+            var targetUserEmail = userEmail ?? (_currentUserService.IsAuthenticated ? _currentUserService.Email : null) ?? string.Empty;
             var userAgent = _httpContextAccessor.HttpContext?.Request.Headers["User-Agent"].ToString();
             var device = ParseUserAgent(userAgent);
 
@@ -49,8 +52,8 @@ namespace Stock_Exchange.Infrastructure.Services
             {
                 FormattedId = formattedId,
                 UserId = targetUserId,
-                UserName = string.Empty,
-                UserEmail = userEmail ?? string.Empty,
+                UserName = targetUserName,
+                UserEmail = targetUserEmail,
                 Action = action ?? string.Empty,
                 ActionAr = action ?? string.Empty,
                 ActionEn = actionEn ?? action ?? string.Empty,

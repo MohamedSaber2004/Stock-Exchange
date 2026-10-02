@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Domain.Entities;
@@ -215,16 +215,21 @@ namespace Stock_Exchange.Persistance.Services
             var passwordProp = entry.Properties.FirstOrDefault(p => p.Metadata.Name == "PasswordHash");
             if (passwordProp != null && passwordProp.IsModified)
             {
-                return new EntityLogMeta(
-                    ActivityResourceType.Users,
-                    $"تغيير كلمة المرور للمستخدم: {userDisplayName}",
-                    $"Changed password for user: {userDisplayName}",
-                    $"تم تغيير كلمة المرور للمستخدم {userDisplayName} ({user.Email})",
-                    $"Changed password for user {userDisplayName} ({user.Email})",
-                    LogUserId: user.Id,
-                    LogUserName: userDisplayName,
-                    LogUserEmail: user.Email,
-                    UserProfilePictureUrl: user.ProfilePictureUrl);
+                var origHash = passwordProp.OriginalValue as string;
+                var currHash = passwordProp.CurrentValue as string;
+                if (!string.IsNullOrEmpty(origHash) && !string.IsNullOrEmpty(currHash) && origHash != currHash && isAuth)
+                {
+                    return new EntityLogMeta(
+                        ActivityResourceType.Users,
+                        $"تغيير كلمة المرور للمستخدم: {userDisplayName}",
+                        $"Changed password for user: {userDisplayName}",
+                        $"تم تغيير كلمة المرور للمستخدم {userDisplayName} ({user.Email})",
+                        $"Changed password for user {userDisplayName} ({user.Email})",
+                        LogUserId: user.Id,
+                        LogUserName: userDisplayName,
+                        LogUserEmail: user.Email,
+                        UserProfilePictureUrl: user.ProfilePictureUrl);
+                }
             }
 
             var activeProp = entry.Properties.FirstOrDefault(p => p.Metadata.Name == "IsActive");

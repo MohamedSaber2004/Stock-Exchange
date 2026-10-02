@@ -9,6 +9,7 @@ using Stock_Exchange.Application.Common.Options;
 using Stock_Exchange.Application.Features.Auth.DTOs;
 using Stock_Exchange.Application.Localization;
 using Stock_Exchange.Domain.Entities;
+using Stock_Exchange.Domain.Enums;
 using Stock_Exchange.Domain.Repositories.Interfaces;
 using Stock_Exchange.Domain.Repositories.Interfaces.Base;
 
@@ -22,6 +23,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
         private readonly IUnitOfWork _unitOfWork;
         private readonly JwtSettings _jwtSettings;
         private readonly IStringLocalizer<Messages> _localizer;
+        private readonly IActivityLogService _activityLogService;
 
         public LoginCommandHandler(
             UserManager<ApplicationUser> userManager,
@@ -29,7 +31,8 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
             IUserRefreshTokenRepository refreshTokenRepository,
             IUnitOfWork unitOfWork,
             IOptions<JwtSettings> jwtSettings,
-            IStringLocalizer<Messages> localizer)
+            IStringLocalizer<Messages> localizer,
+            IActivityLogService activityLogService)
         {
             _userManager = userManager;
             _jwtTokenService = jwtTokenService;
@@ -37,6 +40,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
             _unitOfWork = unitOfWork;
             _jwtSettings = jwtSettings.Value;
             _localizer = localizer;
+            _activityLogService = activityLogService;
         }
 
         public async Task<AuthResponseDto> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -45,6 +49,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
                 throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidCredentials]);
 
             var user = await _userManager.Users
+                .AsNoTracking()
                 .IgnoreQueryFilters()
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == request.Email.Trim().ToUpperInvariant(), cancellationToken);
 
@@ -89,6 +94,18 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
                 await _refreshTokenRepository.AddAsync(userRefreshToken);
                 await _unitOfWork.SaveChangesAsync();
             }
+
+            // Record authentic login activity log
+            await _activityLogService.LogAsync(
+                action: $"تسجيل دخول المستخدم: {user.FullName}",
+                resourceType: ActivityResourceType.Users,
+                userId: user.Id,
+                userEmail: user.Email,
+                details: $"قام المستخدم {user.FullName} ({user.Email}) بتسجيل الدخول إلى النظام",
+                actionEn: $"User signed in: {user.FullName}",
+                detailsEn: $"User {user.FullName} ({user.Email}) signed in to the system",
+                userName: user.FullName,
+                cancellationToken: cancellationToken);
 
             return new AuthResponseDto(
                 accessToken,
