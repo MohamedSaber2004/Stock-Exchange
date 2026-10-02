@@ -104,19 +104,24 @@ namespace Stock_Exchange
             builder.Services.AddPersistenceServices(builder.Configuration);
 
             var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
-            if (corsConfig?.Enabled == true)
+            var policyName = !string.IsNullOrWhiteSpace(corsConfig?.PolicyName) ? corsConfig.PolicyName : "DefaultPolicy";
+            builder.Services.AddCors(options =>
             {
-                builder.Services.AddCors(options =>
+                options.AddDefaultPolicy(policy =>
                 {
-                    options.AddPolicy(corsConfig.PolicyName, policy =>
-                    {
-                        policy.SetIsOriginAllowed(_ => true)
-                              .AllowAnyMethod()
-                              .AllowAnyHeader()
-                              .AllowCredentials();
-                    });
+                    policy.SetIsOriginAllowed(_ => true)
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials();
                 });
-            }
+                options.AddPolicy(policyName, policy =>
+                {
+                    policy.SetIsOriginAllowed(_ => true)
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials();
+                });
+            });
 
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
@@ -228,10 +233,8 @@ namespace Stock_Exchange
             app.UseRouting();
 
             var corsSettings = app.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
-            if (corsSettings?.Enabled == true)
-            {
-                app.UseCors(corsSettings.PolicyName);
-            }
+            var activePolicy = !string.IsNullOrWhiteSpace(corsSettings?.PolicyName) ? corsSettings.PolicyName : "DefaultPolicy";
+            app.UseCors(activePolicy);
 
             app.UseHttpsRedirection();
             app.UseAuthentication();
