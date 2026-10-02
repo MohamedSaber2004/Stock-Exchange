@@ -70,6 +70,7 @@ namespace Stock_Exchange.Persistance.Services
                     DetailsEn = meta.DetailsEn
                 };
 
+                log.MarkAsCreated(meta.LogUserId?.ToString() ?? currentUserId?.ToString() ?? "System", DateTime.UtcNow);
                 logs.Add(log);
             }
 

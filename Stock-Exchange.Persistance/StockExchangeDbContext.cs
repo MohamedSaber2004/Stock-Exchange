@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -86,7 +86,14 @@ namespace Stock_Exchange.Persistance
             // 2. BaseEntity auditing & soft-delete transformation
             foreach (var entry in ChangeTracker.Entries<BaseEntity>())
             {
-                if (entry.Entity is ActivityLog) continue;
+                if (entry.Entity is ActivityLog activityLog)
+                {
+                    if (entry.State == EntityState.Added && (activityLog.CreatedAt == default || activityLog.CreatedAt == DateTime.MinValue))
+                    {
+                        activityLog.MarkAsCreated(userId, DateTime.UtcNow);
+                    }
+                    continue;
+                }
 
                 switch (entry.State)
                 {

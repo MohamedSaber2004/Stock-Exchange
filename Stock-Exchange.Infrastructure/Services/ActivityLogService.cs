@@ -65,6 +65,8 @@ namespace Stock_Exchange.Infrastructure.Services
                 DetailsEn = detailsEn ?? details
             };
 
+            log.MarkAsCreated(targetUserId?.ToString() ?? "System", DateTime.UtcNow);
+
             await _activityLogRepository.AddAsync(log);
             await _unitOfWork.SaveChangesAsync();
 
