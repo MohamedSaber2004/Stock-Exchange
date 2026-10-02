@@ -1,4 +1,4 @@
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Extensions;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -12,13 +12,16 @@ namespace Stock_Exchange.Application.Features.ActivityLogs.Queries.GetAllActivit
     {
         private readonly IStockExchangeDbContext _dbContext;
         private readonly ICurrentLanguageService _currentLanguageService;
+        private readonly ICurrentUserService _currentUserService;
 
         public GetAllActivityLogsQueryHandler(
             IStockExchangeDbContext dbContext,
-            ICurrentLanguageService currentLanguageService)
+            ICurrentLanguageService currentLanguageService,
+            ICurrentUserService currentUserService)
         {
             _dbContext = dbContext;
             _currentLanguageService = currentLanguageService;
+            _currentUserService = currentUserService;
         }
 
         public async Task<Result<ActivityLogsListResponse>> Handle(GetAllActivityLogsQuery request, CancellationToken cancellationToken)
@@ -26,6 +29,23 @@ namespace Stock_Exchange.Application.Features.ActivityLogs.Queries.GetAllActivit
             var baseQuery = _dbContext.ActivityLogs
                 .AsNoTracking()
                 .Where(a => !a.IsDeleted);
+
+            // Exclude current authenticated user's activity logs
+            if (_currentUserService.IsAuthenticated)
+            {
+                var currentUserId = _currentUserService.UserId;
+                var currentEmail = _currentUserService.Email?.Trim().ToLower();
+
+                if (currentUserId != Guid.Empty)
+                {
+                    baseQuery = baseQuery.Where(a => a.UserId != currentUserId);
+                }
+
+                if (!string.IsNullOrEmpty(currentEmail))
+                {
+                    baseQuery = baseQuery.Where(a => a.UserEmail.ToLower() != currentEmail);
+                }
+            }
 
             // Compute summary statistics
             var totalLogs = await baseQuery.CountAsync(cancellationToken);
@@ -43,8 +63,11 @@ namespace Stock_Exchange.Application.Features.ActivityLogs.Queries.GetAllActivit
                             a.ResourceType == ActivityResourceType.Videos ||
                             a.ResourceType == ActivityResourceType.News)
                 .CountAsync(cancellationToken);
-            var usersOps = await baseQuery
-                .Where(a => a.ResourceType == ActivityResourceType.Users)
+
+            // Total users registered in the system (matches Users Management count)
+            var totalUsers = await _dbContext.Users
+                .AsNoTracking()
+                .Where(u => !u.IsDeleted)
                 .CountAsync(cancellationToken);
 
             var language = _currentLanguageService.Language;
@@ -54,7 +77,7 @@ namespace Stock_Exchange.Application.Features.ActivityLogs.Queries.GetAllActivit
                 articles,
                 videos,
                 contentOps,
-                usersOps,
+                totalUsers,
                 language);
 
             var query = baseQuery;
