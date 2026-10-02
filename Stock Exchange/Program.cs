@@ -106,29 +106,16 @@ namespace Stock_Exchange
             var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
             if (corsConfig?.Enabled == true)
             {
-                    builder.Services.AddCors(options =>
+                builder.Services.AddCors(options =>
+                {
+                    options.AddPolicy(corsConfig.PolicyName, policy =>
                     {
-                        options.AddPolicy(corsConfig.PolicyName, policy =>
-                        {
-                            if (corsConfig.AllowedOrigins != null && corsConfig.AllowedOrigins.Count > 0)
-                                policy.WithOrigins(corsConfig.AllowedOrigins.ToArray());
-                            else
-                                policy.SetIsOriginAllowed(_ => true);
-
-                            if (corsConfig.AllowedMethods != null && corsConfig.AllowedMethods.Count > 0)
-                                policy.WithMethods(corsConfig.AllowedMethods.ToArray());
-                            else
-                                policy.AllowAnyMethod();
-
-                            if (corsConfig.AllowedHeaders != null && corsConfig.AllowedHeaders.Count > 0)
-                                policy.WithHeaders(corsConfig.AllowedHeaders.ToArray());
-                            else
-                                policy.AllowAnyHeader();
-
-                            if (corsConfig.AllowCredentials)
-                                policy.AllowCredentials();
-                        });
+                        policy.SetIsOriginAllowed(_ => true)
+                              .AllowAnyMethod()
+                              .AllowAnyHeader()
+                              .AllowCredentials();
                     });
+                });
             }
 
             builder.Services.AddControllers()
