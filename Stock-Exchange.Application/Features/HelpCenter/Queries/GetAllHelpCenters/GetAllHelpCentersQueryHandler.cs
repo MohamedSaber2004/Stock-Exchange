@@ -57,9 +57,12 @@ namespace Stock_Exchange.Application.Features.HelpCenter.Queries.GetAllHelpCente
                 })
                 .ToListAsync(cancellationToken);
 
-            var language = _currentLanguageService.Language;
-            foreach (var helpCenter in helpCenters)
-                helpCenter.ApplyLanguageFilter(language);
+            if (request.ApplyLanguageFilter ?? true)
+            {
+                var language = _currentLanguageService.Language;
+                foreach (var helpCenter in helpCenters)
+                    helpCenter.ApplyLanguageFilter(language);
+            }
 
             return Result<List<HelpCenterDto>>.Success(helpCenters);
         }

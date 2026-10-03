@@ -30,9 +30,9 @@ public class TermsAndConditionsController : BaseController
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<TermsAndConditionsDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<TermsAndConditionsDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] bool? applyLanguageFilter = null)
     {
-        var result = await Mediator.Send(new GetTermsAndConditionsQuery());
+        var result = await Mediator.Send(new GetTermsAndConditionsQuery(applyLanguageFilter));
 
         if (!result.IsSuccess)
             return FromResult(result);
@@ -56,7 +56,7 @@ public class TermsAndConditionsController : BaseController
     public async Task<IActionResult> GetView([FromQuery] string? lang = null)
     {
         var languageService = HttpContext.RequestServices.GetRequiredService<Stock_Exchange.Application.Common.Interfaces.ICurrentLanguageService>();
-        var result = await Mediator.Send(new GetTermsAndConditionsQuery());
+        var result = await Mediator.Send(new GetTermsAndConditionsQuery(false));
 
         if (!result.IsSuccess)
             return NotFound("Terms and conditions not found.");

@@ -52,7 +52,10 @@ namespace Stock_Exchange.Application.Features.TermsAndConditions.Queries.GetTerm
             if (termsAndConditions is null)
                 return Result<TermsAndConditionsDto>.Failure(LocalizationKeys.TermsAndConditionsMessages.TermsAndConditionsNotFound, StatusCodes.Status404NotFound);
 
-            termsAndConditions.ApplyLanguageFilter(_currentLanguageService.Language);
+            if (request.ApplyLanguageFilter ?? true)
+            {
+                termsAndConditions.ApplyLanguageFilter(_currentLanguageService.Language);
+            }
 
             return Result<TermsAndConditionsDto>.Success(termsAndConditions);
         }

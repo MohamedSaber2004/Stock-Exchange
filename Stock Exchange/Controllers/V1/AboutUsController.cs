@@ -29,9 +29,9 @@ public class AboutUsController : BaseController
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<AboutUsDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] bool? applyLanguageFilter = null)
     {
-        var result = await Mediator.Send(new GetAboutUsQuery());
+        var result = await Mediator.Send(new GetAboutUsQuery(applyLanguageFilter));
 
         if (!result.IsSuccess)
             return FromResult(result);
@@ -55,7 +55,7 @@ public class AboutUsController : BaseController
     public async Task<IActionResult> GetView([FromQuery] string? lang = null)
     {
         var languageService = HttpContext.RequestServices.GetRequiredService<Stock_Exchange.Application.Common.Interfaces.ICurrentLanguageService>();
-        var result = await Mediator.Send(new GetAboutUsQuery());
+        var result = await Mediator.Send(new GetAboutUsQuery(false));
 
         if (!result.IsSuccess)
             return NotFound("About us content not found.");

@@ -6,5 +6,15 @@ namespace Stock_Exchange.Application.Features.TermsAndConditions.Queries.GetTerm
 {
     public class GetTermsAndConditionsQuery : IRequest<Result<TermsAndConditionsDto>>
     {
+        public bool? ApplyLanguageFilter { get; set; }
+
+        public GetTermsAndConditionsQuery()
+        {
+        }
+
+        public GetTermsAndConditionsQuery(bool? applyLanguageFilter = null)
+        {
+            ApplyLanguageFilter = applyLanguageFilter;
+        }
     }
 }

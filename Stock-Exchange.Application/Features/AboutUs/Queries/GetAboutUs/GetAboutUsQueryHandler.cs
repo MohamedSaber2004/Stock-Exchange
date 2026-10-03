@@ -57,7 +57,10 @@ namespace Stock_Exchange.Application.Features.AboutUs.Queries.GetAboutUs
             if (aboutUs is null)
                 return Result<AboutUsDto>.Failure(LocalizationKeys.AboutUsMessages.AboutUsNotFound, StatusCodes.Status404NotFound);
 
-            ApplyLanguageFilter(aboutUs, _currentLanguageService.Language);
+            if (request.ApplyLanguageFilter ?? true)
+            {
+                ApplyLanguageFilter(aboutUs, _currentLanguageService.Language);
+            }
 
             return Result<AboutUsDto>.Success(aboutUs);
         }

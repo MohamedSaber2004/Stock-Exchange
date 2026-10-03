@@ -52,7 +52,10 @@ namespace Stock_Exchange.Application.Features.PrivacyPolicy.Queries.GetPrivacy
             if (privacyPolicy is null)
                 return Result<PrivacyPolicyDto>.Failure(LocalizationKeys.PrivacyPolicyMessages.PrivacyPolicyNotFound, StatusCodes.Status404NotFound);
 
-            privacyPolicy.ApplyLanguageFilter(_currentLanguageService.Language);
+            if (request.ApplyLanguageFilter ?? true)
+            {
+                privacyPolicy.ApplyLanguageFilter(_currentLanguageService.Language);
+            }
 
             return Result<PrivacyPolicyDto>.Success(privacyPolicy);
         }

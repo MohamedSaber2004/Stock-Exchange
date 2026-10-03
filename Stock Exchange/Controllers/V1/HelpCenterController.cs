@@ -55,7 +55,7 @@ public class HelpCenterController : BaseController
     public async Task<IActionResult> GetView([FromQuery] string? lang = null)
     {
         var languageService = HttpContext.RequestServices.GetRequiredService<Stock_Exchange.Application.Common.Interfaces.ICurrentLanguageService>();
-        var result = await Mediator.Send(new GetAllHelpCentersQuery());
+        var result = await Mediator.Send(new GetAllHelpCentersQuery(applyLanguageFilter: false));
 
         if (!result.IsSuccess)
             return NotFound("Help center not found.");
@@ -124,9 +124,9 @@ public class HelpCenterController : BaseController
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetById(Guid id)
+    public async Task<IActionResult> GetById(Guid id, [FromQuery] bool? applyLanguageFilter = null)
     {
-        var result = await Mediator.Send(new GetHelpCenterByIdQuery(id));
+        var result = await Mediator.Send(new GetHelpCenterByIdQuery(id, applyLanguageFilter));
 
         if (!result.IsSuccess)
             return FromResult(result);
@@ -166,12 +166,15 @@ public class HelpCenterController : BaseController
     /// <response code="404">The help center entry was not found.</response>
     [HttpPut]
     [Route(ApiRoutes.HelpCenter.Update)]
+    [Route("{id:guid}")]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromBody] UpdateHelpCenterCommand command)
+    public async Task<IActionResult> Update([FromBody] UpdateHelpCenterCommand command, [FromRoute] Guid? id = null)
     {
+        if (id.HasValue && id.Value != Guid.Empty)
+            command.Id = id.Value;
         var result = await Mediator.Send(command);
 
         if (!result.IsSuccess)

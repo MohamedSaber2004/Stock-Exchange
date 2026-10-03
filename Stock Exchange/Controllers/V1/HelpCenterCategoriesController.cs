@@ -52,9 +52,9 @@ public class HelpCenterCategoriesController : BaseController
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetById(Guid id)
+    public async Task<IActionResult> GetById(Guid id, [FromQuery] bool? applyLanguageFilter = null)
     {
-        var result = await Mediator.Send(new GetHelpCenterCategoryByIdQuery(id));
+        var result = await Mediator.Send(new GetHelpCenterCategoryByIdQuery(id, applyLanguageFilter));
 
         if (!result.IsSuccess)
             return FromResult(result);
@@ -94,12 +94,15 @@ public class HelpCenterCategoriesController : BaseController
     /// <response code="404">The help center category was not found.</response>
     [HttpPut]
     [Route(ApiRoutes.HelpCenterCategories.Update)]
+    [Route("{id:guid}")]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromBody] UpdateHelpCenterCategoryCommand command)
+    public async Task<IActionResult> Update([FromBody] UpdateHelpCenterCategoryCommand command, [FromRoute] Guid? id = null)
     {
+        if (id.HasValue && id.Value != Guid.Empty)
+            command.Id = id.Value;
         var result = await Mediator.Send(command);
 
         if (!result.IsSuccess)

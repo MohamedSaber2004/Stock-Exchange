@@ -42,7 +42,10 @@ namespace Stock_Exchange.Application.Features.HelpCenter.Queries.GetHelpCenterBy
             if (helpCenter is null)
                 return Result<HelpCenterDto>.Failure(LocalizationKeys.HelpCenterMessages.HelpCenterNotFound, StatusCodes.Status404NotFound);
 
-            helpCenter.ApplyLanguageFilter(_currentLanguageService.Language);
+            if (request.ApplyLanguageFilter ?? true)
+            {
+                helpCenter.ApplyLanguageFilter(_currentLanguageService.Language);
+            }
 
             return Result<HelpCenterDto>.Success(helpCenter);
         }

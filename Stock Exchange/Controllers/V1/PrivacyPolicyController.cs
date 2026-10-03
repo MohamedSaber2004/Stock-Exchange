@@ -30,9 +30,9 @@ public class PrivacyPolicyController : BaseController
     [RoleAuthorize]
     [ProducesResponseType(typeof(ApiResponse<PrivacyPolicyDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<PrivacyPolicyDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] bool? applyLanguageFilter = null)
     {
-        var result = await Mediator.Send(new GetPrivacyQuery());
+        var result = await Mediator.Send(new GetPrivacyQuery(applyLanguageFilter));
 
         if (!result.IsSuccess)
             return FromResult(result);
@@ -56,7 +56,7 @@ public class PrivacyPolicyController : BaseController
     public async Task<IActionResult> GetView([FromQuery] string? lang = null)
     {
         var languageService = HttpContext.RequestServices.GetRequiredService<Stock_Exchange.Application.Common.Interfaces.ICurrentLanguageService>();
-        var result = await Mediator.Send(new GetPrivacyQuery());
+        var result = await Mediator.Send(new GetPrivacyQuery(false));
 
         if (!result.IsSuccess)
             return NotFound("Privacy policy not found.");

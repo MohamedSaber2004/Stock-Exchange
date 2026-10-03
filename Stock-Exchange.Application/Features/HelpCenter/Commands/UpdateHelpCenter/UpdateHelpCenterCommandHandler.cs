@@ -42,6 +42,8 @@ namespace Stock_Exchange.Application.Features.HelpCenter.Commands.UpdateHelpCent
             helpCenter.ContentEn = request.ContentEn.Trim();
             helpCenter.ContentAr = request.ContentAr.Trim();
             helpCenter.CategoryId = request.CategoryId;
+            if (request.DisplayOrder.HasValue)
+                helpCenter.DisplayOrder = request.DisplayOrder.Value;
 
             _helpCenterRepository.Update(helpCenter);
             await _unitOfWork.SaveChangesAsync();

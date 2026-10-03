@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.HelpCenter.DTOs;
 
@@ -12,6 +12,7 @@ namespace Stock_Exchange.Application.Features.HelpCenter.Commands.UpdateHelpCent
         public string ContentEn { get; set; } = string.Empty;
         public string ContentAr { get; set; } = string.Empty;
         public Guid? CategoryId { get; set; }
+        public int? DisplayOrder { get; set; }
 
         public UpdateHelpCenterCommand()
         {
@@ -23,7 +24,8 @@ namespace Stock_Exchange.Application.Features.HelpCenter.Commands.UpdateHelpCent
             string titleAr,
             string contentEn,
             string contentAr,
-            Guid? categoryId)
+            Guid? categoryId,
+            int? displayOrder = null)
         {
             Id = id;
             TitleEn = titleEn;
@@ -31,6 +33,7 @@ namespace Stock_Exchange.Application.Features.HelpCenter.Commands.UpdateHelpCent
             ContentEn = contentEn;
             ContentAr = contentAr;
             CategoryId = categoryId;
+            DisplayOrder = displayOrder;
         }
     }
 }

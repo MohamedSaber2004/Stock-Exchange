@@ -13,6 +13,7 @@ namespace Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAl
     {
         public static async Task<Result<HelpCenterCategoryDto>> ExecuteAsync(
             Guid id,
+            bool? applyLanguageFilter,
             IHelpCenterCategoryRepository categoryRepository,
             ICurrentLanguageService currentLanguageService,
             CancellationToken cancellationToken)
@@ -31,7 +32,10 @@ namespace Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAl
             if (category is null)
                 return Result<HelpCenterCategoryDto>.Failure(LocalizationKeys.HelpCenterMessages.CategoryNotFound, StatusCodes.Status404NotFound);
 
-            category.ApplyLanguageFilter(currentLanguageService.Language);
+            if (applyLanguageFilter ?? true)
+            {
+                category.ApplyLanguageFilter(currentLanguageService.Language);
+            }
 
             return Result<HelpCenterCategoryDto>.Success(category);
         }
@@ -55,6 +59,7 @@ namespace Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAl
         {
             return HelpCenterCategoryByIdQueryExecutor.ExecuteAsync(
                 request.Id,
+                request.ApplyLanguageFilter,
                 _categoryRepository,
                 _currentLanguageService,
                 cancellationToken);
@@ -79,6 +84,7 @@ namespace Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAl
         {
             return HelpCenterCategoryByIdQueryExecutor.ExecuteAsync(
                 request.Id,
+                request.ApplyLanguageFilter,
                 _categoryRepository,
                 _currentLanguageService,
                 cancellationToken);

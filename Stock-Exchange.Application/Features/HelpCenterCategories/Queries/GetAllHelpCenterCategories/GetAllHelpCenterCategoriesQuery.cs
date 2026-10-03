@@ -7,14 +7,16 @@ namespace Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAl
     public class GetAllHelpCenterCategoriesQuery : IRequest<Result<List<HelpCenterCategoryDto>>>
     {
         public string? Search { get; set; }
+        public bool? ApplyLanguageFilter { get; set; }
 
         public GetAllHelpCenterCategoriesQuery()
         {
         }
 
-        public GetAllHelpCenterCategoriesQuery(string? search)
+        public GetAllHelpCenterCategoriesQuery(string? search, bool? applyLanguageFilter = null)
         {
             Search = search;
+            ApplyLanguageFilter = applyLanguageFilter;
         }
     }
 }

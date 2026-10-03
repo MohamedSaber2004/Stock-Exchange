@@ -44,10 +44,13 @@ namespace Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAl
                 })
                 .ToListAsync(cancellationToken);
 
-            var language = _currentLanguageService.Language;
-            foreach (var category in categories)
+            if (request.ApplyLanguageFilter ?? true)
             {
-                category.ApplyLanguageFilter(language);
+                var language = _currentLanguageService.Language;
+                foreach (var category in categories)
+                {
+                    category.ApplyLanguageFilter(language);
+                }
             }
 
             return Result<List<HelpCenterCategoryDto>>.Success(categories);

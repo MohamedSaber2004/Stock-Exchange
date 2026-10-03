@@ -7,14 +7,16 @@ namespace Stock_Exchange.Application.Features.HelpCenter.Queries.GetHelpCenterBy
     public class GetHelpCenterByIdQuery : IRequest<Result<HelpCenterDto>>
     {
         public Guid Id { get; set; }
+        public bool? ApplyLanguageFilter { get; set; }
 
         public GetHelpCenterByIdQuery()
         {
         }
 
-        public GetHelpCenterByIdQuery(Guid id)
+        public GetHelpCenterByIdQuery(Guid id, bool? applyLanguageFilter = null)
         {
             Id = id;
+            ApplyLanguageFilter = applyLanguageFilter;
         }
     }
 }
