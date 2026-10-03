@@ -64,37 +64,50 @@ namespace Stock_Exchange.Middlewares
                 return;
             }
 
-            var options = GetEffectiveOptions();
+            var path = context.Request.Path.Value ?? string.Empty;
+            var isViewEndpoint = path.EndsWith("/view", StringComparison.OrdinalIgnoreCase) ||
+                                 path.Contains("/view/", StringComparison.OrdinalIgnoreCase);
+
+            var options = GetEffectiveOptions(isViewEndpoint);
             _securityHeadersService.AddSecurityHeaders(context, options);
         }
 
-        private SecurityHeadersOptions GetEffectiveOptions()
+        private SecurityHeadersOptions GetEffectiveOptions(bool isViewEndpoint)
         {
-            if (!_env.IsDevelopment() || string.IsNullOrEmpty(_options.ContentSecurityPolicy))
-                return _options;
+            var csp = _options.ContentSecurityPolicy ?? string.Empty;
+            var xFrame = _options.XFrameOptions;
 
-            var csp = _options.ContentSecurityPolicy;
-            var modified = false;
-
-            if (csp.Contains("connect-src") && !csp.Contains("ws:"))
+            if (isViewEndpoint)
             {
-                csp = csp.Replace("connect-src 'self'", "connect-src 'self' http://localhost:* https://localhost:* ws://localhost:* wss://localhost:* ws: wss:");
-                modified = true;
+                xFrame = string.Empty;
+                if (csp.Contains("frame-ancestors 'none'"))
+                {
+                    csp = csp.Replace("frame-ancestors 'none'", "frame-ancestors 'self' http://localhost:* https://localhost:* https://*.vercel.app https://*.runasp.net");
+                }
             }
 
-            if (csp.Contains("script-src") && !csp.Contains("localhost"))
+            if (_env.IsDevelopment() && !string.IsNullOrEmpty(csp))
             {
-                csp = csp.Replace("script-src 'self'", "script-src 'self' http://localhost:* https://localhost:*");
-                modified = true;
-            }
+                if (csp.Contains("connect-src") && !csp.Contains("ws:"))
+                {
+                    csp = csp.Replace("connect-src 'self'", "connect-src 'self' http://localhost:* https://localhost:* ws://localhost:* wss://localhost:* ws: wss:");
+                }
 
-            if (!modified)
-                return _options;
+                if (csp.Contains("script-src") && !csp.Contains("localhost"))
+                {
+                    csp = csp.Replace("script-src 'self'", "script-src 'self' http://localhost:* https://localhost:*");
+                }
+
+                if (csp.Contains("frame-ancestors 'none'"))
+                {
+                    csp = csp.Replace("frame-ancestors 'none'", "frame-ancestors 'self' http://localhost:* https://localhost:* https://*.vercel.app https://*.runasp.net");
+                }
+            }
 
             return new SecurityHeadersOptions
             {
                 Enabled = _options.Enabled,
-                XFrameOptions = _options.XFrameOptions,
+                XFrameOptions = xFrame,
                 XContentTypeOptions = _options.XContentTypeOptions,
                 XssProtection = _options.XssProtection,
                 ContentSecurityPolicy = csp,

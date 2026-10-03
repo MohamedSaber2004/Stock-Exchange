@@ -8,7 +8,10 @@ namespace Stock_Exchange.Infrastructure.Services.Security
     {
         public void AddSecurityHeaders(HttpContext context, SecurityHeadersOptions options)
         {
-            context.Response.Headers["X-Frame-Options"] = options.XFrameOptions;
+            if (!string.IsNullOrWhiteSpace(options.XFrameOptions))
+            {
+                context.Response.Headers["X-Frame-Options"] = options.XFrameOptions;
+            }
             context.Response.Headers["X-Content-Type-Options"] = options.XContentTypeOptions;
             context.Response.Headers["X-XSS-Protection"] = options.XssProtection;
             context.Response.Headers["Content-Security-Policy"] = options.ContentSecurityPolicy;
