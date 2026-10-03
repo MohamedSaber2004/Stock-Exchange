@@ -30,7 +30,13 @@
                 "v1",
                 "about-us"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
               "variable": []
             },
             "description": "Retrieves the about us content, including the story, mission, vision and the core pillars.\r\nThe response language is taken from the request Accept-Language header.",
@@ -58,7 +64,13 @@
                     "v1",
                     "about-us"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the about us content, including the story, mission, vision and the core pillars.\r\nThe response language is taken from the request Accept-Language header.",
@@ -96,7 +108,13 @@
                     "v1",
                     "about-us"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the about us content, including the story, mission, vision and the core pillars.\r\nThe response language is taken from the request Accept-Language header.",
@@ -134,7 +152,13 @@
                     "v1",
                     "about-us"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the about us content, including the story, mission, vision and the core pillars.\r\nThe response language is taken from the request Accept-Language header.",
@@ -167,7 +191,13 @@
                     "v1",
                     "about-us"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the about us content, including the story, mission, vision and the core pillars.\r\nThe response language is taken from the request Accept-Language header.",
@@ -8889,6 +8919,11 @@
                   "key": "Search",
                   "value": "string",
                   "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
                 }
               ],
               "variable": []
@@ -8927,6 +8962,11 @@
                     {
                       "key": "Search",
                       "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
                       "description": ""
                     }
                   ],
@@ -8977,6 +9017,11 @@
                       "key": "Search",
                       "value": "string",
                       "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
                     }
                   ],
                   "variable": []
@@ -9020,6 +9065,11 @@
                     {
                       "key": "Search",
                       "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
                       "description": ""
                     }
                   ],
@@ -9351,12 +9401,18 @@
                 "help-center"
               ],
               "query": [],
-              "variable": []
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
             },
             "description": "Updates an existing help center entry.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -9392,12 +9448,18 @@
                     "help-center"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center entry.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -9443,12 +9505,18 @@
                     "help-center"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center entry.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -9494,12 +9562,18 @@
                     "help-center"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center entry.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -9545,12 +9619,18 @@
                     "help-center"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center entry.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -9596,12 +9676,18 @@
                     "help-center"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center entry.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -9642,12 +9728,18 @@
                     "help-center"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center entry.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -9767,7 +9859,13 @@
                 "help-center",
                 "{{id}}"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
               "variable": [
                 {
                   "key": "id",
@@ -9802,7 +9900,13 @@
                     "help-center",
                     "{{id}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": [
                     {
                       "key": "id",
@@ -9847,7 +9951,13 @@
                     "help-center",
                     "{{id}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": [
                     {
                       "key": "id",
@@ -9892,7 +10002,13 @@
                     "help-center",
                     "{{id}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": [
                     {
                       "key": "id",
@@ -9932,7 +10048,13 @@
                     "help-center",
                     "{{id}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": [
                     {
                       "key": "id",
@@ -9943,6 +10065,394 @@
                 },
                 "description": "Retrieves a single help center entry by its id.\r\nThe response language is taken from the request Accept-Language header.",
                 "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Updates an existing help center entry.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/help-center/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "help-center",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "Updates an existing help center entry.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Help center entry updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center entry.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Help center entry updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"displayOrder\": 0\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are missing or exceed the allowed length. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center entry.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are missing or exceed the allowed length.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are missing or exceed the allowed length. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center entry.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are missing or exceed the allowed length.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 The help center entry was not found. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center entry.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The help center entry was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center entry.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center entry.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"displayOrder\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
@@ -10191,6 +10701,11 @@
                   "key": "Search",
                   "value": "string",
                   "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
                 }
               ],
               "variable": []
@@ -10224,6 +10739,11 @@
                     {
                       "key": "Search",
                       "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
                       "description": ""
                     }
                   ],
@@ -10269,6 +10789,11 @@
                       "key": "Search",
                       "value": "string",
                       "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
                     }
                   ],
                   "variable": []
@@ -10307,6 +10832,11 @@
                     {
                       "key": "Search",
                       "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
                       "description": ""
                     }
                   ],
@@ -10638,7 +11168,13 @@
                 "help-center-categories"
               ],
               "query": [],
-              "variable": []
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
             },
             "description": "Updates an existing help center category.",
             "body": {
@@ -10679,7 +11215,13 @@
                     "help-center-categories"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center category.",
                 "body": {
@@ -10730,7 +11272,13 @@
                     "help-center-categories"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center category.",
                 "body": {
@@ -10781,7 +11329,13 @@
                     "help-center-categories"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center category.",
                 "body": {
@@ -10832,7 +11386,13 @@
                     "help-center-categories"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center category.",
                 "body": {
@@ -10883,7 +11443,13 @@
                     "help-center-categories"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center category.",
                 "body": {
@@ -10929,7 +11495,13 @@
                     "help-center-categories"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
                 },
                 "description": "Updates an existing help center category.",
                 "body": {
@@ -10972,7 +11544,13 @@
                 "help-center-categories",
                 "{{id}}"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
               "variable": [
                 {
                   "key": "id",
@@ -11007,7 +11585,13 @@
                     "help-center-categories",
                     "{{id}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": [
                     {
                       "key": "id",
@@ -11052,7 +11636,13 @@
                     "help-center-categories",
                     "{{id}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": [
                     {
                       "key": "id",
@@ -11097,7 +11687,13 @@
                     "help-center-categories",
                     "{{id}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": [
                     {
                       "key": "id",
@@ -11137,7 +11733,13 @@
                     "help-center-categories",
                     "{{id}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": [
                     {
                       "key": "id",
@@ -11148,6 +11750,394 @@
                 },
                 "description": "Retrieves a single help center category by its id.\r\nThe response language is taken from the request Accept-Language header.",
                 "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Updates an existing help center category.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/help-center-categories/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "help-center-categories",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "Updates an existing help center category.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Help center category updated successfully. - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center-categories/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center-categories",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center category.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Help center category updated successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are missing or exceed the allowed length. - validationError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center-categories/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center-categories",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center category.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are missing or exceed the allowed length.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 One or more fields are missing or exceed the allowed length. - businessError",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center-categories/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center-categories",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center category.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "One or more fields are missing or exceed the allowed length.",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "404 The help center category was not found. - error",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center-categories/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center-categories",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center category.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "The help center category was not found.",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center-categories/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center-categories",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center category.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/help-center-categories/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "help-center-categories",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "Updates an existing help center category.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
               "code": 403,
@@ -14066,7 +15056,13 @@
                 "v1",
                 "privacy-policy"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
               "variable": []
             },
             "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -14094,7 +15090,13 @@
                     "v1",
                     "privacy-policy"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -14132,7 +15134,13 @@
                     "v1",
                     "privacy-policy"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -14170,7 +15178,13 @@
                     "v1",
                     "privacy-policy"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -14203,7 +15217,13 @@
                     "v1",
                     "privacy-policy"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -15222,7 +16242,13 @@
                 "v1",
                 "terms-and-conditions"
               ],
-              "query": [],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
               "variable": []
             },
             "description": "Retrieves the terms and conditions content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -15250,7 +16276,13 @@
                     "v1",
                     "terms-and-conditions"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the terms and conditions content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -15288,7 +16320,13 @@
                     "v1",
                     "terms-and-conditions"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the terms and conditions content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -15326,7 +16364,13 @@
                     "v1",
                     "terms-and-conditions"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the terms and conditions content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
@@ -15359,7 +16403,13 @@
                     "v1",
                     "terms-and-conditions"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
                   "variable": []
                 },
                 "description": "Retrieves the terms and conditions content and its sections.\r\nThe response language is taken from the request Accept-Language header.",

@@ -14,6 +14,13 @@
         "summary": "Retrieves the about us content, including the story, mission, vision and the core pillars.\r\nThe response language is taken from the request Accept-Language header.",
         "parameters": [
           {
+            "name": "applyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -4442,6 +4449,13 @@
             }
           },
           {
+            "name": "ApplyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -4635,6 +4649,15 @@
         ],
         "summary": "Updates an existing help center entry.",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
           {
             "name": "Accept-Language",
             "in": "header",
@@ -4862,6 +4885,13 @@
             }
           },
           {
+            "name": "applyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -4901,6 +4931,169 @@
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The help center entry was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpCenterDtoApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "HelpCenter"
+        ],
+        "summary": "Updates an existing help center entry.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The help center entry id and its new values.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateHelpCenterCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateHelpCenterCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateHelpCenterCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Help center entry updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpCenterDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "titleEn": "string",
+                        "titleAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "displayOrder": 0
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more fields are missing or exceed the allowed length.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpCenterDtoApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
                     }
                   }
                 }
@@ -5054,6 +5247,13 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "ApplyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
             }
           },
           {
@@ -5243,6 +5443,15 @@
         "summary": "Updates an existing help center category.",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -5405,6 +5614,13 @@
             }
           },
           {
+            "name": "applyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -5440,6 +5656,165 @@
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The help center category was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpCenterCategoryDtoApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "HelpCenterCategories"
+        ],
+        "summary": "Updates an existing help center category.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The help center category id and its new values.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateHelpCenterCategoryCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateHelpCenterCategoryCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateHelpCenterCategoryCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Help center category updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpCenterCategoryDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "titleEn": "string",
+                        "titleAr": "string"
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more fields are missing or exceed the allowed length.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpCenterCategoryDtoApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
                     }
                   }
                 }
@@ -7184,6 +7559,13 @@
         "summary": "Retrieves the privacy policy content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
         "parameters": [
           {
+            "name": "applyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "Accept-Language",
             "in": "header",
             "description": "Preferred language for the response. Supported values: `ar`, `en`.",
@@ -7816,6 +8198,13 @@
         ],
         "summary": "Retrieves the terms and conditions content and its sections.\r\nThe response language is taken from the request Accept-Language header.",
         "parameters": [
+          {
+            "name": "applyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
           {
             "name": "Accept-Language",
             "in": "header",
@@ -13152,6 +13541,11 @@
           "categoryId": {
             "type": "string",
             "format": "uuid",
+            "nullable": true
+          },
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         },
