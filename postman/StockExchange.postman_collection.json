@@ -1198,6 +1198,412 @@
       ]
     },
     {
+      "name": "ArticleCategories",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves all active article categories, optionally filtered by search term.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/article-categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "article-categories"
+              ],
+              "query": [
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "Retrieves all active article categories, optionally filtered by search term.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Article categories retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/article-categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "article-categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active article categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Article categories retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"categoryArName\": \"string\",\n      \"categoryEnName\": \"string\",\n      \"articlesCount\": 0,\n      \"isActive\": true,\n      \"createdAt\": \"09/26/2026 22:32:00\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/article-categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "article-categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active article categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/article-categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "article-categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active article categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Retrieves all active article categories, optionally filtered by search term.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/articles/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "articles",
+                "categories"
+              ],
+              "query": [
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "Retrieves all active article categories, optionally filtered by search term.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Article categories retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active article categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Article categories retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"categoryArName\": \"string\",\n      \"categoryEnName\": \"string\",\n      \"articlesCount\": 0,\n      \"isActive\": true,\n      \"createdAt\": \"09/26/2026 22:32:00\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active article categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/articles/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "articles",
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active article categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Articles",
       "description": "",
       "item": [
@@ -1236,6 +1642,16 @@
                 {
                   "key": "Search",
                   "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "ArticleCategoryId",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                },
+                {
+                  "key": "CategoryId",
+                  "value": "00000000-0000-0000-0000-000000000000",
                   "description": ""
                 },
                 {
@@ -1293,6 +1709,16 @@
                       "description": ""
                     },
                     {
+                      "key": "ArticleCategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    },
+                    {
+                      "key": "CategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    },
+                    {
                       "key": "IsActive",
                       "value": "false",
                       "description": ""
@@ -1316,7 +1742,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"excerptEn\": \"string\",\n        \"excerptAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"authorName\": \"string\",\n        \"publishedAt\": \"09/26/2026 22:32:00\",\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"excerpt\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"excerptEn\": \"string\",\n        \"excerptAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"authorName\": \"string\",\n        \"publishedAt\": \"09/26/2026 22:32:00\",\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"categoryEnName\": \"string\",\n        \"categoryArName\": \"string\",\n        \"title\": \"string\",\n        \"excerpt\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -1354,6 +1780,16 @@
                     {
                       "key": "Search",
                       "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ArticleCategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    },
+                    {
+                      "key": "CategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
                       "description": ""
                     },
                     {
@@ -1413,6 +1849,16 @@
                     {
                       "key": "Search",
                       "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "ArticleCategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    },
+                    {
+                      "key": "CategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
                       "description": ""
                     },
                     {
@@ -1528,7 +1974,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -1828,7 +2274,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -2197,7 +2643,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -19039,6 +19485,412 @@
       ]
     },
     {
+      "name": "VideoCategories",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves all active video categories, optionally filtered by search term.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/video-categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "video-categories"
+              ],
+              "query": [
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "Retrieves all active video categories, optionally filtered by search term.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Video categories retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/video-categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "video-categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active video categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Video categories retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"categoryArName\": \"string\",\n      \"categoryEnName\": \"string\",\n      \"videosCount\": 0,\n      \"isActive\": true,\n      \"createdAt\": \"09/26/2026 22:32:00\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/video-categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "video-categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active video categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/video-categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "video-categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active video categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "Retrieves all active video categories, optionally filtered by search term.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/videos/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "videos",
+                "categories"
+              ],
+              "query": [
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "Retrieves all active video categories, optionally filtered by search term.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 Video categories retrieved successfully. - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/videos/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "videos",
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active video categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Video categories retrieved successfully.",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"categoryArName\": \"string\",\n      \"categoryEnName\": \"string\",\n      \"videosCount\": 0,\n      \"isActive\": true,\n      \"createdAt\": \"09/26/2026 22:32:00\"\n    }\n  ],\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/videos/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "videos",
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active video categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/videos/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "videos",
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Retrieves all active video categories, optionally filtered by search term.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Videos",
       "description": "",
       "item": [
@@ -19082,6 +19934,16 @@
                 {
                   "key": "Category",
                   "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "VideoCategoryId",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                },
+                {
+                  "key": "CategoryId",
+                  "value": "00000000-0000-0000-0000-000000000000",
                   "description": ""
                 },
                 {
@@ -19144,6 +20006,16 @@
                       "description": ""
                     },
                     {
+                      "key": "VideoCategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    },
+                    {
+                      "key": "CategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    },
+                    {
                       "key": "IsActive",
                       "value": "false",
                       "description": ""
@@ -19167,7 +20039,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"videoUrl\": \"string\",\n        \"durationSeconds\": 0,\n        \"instructorName\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"isPreviewable\": true,\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"category\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"videoUrl\": \"string\",\n        \"durationSeconds\": 0,\n        \"instructorName\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"categoryEnName\": \"string\",\n        \"categoryArName\": \"string\",\n        \"isPreviewable\": true,\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"category\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -19210,6 +20082,16 @@
                     {
                       "key": "Category",
                       "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "VideoCategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    },
+                    {
+                      "key": "CategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
                       "description": ""
                     },
                     {
@@ -19274,6 +20156,16 @@
                     {
                       "key": "Category",
                       "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "VideoCategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    },
+                    {
+                      "key": "CategoryId",
+                      "value": "00000000-0000-0000-0000-000000000000",
                       "description": ""
                     },
                     {
@@ -19389,7 +20281,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -19677,7 +20569,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -20016,7 +20908,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -20267,7 +21159,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {

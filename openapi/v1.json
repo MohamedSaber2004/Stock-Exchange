@@ -686,6 +686,184 @@
         ]
       }
     },
+    "/api/v1/article-categories": {
+      "get": {
+        "tags": [
+          "ArticleCategories"
+        ],
+        "summary": "Retrieves all active article categories, optionally filtered by search term.",
+        "parameters": [
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IsActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "ApplyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Article categories retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleCategoryDtoListApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": [
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "categoryArName": "string",
+                          "categoryEnName": "string",
+                          "articlesCount": 0,
+                          "isActive": true,
+                          "createdAt": "09/26/2026 22:32:00"
+                        }
+                      ],
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/articles/categories": {
+      "get": {
+        "tags": [
+          "ArticleCategories"
+        ],
+        "summary": "Retrieves all active article categories, optionally filtered by search term.",
+        "parameters": [
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IsActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "ApplyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Article categories retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleCategoryDtoListApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": [
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "categoryArName": "string",
+                          "categoryEnName": "string",
+                          "articlesCount": 0,
+                          "isActive": true,
+                          "createdAt": "09/26/2026 22:32:00"
+                        }
+                      ],
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/articles": {
       "get": {
         "tags": [
@@ -714,6 +892,22 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "ArticleCategoryId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "CategoryId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -774,6 +968,10 @@
                             "displayOrder": 0,
                             "isActive": true,
                             "createdAt": "09/26/2026 22:32:00",
+                            "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "categoryEnName": "string",
+                            "categoryArName": "string",
                             "title": "string",
                             "excerpt": "string"
                           }
@@ -874,6 +1072,10 @@
                         "displayOrder": 0,
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "categoryEnName": "string",
+                        "categoryArName": "string",
                         "title": "string",
                         "excerpt": "string"
                       },
@@ -1017,6 +1219,10 @@
                         "displayOrder": 0,
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "categoryEnName": "string",
+                        "categoryArName": "string",
                         "title": "string",
                         "excerpt": "string"
                       },
@@ -1178,6 +1384,10 @@
                         "displayOrder": 0,
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "categoryEnName": "string",
+                        "categoryArName": "string",
                         "title": "string",
                         "excerpt": "string"
                       },
@@ -9565,6 +9775,184 @@
         ]
       }
     },
+    "/api/v1/video-categories": {
+      "get": {
+        "tags": [
+          "VideoCategories"
+        ],
+        "summary": "Retrieves all active video categories, optionally filtered by search term.",
+        "parameters": [
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IsActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "ApplyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video categories retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoCategoryDtoListApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": [
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "categoryArName": "string",
+                          "categoryEnName": "string",
+                          "videosCount": 0,
+                          "isActive": true,
+                          "createdAt": "09/26/2026 22:32:00"
+                        }
+                      ],
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/categories": {
+      "get": {
+        "tags": [
+          "VideoCategories"
+        ],
+        "summary": "Retrieves all active video categories, optionally filtered by search term.",
+        "parameters": [
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IsActive",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "ApplyLanguageFilter",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video categories retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoCategoryDtoListApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": [
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "categoryArName": "string",
+                          "categoryEnName": "string",
+                          "videosCount": 0,
+                          "isActive": true,
+                          "createdAt": "09/26/2026 22:32:00"
+                        }
+                      ],
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/videos": {
       "get": {
         "tags": [
@@ -9600,6 +9988,22 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "VideoCategoryId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "CategoryId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -9657,6 +10061,10 @@
                             "instructorName": "string",
                             "categoryEn": "string",
                             "categoryAr": "string",
+                            "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "categoryEnName": "string",
+                            "categoryArName": "string",
                             "isPreviewable": true,
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
@@ -9759,6 +10167,10 @@
                         "instructorName": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "categoryEnName": "string",
+                        "categoryArName": "string",
                         "isPreviewable": true,
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
@@ -9895,6 +10307,10 @@
                         "instructorName": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "categoryEnName": "string",
+                        "categoryArName": "string",
                         "isPreviewable": true,
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
@@ -10058,6 +10474,10 @@
                         "instructorName": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "categoryEnName": "string",
+                        "categoryArName": "string",
                         "isPreviewable": true,
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
@@ -10189,6 +10609,10 @@
                         "instructorName": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "categoryEnName": "string",
+                        "categoryArName": "string",
                         "isPreviewable": true,
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
@@ -11042,6 +11466,73 @@
         },
         "additionalProperties": false
       },
+      "ArticleCategoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "categoryArName": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryEnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "articlesCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ArticleCategoryDtoListApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ArticleCategoryDto"
+            },
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ArticleDto": {
         "type": "object",
         "properties": {
@@ -11090,6 +11581,24 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "categoryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "articleCategoryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "categoryEnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryArName": {
+            "type": "string",
+            "nullable": true
           },
           "title": {
             "type": "string",
@@ -14253,6 +14762,73 @@
         },
         "additionalProperties": false
       },
+      "VideoCategoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "categoryArName": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryEnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "videosCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VideoCategoryDtoListApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VideoCategoryDto"
+            },
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "VideoDto": {
         "type": "object",
         "properties": {
@@ -14289,6 +14865,24 @@
             "nullable": true
           },
           "categoryAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "videoCategoryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "categoryEnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryArName": {
             "type": "string",
             "nullable": true
           },
