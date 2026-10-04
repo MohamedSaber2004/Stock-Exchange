@@ -41,7 +41,8 @@ namespace Stock_Exchange.Application.Features.Articles.Commands.AddArticle
                 AuthorName = request.AuthorName.Trim(),
                 PublishedAt = request.PublishedAt ?? DateTime.UtcNow,
                 IsFeaturedOnHome = request.IsFeaturedOnHome,
-                DisplayOrder = request.DisplayOrder
+                DisplayOrder = request.DisplayOrder,
+                CategoryId = request.CategoryId
             };
 
             if (!request.IsActive)
@@ -65,7 +66,9 @@ namespace Stock_Exchange.Application.Features.Articles.Commands.AddArticle
                 IsFeaturedOnHome = article.IsFeaturedOnHome,
                 DisplayOrder = article.DisplayOrder,
                 IsActive = article.IsActive,
-                CreatedAt = article.CreatedAt
+                CreatedAt = article.CreatedAt,
+                CategoryId = article.CategoryId,
+                ArticleCategoryId = article.CategoryId
             });
         }
     }

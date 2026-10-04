@@ -49,6 +49,7 @@ namespace Stock_Exchange.Application.Features.Articles.Commands.UpdateArticle
             }
             article.IsFeaturedOnHome = request.IsFeaturedOnHome;
             article.DisplayOrder = request.DisplayOrder;
+            article.CategoryId = request.CategoryId;
             if (article.IsActive != request.IsActive)
             {
                 article.SetActiveState(request.IsActive, _currentUserService.UserId.ToString());
@@ -70,7 +71,9 @@ namespace Stock_Exchange.Application.Features.Articles.Commands.UpdateArticle
                 IsFeaturedOnHome = article.IsFeaturedOnHome,
                 DisplayOrder = article.DisplayOrder,
                 IsActive = article.IsActive,
-                CreatedAt = article.CreatedAt
+                CreatedAt = article.CreatedAt,
+                CategoryId = article.CategoryId,
+                ArticleCategoryId = article.CategoryId
             });
         }
     }

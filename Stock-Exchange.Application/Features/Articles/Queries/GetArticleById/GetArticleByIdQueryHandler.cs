@@ -40,7 +40,11 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetArticleById
                     IsFeaturedOnHome = a.IsFeaturedOnHome,
                     DisplayOrder = a.DisplayOrder,
                     IsActive = a.IsActive,
-                    CreatedAt = a.CreatedAt
+                    CreatedAt = a.CreatedAt,
+                    CategoryId = a.CategoryId,
+                    ArticleCategoryId = a.CategoryId,
+                    CategoryEnName = a.Category != null ? a.Category.CategoryEnName : null,
+                    CategoryArName = a.Category != null ? a.Category.CategoryArName : null
                 })
                 .FirstOrDefaultAsync(cancellationToken);
 

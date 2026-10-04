@@ -29,10 +29,7 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles
             {
                 query = query.Where(a => a.IsActive == request.IsActive.Value);
             }
-            else
-            {
-                query = query.Where(a => a.IsActive);
-            }
+            
 
             var categoryId = request.ArticleCategoryId ?? request.CategoryId;
             if (categoryId.HasValue && categoryId.Value != Guid.Empty)

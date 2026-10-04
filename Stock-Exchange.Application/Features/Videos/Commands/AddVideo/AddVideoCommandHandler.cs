@@ -43,7 +43,8 @@ namespace Stock_Exchange.Application.Features.Videos.Commands.AddVideo
                 CategoryAr = request.CategoryAr.Trim(),
                 IsPreviewable = request.IsPreviewable,
                 IsFeaturedOnHome = request.IsFeaturedOnHome,
-                DisplayOrder = request.DisplayOrder
+                DisplayOrder = request.DisplayOrder,
+                CategoryId = request.CategoryId
             };
 
             if (!request.IsActive)
@@ -69,7 +70,9 @@ namespace Stock_Exchange.Application.Features.Videos.Commands.AddVideo
                 IsFeaturedOnHome = video.IsFeaturedOnHome,
                 DisplayOrder = video.DisplayOrder,
                 IsActive = video.IsActive,
-                CreatedAt = video.CreatedAt
+                CreatedAt = video.CreatedAt,
+                CategoryId = video.CategoryId,
+                VideoCategoryId = video.CategoryId
             });
         }
     }

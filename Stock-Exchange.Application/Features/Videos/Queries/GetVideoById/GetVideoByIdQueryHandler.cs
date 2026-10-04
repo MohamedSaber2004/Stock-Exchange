@@ -42,7 +42,11 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetVideoById
                     IsFeaturedOnHome = v.IsFeaturedOnHome,
                     DisplayOrder = v.DisplayOrder,
                     IsActive = v.IsActive,
-                    CreatedAt = v.CreatedAt
+                    CreatedAt = v.CreatedAt,
+                    CategoryId = v.CategoryId,
+                    VideoCategoryId = v.CategoryId,
+                    CategoryEnName = v.Category != null ? v.Category.CategoryEnName : null,
+                    CategoryArName = v.Category != null ? v.Category.CategoryArName : null
                 })
                 .FirstOrDefaultAsync(cancellationToken);
 

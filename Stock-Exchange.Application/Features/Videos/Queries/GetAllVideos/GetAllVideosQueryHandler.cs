@@ -29,10 +29,7 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
             {
                 query = query.Where(v => v.IsActive == request.IsActive.Value);
             }
-            else
-            {
-                query = query.Where(v => v.IsActive);
-            }
+            
 
             var videoCategoryId = request.VideoCategoryId ?? request.CategoryId;
             if (videoCategoryId.HasValue && videoCategoryId.Value != Guid.Empty)

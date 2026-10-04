@@ -19,5 +19,6 @@ namespace Stock_Exchange.Application.Features.Videos.Commands.UpdateVideo
         public bool IsFeaturedOnHome { get; set; } = true;
         public int DisplayOrder { get; set; }
         public bool IsActive { get; set; } = true;
+        public Guid? CategoryId { get; set; }
     }
 }
