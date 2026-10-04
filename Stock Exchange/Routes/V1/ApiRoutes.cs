@@ -128,6 +128,9 @@ namespace Stock_Exchange.Routes.V1
 
             public const string GetAll = "";
             public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "";
+            public const string Delete = "{id}";
         }
 
         public static class Videos
@@ -147,6 +150,9 @@ namespace Stock_Exchange.Routes.V1
 
             public const string GetAll = "";
             public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "";
+            public const string Delete = "{id}";
         }
 
         public static class SubscriptionPlans
@@ -178,5 +184,6 @@ namespace Stock_Exchange.Routes.V1
         }
     }
 }
+
 
 
