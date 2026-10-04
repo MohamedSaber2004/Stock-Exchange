@@ -10019,6 +10019,1018 @@
       ]
     },
     {
+      "name": "Experts",
+      "description": "",
+      "item": [
+        {
+          "name": "GET /api/v1/experts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/experts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "experts"
+              ],
+              "query": [
+                {
+                  "key": "PageNumber",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "PageSize",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "IsFeaturedOnHome",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "GET /api/v1/experts",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsFeaturedOnHome",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/experts",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"fullNameEn\": \"string\",\n        \"fullNameAr\": \"string\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"avatarUrl\": \"string\",\n        \"displayOrder\": 0,\n        \"isFeaturedOnHome\": true,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"fullName\": \"string\",\n        \"title\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsFeaturedOnHome",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/experts",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsFeaturedOnHome",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/experts",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "POST /api/v1/experts",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/experts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "experts"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "POST /api/v1/experts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullNameEn\": \"string\",\n  \"fullNameAr\": \"string\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"avatarUrl\": \"string\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 Created - success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/experts",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullNameEn\": \"string\",\n  \"fullNameAr\": \"string\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"avatarUrl\": \"string\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullNameEn\": \"string\",\n    \"fullNameAr\": \"string\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"avatarUrl\": \"string\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"fullName\": \"string\",\n    \"title\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/experts",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullNameEn\": \"string\",\n  \"fullNameAr\": \"string\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"avatarUrl\": \"string\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/experts",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullNameEn\": \"string\",\n  \"fullNameAr\": \"string\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"avatarUrl\": \"string\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "GET /api/v1/experts/{id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "experts",
+                "{{id}}"
+              ],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "GET /api/v1/experts/{id}",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/experts/{id}",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullNameEn\": \"string\",\n    \"fullNameAr\": \"string\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"avatarUrl\": \"string\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"fullName\": \"string\",\n    \"title\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/experts/{id}",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/experts/{id}",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "PUT /api/v1/experts/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "experts",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "PUT /api/v1/experts/{id}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullNameEn\": \"string\",\n  \"fullNameAr\": \"string\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"avatarUrl\": \"string\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/experts/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullNameEn\": \"string\",\n  \"fullNameAr\": \"string\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"avatarUrl\": \"string\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"fullNameEn\": \"string\",\n    \"fullNameAr\": \"string\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"avatarUrl\": \"string\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"fullName\": \"string\",\n    \"title\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/experts/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullNameEn\": \"string\",\n  \"fullNameAr\": \"string\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"avatarUrl\": \"string\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/experts/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"fullNameEn\": \"string\",\n  \"fullNameAr\": \"string\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"avatarUrl\": \"string\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "DELETE /api/v1/experts/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "experts",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "DELETE /api/v1/experts/{id}",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/experts/{id}",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/experts/{id}",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/experts/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "experts",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/experts/{id}",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "HelpCenter",
       "description": "",
       "item": [
@@ -15404,6 +16416,1038 @@
       ]
     },
     {
+      "name": "News",
+      "description": "",
+      "item": [
+        {
+          "name": "GET /api/v1/news",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/news",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "news"
+              ],
+              "query": [
+                {
+                  "key": "PageNumber",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "PageSize",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Category",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "IsFeaturedOnHome",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "GET /api/v1/news",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "Category",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsFeaturedOnHome",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/news",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"summaryEn\": \"string\",\n        \"summaryAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"publishedAt\": \"09/26/2026 22:32:00\",\n        \"displayOrder\": 0,\n        \"isFeaturedOnHome\": true,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"summary\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "Category",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsFeaturedOnHome",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/news",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "Category",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsFeaturedOnHome",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/news",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "POST /api/v1/news",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/news",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "news"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "POST /api/v1/news",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 Created - success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/news",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/news",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/news",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "GET /api/v1/news/{id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "news",
+                "{{id}}"
+              ],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "GET /api/v1/news/{id}",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/news/{id}",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/news/{id}",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/news/{id}",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "PUT /api/v1/news/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "news",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "PUT /api/v1/news/{id}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/news/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/news/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/news/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "DELETE /api/v1/news/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "news",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "DELETE /api/v1/news/{id}",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/news/{id}",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/news/{id}",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "news",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/news/{id}",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "PrivacyPolicy",
       "description": "",
       "item": [
@@ -16393,6 +18437,998 @@
                   ]
                 },
                 "description": "Soft deletes a specific privacy policy section or the privacy policy by id.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Services",
+      "description": "",
+      "item": [
+        {
+          "name": "GET /api/v1/services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/services",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "services"
+              ],
+              "query": [
+                {
+                  "key": "PageNumber",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "PageSize",
+                  "value": "0",
+                  "description": ""
+                },
+                {
+                  "key": "Search",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "IsActive",
+                  "value": "false",
+                  "description": ""
+                },
+                {
+                  "key": "ApplyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "GET /api/v1/services",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/services",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"iconName\": \"string\",\n        \"imageUrl\": \"string\",\n        \"linkRoute\": \"string\",\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/services",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "0",
+                      "description": ""
+                    },
+                    {
+                      "key": "Search",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "IsActive",
+                      "value": "false",
+                      "description": ""
+                    },
+                    {
+                      "key": "ApplyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "GET /api/v1/services",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "POST /api/v1/services",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/services",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "services"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "POST /api/v1/services",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 Created - success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/services",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/services",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "POST /api/v1/services",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "GET /api/v1/services/{id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "services",
+                "{{id}}"
+              ],
+              "query": [
+                {
+                  "key": "applyLanguageFilter",
+                  "value": "false",
+                  "description": ""
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "GET /api/v1/services/{id}",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/services/{id}",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/services/{id}",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applyLanguageFilter",
+                      "value": "false",
+                      "description": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "GET /api/v1/services/{id}",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "PUT /api/v1/services/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "services",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "PUT /api/v1/services/{id}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/services/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/services/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "PUT /api/v1/services/{id}",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
+          "name": "DELETE /api/v1/services/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "services",
+                "{{id}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "00000000-0000-0000-0000-000000000000",
+                  "description": ""
+                }
+              ]
+            },
+            "description": "DELETE /api/v1/services/{id}",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/services/{id}",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/services/{id}",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "{{id}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "00000000-0000-0000-0000-000000000000",
+                      "description": ""
+                    }
+                  ]
+                },
+                "description": "DELETE /api/v1/services/{id}",
                 "body": null
               },
               "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
