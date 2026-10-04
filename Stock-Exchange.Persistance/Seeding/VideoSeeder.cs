@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Domain.Entities;
 
 namespace Stock_Exchange.Persistance.Seeding
@@ -16,6 +16,19 @@ namespace Stock_Exchange.Persistance.Seeding
                 await context.SaveChangesAsync();
             }
 
+                        // Clean up any existing static/external links
+            var staticVideos = await context.Videos.IgnoreQueryFilters()
+                .Where(v => v.VideoUrl != null && (v.VideoUrl.StartsWith("http://") || v.VideoUrl.StartsWith("https://")))
+                .ToListAsync();
+            if (staticVideos.Count > 0)
+            {
+                foreach (var sv in staticVideos)
+                {
+                    sv.VideoUrl = null;
+                }
+                await context.SaveChangesAsync();
+            }
+
             var existingTitles = await context.Videos.IgnoreQueryFilters()
                 .Select(v => v.TitleEn)
                 .ToListAsync();
@@ -25,13 +38,13 @@ namespace Stock_Exchange.Persistance.Seeding
                 new Video
                 {
                     TitleEn = "Introduction to Stock Market",
-                    TitleAr = "مقدمة إلى سوق الأسهم",
+                    TitleAr = "Ù…Ù‚Ø¯Ù…Ø© Ø¥Ù„Ù‰ Ø³ÙˆÙ‚ Ø§Ù„Ø£Ø³Ù‡Ù…",
                     ThumbnailUrl = null,
-                    VideoUrl = "https://www.youtube.com/watch?v=example1",
+                    VideoUrl = null,
                     DurationSeconds = 720,
                     InstructorName = "Ahmed Al-Rashidi",
                     CategoryEn = "Basics",
-                    CategoryAr = "الأساسيات",
+                    CategoryAr = "Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ§Øª",
                     IsPreviewable = true,
                     IsFeaturedOnHome = true,
                     DisplayOrder = 1
@@ -39,13 +52,13 @@ namespace Stock_Exchange.Persistance.Seeding
                 new Video
                 {
                     TitleEn = "Technical Analysis Fundamentals",
-                    TitleAr = "أساسيات التحليل الفني",
+                    TitleAr = "Ø£Ø³Ø§Ø³ÙŠØ§Øª Ø§Ù„ØªØ­Ù„ÙŠÙ„ Ø§Ù„ÙÙ†ÙŠ",
                     ThumbnailUrl = null,
-                    VideoUrl = "https://www.youtube.com/watch?v=example2",
+                    VideoUrl = null,
                     DurationSeconds = 1080,
                     InstructorName = "Sara Al-Mansouri",
                     CategoryEn = "Technical Analysis",
-                    CategoryAr = "التحليل الفني",
+                    CategoryAr = "Ø§Ù„ØªØ­Ù„ÙŠÙ„ Ø§Ù„ÙÙ†ÙŠ",
                     IsPreviewable = true,
                     IsFeaturedOnHome = true,
                     DisplayOrder = 2
@@ -53,13 +66,13 @@ namespace Stock_Exchange.Persistance.Seeding
                 new Video
                 {
                     TitleEn = "Understanding Candlestick Charts",
-                    TitleAr = "فهم مخططات الشموع اليابانية",
+                    TitleAr = "ÙÙ‡Ù… Ù…Ø®Ø·Ø·Ø§Øª Ø§Ù„Ø´Ù…ÙˆØ¹ Ø§Ù„ÙŠØ§Ø¨Ø§Ù†ÙŠØ©",
                     ThumbnailUrl = null,
-                    VideoUrl = "https://www.youtube.com/watch?v=example3",
+                    VideoUrl = null,
                     DurationSeconds = 900,
                     InstructorName = "Khalid Al-Otaibi",
                     CategoryEn = "Technical Analysis",
-                    CategoryAr = "التحليل الفني",
+                    CategoryAr = "Ø§Ù„ØªØ­Ù„ÙŠÙ„ Ø§Ù„ÙÙ†ÙŠ",
                     IsPreviewable = false,
                     IsFeaturedOnHome = true,
                     DisplayOrder = 3
@@ -67,13 +80,13 @@ namespace Stock_Exchange.Persistance.Seeding
                 new Video
                 {
                     TitleEn = "Risk Management in Trading",
-                    TitleAr = "إدارة المخاطر في التداول",
+                    TitleAr = "Ø¥Ø¯Ø§Ø±Ø© Ø§Ù„Ù…Ø®Ø§Ø·Ø± ÙÙŠ Ø§Ù„ØªØ¯Ø§ÙˆÙ„",
                     ThumbnailUrl = null,
-                    VideoUrl = "https://www.youtube.com/watch?v=example4",
+                    VideoUrl = null,
                     DurationSeconds = 1200,
                     InstructorName = "Mohammed Al-Zahrani",
                     CategoryEn = "Risk Management",
-                    CategoryAr = "إدارة المخاطر",
+                    CategoryAr = "Ø¥Ø¯Ø§Ø±Ø© Ø§Ù„Ù…Ø®Ø§Ø·Ø±",
                     IsPreviewable = true,
                     IsFeaturedOnHome = false,
                     DisplayOrder = 4
@@ -81,13 +94,13 @@ namespace Stock_Exchange.Persistance.Seeding
                 new Video
                 {
                     TitleEn = "Fundamental Analysis Explained",
-                    TitleAr = "شرح التحليل الأساسي",
+                    TitleAr = "Ø´Ø±Ø­ Ø§Ù„ØªØ­Ù„ÙŠÙ„ Ø§Ù„Ø£Ø³Ø§Ø³ÙŠ",
                     ThumbnailUrl = null,
-                    VideoUrl = "https://www.youtube.com/watch?v=example5",
+                    VideoUrl = null,
                     DurationSeconds = 1500,
                     InstructorName = "Fatima Al-Harbi",
                     CategoryEn = "Fundamental Analysis",
-                    CategoryAr = "التحليل الأساسي",
+                    CategoryAr = "Ø§Ù„ØªØ­Ù„ÙŠÙ„ Ø§Ù„Ø£Ø³Ø§Ø³ÙŠ",
                     IsPreviewable = false,
                     IsFeaturedOnHome = true,
                     DisplayOrder = 5
@@ -95,13 +108,13 @@ namespace Stock_Exchange.Persistance.Seeding
                 new Video
                 {
                     TitleEn = "Building a Profitable Portfolio",
-                    TitleAr = "بناء محفظة استثمارية مربحة",
+                    TitleAr = "Ø¨Ù†Ø§Ø¡ Ù…Ø­ÙØ¸Ø© Ø§Ø³ØªØ«Ù…Ø§Ø±ÙŠØ© Ù…Ø±Ø¨Ø­Ø©",
                     ThumbnailUrl = null,
-                    VideoUrl = "https://www.youtube.com/watch?v=example6",
+                    VideoUrl = null,
                     DurationSeconds = 1800,
                     InstructorName = "Omar Al-Ghamdi",
                     CategoryEn = "Portfolio Management",
-                    CategoryAr = "إدارة المحافظ",
+                    CategoryAr = "Ø¥Ø¯Ø§Ø±Ø© Ø§Ù„Ù…Ø­Ø§ÙØ¸",
                     IsPreviewable = false,
                     IsFeaturedOnHome = false,
                     DisplayOrder = 6
