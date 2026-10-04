@@ -629,7 +629,7 @@
                         "resourceTypeTitle": "string",
                         "ipAddress": "string",
                         "device": "string",
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "timeAgo": "string",
                         "timeAgoArabic": "string",
                         "timeAgoEnglish": "string",
@@ -750,7 +750,7 @@
                           "categoryEnName": "string",
                           "articlesCount": 0,
                           "isActive": true,
-                          "createdAt": "2026-09-26T22:32:00"
+                          "createdAt": "09/26/2026 22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -835,7 +835,7 @@
                         "categoryEnName": "string",
                         "articlesCount": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -902,28 +902,16 @@
       }
     },
     "/api/v1/article-categories/{id}": {
-<<<<<<< HEAD
       "put": {
         "tags": [
           "ArticleCategories"
         ],
         "summary": "Updates an existing article category.",
-=======
-      "delete": {
-        "tags": [
-          "ArticleCategories"
-        ],
-        "summary": "Soft deletes an article category.",
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
         "parameters": [
           {
             "name": "id",
             "in": "path",
-<<<<<<< HEAD
             "description": "Category ID from route.",
-=======
-            "description": "Category ID.",
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
             "required": true,
             "schema": {
               "type": "string",
@@ -944,7 +932,6 @@
             }
           }
         ],
-<<<<<<< HEAD
         "requestBody": {
           "description": "The category update payload.",
           "content": {
@@ -965,19 +952,13 @@
             }
           }
         },
-=======
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-<<<<<<< HEAD
                   "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-=======
-                  "$ref": "#/components/schemas/BooleanApiResponse"
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
                 },
                 "examples": {
                   "success": {
@@ -986,18 +967,14 @@
                       "success": true,
                       "isSuccess": true,
                       "errors": {},
-<<<<<<< HEAD
                       "data": {
                         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryArName": "string",
                         "categoryEnName": "string",
                         "articlesCount": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
-=======
-                      "data": true,
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
                       "message": "Operation completed successfully.",
                       "statusCode": 200
                     }
@@ -1006,7 +983,6 @@
               }
             }
           },
-<<<<<<< HEAD
           "400": {
             "description": "Bad Request",
             "content": {
@@ -1049,18 +1025,12 @@
               }
             }
           },
-=======
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-<<<<<<< HEAD
                   "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-=======
-                  "$ref": "#/components/schemas/BooleanApiResponse"
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
                 },
                 "examples": {
                   "error": {
@@ -1094,13 +1064,7 @@
             "Bearer": []
           }
         ]
-<<<<<<< HEAD
       },
-=======
-      }
-    },
-    "/api/v1/articles/categories/{id}": {
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
       "delete": {
         "tags": [
           "ArticleCategories"
@@ -1295,11 +1259,11 @@
                             "excerptAr": "string",
                             "imageUrl": "string",
                             "authorName": "string",
-                            "publishedAt": "2026-09-26T22:32:00",
+                            "publishedAt": "09/26/2026 22:32:00",
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "categoryEnName": "string",
@@ -1399,11 +1363,11 @@
                         "excerptAr": "string",
                         "imageUrl": "string",
                         "authorName": "string",
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryEnName": "string",
@@ -1537,11 +1501,11 @@
                         "excerptAr": "string",
                         "imageUrl": "string",
                         "authorName": "string",
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryEnName": "string",
@@ -1670,11 +1634,11 @@
                         "excerptAr": "string",
                         "imageUrl": "string",
                         "authorName": "string",
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryEnName": "string",
@@ -4295,7 +4259,7 @@
                           "code": "string",
                           "isActive": true,
                           "usersCount": 0,
-                          "createdAt": "2026-09-26T22:32:00"
+                          "createdAt": "09/26/2026 22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -4369,7 +4333,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -4537,7 +4501,7 @@
                             "code": "string",
                             "isActive": true,
                             "usersCount": 0,
-                            "createdAt": "2026-09-26T22:32:00"
+                            "createdAt": "09/26/2026 22:32:00"
                           }
                         ],
                         "pageNumber": 0,
@@ -4621,7 +4585,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -4741,7 +4705,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -6238,7 +6202,7 @@
                             "categoryEn": "string",
                             "categoryAr": "string",
                             "imageUrl": "string",
-                            "publishedAt": "2026-09-26T22:32:00",
+                            "publishedAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "summary": "string",
                             "category": "string"
@@ -6268,7 +6232,7 @@
                             "imageUrl": "string",
                             "authorName": "string",
                             "readMinutes": 0,
-                            "publishedAt": "2026-09-26T22:32:00",
+                            "publishedAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "excerpt": "string"
                           }
@@ -6641,7 +6605,7 @@
                           "categoryEn": "string",
                           "categoryAr": "string",
                           "imageUrl": "string",
-                          "publishedAt": "2026-09-26T22:32:00",
+                          "publishedAt": "09/26/2026 22:32:00",
                           "title": "string",
                           "summary": "string",
                           "category": "string"
@@ -7039,7 +7003,7 @@
                           "imageUrl": "string",
                           "authorName": "string",
                           "readMinutes": 0,
-                          "publishedAt": "2026-09-26T22:32:00",
+                          "publishedAt": "09/26/2026 22:32:00",
                           "title": "string",
                           "excerpt": "string"
                         }
@@ -9022,7 +8986,7 @@
                             "statusArabic": "string",
                             "statusEnglish": "string",
                             "statusTitle": "string",
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "countryArName": "string",
                             "countryEnName": "string",
@@ -9128,7 +9092,7 @@
                         "statusArabic": "string",
                         "statusEnglish": "string",
                         "statusTitle": "string",
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -9261,8 +9225,8 @@
                         "statusEnglish": "string",
                         "statusTitle": "string",
                         "emailConfirmed": true,
-                        "createdAt": "2026-09-26T22:32:00",
-                        "updatedAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
+                        "updatedAt": "09/26/2026 22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -9398,7 +9362,7 @@
                         "statusArabic": "string",
                         "statusEnglish": "string",
                         "statusTitle": "string",
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -9854,7 +9818,7 @@
                           "categoryEnName": "string",
                           "videosCount": 0,
                           "isActive": true,
-                          "createdAt": "2026-09-26T22:32:00"
+                          "createdAt": "09/26/2026 22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -9939,7 +9903,7 @@
                         "categoryEnName": "string",
                         "videosCount": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -10006,28 +9970,16 @@
       }
     },
     "/api/v1/video-categories/{id}": {
-<<<<<<< HEAD
       "put": {
         "tags": [
           "VideoCategories"
         ],
         "summary": "Updates an existing video category.",
-=======
-      "delete": {
-        "tags": [
-          "VideoCategories"
-        ],
-        "summary": "Soft deletes a video category.",
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
         "parameters": [
           {
             "name": "id",
             "in": "path",
-<<<<<<< HEAD
             "description": "Category ID from route.",
-=======
-            "description": "Category ID.",
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
             "required": true,
             "schema": {
               "type": "string",
@@ -10048,7 +10000,6 @@
             }
           }
         ],
-<<<<<<< HEAD
         "requestBody": {
           "description": "The category update payload.",
           "content": {
@@ -10069,19 +10020,13 @@
             }
           }
         },
-=======
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-<<<<<<< HEAD
                   "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-=======
-                  "$ref": "#/components/schemas/BooleanApiResponse"
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
                 },
                 "examples": {
                   "success": {
@@ -10090,18 +10035,14 @@
                       "success": true,
                       "isSuccess": true,
                       "errors": {},
-<<<<<<< HEAD
                       "data": {
                         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryArName": "string",
                         "categoryEnName": "string",
                         "videosCount": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
-=======
-                      "data": true,
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
                       "message": "Operation completed successfully.",
                       "statusCode": 200
                     }
@@ -10110,7 +10051,6 @@
               }
             }
           },
-<<<<<<< HEAD
           "400": {
             "description": "Bad Request",
             "content": {
@@ -10153,18 +10093,12 @@
               }
             }
           },
-=======
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-<<<<<<< HEAD
                   "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-=======
-                  "$ref": "#/components/schemas/BooleanApiResponse"
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
                 },
                 "examples": {
                   "error": {
@@ -10198,13 +10132,7 @@
             "Bearer": []
           }
         ]
-<<<<<<< HEAD
       },
-=======
-      }
-    },
-    "/api/v1/videos/categories/{id}": {
->>>>>>> cd5d64a5f67d69754717a8fa2834d945657e98e1
       "delete": {
         "tags": [
           "VideoCategories"
@@ -10416,7 +10344,7 @@
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "category": "string"
                           }
@@ -10522,7 +10450,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "category": "string"
                       },
@@ -10662,7 +10590,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "category": "string"
                       },
@@ -10797,7 +10725,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "category": "string"
                       },
