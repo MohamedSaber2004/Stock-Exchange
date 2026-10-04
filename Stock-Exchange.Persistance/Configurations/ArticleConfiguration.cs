@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Stock_Exchange.Domain.Entities;
 
@@ -81,8 +81,14 @@ namespace Stock_Exchange.Persistance.Configurations
             builder.Property(a => a.Version)
                 .IsRowVersion();
 
+            builder.HasIndex(a => a.CategoryId);
             builder.HasIndex(a => a.IsDeleted);
             builder.HasIndex(a => new { a.IsDeleted, a.IsFeaturedOnHome, a.PublishedAt });
+
+            builder.HasOne(a => a.Category)
+                .WithMany(c => c.Articles)
+                .HasForeignKey(a => a.CategoryId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder.HasQueryFilter(a => !a.IsDeleted);
         }

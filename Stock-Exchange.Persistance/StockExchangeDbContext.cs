@@ -29,7 +29,9 @@ namespace Stock_Exchange.Persistance
         public DbSet<News> News { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleCategory> ArticleCategories { get; set; }
         public DbSet<Video> Videos { get; set; }
+        public DbSet<VideoCategory> VideoCategories { get; set; }
         public DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
         public DbSet<PlanFeature> PlanFeatures { get; set; }
         public DbSet<Expert> Experts { get; set; }
@@ -149,3 +151,4 @@ namespace Stock_Exchange.Persistance
         }
     }
 }
+

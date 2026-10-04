@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Domain.Entities;
 
@@ -22,7 +22,9 @@ namespace Stock_Exchange.Application.Common.Interfaces
         DbSet<News> News { get; }
         DbSet<Service> Services { get; }
         DbSet<Article> Articles { get; }
+        DbSet<ArticleCategory> ArticleCategories { get; }
         DbSet<Video> Videos { get; }
+        DbSet<VideoCategory> VideoCategories { get; }
         DbSet<SubscriptionPlan> SubscriptionPlans { get; }
         DbSet<PlanFeature> PlanFeatures { get; }
         DbSet<Expert> Experts { get; }
