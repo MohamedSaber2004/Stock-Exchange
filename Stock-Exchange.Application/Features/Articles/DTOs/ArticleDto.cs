@@ -1,4 +1,4 @@
-using Stock_Exchange.Domain.Enums;
+﻿using Stock_Exchange.Domain.Enums;
 
 namespace Stock_Exchange.Application.Features.Articles.DTOs
 {
@@ -17,6 +17,11 @@ namespace Stock_Exchange.Application.Features.Articles.DTOs
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
 
+        public Guid? CategoryId { get; set; }
+        public Guid? ArticleCategoryId { get; set; }
+        public string? CategoryEnName { get; set; }
+        public string? CategoryArName { get; set; }
+
         public string Title => !string.IsNullOrEmpty(TitleEn) ? TitleEn : TitleAr;
         public string Excerpt => !string.IsNullOrEmpty(ExcerptEn) ? ExcerptEn : ExcerptAr;
 
@@ -26,11 +31,13 @@ namespace Stock_Exchange.Application.Features.Articles.DTOs
             {
                 TitleAr = string.Empty;
                 ExcerptAr = string.Empty;
+                CategoryArName = null;
                 return;
             }
 
             TitleEn = string.Empty;
             ExcerptEn = string.Empty;
+            CategoryEnName = null;
         }
     }
 }

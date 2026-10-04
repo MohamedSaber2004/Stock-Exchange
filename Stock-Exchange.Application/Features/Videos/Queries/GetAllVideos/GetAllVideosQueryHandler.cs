@@ -1,4 +1,4 @@
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Extensions;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -34,13 +34,20 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
                 query = query.Where(v => v.IsActive);
             }
 
+            var videoCategoryId = request.VideoCategoryId ?? request.CategoryId;
+            if (videoCategoryId.HasValue && videoCategoryId.Value != Guid.Empty)
+            {
+                query = query.Where(v => v.CategoryId == videoCategoryId.Value);
+            }
+
             var category = request.Category?.Trim();
             if (!string.IsNullOrWhiteSpace(category))
             {
                 var catTerm = category.ToLower();
                 query = query.Where(v =>
                     v.CategoryEn.ToLower() == catTerm ||
-                    v.CategoryAr.ToLower() == catTerm);
+                    v.CategoryAr.ToLower() == catTerm ||
+                    (v.Category != null && (v.Category.CategoryEnName.ToLower() == catTerm || v.Category.CategoryArName.ToLower() == catTerm)));
             }
 
             var search = request.Search?.Trim();
@@ -52,7 +59,8 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
                     v.TitleAr.ToLower().Contains(term) ||
                     v.InstructorName.ToLower().Contains(term) ||
                     v.CategoryEn.ToLower().Contains(term) ||
-                    v.CategoryAr.ToLower().Contains(term));
+                    v.CategoryAr.ToLower().Contains(term) ||
+                    (v.Category != null && (v.Category.CategoryEnName.ToLower().Contains(term) || v.Category.CategoryArName.ToLower().Contains(term))));
             }
 
             var safePageSize = request.PageSize <= 0 ? 10 : request.PageSize;
@@ -73,6 +81,10 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
                     InstructorName = v.InstructorName,
                     CategoryEn = v.CategoryEn,
                     CategoryAr = v.CategoryAr,
+                    CategoryId = v.CategoryId,
+                    VideoCategoryId = v.CategoryId,
+                    CategoryEnName = v.Category != null ? v.Category.CategoryEnName : null,
+                    CategoryArName = v.Category != null ? v.Category.CategoryArName : null,
                     IsPreviewable = v.IsPreviewable,
                     IsFeaturedOnHome = v.IsFeaturedOnHome,
                     DisplayOrder = v.DisplayOrder,

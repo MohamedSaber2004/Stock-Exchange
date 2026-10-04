@@ -68,7 +68,9 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<IArticleCategoryRepository, ArticleCategoryRepository>();
             services.AddScoped<IVideoRepository, VideoRepository>();
+            services.AddScoped<IVideoCategoryRepository, VideoCategoryRepository>();
             services.AddScoped<ISubscriptionPlanRepository, SubscriptionPlanRepository>();
             services.AddScoped<IPlanFeatureRepository, PlanFeatureRepository>();
             services.AddScoped<IExpertRepository, ExpertRepository>();

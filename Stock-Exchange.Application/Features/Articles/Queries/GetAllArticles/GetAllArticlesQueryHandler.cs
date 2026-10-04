@@ -1,4 +1,4 @@
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Extensions;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -34,6 +34,12 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles
                 query = query.Where(a => a.IsActive);
             }
 
+            var categoryId = request.ArticleCategoryId ?? request.CategoryId;
+            if (categoryId.HasValue && categoryId.Value != Guid.Empty)
+            {
+                query = query.Where(a => a.CategoryId == categoryId.Value);
+            }
+
             var search = request.Search?.Trim();
             if (!string.IsNullOrWhiteSpace(search))
             {
@@ -66,7 +72,11 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles
                     IsFeaturedOnHome = a.IsFeaturedOnHome,
                     DisplayOrder = a.DisplayOrder,
                     IsActive = a.IsActive,
-                    CreatedAt = a.CreatedAt
+                    CreatedAt = a.CreatedAt,
+                    CategoryId = a.CategoryId,
+                    ArticleCategoryId = a.CategoryId,
+                    CategoryEnName = a.Category != null ? a.Category.CategoryEnName : null,
+                    CategoryArName = a.Category != null ? a.Category.CategoryArName : null
                 })
                 .AsPagginatedListAsync(safePageNumber, safePageSize, cancellationToken);
 

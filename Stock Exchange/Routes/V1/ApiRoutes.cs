@@ -1,4 +1,4 @@
-using Stock_Exchange.Routes;
+﻿using Stock_Exchange.Routes;
 
 namespace Stock_Exchange.Routes.V1
 {
@@ -122,6 +122,14 @@ namespace Stock_Exchange.Routes.V1
             public const string Delete = "{id}";
         }
 
+        public static class ArticleCategories
+        {
+            public const string Base = BaseRoutes.Base + "/article-categories";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
+        }
+
         public static class Videos
         {
             public const string Base = BaseRoutes.Base + "/videos";
@@ -131,6 +139,14 @@ namespace Stock_Exchange.Routes.V1
             public const string Add = "";
             public const string Update = "";
             public const string Delete = "{id}";
+        }
+
+        public static class VideoCategories
+        {
+            public const string Base = BaseRoutes.Base + "/video-categories";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
         }
 
         public static class SubscriptionPlans
@@ -162,4 +178,5 @@ namespace Stock_Exchange.Routes.V1
         }
     }
 }
+
 
