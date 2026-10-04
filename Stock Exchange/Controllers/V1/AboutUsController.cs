@@ -137,6 +137,7 @@ public class AboutUsController : BaseController
         var html = StaticPageRenderer.BuildDocument(pageTitle, pageLang, dir, sb.ToString());
         return Content(html, "text/html", Encoding.UTF8);
     }
+    
 
     /// <summary>
     /// Creates or updates the about us content (supports partial update) along with its core pillars and support email.
