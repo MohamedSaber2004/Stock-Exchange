@@ -2598,7 +2598,7 @@
             "description": "Creates a new article.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -2639,7 +2639,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2690,7 +2690,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2741,7 +2741,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2792,7 +2792,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2838,7 +2838,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3130,7 +3130,7 @@
             "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -3178,7 +3178,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3236,7 +3236,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3294,7 +3294,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3352,7 +3352,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3410,7 +3410,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3463,7 +3463,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -20831,7 +20831,7 @@
             "description": "Creates a new video.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -20872,7 +20872,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -20923,7 +20923,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -20974,7 +20974,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -21025,7 +21025,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -21071,7 +21071,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -21363,7 +21363,7 @@
             "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -21411,7 +21411,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -21469,7 +21469,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -21527,7 +21527,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -21585,7 +21585,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -21643,7 +21643,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -21696,7 +21696,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
