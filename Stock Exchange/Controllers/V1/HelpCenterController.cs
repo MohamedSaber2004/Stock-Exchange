@@ -106,6 +106,7 @@ public class HelpCenterController : BaseController
     /// The response language is taken from the request Accept-Language header.
     /// </summary>
     /// <param name="id">The help center entry id.</param>
+    /// <param name="applyLanguageFilter">Optional flag to apply language filter based on Accept-Language header.</param>
     /// <returns>The help center entry in the requested language.</returns>
     /// <response code="200">Help center entry retrieved successfully.</response>
     /// <response code="404">The help center entry was not found.</response>
@@ -149,22 +150,21 @@ public class HelpCenterController : BaseController
     /// <summary>
     /// Updates an existing help center entry.
     /// </summary>
-    /// <param name="command">The help center entry id and its new values.</param>
+    /// <param name="id">The help center entry id from route.</param>
+    /// <param name="command">The help center entry and its new values.</param>
     /// <returns>The updated help center entry.</returns>
     /// <response code="200">Help center entry updated successfully.</response>
     /// <response code="400">One or more fields are missing or exceed the allowed length.</response>
     /// <response code="404">The help center entry was not found.</response>
     [HttpPut]
     [Route(ApiRoutes.HelpCenter.Update)]
-    [Route("{id:guid}")]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromBody] UpdateHelpCenterCommand command, [FromRoute] Guid? id = null)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateHelpCenterCommand command)
     {
-        if (id.HasValue && id.Value != Guid.Empty)
-            command.Id = id.Value;
+        command.Id = id;
         var result = await Mediator.Send(command);
 
         if (!result.IsSuccess)

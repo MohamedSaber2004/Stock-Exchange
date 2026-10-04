@@ -44,6 +44,7 @@ public class HelpCenterCategoriesController : BaseController
     /// The response language is taken from the request Accept-Language header.
     /// </summary>
     /// <param name="id">The help center category id.</param>
+    /// <param name="applyLanguageFilter">Optional flag to apply language filter based on Accept-Language header.</param>
     /// <returns>The help center category in the requested language.</returns>
     /// <response code="200">Help center category retrieved successfully.</response>
     /// <response code="404">The help center category was not found.</response>
@@ -87,22 +88,21 @@ public class HelpCenterCategoriesController : BaseController
     /// <summary>
     /// Updates an existing help center category.
     /// </summary>
-    /// <param name="command">The help center category id and its new values.</param>
+    /// <param name="id">The help center category id from route.</param>
+    /// <param name="command">The help center category and its new values.</param>
     /// <returns>The updated help center category.</returns>
     /// <response code="200">Help center category updated successfully.</response>
     /// <response code="400">One or more fields are missing or exceed the allowed length.</response>
     /// <response code="404">The help center category was not found.</response>
     [HttpPut]
     [Route(ApiRoutes.HelpCenterCategories.Update)]
-    [Route("{id:guid}")]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<HelpCenterCategoryDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromBody] UpdateHelpCenterCategoryCommand command, [FromRoute] Guid? id = null)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateHelpCenterCategoryCommand command)
     {
-        if (id.HasValue && id.Value != Guid.Empty)
-            command.Id = id.Value;
+        command.Id = id;
         var result = await Mediator.Send(command);
 
         if (!result.IsSuccess)

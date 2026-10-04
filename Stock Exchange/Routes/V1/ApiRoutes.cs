@@ -1,4 +1,4 @@
-﻿using Stock_Exchange.Routes;
+using Stock_Exchange.Routes;
 
 namespace Stock_Exchange.Routes.V1
 {
@@ -48,7 +48,7 @@ namespace Stock_Exchange.Routes.V1
             public const string GetById = "{id}";
             public const string View = "view";
             public const string Add = "";
-            public const string Update = "";
+            public const string Update = "{id}";
             public const string Delete = "{id}";
         }
 
@@ -59,7 +59,7 @@ namespace Stock_Exchange.Routes.V1
             public const string GetAll = "";
             public const string GetById = "{id}";
             public const string Add = "";
-            public const string Update = "";
+            public const string Update = "{id}";
             public const string Delete = "{id}";
         }
 
@@ -118,7 +118,7 @@ namespace Stock_Exchange.Routes.V1
             public const string GetAll = "";
             public const string GetById = "{id}";
             public const string Add = "";
-            public const string Update = "";
+            public const string Update = "{id}";
             public const string Delete = "{id}";
         }
 
@@ -129,7 +129,7 @@ namespace Stock_Exchange.Routes.V1
             public const string GetAll = "";
             public const string GetById = "{id}";
             public const string Add = "";
-            public const string Update = "";
+            public const string Update = "{id}";
             public const string Delete = "{id}";
         }
 
@@ -140,7 +140,7 @@ namespace Stock_Exchange.Routes.V1
             public const string GetAll = "";
             public const string GetById = "{id}";
             public const string Add = "";
-            public const string Update = "";
+            public const string Update = "{id}";
             public const string Delete = "{id}";
         }
 
@@ -151,7 +151,7 @@ namespace Stock_Exchange.Routes.V1
             public const string GetAll = "";
             public const string GetById = "{id}";
             public const string Add = "";
-            public const string Update = "";
+            public const string Update = "{id}";
             public const string Delete = "{id}";
         }
 

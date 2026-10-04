@@ -629,7 +629,7 @@
                         "resourceTypeTitle": "string",
                         "ipAddress": "string",
                         "device": "string",
-                        "createdAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
                         "timeAgo": "string",
                         "timeAgoArabic": "string",
                         "timeAgoEnglish": "string",
@@ -750,7 +750,7 @@
                           "categoryEnName": "string",
                           "articlesCount": 0,
                           "isActive": true,
-                          "createdAt": "09/26/2026 22:32:00"
+                          "createdAt": "2026-09-26T22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -835,7 +835,7 @@
                         "categoryEnName": "string",
                         "articlesCount": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
+                        "createdAt": "2026-09-26T22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -881,547 +881,6 @@
                       "data": null,
                       "message": "The request is invalid.",
                       "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "ArticleCategories"
-        ],
-        "summary": "Updates an existing article category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Optional category id from route.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The category update payload.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryArName": "string",
-                        "categoryEnName": "string",
-                        "articlesCount": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      }
-    },
-    "/api/v1/articles/categories": {
-      "get": {
-        "tags": [
-          "ArticleCategories"
-        ],
-        "summary": "Retrieves all active article categories, optionally filtered by search term.",
-        "parameters": [
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "IsActive",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "ApplyLanguageFilter",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Article categories retrieved successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoListApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": [
-                        {
-                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                          "categoryArName": "string",
-                          "categoryEnName": "string",
-                          "articlesCount": 0,
-                          "isActive": true,
-                          "createdAt": "09/26/2026 22:32:00"
-                        }
-                      ],
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "ArticleCategories"
-        ],
-        "summary": "Creates a new article category.",
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The category payload with English and Arabic names.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddArticleCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddArticleCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddArticleCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryArName": "string",
-                        "categoryEnName": "string",
-                        "articlesCount": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
-                      },
-                      "message": "Resource created successfully.",
-                      "statusCode": 201
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "ArticleCategories"
-        ],
-        "summary": "Updates an existing article category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Optional category id from route.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The category update payload.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryArName": "string",
-                        "categoryEnName": "string",
-                        "articlesCount": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
                     }
                   }
                 }
@@ -1452,7 +911,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Optional category id from route.",
+            "description": "Category ID from route.",
             "required": true,
             "schema": {
               "type": "string",
@@ -1514,266 +973,7 @@
                         "categoryEnName": "string",
                         "articlesCount": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "ArticleCategories"
-        ],
-        "summary": "Soft deletes an article category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Category ID.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BooleanApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": true,
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BooleanApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      }
-    },
-    "/api/v1/articles/categories/{id}": {
-      "put": {
-        "tags": [
-          "ArticleCategories"
-        ],
-        "summary": "Updates an existing article category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Optional category id from route.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The category update payload.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryArName": "string",
-                        "categoryEnName": "string",
-                        "articlesCount": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
+                        "createdAt": "2026-09-26T22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -2059,11 +1259,11 @@
                             "excerptAr": "string",
                             "imageUrl": "string",
                             "authorName": "string",
-                            "publishedAt": "09/26/2026 22:32:00",
+                            "publishedAt": "2026-09-26T22:32:00",
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "09/26/2026 22:32:00",
+                            "createdAt": "2026-09-26T22:32:00",
                             "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "categoryEnName": "string",
@@ -2163,11 +1363,11 @@
                         "excerptAr": "string",
                         "imageUrl": "string",
                         "authorName": "string",
-                        "publishedAt": "09/26/2026 22:32:00",
+                        "publishedAt": "2026-09-26T22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
                         "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryEnName": "string",
@@ -2219,180 +1419,6 @@
                       "data": null,
                       "message": "The request is invalid.",
                       "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User is unauthorized."
-          },
-          "403": {
-            "description": "User is forbidden (admin only)."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Articles"
-        ],
-        "summary": "Updates an existing article by route id.\r\nAdmin authorization only.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "description": "The article id from route.",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The updated properties.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateArticleCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Article updated successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "titleEn": "string",
-                        "titleAr": "string",
-                        "excerptEn": "string",
-                        "excerptAr": "string",
-                        "imageUrl": "string",
-                        "authorName": "string",
-                        "publishedAt": "09/26/2026 22:32:00",
-                        "isFeaturedOnHome": true,
-                        "displayOrder": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00",
-                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryEnName": "string",
-                        "categoryArName": "string",
-                        "title": "string",
-                        "excerpt": "string"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more fields are invalid or exceed allowed lengths.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Article was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
                     }
                   }
                 }
@@ -2475,11 +1501,11 @@
                         "excerptAr": "string",
                         "imageUrl": "string",
                         "authorName": "string",
-                        "publishedAt": "09/26/2026 22:32:00",
+                        "publishedAt": "2026-09-26T22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
                         "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryEnName": "string",
@@ -2527,6 +1553,181 @@
           },
           "403": {
             "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Updates an existing article by route id.\r\nAdmin authorization only.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The article id from route.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The updated properties.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateArticleCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateArticleCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateArticleCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Article updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "titleEn": "string",
+                        "titleAr": "string",
+                        "excerptEn": "string",
+                        "excerptAr": "string",
+                        "imageUrl": "string",
+                        "authorName": "string",
+                        "publishedAt": "2026-09-26T22:32:00",
+                        "isFeaturedOnHome": true,
+                        "displayOrder": 0,
+                        "isActive": true,
+                        "createdAt": "2026-09-26T22:32:00",
+                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "categoryEnName": "string",
+                        "categoryArName": "string",
+                        "title": "string",
+                        "excerpt": "string"
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more fields are invalid or exceed allowed lengths.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Article was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleDtoApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User is unauthorized."
+          },
+          "403": {
+            "description": "User is forbidden (admin only)."
           }
         },
         "security": [
@@ -5058,7 +4259,7 @@
                           "code": "string",
                           "isActive": true,
                           "usersCount": 0,
-                          "createdAt": "09/26/2026 22:32:00"
+                          "createdAt": "2026-09-26T22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -5132,7 +4333,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "09/26/2026 22:32:00"
+                        "createdAt": "2026-09-26T22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -5300,7 +4501,7 @@
                             "code": "string",
                             "isActive": true,
                             "usersCount": 0,
-                            "createdAt": "09/26/2026 22:32:00"
+                            "createdAt": "2026-09-26T22:32:00"
                           }
                         ],
                         "pageNumber": 0,
@@ -5384,7 +4585,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "09/26/2026 22:32:00"
+                        "createdAt": "2026-09-26T22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -5504,7 +4705,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "09/26/2026 22:32:00"
+                        "createdAt": "2026-09-26T22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -5948,169 +5149,6 @@
             "Bearer": []
           }
         ]
-      },
-      "put": {
-        "tags": [
-          "HelpCenter"
-        ],
-        "summary": "Updates an existing help center entry.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The help center entry id and its new values.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateHelpCenterCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateHelpCenterCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateHelpCenterCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Help center entry updated successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HelpCenterDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "titleEn": "string",
-                        "titleAr": "string",
-                        "contentEn": "string",
-                        "contentAr": "string",
-                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "displayOrder": 0
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more fields are missing or exceed the allowed length.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HelpCenterDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "The help center entry was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HelpCenterDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
       }
     },
     "/api/v1/help-center/view": {
@@ -6193,6 +5231,7 @@
           {
             "name": "applyLanguageFilter",
             "in": "query",
+            "description": "Optional flag to apply language filter based on Accept-Language header.",
             "schema": {
               "type": "boolean"
             }
@@ -6292,6 +5331,7 @@
           {
             "name": "id",
             "in": "path",
+            "description": "The help center entry id from route.",
             "required": true,
             "schema": {
               "type": "string",
@@ -6313,7 +5353,7 @@
           }
         ],
         "requestBody": {
-          "description": "The help center entry id and its new values.",
+          "description": "The help center entry and its new values.",
           "content": {
             "application/json": {
               "schema": {
@@ -6741,165 +5781,6 @@
             "Bearer": []
           }
         ]
-      },
-      "put": {
-        "tags": [
-          "HelpCenterCategories"
-        ],
-        "summary": "Updates an existing help center category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The help center category id and its new values.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateHelpCenterCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateHelpCenterCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateHelpCenterCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Help center category updated successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HelpCenterCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "titleEn": "string",
-                        "titleAr": "string"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more fields are missing or exceed the allowed length.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HelpCenterCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "The help center category was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HelpCenterCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
       }
     },
     "/api/v1/help-center-categories/{id}": {
@@ -6922,6 +5803,7 @@
           {
             "name": "applyLanguageFilter",
             "in": "query",
+            "description": "Optional flag to apply language filter based on Accept-Language header.",
             "schema": {
               "type": "boolean"
             }
@@ -7017,6 +5899,7 @@
           {
             "name": "id",
             "in": "path",
+            "description": "The help center category id from route.",
             "required": true,
             "schema": {
               "type": "string",
@@ -7038,7 +5921,7 @@
           }
         ],
         "requestBody": {
-          "description": "The help center category id and its new values.",
+          "description": "The help center category and its new values.",
           "content": {
             "application/json": {
               "schema": {
@@ -7319,7 +6202,7 @@
                             "categoryEn": "string",
                             "categoryAr": "string",
                             "imageUrl": "string",
-                            "publishedAt": "09/26/2026 22:32:00",
+                            "publishedAt": "2026-09-26T22:32:00",
                             "title": "string",
                             "summary": "string",
                             "category": "string"
@@ -7349,7 +6232,7 @@
                             "imageUrl": "string",
                             "authorName": "string",
                             "readMinutes": 0,
-                            "publishedAt": "09/26/2026 22:32:00",
+                            "publishedAt": "2026-09-26T22:32:00",
                             "title": "string",
                             "excerpt": "string"
                           }
@@ -7722,7 +6605,7 @@
                           "categoryEn": "string",
                           "categoryAr": "string",
                           "imageUrl": "string",
-                          "publishedAt": "09/26/2026 22:32:00",
+                          "publishedAt": "2026-09-26T22:32:00",
                           "title": "string",
                           "summary": "string",
                           "category": "string"
@@ -8120,7 +7003,7 @@
                           "imageUrl": "string",
                           "authorName": "string",
                           "readMinutes": 0,
-                          "publishedAt": "09/26/2026 22:32:00",
+                          "publishedAt": "2026-09-26T22:32:00",
                           "title": "string",
                           "excerpt": "string"
                         }
@@ -10103,7 +8986,7 @@
                             "statusArabic": "string",
                             "statusEnglish": "string",
                             "statusTitle": "string",
-                            "createdAt": "09/26/2026 22:32:00",
+                            "createdAt": "2026-09-26T22:32:00",
                             "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "countryArName": "string",
                             "countryEnName": "string",
@@ -10209,7 +9092,7 @@
                         "statusArabic": "string",
                         "statusEnglish": "string",
                         "statusTitle": "string",
-                        "createdAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -10342,8 +9225,8 @@
                         "statusEnglish": "string",
                         "statusTitle": "string",
                         "emailConfirmed": true,
-                        "createdAt": "09/26/2026 22:32:00",
-                        "updatedAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
+                        "updatedAt": "2026-09-26T22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -10479,7 +9362,7 @@
                         "statusArabic": "string",
                         "statusEnglish": "string",
                         "statusTitle": "string",
-                        "createdAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -10935,7 +9818,7 @@
                           "categoryEnName": "string",
                           "videosCount": 0,
                           "isActive": true,
-                          "createdAt": "09/26/2026 22:32:00"
+                          "createdAt": "2026-09-26T22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -11020,7 +9903,7 @@
                         "categoryEnName": "string",
                         "videosCount": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
+                        "createdAt": "2026-09-26T22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -11066,547 +9949,6 @@
                       "data": null,
                       "message": "The request is invalid.",
                       "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "VideoCategories"
-        ],
-        "summary": "Updates an existing video category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Optional category id from route.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The category update payload.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryArName": "string",
-                        "categoryEnName": "string",
-                        "videosCount": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      }
-    },
-    "/api/v1/videos/categories": {
-      "get": {
-        "tags": [
-          "VideoCategories"
-        ],
-        "summary": "Retrieves all active video categories, optionally filtered by search term.",
-        "parameters": [
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "IsActive",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "ApplyLanguageFilter",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Video categories retrieved successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoListApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": [
-                        {
-                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                          "categoryArName": "string",
-                          "categoryEnName": "string",
-                          "videosCount": 0,
-                          "isActive": true,
-                          "createdAt": "09/26/2026 22:32:00"
-                        }
-                      ],
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "VideoCategories"
-        ],
-        "summary": "Creates a new video category.",
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The category payload with English and Arabic names.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddVideoCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddVideoCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddVideoCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryArName": "string",
-                        "categoryEnName": "string",
-                        "videosCount": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
-                      },
-                      "message": "Resource created successfully.",
-                      "statusCode": 201
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "VideoCategories"
-        ],
-        "summary": "Updates an existing video category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Optional category id from route.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The category update payload.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryArName": "string",
-                        "categoryEnName": "string",
-                        "videosCount": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
                     }
                   }
                 }
@@ -11637,7 +9979,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Optional category id from route.",
+            "description": "Category ID from route.",
             "required": true,
             "schema": {
               "type": "string",
@@ -11699,266 +10041,7 @@
                         "categoryEnName": "string",
                         "videosCount": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "VideoCategories"
-        ],
-        "summary": "Soft deletes a video category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Category ID.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BooleanApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": true,
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BooleanApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      }
-    },
-    "/api/v1/videos/categories/{id}": {
-      "put": {
-        "tags": [
-          "VideoCategories"
-        ],
-        "summary": "Updates an existing video category.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Optional category id from route.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The category update payload.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCategoryCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoCategoryDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryArName": "string",
-                        "categoryEnName": "string",
-                        "videosCount": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00"
+                        "createdAt": "2026-09-26T22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -12261,7 +10344,7 @@
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "09/26/2026 22:32:00",
+                            "createdAt": "2026-09-26T22:32:00",
                             "title": "string",
                             "category": "string"
                           }
@@ -12367,7 +10450,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
                         "title": "string",
                         "category": "string"
                       },
@@ -12415,173 +10498,6 @@
                       "data": null,
                       "message": "The request is invalid.",
                       "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User is unauthorized."
-          },
-          "403": {
-            "description": "User is forbidden (admin only)."
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Videos"
-        ],
-        "summary": "Updates an existing video.\r\nAdmin authorization only.",
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The video id and updated properties.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVideoCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Video updated successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoDtoApiResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Success",
-                    "value": {
-                      "success": true,
-                      "isSuccess": true,
-                      "errors": {},
-                      "data": {
-                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "titleEn": "string",
-                        "titleAr": "string",
-                        "thumbnailUrl": "string",
-                        "videoUrl": "string",
-                        "durationSeconds": 0,
-                        "instructorName": "string",
-                        "categoryEn": "string",
-                        "categoryAr": "string",
-                        "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        "categoryEnName": "string",
-                        "categoryArName": "string",
-                        "isPreviewable": true,
-                        "isFeaturedOnHome": true,
-                        "displayOrder": 0,
-                        "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00",
-                        "title": "string",
-                        "category": "string"
-                      },
-                      "message": "Operation completed successfully.",
-                      "statusCode": 200
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more fields are invalid or exceed allowed lengths.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoDtoApiResponse"
-                },
-                "examples": {
-                  "validationError": {
-                    "summary": "Validation error (field-level)",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "email": [
-                          "Invalid email address format."
-                        ]
-                      },
-                      "data": null,
-                      "message": "One or more validation errors occurred.",
-                      "statusCode": 400
-                    }
-                  },
-                  "businessError": {
-                    "summary": "Business rule violation",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "Invalid refresh token."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The request is invalid.",
-                      "statusCode": 400
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Video was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VideoDtoApiResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Not found",
-                    "value": {
-                      "success": false,
-                      "isSuccess": false,
-                      "errors": {
-                        "General": [
-                          "The requested resource was not found."
-                        ]
-                      },
-                      "data": null,
-                      "message": "The requested resource was not found.",
-                      "statusCode": 404
                     }
                   }
                 }
@@ -12674,7 +10590,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
                         "title": "string",
                         "category": "string"
                       },
@@ -12809,7 +10725,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "09/26/2026 22:32:00",
+                        "createdAt": "2026-09-26T22:32:00",
                         "title": "string",
                         "category": "string"
                       },

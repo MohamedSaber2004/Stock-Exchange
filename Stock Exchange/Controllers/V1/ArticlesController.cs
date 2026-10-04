@@ -106,7 +106,7 @@ public class ArticlesController : BaseController
     [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> UpdateWithRouteId(Guid id, [FromBody] UpdateArticleCommand command)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateArticleCommand command)
     {
         command.Id = id;
         var result = await Mediator.Send(command);

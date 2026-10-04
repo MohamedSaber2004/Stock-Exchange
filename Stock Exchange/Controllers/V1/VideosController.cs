@@ -89,10 +89,11 @@ public class VideosController : BaseController
     }
 
     /// <summary>
-    /// Updates an existing video.
+    /// Updates an existing video by route id.
     /// Admin authorization only.
     /// </summary>
-    /// <param name="command">The video id and updated properties.</param>
+    /// <param name="id">The video id from route.</param>
+    /// <param name="command">The updated properties.</param>
     /// <returns>The updated video.</returns>
     /// <response code="200">Video updated successfully.</response>
     /// <response code="400">One or more fields are invalid or exceed allowed lengths.</response>
@@ -105,34 +106,7 @@ public class VideosController : BaseController
     [ProducesResponseType(typeof(ApiResponse<VideoDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<VideoDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<VideoDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromBody] UpdateVideoCommand command)
-    {
-        var result = await Mediator.Send(command);
-
-        if (!result.IsSuccess)
-            return FromResult(result);
-
-        return OkResult(result.Data, LocalizationKeys.ActionResults.Updated);
-    }
-
-    /// <summary>
-    /// Updates an existing video by route id.
-    /// Admin authorization only.
-    /// </summary>
-    /// <param name="id">The video id from route.</param>
-    /// <param name="command">The updated properties.</param>
-    /// <returns>The updated video.</returns>
-    /// <response code="200">Video updated successfully.</response>
-    /// <response code="400">One or more fields are invalid or exceed allowed lengths.</response>
-    /// <response code="401">User is unauthorized.</response>
-    /// <response code="403">User is forbidden (admin only).</response>
-    /// <response code="404">Video was not found.</response>
-    [HttpPut("{id}")]
-    [RoleAuthorize(UserType.Admin)]
-    [ProducesResponseType(typeof(ApiResponse<VideoDto>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiResponse<VideoDto>), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ApiResponse<VideoDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> UpdateWithRouteId(Guid id, [FromBody] UpdateVideoCommand command)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateVideoCommand command)
     {
         command.Id = id;
         var result = await Mediator.Send(command);

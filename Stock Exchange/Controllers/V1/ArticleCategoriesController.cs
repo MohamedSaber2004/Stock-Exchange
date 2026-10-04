@@ -1,4 +1,4 @@
-﻿using Asp.Versioning;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.ArticleCategories.Commands.AddArticleCategory;
@@ -15,7 +15,6 @@ namespace Stock_Exchange.Controllers.V1;
 
 [ApiVersion("1.0")]
 [Route(ApiRoutes.ArticleCategories.Base)]
-[Route("api/v{version:apiVersion}/articles/categories")]
 public class ArticleCategoriesController : BaseController
 {
     /// <summary>
@@ -61,8 +60,8 @@ public class ArticleCategoriesController : BaseController
     /// <summary>
     /// Updates an existing article category.
     /// </summary>
+    /// <param name="id">Category ID from route.</param>
     /// <param name="command">The category update payload.</param>
-    /// <param name="id">Optional category id from route.</param>
     /// <returns>Updated category.</returns>
     [HttpPut]
     [Route(ApiRoutes.ArticleCategories.Update)]
@@ -70,10 +69,9 @@ public class ArticleCategoriesController : BaseController
     [ProducesResponseType(typeof(ApiResponse<ArticleCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<ArticleCategoryDto>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<ArticleCategoryDto>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromBody] UpdateArticleCategoryCommand command, [FromRoute] Guid? id = null)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateArticleCategoryCommand command)
     {
-        if (id.HasValue && id.Value != Guid.Empty)
-            command.Id = id.Value;
+        command.Id = id;
 
         var result = await Mediator.Send(command);
 
