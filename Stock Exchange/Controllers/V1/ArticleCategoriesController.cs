@@ -66,7 +66,6 @@ public class ArticleCategoriesController : BaseController
     /// <returns>Updated category.</returns>
     [HttpPut]
     [Route(ApiRoutes.ArticleCategories.Update)]
-    [Route("{id:guid}")]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<ArticleCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<ArticleCategoryDto>), StatusCodes.Status400BadRequest)]

@@ -1,3 +1,4 @@
+using Stock_Exchange.Services;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -66,22 +67,14 @@ public class HelpCenterController : BaseController
         var dir = isAr ? "rtl" : "ltr";
         var pageLang = isAr ? "ar" : "en";
         var pageTitle = isAr ? "مركز المساعدة" : "Help Center";
-        var emptyMsg = isAr ? "لا توجد إدخالات متاحة." : "No help center entries found.";
+        var emptyMsg = isAr ? "لا توجد أسئلة شائعة متاحة حالياً." : "No help center entries found.";
 
         var sb = new StringBuilder();
-        sb.Append($"<!DOCTYPE html><html lang='{pageLang}' dir='{dir}'><head>");
-        sb.Append("<meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
-        sb.Append($"<title>{System.Net.WebUtility.HtmlEncode(pageTitle)}</title>");
-        sb.Append("<link rel='icon' href='/favicon.ico' type='image/x-icon'/>");
-        sb.Append("<link rel='stylesheet' href='/pages/pages.css'/></head><body>");
-        sb.Append("<header class='page-header'>");
-        sb.Append($"<h1 class='page-title'>{System.Net.WebUtility.HtmlEncode(pageTitle)}</h1>");
-        sb.Append("</header>");
-        sb.Append("<main class='page-container'><div id='faq-list'>");
+        sb.Append("<div id='faq-list'>");
 
         if (!items.Any())
         {
-            sb.Append($"<div class='empty-state'><p>{emptyMsg}</p></div>");
+            sb.Append($"<div class='empty-state'><p>{System.Net.WebUtility.HtmlEncode(emptyMsg)}</p></div>");
         }
         else
         {
@@ -102,13 +95,10 @@ public class HelpCenterController : BaseController
             }
         }
 
-        sb.Append("</div></main>");
-        sb.Append("<script>");
-        sb.Append("function toggleFaq(id){var el=document.getElementById('faq-'+id);if(!el)return;var isOpen=el.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open');});if(!isOpen)el.classList.add('open');}");
-        sb.Append("</script>");
-        sb.Append("</body></html>");
+        sb.Append("</div>");
 
-        return Content(sb.ToString(), "text/html", Encoding.UTF8);
+        var html = StaticPageRenderer.BuildDocument(pageTitle, pageLang, dir, sb.ToString(), StaticPageRenderer.FaqScript);
+        return Content(html, "text/html", Encoding.UTF8);
     }
 
     /// <summary>

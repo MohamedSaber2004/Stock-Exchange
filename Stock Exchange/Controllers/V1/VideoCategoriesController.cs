@@ -66,7 +66,6 @@ public class VideoCategoriesController : BaseController
     /// <returns>Updated category.</returns>
     [HttpPut]
     [Route(ApiRoutes.VideoCategories.Update)]
-    [Route("{id:guid}")]
     [RoleAuthorize(UserType.Admin)]
     [ProducesResponseType(typeof(ApiResponse<VideoCategoryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<VideoCategoryDto>), StatusCodes.Status400BadRequest)]

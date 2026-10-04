@@ -1,3 +1,4 @@
+using Stock_Exchange.Services;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -70,15 +71,6 @@ public class PrivacyPolicyController : BaseController
         var emptyMsg = isAr ? "لا يوجد محتوى متاح." : "No content available.";
 
         var sb = new StringBuilder();
-        sb.Append($"<!DOCTYPE html><html lang='{pageLang}' dir='{dir}'><head>");
-        sb.Append("<meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
-        sb.Append($"<title>{System.Net.WebUtility.HtmlEncode(pageTitle)}</title>");
-        sb.Append("<link rel='icon' href='/favicon.ico' type='image/x-icon'/>");
-        sb.Append("<link rel='stylesheet' href='/pages/pages.css'/></head><body>");
-        sb.Append("<header class='page-header'>");
-        sb.Append($"<h1 class='page-title'>{System.Net.WebUtility.HtmlEncode(pageTitle)}</h1>");
-        sb.Append("</header>");
-        sb.Append("<main class='page-container'>");
 
         var description = isAr ? data.DescriptionAr : data.DescriptionEn;
         if (!string.IsNullOrWhiteSpace(description))
@@ -99,11 +91,10 @@ public class PrivacyPolicyController : BaseController
         }
 
         if (!data.Sections.Any())
-            sb.Append($"<div class='empty-state'><p>{emptyMsg}</p></div>");
+            sb.Append($"<div class='empty-state'><p>{System.Net.WebUtility.HtmlEncode(emptyMsg)}</p></div>");
 
-        sb.Append("</main></body></html>");
-
-        return Content(sb.ToString(), "text/html", Encoding.UTF8);
+        var html = StaticPageRenderer.BuildDocument(pageTitle, pageLang, dir, sb.ToString());
+        return Content(html, "text/html", Encoding.UTF8);
     }
 
 
