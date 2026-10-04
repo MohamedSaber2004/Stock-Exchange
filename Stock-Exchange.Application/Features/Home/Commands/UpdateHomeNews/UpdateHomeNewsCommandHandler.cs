@@ -64,7 +64,7 @@ namespace Stock_Exchange.Application.Features.Home.Commands.UpdateHomeNews
                 }
                 else
                 {
-                    var newEntity = new News
+                    var newEntity = new Stock_Exchange.Domain.Entities.News
                     {
                         TitleEn = item.TitleEn.Trim(),
                         TitleAr = item.TitleAr.Trim(),

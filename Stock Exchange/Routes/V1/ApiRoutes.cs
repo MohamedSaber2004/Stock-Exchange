@@ -182,8 +182,38 @@ namespace Stock_Exchange.Routes.V1
             public const string GetById = "{id}";
             public const string Summary = "summary";
         }
+
+        public static class News
+        {
+            public const string Base = BaseRoutes.Base + "/news";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "{id}";
+            public const string Delete = "{id}";
+        }
+
+        public static class Services
+        {
+            public const string Base = BaseRoutes.Base + "/services";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "{id}";
+            public const string Delete = "{id}";
+        }
+
+        public static class Experts
+        {
+            public const string Base = BaseRoutes.Base + "/experts";
+
+            public const string GetAll = "";
+            public const string GetById = "{id}";
+            public const string Add = "";
+            public const string Update = "{id}";
+            public const string Delete = "{id}";
+        }
     }
 }
-
-
-
