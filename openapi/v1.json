@@ -1191,14 +1191,6 @@
             }
           },
           {
-            "name": "ArticleCategoryId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "CategoryId",
             "in": "query",
             "schema": {
@@ -11958,21 +11950,6 @@
             "in": "query",
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "Category",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "VideoCategoryId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
             }
           },
           {

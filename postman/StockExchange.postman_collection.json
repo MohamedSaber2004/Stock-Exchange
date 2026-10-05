@@ -2326,11 +2326,6 @@
                   "description": ""
                 },
                 {
-                  "key": "ArticleCategoryId",
-                  "value": "00000000-0000-0000-0000-000000000000",
-                  "description": ""
-                },
-                {
                   "key": "CategoryId",
                   "value": "00000000-0000-0000-0000-000000000000",
                   "description": ""
@@ -2387,11 +2382,6 @@
                     {
                       "key": "Search",
                       "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "ArticleCategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
                       "description": ""
                     },
                     {
@@ -23229,16 +23219,6 @@
                   "description": ""
                 },
                 {
-                  "key": "Category",
-                  "value": "string",
-                  "description": ""
-                },
-                {
-                  "key": "VideoCategoryId",
-                  "value": "00000000-0000-0000-0000-000000000000",
-                  "description": ""
-                },
-                {
                   "key": "CategoryId",
                   "value": "00000000-0000-0000-0000-000000000000",
                   "description": ""
@@ -23295,16 +23275,6 @@
                     {
                       "key": "Search",
                       "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "Category",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "VideoCategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
                       "description": ""
                     },
                     {
