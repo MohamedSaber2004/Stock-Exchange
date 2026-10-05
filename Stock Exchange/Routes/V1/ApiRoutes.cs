@@ -205,7 +205,14 @@ namespace Stock_Exchange.Routes.V1
             public const string Delete = "{id}";
         }
 
-        public static class Experts
+        public static class Overview
+        {
+            public const string Base = BaseRoutes.Base + "/overview";
+
+            public const string Get = "";
+ }
+
+ public static class Experts
         {
             public const string Base = BaseRoutes.Base + "/experts";
 
