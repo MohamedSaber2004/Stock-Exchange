@@ -1,4 +1,4 @@
-using Stock_Exchange.Routes;
+﻿using Stock_Exchange.Routes;
 
 namespace Stock_Exchange.Routes.V1
 {
@@ -212,7 +212,14 @@ namespace Stock_Exchange.Routes.V1
             public const string Get = "";
  }
 
- public static class Experts
+        public static class Search
+        {
+            public const string Base = BaseRoutes.Base + "/search";
+
+            public const string Global = "";
+        }
+
+  public static class Experts
         {
             public const string Base = BaseRoutes.Base + "/experts";
 
