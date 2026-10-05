@@ -1257,8 +1257,11 @@
                             "titleAr": "string",
                             "excerptEn": "string",
                             "excerptAr": "string",
+                            "contentEn": "string",
+                            "contentAr": "string",
                             "imageUrl": "string",
                             "authorName": "string",
+                            "readMinutes": 0,
                             "publishedAt": "09/26/2026 22:32:00",
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
@@ -1269,7 +1272,8 @@
                             "categoryEnName": "string",
                             "categoryArName": "string",
                             "title": "string",
-                            "excerpt": "string"
+                            "excerpt": "string",
+                            "content": "string"
                           }
                         ],
                         "pageNumber": 0,
@@ -1286,19 +1290,8 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -1361,8 +1354,11 @@
                         "titleAr": "string",
                         "excerptEn": "string",
                         "excerptAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "imageUrl": "string",
                         "authorName": "string",
+                        "readMinutes": 0,
                         "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
@@ -1373,7 +1369,8 @@
                         "categoryEnName": "string",
                         "categoryArName": "string",
                         "title": "string",
-                        "excerpt": "string"
+                        "excerpt": "string",
+                        "content": "string"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -1499,8 +1496,11 @@
                         "titleAr": "string",
                         "excerptEn": "string",
                         "excerptAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "imageUrl": "string",
                         "authorName": "string",
+                        "readMinutes": 0,
                         "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
@@ -1511,7 +1511,8 @@
                         "categoryEnName": "string",
                         "categoryArName": "string",
                         "title": "string",
-                        "excerpt": "string"
+                        "excerpt": "string",
+                        "content": "string"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -1547,19 +1548,8 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -1632,8 +1622,11 @@
                         "titleAr": "string",
                         "excerptEn": "string",
                         "excerptAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "imageUrl": "string",
                         "authorName": "string",
+                        "readMinutes": 0,
                         "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
@@ -1644,7 +1637,8 @@
                         "categoryEnName": "string",
                         "categoryArName": "string",
                         "title": "string",
-                        "excerpt": "string"
+                        "excerpt": "string",
+                        "content": "string"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -8296,6 +8290,8 @@
                             "titleAr": "string",
                             "summaryEn": "string",
                             "summaryAr": "string",
+                            "contentEn": "string",
+                            "contentAr": "string",
                             "imageUrl": "string",
                             "categoryEn": "string",
                             "categoryAr": "string",
@@ -8305,7 +8301,8 @@
                             "isActive": true,
                             "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
-                            "summary": "string"
+                            "summary": "string",
+                            "content": "string"
                           }
                         ],
                         "pageNumber": 0,
@@ -8322,19 +8319,8 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -8395,6 +8381,8 @@
                         "titleAr": "string",
                         "summaryEn": "string",
                         "summaryAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "imageUrl": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
@@ -8404,7 +8392,8 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
-                        "summary": "string"
+                        "summary": "string",
+                        "content": "string"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -8485,6 +8474,8 @@
                         "titleAr": "string",
                         "summaryEn": "string",
                         "summaryAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "imageUrl": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
@@ -8494,7 +8485,8 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
-                        "summary": "string"
+                        "summary": "string",
+                        "content": "string"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -8503,19 +8495,8 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -8585,6 +8566,8 @@
                         "titleAr": "string",
                         "summaryEn": "string",
                         "summaryAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "imageUrl": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
@@ -8594,7 +8577,8 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
-                        "summary": "string"
+                        "summary": "string",
+                        "content": "string"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -9279,6 +9263,8 @@
                             "titleAr": "string",
                             "descriptionEn": "string",
                             "descriptionAr": "string",
+                            "contentEn": "string",
+                            "contentAr": "string",
                             "iconName": "string",
                             "imageUrl": "string",
                             "linkRoute": "string",
@@ -9286,7 +9272,8 @@
                             "isActive": true,
                             "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
-                            "description": "string"
+                            "description": "string",
+                            "content": "string"
                           }
                         ],
                         "pageNumber": 0,
@@ -9303,19 +9290,8 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -9376,6 +9352,8 @@
                         "titleAr": "string",
                         "descriptionEn": "string",
                         "descriptionAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "iconName": "string",
                         "imageUrl": "string",
                         "linkRoute": "string",
@@ -9383,7 +9361,8 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
-                        "description": "string"
+                        "description": "string",
+                        "content": "string"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -9464,6 +9443,8 @@
                         "titleAr": "string",
                         "descriptionEn": "string",
                         "descriptionAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "iconName": "string",
                         "imageUrl": "string",
                         "linkRoute": "string",
@@ -9471,7 +9452,8 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
-                        "description": "string"
+                        "description": "string",
+                        "content": "string"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -9480,19 +9462,8 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -9562,6 +9533,8 @@
                         "titleAr": "string",
                         "descriptionEn": "string",
                         "descriptionAr": "string",
+                        "contentEn": "string",
+                        "contentAr": "string",
                         "iconName": "string",
                         "imageUrl": "string",
                         "linkRoute": "string",
@@ -9569,7 +9542,8 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
-                        "description": "string"
+                        "description": "string",
+                        "content": "string"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -11732,6 +11706,8 @@
                             "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "titleEn": "string",
                             "titleAr": "string",
+                            "descriptionEn": "string",
+                            "descriptionAr": "string",
                             "thumbnailUrl": "string",
                             "videoUrl": "string",
                             "durationSeconds": 0,
@@ -11748,6 +11724,7 @@
                             "isActive": true,
                             "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
+                            "description": "string",
                             "category": "string"
                           }
                         ],
@@ -11765,19 +11742,8 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -11838,6 +11804,8 @@
                         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "titleEn": "string",
                         "titleAr": "string",
+                        "descriptionEn": "string",
+                        "descriptionAr": "string",
                         "thumbnailUrl": "string",
                         "videoUrl": "string",
                         "durationSeconds": 0,
@@ -11854,6 +11822,7 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
+                        "description": "string",
                         "category": "string"
                       },
                       "message": "Resource created successfully.",
@@ -11978,6 +11947,8 @@
                         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "titleEn": "string",
                         "titleAr": "string",
+                        "descriptionEn": "string",
+                        "descriptionAr": "string",
                         "thumbnailUrl": "string",
                         "videoUrl": "string",
                         "durationSeconds": 0,
@@ -11994,6 +11965,7 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
+                        "description": "string",
                         "category": "string"
                       },
                       "message": "Operation completed successfully.",
@@ -12030,19 +12002,8 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
-          },
-          "403": {
-            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
           }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -12113,6 +12074,8 @@
                         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "titleEn": "string",
                         "titleAr": "string",
+                        "descriptionEn": "string",
+                        "descriptionAr": "string",
                         "thumbnailUrl": "string",
                         "videoUrl": "string",
                         "durationSeconds": 0,
@@ -12129,6 +12092,7 @@
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
+                        "description": "string",
                         "category": "string"
                       },
                       "message": "Operation completed successfully.",
@@ -12800,12 +12764,25 @@
             "type": "string",
             "nullable": true
           },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          },
           "imageUrl": {
             "type": "string",
             "nullable": true
           },
           "authorName": {
             "type": "string",
+            "nullable": true
+          },
+          "readMinutes": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "publishedAt": {
@@ -12948,6 +12925,14 @@
             "type": "string",
             "nullable": true
           },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          },
           "imageUrl": {
             "type": "string",
             "nullable": true
@@ -12994,6 +12979,14 @@
             "nullable": true
           },
           "descriptionAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
             "type": "string",
             "nullable": true
           },
@@ -13078,6 +13071,14 @@
             "nullable": true
           },
           "titleAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionAr": {
             "type": "string",
             "nullable": true
           },
@@ -13264,6 +13265,14 @@
             "type": "string",
             "nullable": true
           },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          },
           "imageUrl": {
             "type": "string",
             "nullable": true
@@ -13271,6 +13280,10 @@
           "authorName": {
             "type": "string",
             "nullable": true
+          },
+          "readMinutes": {
+            "type": "integer",
+            "format": "int32"
           },
           "publishedAt": {
             "type": "string",
@@ -13314,6 +13327,11 @@
             "readOnly": true
           },
           "excerpt": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "content": {
             "type": "string",
             "nullable": true,
             "readOnly": true
@@ -15185,6 +15203,14 @@
             "type": "string",
             "nullable": true
           },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          },
           "imageUrl": {
             "type": "string",
             "nullable": true
@@ -15221,6 +15247,11 @@
             "readOnly": true
           },
           "summary": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "content": {
             "type": "string",
             "nullable": true,
             "readOnly": true
@@ -15645,6 +15676,14 @@
             "type": "string",
             "nullable": true
           },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          },
           "iconName": {
             "type": "string",
             "nullable": true
@@ -15674,6 +15713,11 @@
             "readOnly": true
           },
           "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "content": {
             "type": "string",
             "nullable": true,
             "readOnly": true
@@ -16181,12 +16225,25 @@
             "type": "string",
             "nullable": true
           },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          },
           "imageUrl": {
             "type": "string",
             "nullable": true
           },
           "authorName": {
             "type": "string",
+            "nullable": true
+          },
+          "readMinutes": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "publishedAt": {
@@ -16458,6 +16515,14 @@
             "type": "string",
             "nullable": true
           },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
+            "type": "string",
+            "nullable": true
+          },
           "imageUrl": {
             "type": "string",
             "nullable": true
@@ -16537,6 +16602,14 @@
             "nullable": true
           },
           "descriptionAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentAr": {
             "type": "string",
             "nullable": true
           },
@@ -16684,6 +16757,14 @@
             "nullable": true
           },
           "titleAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionAr": {
             "type": "string",
             "nullable": true
           },
@@ -17270,6 +17351,14 @@
             "type": "string",
             "nullable": true
           },
+          "descriptionEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionAr": {
+            "type": "string",
+            "nullable": true
+          },
           "thumbnailUrl": {
             "type": "string",
             "nullable": true
@@ -17330,6 +17419,11 @@
             "format": "date-time"
           },
           "title": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "description": {
             "type": "string",
             "nullable": true,
             "readOnly": true

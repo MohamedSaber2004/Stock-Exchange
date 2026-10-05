@@ -2423,146 +2423,8 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"excerptEn\": \"string\",\n        \"excerptAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"authorName\": \"string\",\n        \"publishedAt\": \"09/26/2026 22:32:00\",\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"categoryEnName\": \"string\",\n        \"categoryArName\": \"string\",\n        \"title\": \"string\",\n        \"excerpt\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"excerptEn\": \"string\",\n        \"excerptAr\": \"string\",\n        \"contentEn\": \"string\",\n        \"contentAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"authorName\": \"string\",\n        \"readMinutes\": 0,\n        \"publishedAt\": \"09/26/2026 22:32:00\",\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"categoryEnName\": \"string\",\n        \"categoryArName\": \"string\",\n        \"title\": \"string\",\n        \"excerpt\": \"string\",\n        \"content\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles"
-                  ],
-                  "query": [
-                    {
-                      "key": "PageNumber",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "PageSize",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "Search",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "ArticleCategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    },
-                    {
-                      "key": "CategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "Retrieves paginated articles (default page size: 10), with optional search and active status filter.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles"
-                  ],
-                  "query": [
-                    {
-                      "key": "PageNumber",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "PageSize",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "Search",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "ArticleCategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    },
-                    {
-                      "key": "CategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "Retrieves paginated articles (default page size: 10), with optional search and active status filter.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
             }
           ]
         },
@@ -2598,7 +2460,7 @@
             "description": "Creates a new article.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -2639,7 +2501,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2655,7 +2517,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"readMinutes\": 0,\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -2690,7 +2552,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2741,7 +2603,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2792,7 +2654,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2838,7 +2700,7 @@
                 "description": "Creates a new article.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2943,7 +2805,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"readMinutes\": 0,\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -2996,98 +2858,6 @@
               ],
               "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
               "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles",
-                    "{{id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "applyLanguageFilter",
-                      "value": "false",
-                      "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The article id."
-                    }
-                  ]
-                },
-                "description": "Retrieves a single article by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/articles/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "articles",
-                    "{{id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "applyLanguageFilter",
-                      "value": "false",
-                      "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The article id."
-                    }
-                  ]
-                },
-                "description": "Retrieves a single article by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
             }
           ]
         },
@@ -3130,7 +2900,7 @@
             "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -3178,7 +2948,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3194,7 +2964,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"excerptEn\": \"string\",\n    \"excerptAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"authorName\": \"string\",\n    \"readMinutes\": 0,\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"articleCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"title\": \"string\",\n    \"excerpt\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -3236,7 +3006,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3294,7 +3064,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3352,7 +3122,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3410,7 +3180,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3463,7 +3233,7 @@
                 "description": "Updates an existing article by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"excerptEn\": \"string\",\n  \"excerptAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"authorName\": \"string\",\n  \"readMinutes\": 0,\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -16554,146 +16324,8 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"summaryEn\": \"string\",\n        \"summaryAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"publishedAt\": \"09/26/2026 22:32:00\",\n        \"displayOrder\": 0,\n        \"isFeaturedOnHome\": true,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"summary\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"summaryEn\": \"string\",\n        \"summaryAr\": \"string\",\n        \"contentEn\": \"string\",\n        \"contentAr\": \"string\",\n        \"imageUrl\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"publishedAt\": \"09/26/2026 22:32:00\",\n        \"displayOrder\": 0,\n        \"isFeaturedOnHome\": true,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"summary\": \"string\",\n        \"content\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/news",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "news"
-                  ],
-                  "query": [
-                    {
-                      "key": "PageNumber",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "PageSize",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "Search",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "Category",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsFeaturedOnHome",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "GET /api/v1/news",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/news",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "news"
-                  ],
-                  "query": [
-                    {
-                      "key": "PageNumber",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "PageSize",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "Search",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "Category",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsFeaturedOnHome",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "GET /api/v1/news",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
             }
           ]
         },
@@ -16729,7 +16361,7 @@
             "description": "POST /api/v1/news",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -16770,7 +16402,7 @@
                 "description": "POST /api/v1/news",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -16786,7 +16418,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -16821,7 +16453,7 @@
                 "description": "POST /api/v1/news",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -16867,7 +16499,7 @@
                 "description": "POST /api/v1/news",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -16972,100 +16604,8 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "news",
-                    "{{id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "applyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    }
-                  ]
-                },
-                "description": "GET /api/v1/news/{id}",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/news/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "news",
-                    "{{id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "applyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    }
-                  ]
-                },
-                "description": "GET /api/v1/news/{id}",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
             }
           ]
         },
@@ -17108,7 +16648,7 @@
             "description": "PUT /api/v1/news/{id}",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -17156,7 +16696,7 @@
                 "description": "PUT /api/v1/news/{id}",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -17172,7 +16712,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"summaryEn\": \"string\",\n    \"summaryAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"imageUrl\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"publishedAt\": \"09/26/2026 22:32:00\",\n    \"displayOrder\": 0,\n    \"isFeaturedOnHome\": true,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"summary\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -17214,7 +16754,7 @@
                 "description": "PUT /api/v1/news/{id}",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -17267,7 +16807,7 @@
                 "description": "PUT /api/v1/news/{id}",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"summaryEn\": \"string\",\n  \"summaryAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"imageUrl\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"publishedAt\": \"2026-01-01T00:00:00Z\",\n  \"displayOrder\": 0,\n  \"isFeaturedOnHome\": false,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18568,126 +18108,8 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"iconName\": \"string\",\n        \"imageUrl\": \"string\",\n        \"linkRoute\": \"string\",\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"contentEn\": \"string\",\n        \"contentAr\": \"string\",\n        \"iconName\": \"string\",\n        \"imageUrl\": \"string\",\n        \"linkRoute\": \"string\",\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"content\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/services",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "services"
-                  ],
-                  "query": [
-                    {
-                      "key": "PageNumber",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "PageSize",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "Search",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "GET /api/v1/services",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/services",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "services"
-                  ],
-                  "query": [
-                    {
-                      "key": "PageNumber",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "PageSize",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "Search",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "GET /api/v1/services",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
             }
           ]
         },
@@ -18723,7 +18145,7 @@
             "description": "POST /api/v1/services",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -18764,7 +18186,7 @@
                 "description": "POST /api/v1/services",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18780,7 +18202,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -18815,7 +18237,7 @@
                 "description": "POST /api/v1/services",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18861,7 +18283,7 @@
                 "description": "POST /api/v1/services",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18966,100 +18388,8 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "services",
-                    "{{id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "applyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    }
-                  ]
-                },
-                "description": "GET /api/v1/services/{id}",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/services/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "services",
-                    "{{id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "applyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    }
-                  ]
-                },
-                "description": "GET /api/v1/services/{id}",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
             }
           ]
         },
@@ -19102,7 +18432,7 @@
             "description": "PUT /api/v1/services/{id}",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -19150,7 +18480,7 @@
                 "description": "PUT /api/v1/services/{id}",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -19166,7 +18496,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"contentEn\": \"string\",\n    \"contentAr\": \"string\",\n    \"iconName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"linkRoute\": \"string\",\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"content\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -19208,7 +18538,7 @@
                 "description": "PUT /api/v1/services/{id}",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -19261,7 +18591,7 @@
                 "description": "PUT /api/v1/services/{id}",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"contentEn\": \"string\",\n  \"contentAr\": \"string\",\n  \"iconName\": \"string\",\n  \"imageUrl\": \"string\",\n  \"linkRoute\": \"string\",\n  \"displayOrder\": 0,\n  \"isActive\": false\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -23682,156 +23012,8 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"videoUrl\": \"string\",\n        \"durationSeconds\": 0,\n        \"instructorName\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"categoryEnName\": \"string\",\n        \"categoryArName\": \"string\",\n        \"isPreviewable\": true,\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"category\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"titleEn\": \"string\",\n        \"titleAr\": \"string\",\n        \"descriptionEn\": \"string\",\n        \"descriptionAr\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"videoUrl\": \"string\",\n        \"durationSeconds\": 0,\n        \"instructorName\": \"string\",\n        \"categoryEn\": \"string\",\n        \"categoryAr\": \"string\",\n        \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"categoryEnName\": \"string\",\n        \"categoryArName\": \"string\",\n        \"isPreviewable\": true,\n        \"isFeaturedOnHome\": true,\n        \"displayOrder\": 0,\n        \"isActive\": true,\n        \"createdAt\": \"09/26/2026 22:32:00\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"category\": \"string\"\n      }\n    ],\n    \"pageNumber\": 0,\n    \"pageSize\": 0,\n    \"totalPages\": 0,\n    \"totalCount\": 0,\n    \"hasPreviousPage\": true,\n    \"hasNextPage\": true\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/videos",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "videos"
-                  ],
-                  "query": [
-                    {
-                      "key": "PageNumber",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "PageSize",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "Search",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "Category",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "VideoCategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    },
-                    {
-                      "key": "CategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "Retrieves paginated videos (default page size: 10), with optional search, category, and active status filters.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/videos",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "videos"
-                  ],
-                  "query": [
-                    {
-                      "key": "PageNumber",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "PageSize",
-                      "value": "0",
-                      "description": ""
-                    },
-                    {
-                      "key": "Search",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "Category",
-                      "value": "string",
-                      "description": ""
-                    },
-                    {
-                      "key": "VideoCategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    },
-                    {
-                      "key": "CategoryId",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": ""
-                    },
-                    {
-                      "key": "IsActive",
-                      "value": "false",
-                      "description": ""
-                    },
-                    {
-                      "key": "ApplyLanguageFilter",
-                      "value": "false",
-                      "description": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "description": "Retrieves paginated videos (default page size: 10), with optional search, category, and active status filters.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
             }
           ]
         },
@@ -23867,7 +23049,7 @@
             "description": "Creates a new video.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -23908,7 +23090,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -23924,7 +23106,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -23959,7 +23141,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24010,7 +23192,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24061,7 +23243,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24107,7 +23289,7 @@
                 "description": "Creates a new video.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24212,7 +23394,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -24265,98 +23447,6 @@
               ],
               "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"The requested resource was not found.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The requested resource was not found.\",\n  \"statusCode\": 404\n}",
               "_postman_previewlanguage": "json"
-            },
-            {
-              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/videos/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "videos",
-                    "{{id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "applyLanguageFilter",
-                      "value": "false",
-                      "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The video id."
-                    }
-                  ]
-                },
-                "description": "Retrieves a single video by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
-              "code": 401,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/v1/videos/{{id}}",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "videos",
-                    "{{id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "applyLanguageFilter",
-                      "value": "false",
-                      "description": "Optional flag to apply language filter based on Accept-Language header (default true)."
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "key": "id",
-                      "value": "00000000-0000-0000-0000-000000000000",
-                      "description": "The video id."
-                    }
-                  ]
-                },
-                "description": "Retrieves a single video by its id.\r\nGeneral authorization: Accessible to any authenticated user.",
-                "body": null
-              },
-              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
-              "code": 403,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
             }
           ]
         },
@@ -24399,7 +23489,7 @@
             "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -24447,7 +23537,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24463,7 +23553,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"titleEn\": \"string\",\n    \"titleAr\": \"string\",\n    \"descriptionEn\": \"string\",\n    \"descriptionAr\": \"string\",\n    \"thumbnailUrl\": \"string\",\n    \"videoUrl\": \"string\",\n    \"durationSeconds\": 0,\n    \"instructorName\": \"string\",\n    \"categoryEn\": \"string\",\n    \"categoryAr\": \"string\",\n    \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"videoCategoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"categoryEnName\": \"string\",\n    \"categoryArName\": \"string\",\n    \"isPreviewable\": true,\n    \"isFeaturedOnHome\": true,\n    \"displayOrder\": 0,\n    \"isActive\": true,\n    \"createdAt\": \"09/26/2026 22:32:00\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\"\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
               "_postman_previewlanguage": "json"
             },
             {
@@ -24505,7 +23595,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24563,7 +23653,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24621,7 +23711,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24679,7 +23769,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -24732,7 +23822,7 @@
                 "description": "Updates an existing video by route id.\r\nAdmin authorization only.",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"titleEn\": \"string\",\n  \"titleAr\": \"string\",\n  \"descriptionEn\": \"string\",\n  \"descriptionAr\": \"string\",\n  \"thumbnailUrl\": \"string\",\n  \"videoUrl\": \"string\",\n  \"durationSeconds\": 0,\n  \"instructorName\": \"string\",\n  \"categoryEn\": \"string\",\n  \"categoryAr\": \"string\",\n  \"isPreviewable\": false,\n  \"isFeaturedOnHome\": false,\n  \"displayOrder\": 0,\n  \"isActive\": false,\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
