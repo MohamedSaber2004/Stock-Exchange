@@ -16988,6 +16988,146 @@
       ]
     },
     {
+      "name": "Overview",
+      "description": "",
+      "item": [
+        {
+          "name": "Retrieves comprehensive overview statistics, trends, and recent activities for the admin dashboard.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/overview",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "overview"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Retrieves comprehensive overview statistics, trends, and recent activities for the admin dashboard.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/overview",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "overview"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves comprehensive overview statistics, trends, and recent activities for the admin dashboard.",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"stats\": {\n      \"totalUsers\": 0,\n      \"activeUsers\": 0,\n      \"inactiveUsers\": 0,\n      \"newUsersThisMonth\": 0,\n      \"totalArticles\": 0,\n      \"totalVideos\": 0,\n      \"totalNews\": 0,\n      \"totalServices\": 0,\n      \"totalExperts\": 0,\n      \"totalCountries\": 0,\n      \"totalPlans\": 0,\n      \"totalActivityLogs\": 0\n    },\n    \"contentDistribution\": {\n      \"articlesCount\": 0,\n      \"videosCount\": 0,\n      \"newsCount\": 0,\n      \"servicesCount\": 0,\n      \"totalContentItems\": 0,\n      \"articlesPercentage\": 0,\n      \"videosPercentage\": 0,\n      \"newsPercentage\": 0,\n      \"servicesPercentage\": 0\n    },\n    \"userRegistrationTrend\": [\n      {\n        \"date\": \"string\",\n        \"dayName\": \"string\",\n        \"count\": 0\n      }\n    ],\n    \"activityTrend\": [\n      {\n        \"date\": \"string\",\n        \"dayName\": \"string\",\n        \"count\": 0\n      }\n    ],\n    \"recentActivities\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"userId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"userName\": \"string\",\n        \"userEmail\": \"string\",\n        \"userProfilePictureUrl\": \"string\",\n        \"action\": \"string\",\n        \"actionAr\": \"string\",\n        \"actionEn\": \"string\",\n        \"resourceType\": \"string\",\n        \"createdAt\": \"09/26/2026 22:32:00\"\n      }\n    ],\n    \"topArticleCategories\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"name\": \"string\",\n        \"nameAr\": \"string\",\n        \"nameEn\": \"string\",\n        \"count\": 0\n      }\n    ],\n    \"topVideoCategories\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"name\": \"string\",\n        \"nameAr\": \"string\",\n        \"nameEn\": \"string\",\n        \"count\": 0\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/overview",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "overview"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves comprehensive overview statistics, trends, and recent activities for the admin dashboard.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/overview",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "overview"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Retrieves comprehensive overview statistics, trends, and recent activities for the admin dashboard.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "PrivacyPolicy",
       "description": "",
       "item": [

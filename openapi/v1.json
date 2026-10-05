@@ -8667,6 +8667,137 @@
         ]
       }
     },
+    "/api/v1/overview": {
+      "get": {
+        "tags": [
+          "Overview"
+        ],
+        "summary": "Retrieves comprehensive overview statistics, trends, and recent activities for the admin dashboard.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminOverviewDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "stats": {
+                          "totalUsers": 0,
+                          "activeUsers": 0,
+                          "inactiveUsers": 0,
+                          "newUsersThisMonth": 0,
+                          "totalArticles": 0,
+                          "totalVideos": 0,
+                          "totalNews": 0,
+                          "totalServices": 0,
+                          "totalExperts": 0,
+                          "totalCountries": 0,
+                          "totalPlans": 0,
+                          "totalActivityLogs": 0
+                        },
+                        "contentDistribution": {
+                          "articlesCount": 0,
+                          "videosCount": 0,
+                          "newsCount": 0,
+                          "servicesCount": 0,
+                          "totalContentItems": 0,
+                          "articlesPercentage": 0,
+                          "videosPercentage": 0,
+                          "newsPercentage": 0,
+                          "servicesPercentage": 0
+                        },
+                        "userRegistrationTrend": [
+                          {
+                            "date": "string",
+                            "dayName": "string",
+                            "count": 0
+                          }
+                        ],
+                        "activityTrend": [
+                          {
+                            "date": "string",
+                            "dayName": "string",
+                            "count": 0
+                          }
+                        ],
+                        "recentActivities": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "userName": "string",
+                            "userEmail": "string",
+                            "userProfilePictureUrl": "string",
+                            "action": "string",
+                            "actionAr": "string",
+                            "actionEn": "string",
+                            "resourceType": "string",
+                            "createdAt": "09/26/2026 22:32:00"
+                          }
+                        ],
+                        "topArticleCategories": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "name": "string",
+                            "nameAr": "string",
+                            "nameEn": "string",
+                            "count": 0
+                          }
+                        ],
+                        "topVideoCategories": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "name": "string",
+                            "nameAr": "string",
+                            "nameEn": "string",
+                            "count": 0
+                          }
+                        ]
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/privacy-policy": {
       "get": {
         "tags": [
@@ -13141,6 +13272,87 @@
         },
         "additionalProperties": false
       },
+      "AdminOverviewDto": {
+        "type": "object",
+        "properties": {
+          "stats": {
+            "$ref": "#/components/schemas/OverviewStatsDto"
+          },
+          "contentDistribution": {
+            "$ref": "#/components/schemas/OverviewContentDistributionDto"
+          },
+          "userRegistrationTrend": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OverviewTrendItemDto"
+            },
+            "nullable": true
+          },
+          "activityTrend": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OverviewTrendItemDto"
+            },
+            "nullable": true
+          },
+          "recentActivities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OverviewActivityLogDto"
+            },
+            "nullable": true
+          },
+          "topArticleCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OverviewCategorySummaryDto"
+            },
+            "nullable": true
+          },
+          "topVideoCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OverviewCategorySummaryDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdminOverviewDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/AdminOverviewDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ArticleCategoryDto": {
         "type": "object",
         "properties": {
@@ -15394,6 +15606,198 @@
             "nullable": true
           },
           "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OverviewActivityLogDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "userProfilePictureUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "action": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "resourceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OverviewCategorySummaryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OverviewContentDistributionDto": {
+        "type": "object",
+        "properties": {
+          "articlesCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "videosCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "newsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "servicesCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalContentItems": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "articlesPercentage": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "videosPercentage": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "newsPercentage": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "servicesPercentage": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OverviewStatsDto": {
+        "type": "object",
+        "properties": {
+          "totalUsers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activeUsers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "inactiveUsers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "newUsersThisMonth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalArticles": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalVideos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalNews": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalServices": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalExperts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCountries": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPlans": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalActivityLogs": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OverviewTrendItemDto": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "nullable": true
+          },
+          "dayName": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
             "type": "integer",
             "format": "int32"
           }
