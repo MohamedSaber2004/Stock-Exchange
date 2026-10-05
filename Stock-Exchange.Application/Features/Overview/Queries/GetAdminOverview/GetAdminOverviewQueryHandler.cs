@@ -11,13 +11,16 @@ public class GetAdminOverviewQueryHandler : IRequestHandler<GetAdminOverviewQuer
 {
     private readonly IStockExchangeDbContext _dbContext;
     private readonly ICurrentLanguageService _currentLanguageService;
+    private readonly ICurrentUserService _currentUserService;
 
     public GetAdminOverviewQueryHandler(
         IStockExchangeDbContext dbContext,
-        ICurrentLanguageService currentLanguageService)
+        ICurrentLanguageService currentLanguageService,
+        ICurrentUserService currentUserService)
     {
         _dbContext = dbContext;
         _currentLanguageService = currentLanguageService;
+        _currentUserService = currentUserService;
     }
 
     public async Task<Result<AdminOverviewDto>> Handle(GetAdminOverviewQuery request, CancellationToken cancellationToken)
@@ -25,7 +28,7 @@ public class GetAdminOverviewQueryHandler : IRequestHandler<GetAdminOverviewQuer
         var thirtyDaysAgo = DateTime.UtcNow.AddDays(-30);
         var isArabic = _currentLanguageService.Language == Language.ar;
 
-        // Metric Counts
+        // Metric Counts for Users & Content
         var totalUsers = await _dbContext.Users.AsNoTracking().CountAsync(u => !u.IsDeleted, cancellationToken);
         var activeUsers = await _dbContext.Users.AsNoTracking().CountAsync(u => !u.IsDeleted && u.IsActive, cancellationToken);
         var newUsersThisMonth = await _dbContext.Users.AsNoTracking().CountAsync(u => !u.IsDeleted && u.CreatedAt >= thirtyDaysAgo, cancellationToken);
@@ -37,7 +40,30 @@ public class GetAdminOverviewQueryHandler : IRequestHandler<GetAdminOverviewQuer
         var totalExperts = await _dbContext.Experts.AsNoTracking().CountAsync(e => !e.IsDeleted, cancellationToken);
         var totalCountries = await _dbContext.Countries.AsNoTracking().CountAsync(c => !c.IsDeleted, cancellationToken);
         var totalPlans = await _dbContext.SubscriptionPlans.AsNoTracking().CountAsync(p => !p.IsDeleted, cancellationToken);
-        var totalActivityLogs = await _dbContext.ActivityLogs.AsNoTracking().CountAsync(a => !a.IsDeleted, cancellationToken);
+
+        // Activity Logs Base Query - excludes current authenticated admin's own operations
+        // to strictly match the count in ActivityLogs (ActivityLogsSummaryDto and ActivityListView)
+        var baseActivityQuery = _dbContext.ActivityLogs
+            .AsNoTracking()
+            .Where(a => !a.IsDeleted);
+
+        if (_currentUserService.IsAuthenticated)
+        {
+            var currentUserId = _currentUserService.UserId;
+            var currentEmail = _currentUserService.Email?.Trim().ToLower();
+
+            if (currentUserId != Guid.Empty)
+            {
+                baseActivityQuery = baseActivityQuery.Where(a => a.UserId != currentUserId);
+            }
+
+            if (!string.IsNullOrEmpty(currentEmail))
+            {
+                baseActivityQuery = baseActivityQuery.Where(a => a.UserEmail.ToLower() != currentEmail);
+            }
+        }
+
+        var totalActivityLogs = await baseActivityQuery.CountAsync(cancellationToken);
 
         var stats = new OverviewStatsDto
         {
@@ -72,8 +98,8 @@ public class GetAdminOverviewQueryHandler : IRequestHandler<GetAdminOverviewQuer
             .Select(u => u.CreatedAt)
             .ToListAsync(cancellationToken);
 
-        var activityLogDates = await _dbContext.ActivityLogs.AsNoTracking()
-            .Where(a => !a.IsDeleted && a.CreatedAt >= startDate)
+        var activityLogDates = await baseActivityQuery
+            .Where(a => a.CreatedAt >= startDate)
             .Select(a => a.CreatedAt)
             .ToListAsync(cancellationToken);
 
@@ -101,9 +127,8 @@ public class GetAdminOverviewQueryHandler : IRequestHandler<GetAdminOverviewQuer
             });
         }
 
-        // Recent Activity Logs (top 8)
-        var recentLogsEntities = await _dbContext.ActivityLogs.AsNoTracking()
-            .Where(a => !a.IsDeleted)
+        // Recent Activity Logs (top 8) - filtered using baseActivityQuery
+        var recentLogsEntities = await baseActivityQuery
             .OrderByDescending(a => a.CreatedAt)
             .Take(8)
             .Select(a => new
