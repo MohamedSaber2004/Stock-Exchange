@@ -55,6 +55,8 @@ namespace Stock_Exchange.Application.Features.Services.Queries.GetAllServices
                     TitleAr = s.TitleAr,
                     DescriptionEn = s.DescriptionEn,
                     DescriptionAr = s.DescriptionAr,
+                    ContentEn = s.ContentEn,
+                    ContentAr = s.ContentAr,
                     IconName = s.IconName,
                     ImageUrl = s.ImageUrl,
                     LinkRoute = s.LinkRoute,

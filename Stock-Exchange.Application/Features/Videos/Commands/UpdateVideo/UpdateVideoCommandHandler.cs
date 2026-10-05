@@ -39,6 +39,8 @@ namespace Stock_Exchange.Application.Features.Videos.Commands.UpdateVideo
 
             video.TitleEn = request.TitleEn.Trim();
             video.TitleAr = request.TitleAr.Trim();
+            if (request.DescriptionEn != null) video.DescriptionEn = request.DescriptionEn.Trim();
+            if (request.DescriptionAr != null) video.DescriptionAr = request.DescriptionAr.Trim();
             video.ThumbnailUrl = string.IsNullOrWhiteSpace(request.ThumbnailUrl) ? null : request.ThumbnailUrl.Trim();
             video.VideoUrl = string.IsNullOrWhiteSpace(request.VideoUrl) ? null : request.VideoUrl.Trim();
             video.DurationSeconds = request.DurationSeconds;
@@ -63,6 +65,8 @@ namespace Stock_Exchange.Application.Features.Videos.Commands.UpdateVideo
                 Id = video.Id,
                 TitleEn = video.TitleEn,
                 TitleAr = video.TitleAr,
+                DescriptionEn = video.DescriptionEn,
+                DescriptionAr = video.DescriptionAr,
                 ThumbnailUrl = video.ThumbnailUrl,
                 VideoUrl = video.VideoUrl,
                 DurationSeconds = video.DurationSeconds,

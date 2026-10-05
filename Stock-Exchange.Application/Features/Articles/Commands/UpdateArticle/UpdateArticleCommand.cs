@@ -11,8 +11,11 @@ namespace Stock_Exchange.Application.Features.Articles.Commands.UpdateArticle
         public string TitleAr { get; set; } = string.Empty;
         public string ExcerptEn { get; set; } = string.Empty;
         public string ExcerptAr { get; set; } = string.Empty;
+        public string? ContentEn { get; set; }
+        public string? ContentAr { get; set; }
         public string? ImageUrl { get; set; }
         public string AuthorName { get; set; } = string.Empty;
+        public int? ReadMinutes { get; set; }
         public DateTime? PublishedAt { get; set; }
         public bool IsFeaturedOnHome { get; set; } = true;
         public int DisplayOrder { get; set; }

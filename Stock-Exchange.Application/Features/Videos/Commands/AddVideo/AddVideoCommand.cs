@@ -8,6 +8,8 @@ namespace Stock_Exchange.Application.Features.Videos.Commands.AddVideo
     {
         public string TitleEn { get; set; } = string.Empty;
         public string TitleAr { get; set; } = string.Empty;
+        public string? DescriptionEn { get; set; }
+        public string? DescriptionAr { get; set; }
         public string? ThumbnailUrl { get; set; }
         public string? VideoUrl { get; set; }
         public int DurationSeconds { get; set; }

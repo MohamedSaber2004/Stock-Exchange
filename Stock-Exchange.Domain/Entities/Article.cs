@@ -8,6 +8,8 @@ namespace Stock_Exchange.Domain.Entities
         public string TitleAr { get; set; } = string.Empty;
         public string ExcerptEn { get; set; } = string.Empty;
         public string ExcerptAr { get; set; } = string.Empty;
+        public string ContentEn { get; set; } = string.Empty;
+        public string ContentAr { get; set; } = string.Empty;
         public string? ImageUrl { get; set; }
         public string AuthorName { get; set; } = string.Empty;
         public int ReadMinutes { get; set; } = 5;

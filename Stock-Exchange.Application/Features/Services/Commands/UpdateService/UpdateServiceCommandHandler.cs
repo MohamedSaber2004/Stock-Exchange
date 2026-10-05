@@ -38,6 +38,8 @@ namespace Stock_Exchange.Application.Features.Services.Commands.UpdateService
             service.TitleAr = request.TitleAr.Trim();
             service.DescriptionEn = request.DescriptionEn?.Trim() ?? string.Empty;
             service.DescriptionAr = request.DescriptionAr?.Trim() ?? string.Empty;
+            if (request.ContentEn != null) service.ContentEn = request.ContentEn.Trim();
+            if (request.ContentAr != null) service.ContentAr = request.ContentAr.Trim();
             service.IconName = request.IconName?.Trim() ?? string.Empty;
             service.ImageUrl = string.IsNullOrWhiteSpace(request.ImageUrl) ? null : request.ImageUrl.Trim();
             service.LinkRoute = string.IsNullOrWhiteSpace(request.LinkRoute) ? null : request.LinkRoute.Trim();
@@ -58,6 +60,8 @@ namespace Stock_Exchange.Application.Features.Services.Commands.UpdateService
                 TitleAr = service.TitleAr,
                 DescriptionEn = service.DescriptionEn,
                 DescriptionAr = service.DescriptionAr,
+                ContentEn = service.ContentEn,
+                ContentAr = service.ContentAr,
                 IconName = service.IconName,
                 ImageUrl = service.ImageUrl,
                 LinkRoute = service.LinkRoute,

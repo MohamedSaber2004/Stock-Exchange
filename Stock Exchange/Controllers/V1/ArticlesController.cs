@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
@@ -27,7 +28,7 @@ public class ArticlesController : BaseController
     /// <response code="200">Articles retrieved successfully.</response>
     [HttpGet]
     [Route(ApiRoutes.Articles.GetAll)]
-    [RoleAuthorize]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ApiResponse<PagginatedResult<ArticleDto>>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll([FromQuery] GetAllArticlesQuery query)
     {
@@ -50,7 +51,7 @@ public class ArticlesController : BaseController
     /// <response code="404">Article was not found.</response>
     [HttpGet]
     [Route(ApiRoutes.Articles.GetById)]
-    [RoleAuthorize]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<ArticleDto>), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById(Guid id, [FromQuery] bool? applyLanguageFilter = null)

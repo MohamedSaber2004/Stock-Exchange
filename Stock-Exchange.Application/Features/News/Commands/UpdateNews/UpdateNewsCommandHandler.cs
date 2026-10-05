@@ -38,6 +38,8 @@ namespace Stock_Exchange.Application.Features.News.Commands.UpdateNews
             news.TitleAr = request.TitleAr.Trim();
             news.SummaryEn = request.SummaryEn?.Trim() ?? string.Empty;
             news.SummaryAr = request.SummaryAr?.Trim() ?? string.Empty;
+            if (request.ContentEn != null) news.ContentEn = request.ContentEn.Trim();
+            if (request.ContentAr != null) news.ContentAr = request.ContentAr.Trim();
             news.CategoryEn = request.CategoryEn?.Trim() ?? string.Empty;
             news.CategoryAr = request.CategoryAr?.Trim() ?? string.Empty;
             news.ImageUrl = string.IsNullOrWhiteSpace(request.ImageUrl) ? null : request.ImageUrl.Trim();
@@ -60,6 +62,8 @@ namespace Stock_Exchange.Application.Features.News.Commands.UpdateNews
                 TitleAr = news.TitleAr,
                 SummaryEn = news.SummaryEn,
                 SummaryAr = news.SummaryAr,
+                ContentEn = news.ContentEn,
+                ContentAr = news.ContentAr,
                 CategoryEn = news.CategoryEn,
                 CategoryAr = news.CategoryAr,
                 ImageUrl = news.ImageUrl,

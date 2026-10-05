@@ -35,6 +35,8 @@ namespace Stock_Exchange.Application.Features.Videos.Commands.AddVideo
             {
                 TitleEn = request.TitleEn.Trim(),
                 TitleAr = request.TitleAr.Trim(),
+                DescriptionEn = request.DescriptionEn?.Trim() ?? string.Empty,
+                DescriptionAr = request.DescriptionAr?.Trim() ?? string.Empty,
                 ThumbnailUrl = string.IsNullOrWhiteSpace(request.ThumbnailUrl) ? null : request.ThumbnailUrl.Trim(),
                 VideoUrl = string.IsNullOrWhiteSpace(request.VideoUrl) ? null : request.VideoUrl.Trim(),
                 DurationSeconds = request.DurationSeconds,
@@ -60,6 +62,8 @@ namespace Stock_Exchange.Application.Features.Videos.Commands.AddVideo
                 Id = video.Id,
                 TitleEn = video.TitleEn,
                 TitleAr = video.TitleAr,
+                DescriptionEn = video.DescriptionEn,
+                DescriptionAr = video.DescriptionAr,
                 ThumbnailUrl = video.ThumbnailUrl,
                 VideoUrl = video.VideoUrl,
                 DurationSeconds = video.DurationSeconds,

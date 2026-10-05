@@ -41,8 +41,11 @@ namespace Stock_Exchange.Application.Features.Articles.Commands.UpdateArticle
             article.TitleAr = request.TitleAr.Trim();
             article.ExcerptEn = request.ExcerptEn.Trim();
             article.ExcerptAr = request.ExcerptAr.Trim();
+            if (request.ContentEn != null) article.ContentEn = request.ContentEn.Trim();
+            if (request.ContentAr != null) article.ContentAr = request.ContentAr.Trim();
             article.ImageUrl = string.IsNullOrWhiteSpace(request.ImageUrl) ? null : request.ImageUrl.Trim();
             article.AuthorName = request.AuthorName.Trim();
+            if (request.ReadMinutes.HasValue) article.ReadMinutes = request.ReadMinutes.Value;
             if (request.PublishedAt.HasValue)
             {
                 article.PublishedAt = request.PublishedAt.Value;
@@ -65,8 +68,11 @@ namespace Stock_Exchange.Application.Features.Articles.Commands.UpdateArticle
                 TitleAr = article.TitleAr,
                 ExcerptEn = article.ExcerptEn,
                 ExcerptAr = article.ExcerptAr,
+                ContentEn = article.ContentEn,
+                ContentAr = article.ContentAr,
                 ImageUrl = article.ImageUrl,
                 AuthorName = article.AuthorName,
+                ReadMinutes = article.ReadMinutes,
                 PublishedAt = article.PublishedAt,
                 IsFeaturedOnHome = article.IsFeaturedOnHome,
                 DisplayOrder = article.DisplayOrder,

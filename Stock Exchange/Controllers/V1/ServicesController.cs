@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
@@ -20,7 +21,7 @@ public class ServicesController : BaseController
 {
     [HttpGet]
     [Route(ApiRoutes.Services.GetAll)]
-    [RoleAuthorize]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ApiResponse<PagginatedResult<ServiceDto>>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll([FromQuery] GetAllServicesQuery query)
     {
@@ -31,7 +32,7 @@ public class ServicesController : BaseController
 
     [HttpGet]
     [Route(ApiRoutes.Services.GetById)]
-    [RoleAuthorize]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ApiResponse<ServiceDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetById(Guid id, [FromQuery] bool? applyLanguageFilter = null)
     {

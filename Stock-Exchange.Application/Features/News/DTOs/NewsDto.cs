@@ -9,6 +9,8 @@ namespace Stock_Exchange.Application.Features.News.DTOs
         public string TitleAr { get; set; } = string.Empty;
         public string SummaryEn { get; set; } = string.Empty;
         public string SummaryAr { get; set; } = string.Empty;
+        public string ContentEn { get; set; } = string.Empty;
+        public string ContentAr { get; set; } = string.Empty;
         public string? ImageUrl { get; set; }
         public string CategoryEn { get; set; } = string.Empty;
         public string CategoryAr { get; set; } = string.Empty;
@@ -20,6 +22,7 @@ namespace Stock_Exchange.Application.Features.News.DTOs
 
         public string Title => !string.IsNullOrEmpty(TitleEn) ? TitleEn : TitleAr;
         public string Summary => !string.IsNullOrEmpty(SummaryEn) ? SummaryEn : SummaryAr;
+        public string Content => !string.IsNullOrEmpty(ContentEn) ? ContentEn : ContentAr;
 
         public void ApplyLanguageFilter(Language language)
         {
@@ -27,12 +30,14 @@ namespace Stock_Exchange.Application.Features.News.DTOs
             {
                 TitleAr = string.Empty;
                 SummaryAr = string.Empty;
+                ContentAr = string.Empty;
                 CategoryAr = string.Empty;
                 return;
             }
 
             TitleEn = string.Empty;
             SummaryEn = string.Empty;
+            ContentEn = string.Empty;
             CategoryEn = string.Empty;
         }
     }

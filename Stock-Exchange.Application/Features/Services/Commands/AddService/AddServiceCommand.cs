@@ -10,6 +10,8 @@ namespace Stock_Exchange.Application.Features.Services.Commands.AddService
         public string TitleAr { get; set; } = string.Empty;
         public string DescriptionEn { get; set; } = string.Empty;
         public string DescriptionAr { get; set; } = string.Empty;
+        public string? ContentEn { get; set; }
+        public string? ContentAr { get; set; }
         public string? IconName { get; set; }
         public string? ImageUrl { get; set; }
         public string? LinkRoute { get; set; }

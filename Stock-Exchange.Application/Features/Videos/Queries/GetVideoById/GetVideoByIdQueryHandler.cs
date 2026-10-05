@@ -32,6 +32,8 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetVideoById
                     Id = v.Id,
                     TitleEn = v.TitleEn,
                     TitleAr = v.TitleAr,
+                    DescriptionEn = v.DescriptionEn,
+                    DescriptionAr = v.DescriptionAr,
                     ThumbnailUrl = v.ThumbnailUrl,
                     VideoUrl = v.VideoUrl,
                     DurationSeconds = v.DurationSeconds,

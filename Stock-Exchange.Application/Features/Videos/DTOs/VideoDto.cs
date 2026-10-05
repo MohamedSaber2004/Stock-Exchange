@@ -7,6 +7,8 @@ namespace Stock_Exchange.Application.Features.Videos.DTOs
         public Guid Id { get; set; }
         public string TitleEn { get; set; } = string.Empty;
         public string TitleAr { get; set; } = string.Empty;
+        public string DescriptionEn { get; set; } = string.Empty;
+        public string DescriptionAr { get; set; } = string.Empty;
         public string? ThumbnailUrl { get; set; }
         public string? VideoUrl { get; set; }
         public int DurationSeconds { get; set; }
@@ -24,6 +26,7 @@ namespace Stock_Exchange.Application.Features.Videos.DTOs
         public DateTime CreatedAt { get; set; }
 
         public string Title => !string.IsNullOrEmpty(TitleEn) ? TitleEn : TitleAr;
+        public string Description => !string.IsNullOrEmpty(DescriptionEn) ? DescriptionEn : DescriptionAr;
         public string Category => !string.IsNullOrEmpty(CategoryEnName) ? CategoryEnName : (!string.IsNullOrEmpty(CategoryEn) ? CategoryEn : CategoryAr);
 
         public void ApplyLanguageFilter(Language language)
@@ -31,12 +34,14 @@ namespace Stock_Exchange.Application.Features.Videos.DTOs
             if (language == Language.en)
             {
                 TitleAr = string.Empty;
+                DescriptionAr = string.Empty;
                 CategoryAr = string.Empty;
                 CategoryArName = null;
                 return;
             }
 
             TitleEn = string.Empty;
+            DescriptionEn = string.Empty;
             CategoryEn = string.Empty;
             CategoryEnName = null;
         }

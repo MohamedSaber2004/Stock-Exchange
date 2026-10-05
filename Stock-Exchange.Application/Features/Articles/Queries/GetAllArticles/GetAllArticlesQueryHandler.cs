@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Extensions;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -63,8 +63,11 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles
                     TitleAr = a.TitleAr,
                     ExcerptEn = a.ExcerptEn,
                     ExcerptAr = a.ExcerptAr,
+                    ContentEn = a.ContentEn,
+                    ContentAr = a.ContentAr,
                     ImageUrl = a.ImageUrl,
                     AuthorName = a.AuthorName,
+                    ReadMinutes = a.ReadMinutes,
                     PublishedAt = a.PublishedAt,
                     IsFeaturedOnHome = a.IsFeaturedOnHome,
                     DisplayOrder = a.DisplayOrder,

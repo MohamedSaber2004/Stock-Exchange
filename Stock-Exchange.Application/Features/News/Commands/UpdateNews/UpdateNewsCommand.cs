@@ -11,6 +11,8 @@ namespace Stock_Exchange.Application.Features.News.Commands.UpdateNews
         public string TitleAr { get; set; } = string.Empty;
         public string SummaryEn { get; set; } = string.Empty;
         public string SummaryAr { get; set; } = string.Empty;
+        public string? ContentEn { get; set; }
+        public string? ContentAr { get; set; }
         public string? ImageUrl { get; set; }
         public string CategoryEn { get; set; } = string.Empty;
         public string CategoryAr { get; set; } = string.Empty;

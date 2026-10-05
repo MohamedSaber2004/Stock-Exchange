@@ -33,6 +33,8 @@ namespace Stock_Exchange.Application.Features.News.Queries.GetNewsById
                     TitleAr = n.TitleAr,
                     SummaryEn = n.SummaryEn,
                     SummaryAr = n.SummaryAr,
+                    ContentEn = n.ContentEn,
+                    ContentAr = n.ContentAr,
                     ImageUrl = n.ImageUrl,
                     CategoryEn = n.CategoryEn,
                     CategoryAr = n.CategoryAr,

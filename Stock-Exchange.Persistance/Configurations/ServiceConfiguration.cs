@@ -28,6 +28,14 @@ namespace Stock_Exchange.Persistance.Configurations
                 .HasMaxLength(1000)
                 .IsRequired();
 
+            builder.Property(s => s.ContentEn)
+                .HasColumnType("nvarchar(max)")
+                .IsRequired(false);
+
+            builder.Property(s => s.ContentAr)
+                .HasColumnType("nvarchar(max)")
+                .IsRequired(false);
+
             builder.Property(s => s.IconName)
                 .HasMaxLength(100)
                 .IsRequired();

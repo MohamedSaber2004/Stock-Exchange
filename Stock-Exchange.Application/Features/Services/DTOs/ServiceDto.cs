@@ -9,6 +9,8 @@ namespace Stock_Exchange.Application.Features.Services.DTOs
         public string TitleAr { get; set; } = string.Empty;
         public string DescriptionEn { get; set; } = string.Empty;
         public string DescriptionAr { get; set; } = string.Empty;
+        public string ContentEn { get; set; } = string.Empty;
+        public string ContentAr { get; set; } = string.Empty;
         public string IconName { get; set; } = string.Empty;
         public string? ImageUrl { get; set; }
         public string? LinkRoute { get; set; }
@@ -18,6 +20,7 @@ namespace Stock_Exchange.Application.Features.Services.DTOs
 
         public string Title => !string.IsNullOrEmpty(TitleEn) ? TitleEn : TitleAr;
         public string Description => !string.IsNullOrEmpty(DescriptionEn) ? DescriptionEn : DescriptionAr;
+        public string Content => !string.IsNullOrEmpty(ContentEn) ? ContentEn : ContentAr;
 
         public void ApplyLanguageFilter(Language language)
         {
@@ -25,11 +28,13 @@ namespace Stock_Exchange.Application.Features.Services.DTOs
             {
                 TitleAr = string.Empty;
                 DescriptionAr = string.Empty;
+                ContentAr = string.Empty;
                 return;
             }
 
             TitleEn = string.Empty;
             DescriptionEn = string.Empty;
+            ContentEn = string.Empty;
         }
     }
 }

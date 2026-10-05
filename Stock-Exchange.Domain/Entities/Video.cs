@@ -6,6 +6,8 @@ namespace Stock_Exchange.Domain.Entities
     {
         public string TitleEn { get; set; } = string.Empty;
         public string TitleAr { get; set; } = string.Empty;
+        public string DescriptionEn { get; set; } = string.Empty;
+        public string DescriptionAr { get; set; } = string.Empty;
         public string? ThumbnailUrl { get; set; }
         public string? VideoUrl { get; set; }
         public int DurationSeconds { get; set; }

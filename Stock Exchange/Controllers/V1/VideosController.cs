@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
@@ -27,7 +28,7 @@ public class VideosController : BaseController
     /// <response code="200">Videos retrieved successfully.</response>
     [HttpGet]
     [Route(ApiRoutes.Videos.GetAll)]
-    [RoleAuthorize]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ApiResponse<PagginatedResult<VideoDto>>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll([FromQuery] GetAllVideosQuery query)
     {
@@ -50,7 +51,7 @@ public class VideosController : BaseController
     /// <response code="404">Video was not found.</response>
     [HttpGet]
     [Route(ApiRoutes.Videos.GetById)]
-    [RoleAuthorize]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ApiResponse<VideoDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<VideoDto>), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById(Guid id, [FromQuery] bool? applyLanguageFilter = null)

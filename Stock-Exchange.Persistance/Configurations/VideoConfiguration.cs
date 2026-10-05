@@ -20,6 +20,14 @@ namespace Stock_Exchange.Persistance.Configurations
                 .HasMaxLength(500)
                 .IsRequired();
 
+            builder.Property(v => v.DescriptionEn)
+                .HasMaxLength(4000)
+                .IsRequired(false);
+
+            builder.Property(v => v.DescriptionAr)
+                .HasMaxLength(4000)
+                .IsRequired(false);
+
             builder.Property(v => v.ThumbnailUrl)
                 .HasMaxLength(1024)
                 .IsRequired(false);
