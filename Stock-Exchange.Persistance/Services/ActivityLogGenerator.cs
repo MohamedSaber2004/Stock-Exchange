@@ -128,7 +128,9 @@ namespace Stock_Exchange.Persistance.Services
             {
                 ApplicationUser user => MapUserLog(entry, user, op, isAuth, currentUserId, currentUserName),
                 Article article => MapArticleLog(article, op),
+                ArticleCategory articleCategory => MapArticleCategoryLog(articleCategory, op),
                 Video video => MapVideoLog(video, op),
+                VideoCategory videoCategory => MapVideoCategoryLog(videoCategory, op),
                 News news => MapNewsLog(news, op),
                 SubscriptionPlan plan => MapSubscriptionPlanLog(plan, op),
                 PlanFeature planFeature => MapPlanFeatureLog(planFeature, op),
@@ -286,6 +288,60 @@ namespace Stock_Exchange.Persistance.Services
                     $"Updated article: {titleEn}",
                     $"تم تعديل بيانات المقال: {titleAr}",
                     $"Updated article details: {titleEn}")
+            };
+        }
+
+        private static EntityLogMeta MapArticleCategoryLog(ArticleCategory category, ChangeOperation op)
+        {
+            var titleAr = !string.IsNullOrWhiteSpace(category.CategoryArName) ? category.CategoryArName : category.CategoryEnName;
+            var titleEn = !string.IsNullOrWhiteSpace(category.CategoryEnName) ? category.CategoryEnName : category.CategoryArName;
+            return op switch
+            {
+                ChangeOperation.Added => new EntityLogMeta(
+                    ActivityResourceType.Articles,
+                    $"إضافة تصنيف مقالات جديد: {titleAr}",
+                    $"Added new article category: {titleEn}",
+                    "تمت إضافة تصنيف المقالات بنجاح",
+                    "Article category added successfully"),
+                ChangeOperation.Deleted => new EntityLogMeta(
+                    ActivityResourceType.Articles,
+                    $"حذف تصنيف مقالات: {titleAr}",
+                    $"Deleted article category: {titleEn}",
+                    "تم حذف تصنيف المقالات",
+                    "Deleted article category"),
+                _ => new EntityLogMeta(
+                    ActivityResourceType.Articles,
+                    $"تعديل تصنيف مقالات: {titleAr}",
+                    $"Updated article category: {titleEn}",
+                    "تم تحديث بيانات تصنيف المقالات",
+                    "Updated article category")
+            };
+        }
+
+        private static EntityLogMeta MapVideoCategoryLog(VideoCategory category, ChangeOperation op)
+        {
+            var titleAr = !string.IsNullOrWhiteSpace(category.CategoryArName) ? category.CategoryArName : category.CategoryEnName;
+            var titleEn = !string.IsNullOrWhiteSpace(category.CategoryEnName) ? category.CategoryEnName : category.CategoryArName;
+            return op switch
+            {
+                ChangeOperation.Added => new EntityLogMeta(
+                    ActivityResourceType.Videos,
+                    $"إضافة تصنيف فيديوهات جديد: {titleAr}",
+                    $"Added new video category: {titleEn}",
+                    "تمت إضافة تصنيف الفيديوهات بنجاح",
+                    "Video category added successfully"),
+                ChangeOperation.Deleted => new EntityLogMeta(
+                    ActivityResourceType.Videos,
+                    $"حذف تصنيف فيديوهات: {titleAr}",
+                    $"Deleted video category: {titleEn}",
+                    "تم حذف تصنيف الفيديوهات",
+                    "Deleted video category"),
+                _ => new EntityLogMeta(
+                    ActivityResourceType.Videos,
+                    $"تعديل تصنيف فيديوهات: {titleAr}",
+                    $"Updated video category: {titleEn}",
+                    "تم تحديث بيانات تصنيف الفيديوهات",
+                    "Updated video category")
             };
         }
 

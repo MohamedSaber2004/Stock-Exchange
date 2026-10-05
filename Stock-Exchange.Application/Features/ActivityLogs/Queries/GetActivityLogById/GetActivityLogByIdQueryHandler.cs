@@ -1,4 +1,4 @@
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -44,11 +44,15 @@ namespace Stock_Exchange.Application.Features.ActivityLogs.Queries.GetActivityLo
                 UserEmail = log.UserEmail,
                 UserProfilePictureUrl = log.UserProfilePictureUrl,
                 Action = log.Action,
+                ActionAr = log.ActionAr,
+                ActionEn = log.ActionEn,
                 ResourceType = log.ResourceType,
                 IpAddress = log.IpAddress,
                 Device = log.Device,
                 CreatedAt = log.CreatedAt,
-                Details = log.Details
+                Details = log.Details,
+                DetailsAr = log.DetailsAr,
+                DetailsEn = log.DetailsEn
             };
 
             dto.ApplyLanguageFilter(_currentLanguageService.Language);
