@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Articles.DTOs;
 
@@ -9,7 +9,6 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
         public string? Search { get; set; }
-        public Guid? ArticleCategoryId { get; set; }
         public Guid? CategoryId { get; set; }
         public bool? IsActive { get; set; }
         public bool ApplyLanguageFilter { get; set; } = true;
@@ -18,13 +17,12 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles
         {
         }
 
-        public GetAllArticlesQuery(int pageNumber, int pageSize, string? search = null, Guid? articleCategoryId = null, bool? isActive = null, bool applyLanguageFilter = true)
+        public GetAllArticlesQuery(int pageNumber, int pageSize, string? search = null, Guid? categoryId = null, bool? isActive = null, bool applyLanguageFilter = true)
         {
             PageNumber = pageNumber;
             PageSize = pageSize;
             Search = search;
-            ArticleCategoryId = articleCategoryId;
-            CategoryId = articleCategoryId;
+            CategoryId = categoryId;
             IsActive = isActive;
             ApplyLanguageFilter = applyLanguageFilter;
         }

@@ -21,11 +21,6 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
                 .MaximumLength(100)
                 .WithMessage(LocalizationKeys.VideoMessages.SearchTooLong)
                 .When(x => !string.IsNullOrEmpty(x.Search));
-
-            RuleFor(x => x.Category)
-                .MaximumLength(100)
-                .WithMessage(LocalizationKeys.VideoMessages.CategoryEnTooLong)
-                .When(x => !string.IsNullOrEmpty(x.Category));
         }
     }
 }

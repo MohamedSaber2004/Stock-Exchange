@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Extensions;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -31,20 +31,9 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
             }
             
 
-            var videoCategoryId = request.VideoCategoryId ?? request.CategoryId;
-            if (videoCategoryId.HasValue && videoCategoryId.Value != Guid.Empty)
+            if (request.CategoryId.HasValue && request.CategoryId.Value != Guid.Empty)
             {
-                query = query.Where(v => v.CategoryId == videoCategoryId.Value);
-            }
-
-            var category = request.Category?.Trim();
-            if (!string.IsNullOrWhiteSpace(category))
-            {
-                var catTerm = category.ToLower();
-                query = query.Where(v =>
-                    v.CategoryEn.ToLower() == catTerm ||
-                    v.CategoryAr.ToLower() == catTerm ||
-                    (v.Category != null && (v.Category.CategoryEnName.ToLower() == catTerm || v.Category.CategoryArName.ToLower() == catTerm)));
+                query = query.Where(v => v.CategoryId == request.CategoryId.Value);
             }
 
             var search = request.Search?.Trim();

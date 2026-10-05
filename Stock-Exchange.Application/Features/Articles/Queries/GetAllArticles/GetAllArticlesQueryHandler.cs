@@ -31,10 +31,9 @@ namespace Stock_Exchange.Application.Features.Articles.Queries.GetAllArticles
             }
             
 
-            var categoryId = request.ArticleCategoryId ?? request.CategoryId;
-            if (categoryId.HasValue && categoryId.Value != Guid.Empty)
+            if (request.CategoryId.HasValue && request.CategoryId.Value != Guid.Empty)
             {
-                query = query.Where(a => a.CategoryId == categoryId.Value);
+                query = query.Where(a => a.CategoryId == request.CategoryId.Value);
             }
 
             var search = request.Search?.Trim();
