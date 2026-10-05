@@ -18130,6 +18130,190 @@
       ]
     },
     {
+      "name": "Search",
+      "description": "",
+      "item": [
+        {
+          "name": "Performs a global search across articles, videos, news, users, services, experts, and countries for the admin portal.",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "limit",
+                  "value": "5",
+                  "description": ""
+                }
+              ],
+              "variable": []
+            },
+            "description": "Performs a global search across articles, videos, news, users, services, experts, and countries for the admin portal.",
+            "body": null
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Performs a global search across articles, videos, news, users, services, experts, and countries for the admin portal.",
+                "body": null
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"query\": \"string\",\n    \"totalCount\": 0,\n    \"items\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ],\n    \"articles\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ],\n    \"videos\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ],\n    \"news\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ],\n    \"users\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ],\n    \"services\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ],\n    \"experts\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ],\n    \"countries\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ],\n    \"helpCenter\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"imageUrl\": \"string\",\n        \"type\": \"string\",\n        \"targetRoute\": \"string\",\n        \"date\": \"09/26/2026 22:32:00\",\n        \"badge\": \"string\"\n      }\n    ]\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Performs a global search across articles, videos, news, users, services, experts, and countries for the admin portal.",
+                "body": null
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "string",
+                      "description": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5",
+                      "description": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "Performs a global search across articles, videos, news, users, services, experts, and countries for the admin portal.",
+                "body": null
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Services",
       "description": "",
       "item": [

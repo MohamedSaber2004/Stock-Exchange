@@ -9314,6 +9314,201 @@
         ]
       }
     },
+    "/api/v1/search": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Performs a global search across articles, videos, news, users, services, experts, and countries for the admin portal.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalSearchResultDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "query": "string",
+                        "totalCount": 0,
+                        "items": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ],
+                        "articles": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ],
+                        "videos": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ],
+                        "news": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ],
+                        "users": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ],
+                        "services": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ],
+                        "experts": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ],
+                        "countries": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ],
+                        "helpCenter": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "title": "string",
+                            "subtitle": "string",
+                            "category": "string",
+                            "imageUrl": "string",
+                            "type": "string",
+                            "targetRoute": "string",
+                            "date": "09/26/2026 22:32:00",
+                            "badge": "string"
+                          }
+                        ]
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/services": {
       "get": {
         "tags": [
@@ -14127,6 +14322,160 @@
           "email": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GlobalSearchItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "subtitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetRoute": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "badge": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GlobalSearchResultDto": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          },
+          "videos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          },
+          "news": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          },
+          "experts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          },
+          "countries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          },
+          "helpCenter": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalSearchItemDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GlobalSearchResultDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/GlobalSearchResultDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
