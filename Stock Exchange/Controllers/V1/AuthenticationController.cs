@@ -1,5 +1,4 @@
 using Asp.Versioning;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Auth.Commands.ChangePassword;
