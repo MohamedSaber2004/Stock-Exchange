@@ -22,6 +22,7 @@ using Stock_Exchange.Application.Features.HelpCenterCategories.Commands.UpdateHe
 using Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAllHelpCenterCategories;
 using Stock_Exchange.Application.Features.HelpCenterCategories.Queries.GetAllHelpCenterCategoryById;
 using Stock_Exchange.Application.Features.Auth.Commands.ChangePassword;
+using Stock_Exchange.Application.Features.Auth.Commands.DeleteAccount;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle;
@@ -86,6 +87,7 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<ChangePasswordCommand>, ChangePasswordCommandValidator>();
             services.AddTransient<IValidator<RefreshTokenCommand>, RefreshTokenCommandValidator>();
             services.AddTransient<IValidator<LogoutCommand>, LogoutCommandValidator>();
+            services.AddTransient<IValidator<DeleteAccountCommand>, DeleteAccountCommandValidator>();
             services.AddTransient<IValidator<UpdateUserInfoCommand>, UpdateUserInfoCommandValidator>();
             services.AddTransient<IValidator<GetUserProfileQuery>, GetUserProfileQueryValidator>();
             services.AddTransient<IValidator<UpdateAboutUsCommand>, UpdateAboutUsCommandValidator>();

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Auth.Commands.ChangePassword;
+using Stock_Exchange.Application.Features.Auth.Commands.DeleteAccount;
 using Stock_Exchange.Application.Features.Auth.Commands.ForgetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.Login;
 using Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle;
@@ -252,5 +253,24 @@ public class AuthenticationController : BaseController
     {
         var result = await Mediator.Send(new GetUserProfileQuery());
         return OkResult(result, LocalizationKeys.ActionResults.Ok);
+    }
+
+    /// <summary>
+    /// Deletes the currently authenticated user's account and revokes all active tokens.
+    /// </summary>
+    /// <returns>Action result indicating successful account deletion.</returns>
+    /// <response code="200">Account deleted successfully.</response>
+    /// <response code="401">User is not authenticated.</response>
+    /// <response code="404">User not found.</response>
+    [HttpDelete]
+    [RoleAuthorize]
+    [Route(ApiRoutes.Authentication.DeleteAccount)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> DeleteAccount()
+    {
+        var result = await Mediator.Send(new DeleteAccountCommand());
+        return OkResult(result, LocalizationKeys.ActionResults.Deleted);
     }
 }
