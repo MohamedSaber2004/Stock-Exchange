@@ -132,6 +132,50 @@ namespace Stock_Exchange
                     options.Enabled = true;
                     options.EnableDashboardUI = true;
                     options.AllowRemoteDashboardAccess = true;
+
+                    // Performance Optimization:
+                    // 1. Avoid response body buffering on successful requests (eliminates memory pressure and latency)
+                    options.LogRequestBody = true;
+                    options.LogResponseBody = false;
+                    options.LogBodyOnlyOnErrors = true;
+                    options.LogHeaders = false;
+                    options.MaxBodySize = 8192; // Limit payload capture to 8KB
+
+                    // 2. Exclude logger's own endpoints, Swagger, and static assets to prevent self-logging loops
+                    options.ExcludePaths ??= new List<string>();
+                    var exclusions = new[]
+                    {
+                        "/health",
+                        "/swagger",
+                        "/swagger-custom",
+                        "/favicon.ico",
+                        "/net-tracker",
+                        "/api/Statistics",
+                        "/api/HttpTransactions",
+                        "/files"
+                    };
+                    foreach (var path in exclusions)
+                    {
+                        if (!options.ExcludePaths.Contains(path, StringComparer.OrdinalIgnoreCase))
+                        {
+                            options.ExcludePaths.Add(path);
+                        }
+                    }
+
+                    // 3. Keep database retention light (7 days) for high-speed queries on shared DB
+                    if (options.Retention != null)
+                    {
+                        options.Retention.DaysToKeep = 7;
+                        options.Retention.AutoCleanup = true;
+                    }
+
+                    // 4. Ensure non-blocking async queue
+                    if (options.Performance != null)
+                    {
+                        options.Performance.UseAsyncLogging = true;
+                        options.Performance.EnableCaching = true;
+                        options.Performance.MaxQueueSize = 10000;
+                    }
                 });
             }
             else
@@ -274,6 +318,15 @@ namespace Stock_Exchange
                 app.UseHsts();
             }
 
+            // Static files served first to completely bypass logger for CSS, JS, Images, etc.
+            app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new CustomFileProvider(app.Environment.WebRootPath),
+                RequestPath = "/files"
+            });
+
             if (hasNetTracker)
             {
                 // NET-Tracker Middleware (registered before UseRouting)
@@ -289,14 +342,6 @@ namespace Stock_Exchange
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseStaticFiles();
-
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new CustomFileProvider(app.Environment.WebRootPath),
-                RequestPath = "/files"
-            });
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -375,6 +420,24 @@ namespace Stock_Exchange
                         else
                         {
                             Log.Information("=== NetTracker Database Tables Verified Successfully ===");
+                        }
+
+                        // Optimize table indexes for blazing fast dashboard queries
+                        try
+                        {
+                            await trackerDb.Database.ExecuteSqlRawAsync(@"
+                                IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'HttpTransactions')
+                                AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_HttpTransactions_Perf' AND object_id = OBJECT_ID('HttpTransactions'))
+                                BEGIN
+                                    CREATE NONCLUSTERED INDEX IX_HttpTransactions_Perf 
+                                    ON [HttpTransactions] ([Timestamp] DESC) 
+                                    INCLUDE ([StatusCode], [Method], [DurationMs], [Url]);
+                                END");
+                            Log.Information("=== NetTracker Performance Index Created/Verified Successfully ===");
+                        }
+                        catch (Exception idxEx)
+                        {
+                            Log.Warning(idxEx, "Notice: Could not automatically create performance index on HttpTransactions table.");
                         }
                     }
                 }
