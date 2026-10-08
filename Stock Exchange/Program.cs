@@ -107,6 +107,7 @@ namespace Stock_Exchange
             var netTrackerConn = builder.Configuration.GetConnectionString("StockExchangeConnectionString")
                 ?? builder.Configuration.GetConnectionString("DefaultConnection")
                 ?? builder.Configuration["ConnectionStrings:StockExchangeConnectionString"]
+                ?? builder.Configuration["ConnectionStrings:DefaultConnection"]
                 ?? builder.Configuration["NetTracker:Storage:ConnectionString"]
                 ?? builder.Configuration["HttpRequestResponseLogging:Storage:ConnectionString"];
 
@@ -118,10 +119,14 @@ namespace Stock_Exchange
                 // Ensure NetTracker finds its expected connection string key
                 builder.Configuration["ConnectionStrings:DefaultConnection"] ??= netTrackerConn;
                 builder.Configuration["NetTracker:Storage:ConnectionString"] ??= netTrackerConn;
+                builder.Configuration["NetTracker:Enabled"] = "true";
+                builder.Configuration["NetTracker:EnableDashboardUI"] = "true";
+                builder.Configuration["NetTracker:AllowRemoteDashboardAccess"] = "true";
 
                 builder.Services.AddNetTracker(builder.Configuration);
-                builder.Services.Configure<NET_Tracker.Configuration.HttpLoggingOptions>(options =>
+                builder.Services.PostConfigure<NET_Tracker.Configuration.HttpLoggingOptions>(options =>
                 {
+                    options.Enabled = true;
                     options.EnableDashboardUI = true;
                     options.AllowRemoteDashboardAccess = true;
                 });
@@ -327,20 +332,39 @@ namespace Stock_Exchange
 
             if (hasNetTracker)
             {
-                // Ensure NetTracker database and tables are created
+                // Ensure NetTracker database tables are created
                 try
                 {
                     using var trackerScope = app.Services.CreateScope();
                     var trackerDb = trackerScope.ServiceProvider.GetService<NET_Tracker.Data.ApplicationDbContext>();
                     if (trackerDb != null)
                     {
-                        await trackerDb.Database.MigrateAsync();
-                        Log.Information("=== NetTracker Database Migrations Applied Successfully ===");
+                        var tableExists = false;
+                        try
+                        {
+                            await trackerDb.Database.ExecuteSqlRawAsync("SELECT TOP 1 1 FROM [HttpTransactions]");
+                            tableExists = true;
+                        }
+                        catch
+                        {
+                            tableExists = false;
+                        }
+
+                        if (!tableExists)
+                        {
+                            var script = trackerDb.Database.GenerateCreateScript();
+                            await trackerDb.Database.ExecuteSqlRawAsync(script);
+                            Log.Information("=== NetTracker Database Tables Created Successfully ===");
+                        }
+                        else
+                        {
+                            Log.Information("=== NetTracker Database Tables Verified Successfully ===");
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log.Warning(ex, "Could not automatically migrate NetTracker database context.");
+                    Log.Warning(ex, "Could not automatically initialize NetTracker database tables.");
                 }
             }
 
