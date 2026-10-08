@@ -21399,65 +21399,6 @@
               "_postman_previewlanguage": "text"
             }
           ]
-        },
-        {
-          "name": "GET /dashboard",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept-Language",
-                "value": "ar",
-                "description": "Preferred language for the response. Supported values: `ar`, `en`."
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/dashboard",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "dashboard"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "description": "GET /dashboard",
-            "body": null
-          },
-          "response": [
-            {
-              "name": "200 OK",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept-Language",
-                    "value": "ar",
-                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/dashboard",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "dashboard"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "description": "GET /dashboard",
-                "body": null
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [],
-              "body": "",
-              "_postman_previewlanguage": "text"
-            }
-          ]
         }
       ]
     },
