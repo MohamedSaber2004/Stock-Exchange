@@ -1,11 +1,13 @@
-﻿
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi.Models;
+using NET_Tracker.Extensions;
 using Serilog;
 using Stock_Exchange.Application;
 using Stock_Exchange.Application.Common.Converters;
@@ -13,6 +15,7 @@ using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Common.Options;
 using Stock_Exchange.Application.Localization;
+using Stock_Exchange.Domain.Entities;
 using Stock_Exchange.Infrastructure;
 using Stock_Exchange.Middlewares;
 using Stock_Exchange.Persistance;
@@ -20,8 +23,6 @@ using Stock_Exchange.Persistance.Seeding;
 using Stock_Exchange.Services;
 using Stock_Exchange.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Microsoft.AspNetCore.Identity;
-using Stock_Exchange.Domain.Entities;
 using System.Globalization;
 using System.Reflection;
 
@@ -102,6 +103,7 @@ namespace Stock_Exchange
             builder.Services.AddApplicationServices(builder.Configuration);
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddNetTracker(builder.Configuration);
 
             var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
             var policyName = !string.IsNullOrWhiteSpace(corsConfig?.PolicyName) ? corsConfig.PolicyName : "DefaultPolicy";
@@ -238,6 +240,9 @@ namespace Stock_Exchange
                 app.UseHsts();
             }
 
+            // NET-Tracker Middleware (registered before UseRouting)
+            app.UseNetTracker(app.Configuration);
+
             app.UseRouting();
 
             var corsSettings = app.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
@@ -254,7 +259,7 @@ namespace Stock_Exchange
             {
                 FileProvider = new CustomFileProvider(app.Environment.WebRootPath),
                 RequestPath = "/files"
-            }); ;
+            });
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -273,7 +278,33 @@ namespace Stock_Exchange
 
             app.UseIpRateLimiting();
 
+            // NET-Tracker MVC Routes for Logger Dashboard UI
+            app.MapControllerRoute(
+                name: "nettracker_dashboard",
+                pattern: "net-tracker/dashboard/{action=Index}/{id?}",
+                defaults: new { controller = "Tracker", action = "Index" });
+
+            app.MapGet("/net-tracker", () => Results.Redirect("/net-tracker/dashboard"));
+            app.MapGet("/dashboard", () => Results.Redirect("/net-tracker/dashboard"));
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
             app.MapControllers();
+
+            // Ensure NetTracker database and tables are created
+            try
+            {
+                using var trackerScope = app.Services.CreateScope();
+                var trackerDb = trackerScope.ServiceProvider.GetRequiredService<NET_Tracker.Data.ApplicationDbContext>();
+                await trackerDb.Database.MigrateAsync();
+                Log.Information("=== NetTracker Database Migrations Applied Successfully ===");
+            }
+            catch (Exception ex)
+            {
+                Log.Warning(ex, "Could not automatically migrate NetTracker database context.");
+            }
 
             // تشتغل بس لو شغّلت البروجيكت بـ: dotnet run --seed
             if (args.Contains("--seed"))
