@@ -481,18 +481,12 @@
         </div>
 
         <div class="header-actions">
-            <span id="liveStatusPill" class="btn btn-sm" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: #34d399;">
-                <span class="indicator-dot dot-green"></span> Live Tracking
+            <span id="lastUpdatedPill" class="btn btn-sm" style="background: rgba(100, 116, 139, 0.15); border-color: rgba(148, 163, 184, 0.2); color: #cbd5e1;">
+                <span class="indicator-dot dot-green"></span> Manual Mode
             </span>
-            <select id="autoRefreshSelect" class="btn btn-sm">
-                <option value="0">Auto-refresh: Off</option>
-                <option value="5000" selected>Auto-refresh: 5s</option>
-                <option value="10000">Auto-refresh: 10s</option>
-                <option value="30000">Auto-refresh: 30s</option>
-            </select>
-            <button id="refreshBtn" class="btn btn-primary btn-sm" onclick="loadAllData()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-                Refresh
+            <button id="refreshBtn" class="btn btn-primary btn-sm" onclick="handleManualRefresh()">
+                <svg id="refreshIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                <span id="refreshBtnText">Refresh</span>
             </button>
             <a href="/swagger" target="_blank" class="btn btn-sm">Swagger UI</a>
         </div>
@@ -699,29 +693,39 @@
         const pageSize = 25;
         let totalRecords = 0;
         let currentTransactions = [];
-        let autoRefreshTimer = null;
         let searchDebounceTimer = null;
 
-        document.getElementById('autoRefreshSelect').addEventListener('change', function() {
-            clearInterval(autoRefreshTimer);
-            const interval = parseInt(this.value);
-            if (interval > 0) {
-                autoRefreshTimer = setInterval(loadAllData, interval);
-            }
-        });
-
+        // Initialize - loads data once on page open
         window.addEventListener('DOMContentLoaded', () => {
             loadAllData();
-            const interval = parseInt(document.getElementById('autoRefreshSelect').value);
-            if (interval > 0) {
-                autoRefreshTimer = setInterval(loadAllData, interval);
-            }
         });
 
-        function loadAllData() {
-            loadSummary();
-            loadTransactions(currentPage);
-            loadEndpoints();
+        async function handleManualRefresh() {
+            const btn = document.getElementById('refreshBtn');
+            const icon = document.getElementById('refreshIcon');
+            const text = document.getElementById('refreshBtnText');
+            if (btn) btn.disabled = true;
+            if (text) text.innerText = 'Refreshing...';
+
+            try {
+                await loadAllData();
+                const now = new Date().toLocaleTimeString();
+                const pill = document.getElementById('lastUpdatedPill');
+                if (pill) {
+                    pill.innerHTML = `<span class="indicator-dot dot-green"></span> Updated: ${now}`;
+                }
+            } finally {
+                if (btn) btn.disabled = false;
+                if (text) text.innerText = 'Refresh';
+            }
+        }
+
+        async function loadAllData() {
+            await Promise.allSettled([
+                loadSummary(),
+                loadTransactions(currentPage),
+                loadEndpoints()
+            ]);
         }
 
         async function loadSummary() {
