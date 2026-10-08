@@ -629,7 +629,7 @@
                         "resourceTypeTitle": "string",
                         "ipAddress": "string",
                         "device": "string",
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "timeAgo": "string",
                         "timeAgoArabic": "string",
                         "timeAgoEnglish": "string",
@@ -750,7 +750,7 @@
                           "categoryEnName": "string",
                           "articlesCount": 0,
                           "isActive": true,
-                          "createdAt": "2026-09-26T22:32:00"
+                          "createdAt": "09/26/2026 22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -835,7 +835,7 @@
                         "categoryEnName": "string",
                         "articlesCount": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -973,7 +973,7 @@
                         "categoryEnName": "string",
                         "articlesCount": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -1254,11 +1254,11 @@
                             "imageUrl": "string",
                             "authorName": "string",
                             "readMinutes": 0,
-                            "publishedAt": "2026-09-26T22:32:00",
+                            "publishedAt": "09/26/2026 22:32:00",
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "categoryEnName": "string",
@@ -1351,11 +1351,11 @@
                         "imageUrl": "string",
                         "authorName": "string",
                         "readMinutes": 0,
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryEnName": "string",
@@ -1493,11 +1493,11 @@
                         "imageUrl": "string",
                         "authorName": "string",
                         "readMinutes": 0,
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryEnName": "string",
@@ -1619,11 +1619,11 @@
                         "imageUrl": "string",
                         "authorName": "string",
                         "readMinutes": 0,
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "articleCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "categoryEnName": "string",
@@ -4371,7 +4371,7 @@
                           "code": "string",
                           "isActive": true,
                           "usersCount": 0,
-                          "createdAt": "2026-09-26T22:32:00"
+                          "createdAt": "09/26/2026 22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -4445,7 +4445,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -4613,7 +4613,7 @@
                             "code": "string",
                             "isActive": true,
                             "usersCount": 0,
-                            "createdAt": "2026-09-26T22:32:00"
+                            "createdAt": "09/26/2026 22:32:00"
                           }
                         ],
                         "pageNumber": 0,
@@ -4697,7 +4697,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -4817,7 +4817,7 @@
                         "code": "string",
                         "isActive": true,
                         "usersCount": 0,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -5136,7 +5136,7 @@
                             "displayOrder": 0,
                             "isFeaturedOnHome": true,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "fullName": "string",
                             "title": "string"
                           }
@@ -5232,7 +5232,7 @@
                         "displayOrder": 0,
                         "isFeaturedOnHome": true,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "fullName": "string",
                         "title": "string"
                       },
@@ -5319,7 +5319,7 @@
                         "displayOrder": 0,
                         "isFeaturedOnHome": true,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "fullName": "string",
                         "title": "string"
                       },
@@ -5416,7 +5416,7 @@
                         "displayOrder": 0,
                         "isFeaturedOnHome": true,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "fullName": "string",
                         "title": "string"
                       },
@@ -5551,7 +5551,7 @@
                       "errors": {},
                       "data": {
                         "status": "string",
-                        "timestamp": "2026-09-26T22:32:00",
+                        "timestamp": "09/26/2026 22:32:00",
                         "services": {},
                         "error": "string"
                       },
@@ -5613,18 +5613,18 @@
                       "errors": {},
                       "data": {
                         "status": "string",
-                        "timestamp": "2026-09-26T22:32:00",
+                        "timestamp": "09/26/2026 22:32:00",
                         "version": "string",
                         "uptimeSeconds": 0,
                         "services": {
                           "database": {
                             "status": "string",
-                            "lastChecked": "2026-09-26T22:32:00",
+                            "lastChecked": "09/26/2026 22:32:00",
                             "message": "string"
                           },
                           "httpLogging": {
                             "status": "string",
-                            "lastChecked": "2026-09-26T22:32:00",
+                            "lastChecked": "09/26/2026 22:32:00",
                             "message": "string"
                           }
                         },
@@ -6981,7 +6981,7 @@
                             "categoryEn": "string",
                             "categoryAr": "string",
                             "imageUrl": "string",
-                            "publishedAt": "2026-09-26T22:32:00",
+                            "publishedAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "summary": "string",
                             "category": "string"
@@ -7011,7 +7011,7 @@
                             "imageUrl": "string",
                             "authorName": "string",
                             "readMinutes": 0,
-                            "publishedAt": "2026-09-26T22:32:00",
+                            "publishedAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "excerpt": "string"
                           }
@@ -7384,7 +7384,7 @@
                           "categoryEn": "string",
                           "categoryAr": "string",
                           "imageUrl": "string",
-                          "publishedAt": "2026-09-26T22:32:00",
+                          "publishedAt": "09/26/2026 22:32:00",
                           "title": "string",
                           "summary": "string",
                           "category": "string"
@@ -7782,7 +7782,7 @@
                           "imageUrl": "string",
                           "authorName": "string",
                           "readMinutes": 0,
-                          "publishedAt": "2026-09-26T22:32:00",
+                          "publishedAt": "09/26/2026 22:32:00",
                           "title": "string",
                           "excerpt": "string"
                         }
@@ -8583,7 +8583,7 @@
                         "responseHeaders": "string",
                         "responseBody": "string",
                         "responseSize": 0,
-                        "timestamp": "2026-09-26T22:32:00",
+                        "timestamp": "09/26/2026 22:32:00",
                         "durationMs": 0,
                         "ipAddress": "string",
                         "userAgent": "string",
@@ -8707,7 +8707,7 @@
                             "responseHeaders": "string",
                             "responseBody": "string",
                             "responseSize": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "durationMs": 0,
                             "ipAddress": "string",
                             "userAgent": "string",
@@ -8851,7 +8851,7 @@
                             "responseHeaders": "string",
                             "responseBody": "string",
                             "responseSize": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "durationMs": 0,
                             "ipAddress": "string",
                             "userAgent": "string",
@@ -8962,7 +8962,7 @@
                             "responseHeaders": "string",
                             "responseBody": "string",
                             "responseSize": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "durationMs": 0,
                             "ipAddress": "string",
                             "userAgent": "string",
@@ -9072,7 +9072,7 @@
                             "responseHeaders": "string",
                             "responseBody": "string",
                             "responseSize": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "durationMs": 0,
                             "ipAddress": "string",
                             "userAgent": "string",
@@ -9183,7 +9183,7 @@
                             "responseHeaders": "string",
                             "responseBody": "string",
                             "responseSize": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "durationMs": 0,
                             "ipAddress": "string",
                             "userAgent": "string",
@@ -9294,7 +9294,7 @@
                             "responseHeaders": "string",
                             "responseBody": "string",
                             "responseSize": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "durationMs": 0,
                             "ipAddress": "string",
                             "userAgent": "string",
@@ -9419,11 +9419,11 @@
                             "imageUrl": "string",
                             "categoryEn": "string",
                             "categoryAr": "string",
-                            "publishedAt": "2026-09-26T22:32:00",
+                            "publishedAt": "09/26/2026 22:32:00",
                             "displayOrder": 0,
                             "isFeaturedOnHome": true,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "summary": "string",
                             "content": "string"
@@ -9510,11 +9510,11 @@
                         "imageUrl": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "displayOrder": 0,
                         "isFeaturedOnHome": true,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "summary": "string",
                         "content": "string"
@@ -9603,11 +9603,11 @@
                         "imageUrl": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "displayOrder": 0,
                         "isFeaturedOnHome": true,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "summary": "string",
                         "content": "string"
@@ -9695,11 +9695,11 @@
                         "imageUrl": "string",
                         "categoryEn": "string",
                         "categoryAr": "string",
-                        "publishedAt": "2026-09-26T22:32:00",
+                        "publishedAt": "09/26/2026 22:32:00",
                         "displayOrder": 0,
                         "isFeaturedOnHome": true,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "summary": "string",
                         "content": "string"
@@ -9878,7 +9878,7 @@
                             "actionAr": "string",
                             "actionEn": "string",
                             "resourceType": "string",
-                            "createdAt": "2026-09-26T22:32:00"
+                            "createdAt": "09/26/2026 22:32:00"
                           }
                         ],
                         "topArticleCategories": [
@@ -10502,7 +10502,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ],
@@ -10515,7 +10515,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ],
@@ -10528,7 +10528,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ],
@@ -10541,7 +10541,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ],
@@ -10554,7 +10554,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ],
@@ -10567,7 +10567,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ],
@@ -10580,7 +10580,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ],
@@ -10593,7 +10593,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ],
@@ -10606,7 +10606,7 @@
                             "imageUrl": "string",
                             "type": "string",
                             "targetRoute": "string",
-                            "date": "2026-09-26T22:32:00",
+                            "date": "09/26/2026 22:32:00",
                             "badge": "string"
                           }
                         ]
@@ -10720,7 +10720,7 @@
                             "linkRoute": "string",
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "description": "string",
                             "content": "string"
@@ -10809,7 +10809,7 @@
                         "linkRoute": "string",
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
                         "content": "string"
@@ -10900,7 +10900,7 @@
                         "linkRoute": "string",
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
                         "content": "string"
@@ -10990,7 +10990,7 @@
                         "linkRoute": "string",
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
                         "content": "string"
@@ -11166,7 +11166,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11177,7 +11177,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11191,9 +11191,9 @@
                             "successRate": 0
                           }
                         ],
-                        "startDate": "2026-09-26T22:32:00",
-                        "endDate": "2026-09-26T22:32:00",
-                        "calculatedAt": "2026-09-26T22:32:00"
+                        "startDate": "09/26/2026 22:32:00",
+                        "endDate": "09/26/2026 22:32:00",
+                        "calculatedAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -11274,7 +11274,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11285,7 +11285,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11299,9 +11299,9 @@
                             "successRate": 0
                           }
                         ],
-                        "startDate": "2026-09-26T22:32:00",
-                        "endDate": "2026-09-26T22:32:00",
-                        "calculatedAt": "2026-09-26T22:32:00"
+                        "startDate": "09/26/2026 22:32:00",
+                        "endDate": "09/26/2026 22:32:00",
+                        "calculatedAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -11382,7 +11382,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11393,7 +11393,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11407,9 +11407,9 @@
                             "successRate": 0
                           }
                         ],
-                        "startDate": "2026-09-26T22:32:00",
-                        "endDate": "2026-09-26T22:32:00",
-                        "calculatedAt": "2026-09-26T22:32:00"
+                        "startDate": "09/26/2026 22:32:00",
+                        "endDate": "09/26/2026 22:32:00",
+                        "calculatedAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -11490,7 +11490,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11501,7 +11501,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11515,9 +11515,9 @@
                             "successRate": 0
                           }
                         ],
-                        "startDate": "2026-09-26T22:32:00",
-                        "endDate": "2026-09-26T22:32:00",
-                        "calculatedAt": "2026-09-26T22:32:00"
+                        "startDate": "09/26/2026 22:32:00",
+                        "endDate": "09/26/2026 22:32:00",
+                        "calculatedAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -11586,7 +11586,7 @@
                           "url": "string",
                           "statusCode": 0,
                           "durationMs": 0,
-                          "timestamp": "2026-09-26T22:32:00",
+                          "timestamp": "09/26/2026 22:32:00",
                           "errorMessage": "string"
                         },
                         "recentError": {
@@ -11595,7 +11595,7 @@
                           "url": "string",
                           "statusCode": 0,
                           "durationMs": 0,
-                          "timestamp": "2026-09-26T22:32:00",
+                          "timestamp": "09/26/2026 22:32:00",
                           "errorMessage": "string"
                         }
                       },
@@ -11759,7 +11759,7 @@
                             "url": "string",
                             "statusCode": 0,
                             "durationMs": 0,
-                            "timestamp": "2026-09-26T22:32:00",
+                            "timestamp": "09/26/2026 22:32:00",
                             "errorMessage": "string"
                           }
                         ],
@@ -11870,60 +11870,6 @@
       }
     },
     "/": {
-      "get": {
-        "tags": [
-          "Stock-Exchange.API"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/net-tracker": {
-      "get": {
-        "tags": [
-          "Stock-Exchange.API"
-        ],
-        "parameters": [
-          {
-            "name": "Accept-Language",
-            "in": "header",
-            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
-            "schema": {
-              "enum": [
-                "ar",
-                "en"
-              ],
-              "type": "string",
-              "default": "ar"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/dashboard": {
       "get": {
         "tags": [
           "Stock-Exchange.API"
@@ -12653,7 +12599,7 @@
                             "statusArabic": "string",
                             "statusEnglish": "string",
                             "statusTitle": "string",
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             "countryArName": "string",
                             "countryEnName": "string",
@@ -12759,7 +12705,7 @@
                         "statusArabic": "string",
                         "statusEnglish": "string",
                         "statusTitle": "string",
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -12892,8 +12838,8 @@
                         "statusEnglish": "string",
                         "statusTitle": "string",
                         "emailConfirmed": true,
-                        "createdAt": "2026-09-26T22:32:00",
-                        "updatedAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
+                        "updatedAt": "09/26/2026 22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -13029,7 +12975,7 @@
                         "statusArabic": "string",
                         "statusEnglish": "string",
                         "statusTitle": "string",
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "countryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         "countryArName": "string",
                         "countryEnName": "string",
@@ -13485,7 +13431,7 @@
                           "categoryEnName": "string",
                           "videosCount": 0,
                           "isActive": true,
-                          "createdAt": "2026-09-26T22:32:00"
+                          "createdAt": "09/26/2026 22:32:00"
                         }
                       ],
                       "message": "Operation completed successfully.",
@@ -13570,7 +13516,7 @@
                         "categoryEnName": "string",
                         "videosCount": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -13708,7 +13654,7 @@
                         "categoryEnName": "string",
                         "videosCount": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00"
+                        "createdAt": "09/26/2026 22:32:00"
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -13998,7 +13944,7 @@
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "description": "string",
                             "category": "string",
@@ -14099,7 +14045,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
                         "category": "string",
@@ -14124,7 +14070,7 @@
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "description": "string",
                             "category": "string",
@@ -14272,7 +14218,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
                         "category": "string",
@@ -14297,7 +14243,7 @@
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "description": "string",
                             "category": "string",
@@ -14429,7 +14375,7 @@
                         "isFeaturedOnHome": true,
                         "displayOrder": 0,
                         "isActive": true,
-                        "createdAt": "2026-09-26T22:32:00",
+                        "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
                         "category": "string",
@@ -14454,7 +14400,7 @@
                             "isFeaturedOnHome": true,
                             "displayOrder": 0,
                             "isActive": true,
-                            "createdAt": "2026-09-26T22:32:00",
+                            "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "description": "string",
                             "category": "string",
