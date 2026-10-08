@@ -103,7 +103,21 @@ namespace Stock_Exchange
             builder.Services.AddApplicationServices(builder.Configuration);
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
-            builder.Services.AddNetTracker(builder.Configuration);
+
+            var netTrackerConn = builder.Configuration.GetConnectionString("DefaultConnection")
+                ?? builder.Configuration["NetTracker:Storage:ConnectionString"]
+                ?? builder.Configuration["HttpRequestResponseLogging:Storage:ConnectionString"];
+            var isNetTrackerEnabled = builder.Configuration.GetValue<bool?>("NetTracker:Enabled") ?? true;
+            var hasNetTracker = isNetTrackerEnabled && !string.IsNullOrWhiteSpace(netTrackerConn);
+
+            if (hasNetTracker)
+            {
+                builder.Services.AddNetTracker(builder.Configuration);
+            }
+            else
+            {
+                Log.Information("NetTracker is disabled or no connection string configured; skipping NetTracker registration.");
+            }
 
             var corsConfig = builder.Configuration.GetSection("Security:Cors").Get<CorsOptions>();
             var policyName = !string.IsNullOrWhiteSpace(corsConfig?.PolicyName) ? corsConfig.PolicyName : "DefaultPolicy";
@@ -240,8 +254,11 @@ namespace Stock_Exchange
                 app.UseHsts();
             }
 
-            // NET-Tracker Middleware (registered before UseRouting)
-            app.UseNetTracker(app.Configuration);
+            if (hasNetTracker)
+            {
+                // NET-Tracker Middleware (registered before UseRouting)
+                app.UseNetTracker(app.Configuration);
+            }
 
             app.UseRouting();
 
@@ -278,14 +295,17 @@ namespace Stock_Exchange
 
             app.UseIpRateLimiting();
 
-            // NET-Tracker MVC Routes for Logger Dashboard UI
-            app.MapControllerRoute(
-                name: "nettracker_dashboard",
-                pattern: "net-tracker/dashboard/{action=Index}/{id?}",
-                defaults: new { controller = "Tracker", action = "Index" });
+            if (hasNetTracker)
+            {
+                // NET-Tracker MVC Routes for Logger Dashboard UI
+                app.MapControllerRoute(
+                    name: "nettracker_dashboard",
+                    pattern: "net-tracker/dashboard/{action=Index}/{id?}",
+                    defaults: new { controller = "Tracker", action = "Index" });
 
-            app.MapGet("/net-tracker", () => Results.Redirect("/net-tracker/dashboard"));
-            app.MapGet("/dashboard", () => Results.Redirect("/net-tracker/dashboard"));
+                app.MapGet("/net-tracker", () => Results.Redirect("/net-tracker/dashboard"));
+                app.MapGet("/dashboard", () => Results.Redirect("/net-tracker/dashboard"));
+            }
 
             app.MapControllerRoute(
                 name: "default",
@@ -293,17 +313,23 @@ namespace Stock_Exchange
 
             app.MapControllers();
 
-            // Ensure NetTracker database and tables are created
-            try
+            if (hasNetTracker)
             {
-                using var trackerScope = app.Services.CreateScope();
-                var trackerDb = trackerScope.ServiceProvider.GetRequiredService<NET_Tracker.Data.ApplicationDbContext>();
-                await trackerDb.Database.MigrateAsync();
-                Log.Information("=== NetTracker Database Migrations Applied Successfully ===");
-            }
-            catch (Exception ex)
-            {
-                Log.Warning(ex, "Could not automatically migrate NetTracker database context.");
+                // Ensure NetTracker database and tables are created
+                try
+                {
+                    using var trackerScope = app.Services.CreateScope();
+                    var trackerDb = trackerScope.ServiceProvider.GetService<NET_Tracker.Data.ApplicationDbContext>();
+                    if (trackerDb != null)
+                    {
+                        await trackerDb.Database.MigrateAsync();
+                        Log.Information("=== NetTracker Database Migrations Applied Successfully ===");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Warning(ex, "Could not automatically migrate NetTracker database context.");
+                }
             }
 
             // تشتغل بس لو شغّلت البروجيكت بـ: dotnet run --seed

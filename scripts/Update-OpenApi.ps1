@@ -33,10 +33,23 @@ $projectPath = Join-Path (Join-Path $repoRoot 'Stock Exchange') 'Stock-Exchange.
 $specUri = "$($BaseUrl.TrimEnd('/'))/swagger/$Version/swagger.json"
 
 function Wait-ForSpec {
-    param([string]$Uri, [int]$TimeoutSeconds)
+    param(
+        [string]$Uri,
+        [int]$TimeoutSeconds,
+        [System.Diagnostics.Process]$Process = $null,
+        [string]$LogsDirectory = ''
+    )
 
     $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
     while ((Get-Date) -lt $deadline) {
+        if ($Process -and $Process.HasExited) {
+            $errLogPath = if ($LogsDirectory) { Join-Path $LogsDirectory 'api.err.log' } else { '' }
+            $outLogPath = if ($LogsDirectory) { Join-Path $LogsDirectory 'api.out.log' } else { '' }
+            $errContent = if ($errLogPath -and (Test-Path $errLogPath)) { Get-Content $errLogPath -Raw } else { '' }
+            $outContent = if ($outLogPath -and (Test-Path $outLogPath)) { (Get-Content $outLogPath -Tail 20) -join "`n" } else { '' }
+            throw "The API process exited unexpectedly with code $($Process.ExitCode).`n[Errors]`n$errContent`n[Output]`n$outContent"
+        }
+
         try {
             $response = Invoke-WebRequest -Uri $Uri -UseBasicParsing -TimeoutSec 15
             if ($response.StatusCode -eq 200 -and $response.Content -match '"openapi"') {
@@ -76,7 +89,7 @@ try {
     }
 
     Write-Host "Reading $specUri"
-    $content = Wait-ForSpec -Uri $specUri -TimeoutSeconds $TimeoutSeconds
+    $content = Wait-ForSpec -Uri $specUri -TimeoutSeconds $TimeoutSeconds -Process $appProcess -LogsDirectory $logDir
 
     $tempFile = Join-Path $tempRoot "openapi-$Version.json"
     [System.IO.File]::WriteAllText($tempFile, $content, (New-Object System.Text.UTF8Encoding($false)))
