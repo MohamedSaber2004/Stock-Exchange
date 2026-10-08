@@ -32,6 +32,7 @@ namespace Stock_Exchange.Services
             if (!string.IsNullOrWhiteSpace(queryCulture))
                 return queryCulture;
 
+
             // 2. Explicit custom headers or standard Accept-Language header
             var headers = request.Headers;
 
