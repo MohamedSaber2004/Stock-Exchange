@@ -12154,7 +12154,10 @@
                             "createdAt": "09/26/2026 22:32:00",
                             "title": "string",
                             "description": "string",
-                            "category": "string"
+                            "category": "string",
+                            "relatedVideos": [
+                              "..."
+                            ]
                           }
                         ],
                         "pageNumber": 0,
@@ -12252,7 +12255,37 @@
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
-                        "category": "string"
+                        "category": "string",
+                        "relatedVideos": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "titleEn": "string",
+                            "titleAr": "string",
+                            "descriptionEn": "string",
+                            "descriptionAr": "string",
+                            "thumbnailUrl": "string",
+                            "videoUrl": "string",
+                            "durationSeconds": 0,
+                            "instructorName": "string",
+                            "categoryEn": "string",
+                            "categoryAr": "string",
+                            "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "categoryEnName": "string",
+                            "categoryArName": "string",
+                            "isPreviewable": true,
+                            "isFeaturedOnHome": true,
+                            "displayOrder": 0,
+                            "isActive": true,
+                            "createdAt": "09/26/2026 22:32:00",
+                            "title": "string",
+                            "description": "string",
+                            "category": "string",
+                            "relatedVideos": [
+                              "..."
+                            ]
+                          }
+                        ]
                       },
                       "message": "Resource created successfully.",
                       "statusCode": 201
@@ -12395,7 +12428,37 @@
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
-                        "category": "string"
+                        "category": "string",
+                        "relatedVideos": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "titleEn": "string",
+                            "titleAr": "string",
+                            "descriptionEn": "string",
+                            "descriptionAr": "string",
+                            "thumbnailUrl": "string",
+                            "videoUrl": "string",
+                            "durationSeconds": 0,
+                            "instructorName": "string",
+                            "categoryEn": "string",
+                            "categoryAr": "string",
+                            "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "categoryEnName": "string",
+                            "categoryArName": "string",
+                            "isPreviewable": true,
+                            "isFeaturedOnHome": true,
+                            "displayOrder": 0,
+                            "isActive": true,
+                            "createdAt": "09/26/2026 22:32:00",
+                            "title": "string",
+                            "description": "string",
+                            "category": "string",
+                            "relatedVideos": [
+                              "..."
+                            ]
+                          }
+                        ]
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -12522,7 +12585,37 @@
                         "createdAt": "09/26/2026 22:32:00",
                         "title": "string",
                         "description": "string",
-                        "category": "string"
+                        "category": "string",
+                        "relatedVideos": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "titleEn": "string",
+                            "titleAr": "string",
+                            "descriptionEn": "string",
+                            "descriptionAr": "string",
+                            "thumbnailUrl": "string",
+                            "videoUrl": "string",
+                            "durationSeconds": 0,
+                            "instructorName": "string",
+                            "categoryEn": "string",
+                            "categoryAr": "string",
+                            "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "videoCategoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "categoryEnName": "string",
+                            "categoryArName": "string",
+                            "isPreviewable": true,
+                            "isFeaturedOnHome": true,
+                            "displayOrder": 0,
+                            "isActive": true,
+                            "createdAt": "09/26/2026 22:32:00",
+                            "title": "string",
+                            "description": "string",
+                            "category": "string",
+                            "relatedVideos": [
+                              "..."
+                            ]
+                          }
+                        ]
                       },
                       "message": "Operation completed successfully.",
                       "statusCode": 200
@@ -18288,6 +18381,13 @@
             "type": "string",
             "nullable": true,
             "readOnly": true
+          },
+          "relatedVideos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VideoDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
