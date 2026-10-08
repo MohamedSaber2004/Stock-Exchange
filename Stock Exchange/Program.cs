@@ -133,11 +133,6 @@ namespace Stock_Exchange
                     options.Enabled = true;
                     options.EnableDashboardUI = true;
                     options.AllowRemoteDashboardAccess = true;
-
-                    options.LogRequestBody = true;
-                    options.LogResponseBody = false;
-                    options.LogBodyOnlyOnErrors = true;
-                    options.LogHeaders = false;
                     options.MaxBodySize = 8192;
                     options.ExcludePaths ??= new List<string>();
                     var exclusions = new[]
