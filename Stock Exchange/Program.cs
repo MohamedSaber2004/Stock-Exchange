@@ -104,12 +104,15 @@ namespace Stock_Exchange
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
 
+            const string defaultDbConnectionString = "Server=db69245.public.databaseasp.net; Database=db69245; User Id=db69245; Password=Mo@123456; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
+
             var netTrackerConn = builder.Configuration.GetConnectionString("StockExchangeConnectionString")
                 ?? builder.Configuration.GetConnectionString("DefaultConnection")
                 ?? builder.Configuration["ConnectionStrings:StockExchangeConnectionString"]
                 ?? builder.Configuration["ConnectionStrings:DefaultConnection"]
                 ?? builder.Configuration["NetTracker:Storage:ConnectionString"]
-                ?? builder.Configuration["HttpRequestResponseLogging:Storage:ConnectionString"];
+                ?? builder.Configuration["HttpRequestResponseLogging:Storage:ConnectionString"]
+                ?? defaultDbConnectionString;
 
             var isNetTrackerEnabled = builder.Configuration.GetValue<bool?>("NetTracker:Enabled") ?? true;
             var hasNetTracker = isNetTrackerEnabled && !string.IsNullOrWhiteSpace(netTrackerConn);
@@ -319,6 +322,19 @@ namespace Stock_Exchange
                     name: "nettracker_dashboard",
                     pattern: "net-tracker/dashboard/{action=Index}/{id?}",
                     defaults: new { controller = "Tracker", action = "Index" });
+
+                app.MapGet("/net-tracker/dashboard", async context =>
+                {
+                    context.Response.ContentType = "text/html; charset=utf-8";
+                    var webRoot = app.Environment.WebRootPath ?? Path.Combine(app.Environment.ContentRootPath, "wwwroot");
+                    var staticHtml = Path.Combine(webRoot, "net-tracker", "index.html");
+                    if (File.Exists(staticHtml))
+                    {
+                        await context.Response.SendFileAsync(staticHtml);
+                        return;
+                    }
+                    context.Response.Redirect("/Tracker/Index");
+                });
 
                 app.MapGet("/net-tracker", () => Results.Redirect("/net-tracker/dashboard"));
                 app.MapGet("/dashboard", () => Results.Redirect("/net-tracker/dashboard"));
