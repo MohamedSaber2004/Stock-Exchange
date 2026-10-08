@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi.Models;
 using NET_Tracker.Extensions;
@@ -196,7 +198,11 @@ namespace Stock_Exchange
                 });
             });
 
-            builder.Services.AddControllersWithViews()
+            builder.Services.AddControllersWithViews(options =>
+            {
+                options.Conventions.Add(new HideNetTrackerControllersConvention());
+            })
+                .AddViewLocalization()
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.Converters.Add(new IsoUtcDateTimeConverter());
@@ -246,6 +252,13 @@ namespace Stock_Exchange
                 options.DefaultApiVersion = new ApiVersion(1, 0);
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
+            }).AddMvc(options =>
+            {
+                options.Conventions.Controller(typeof(NET_Tracker.Controllers.TrackerController)).IsApiVersionNeutral();
+                options.Conventions.Controller(typeof(NET_Tracker.Controllers.HealthController)).IsApiVersionNeutral();
+                options.Conventions.Controller(typeof(NET_Tracker.Controllers.HomeController)).IsApiVersionNeutral();
+                options.Conventions.Controller(typeof(NET_Tracker.Controllers.HttpTransactionsController)).IsApiVersionNeutral();
+                options.Conventions.Controller(typeof(NET_Tracker.Controllers.StatisticsController)).IsApiVersionNeutral();
             }).AddApiExplorer(options =>
             {
                 options.GroupNameFormat = "'v'VVV";
@@ -268,7 +281,6 @@ namespace Stock_Exchange
                         new CookieRequestCultureProvider()
                     };
             });
-            builder.Services.AddControllersWithViews().AddViewLocalization();
 
             builder.Services.AddSwaggerGen(options =>
             {
@@ -322,8 +334,11 @@ namespace Stock_Exchange
 
             if (hasNetTracker)
             {
-                // NET-Tracker Middleware (registered before UseRouting)
-                app.UseNetTracker(app.Configuration);
+                app.UseWhen(context => !context.Request.Path.StartsWithSegments("/swagger")
+                                    && !context.Request.Path.StartsWithSegments("/swagger-custom")
+                                    && !context.Request.Path.StartsWithSegments("/files")
+                                    && !context.Request.Path.StartsWithSegments("/net-tracker"),
+                    subApp => subApp.UseNetTracker(app.Configuration));
             }
 
             app.UseRouting();
@@ -353,86 +368,63 @@ namespace Stock_Exchange
 
             app.UseIpRateLimiting();
 
-            if (hasNetTracker)
-            {
-                // NET-Tracker Official Dashboard Routes (uses package controller: NET_Tracker.Controllers.TrackerController)
-                app.MapControllerRoute(
-                    name: "nettracker_dashboard_official",
-                    pattern: "Dashboard/{action=Index}/{id?}",
-                    defaults: new { controller = "Tracker", action = "Index" });
-
-                app.MapControllerRoute(
-                    name: "nettracker_dashboard",
-                    pattern: "net-tracker/dashboard/{action=Index}/{id?}",
-                    defaults: new { controller = "Tracker", action = "Index" });
-
-                app.MapControllerRoute(
-                    name: "nettracker_direct",
-                    pattern: "Tracker/{action=Index}/{id?}",
-                    defaults: new { controller = "Tracker", action = "Index" });
-
-                app.MapGet("/net-tracker", () => Results.Redirect("/Dashboard"));
-            }
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
             app.MapControllers();
 
             if (hasNetTracker)
             {
-                // Ensure NetTracker database tables are created
-                try
+                app.MapControllerRoute(
+                    name: "netTrackerDashboard",
+                    pattern: "net-tracker/dashboard",
+                    defaults: new { controller = "Tracker", action = "Index" });
+
+                app.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Tracker}/{action=Index}/{id?}");
+            }
+            else
+            {
+                app.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            }
+
+            if (hasNetTracker)
+            {
+                using (var scope = app.Services.CreateScope())
                 {
-                    using var trackerScope = app.Services.CreateScope();
-                    var trackerDb = trackerScope.ServiceProvider.GetService<NET_Tracker.Data.ApplicationDbContext>();
+                    var trackerDb = scope.ServiceProvider.GetService<NET_Tracker.Data.ApplicationDbContext>();
                     if (trackerDb != null)
                     {
-                        var tableExists = false;
+                        var dbCreator = trackerDb.Database.GetService<IRelationalDatabaseCreator>();
                         try
                         {
-                            await trackerDb.Database.ExecuteSqlRawAsync("SELECT TOP 1 1 FROM [HttpTransactions]");
-                            tableExists = true;
-                        }
-                        catch
-                        {
-                            tableExists = false;
-                        }
+                            if (dbCreator is RelationalDatabaseCreator relationalCreator)
+                            {
+                                if (!await relationalCreator.HasTablesAsync())
+                                {
+                                    await dbCreator.CreateTablesAsync();
+                                    Log.Information("NetTracker HttpTransactions table created successfully.");
+                                }
+                            }
 
-                        if (!tableExists)
-                        {
-                            var script = trackerDb.Database.GenerateCreateScript();
-                            await trackerDb.Database.ExecuteSqlRawAsync(script);
-                            Log.Information("=== NetTracker Database Tables Created Successfully ===");
+                            try
+                            {
+                                await trackerDb.Database.ExecuteSqlRawAsync(@"
+                                    IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'HttpTransactions')
+                                    AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_HttpTransactions_Perf' AND object_id = OBJECT_ID('HttpTransactions'))
+                                    BEGIN
+                                        CREATE NONCLUSTERED INDEX IX_HttpTransactions_Perf 
+                                        ON [HttpTransactions] ([Timestamp] DESC) 
+                                        INCLUDE ([StatusCode], [Method], [DurationMs], [Url]);
+                                    END");
+                            }
+                            catch { }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            Log.Information("=== NetTracker Database Tables Verified Successfully ===");
-                        }
-
-                        // Optimize table indexes for blazing fast dashboard queries
-                        try
-                        {
-                            await trackerDb.Database.ExecuteSqlRawAsync(@"
-                                IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'HttpTransactions')
-                                AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_HttpTransactions_Perf' AND object_id = OBJECT_ID('HttpTransactions'))
-                                BEGIN
-                                    CREATE NONCLUSTERED INDEX IX_HttpTransactions_Perf 
-                                    ON [HttpTransactions] ([Timestamp] DESC) 
-                                    INCLUDE ([StatusCode], [Method], [DurationMs], [Url]);
-                                END");
-                            Log.Information("=== NetTracker Performance Index Created/Verified Successfully ===");
-                        }
-                        catch (Exception idxEx)
-                        {
-                            Log.Warning(idxEx, "Notice: Could not automatically create performance index on HttpTransactions table.");
+                            Log.Warning(ex, "Failed to verify or create NetTracker tables.");
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    Log.Warning(ex, "Could not automatically initialize NetTracker database tables.");
                 }
             }
 
@@ -470,6 +462,22 @@ namespace Stock_Exchange
             finally
             {
                 Log.CloseAndFlush();
+            }
+        }
+    }
+
+    public class HideNetTrackerControllersConvention : Microsoft.AspNetCore.Mvc.ApplicationModels.IControllerModelConvention
+    {
+        public void Apply(Microsoft.AspNetCore.Mvc.ApplicationModels.ControllerModel controller)
+        {
+            if ((controller.ControllerType.Assembly.FullName != null && controller.ControllerType.Assembly.FullName.Contains("NetTracker", StringComparison.OrdinalIgnoreCase)) ||
+                (controller.ControllerType.Namespace != null && controller.ControllerType.Namespace.Contains("Tracker", StringComparison.OrdinalIgnoreCase)))
+            {
+                controller.ApiExplorer.IsVisible = false;
+                foreach (var action in controller.Actions)
+                {
+                    action.ApiExplorer.IsVisible = false;
+                }
             }
         }
     }
