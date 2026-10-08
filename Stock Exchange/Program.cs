@@ -119,12 +119,13 @@ namespace Stock_Exchange
 
             if (hasNetTracker)
             {
-                // Ensure NetTracker finds its expected connection string key
                 builder.Configuration["ConnectionStrings:DefaultConnection"] ??= netTrackerConn;
                 builder.Configuration["NetTracker:Storage:ConnectionString"] ??= netTrackerConn;
                 builder.Configuration["NetTracker:Enabled"] = "true";
                 builder.Configuration["NetTracker:EnableDashboardUI"] = "true";
                 builder.Configuration["NetTracker:AllowRemoteDashboardAccess"] = "true";
+
+                // Cleaned up inspection
 
                 builder.Services.AddNetTracker(builder.Configuration);
                 builder.Services.PostConfigure<NET_Tracker.Configuration.HttpLoggingOptions>(options =>
@@ -133,15 +134,11 @@ namespace Stock_Exchange
                     options.EnableDashboardUI = true;
                     options.AllowRemoteDashboardAccess = true;
 
-                    // Performance Optimization:
-                    // 1. Avoid response body buffering on successful requests (eliminates memory pressure and latency)
                     options.LogRequestBody = true;
                     options.LogResponseBody = false;
                     options.LogBodyOnlyOnErrors = true;
                     options.LogHeaders = false;
-                    options.MaxBodySize = 8192; // Limit payload capture to 8KB
-
-                    // 2. Exclude logger's own endpoints, Swagger, and static assets to prevent self-logging loops
+                    options.MaxBodySize = 8192;
                     options.ExcludePaths ??= new List<string>();
                     var exclusions = new[]
                     {
@@ -154,6 +151,7 @@ namespace Stock_Exchange
                         "/api/HttpTransactions",
                         "/files"
                     };
+
                     foreach (var path in exclusions)
                     {
                         if (!options.ExcludePaths.Contains(path, StringComparer.OrdinalIgnoreCase))
@@ -362,27 +360,23 @@ namespace Stock_Exchange
 
             if (hasNetTracker)
             {
-                // NET-Tracker MVC Routes for Logger Dashboard UI
+                // NET-Tracker Official Dashboard Routes (uses package controller: NET_Tracker.Controllers.TrackerController)
+                app.MapControllerRoute(
+                    name: "nettracker_dashboard_official",
+                    pattern: "Dashboard/{action=Index}/{id?}",
+                    defaults: new { controller = "Tracker", action = "Index" });
+
                 app.MapControllerRoute(
                     name: "nettracker_dashboard",
                     pattern: "net-tracker/dashboard/{action=Index}/{id?}",
                     defaults: new { controller = "Tracker", action = "Index" });
 
-                app.MapGet("/net-tracker/dashboard", async context =>
-                {
-                    context.Response.ContentType = "text/html; charset=utf-8";
-                    var webRoot = app.Environment.WebRootPath ?? Path.Combine(app.Environment.ContentRootPath, "wwwroot");
-                    var staticHtml = Path.Combine(webRoot, "net-tracker", "index.html");
-                    if (File.Exists(staticHtml))
-                    {
-                        await context.Response.SendFileAsync(staticHtml);
-                        return;
-                    }
-                    context.Response.Redirect("/Tracker/Index");
-                });
+                app.MapControllerRoute(
+                    name: "nettracker_direct",
+                    pattern: "Tracker/{action=Index}/{id?}",
+                    defaults: new { controller = "Tracker", action = "Index" });
 
-                app.MapGet("/net-tracker", () => Results.Redirect("/net-tracker/dashboard"));
-                app.MapGet("/dashboard", () => Results.Redirect("/net-tracker/dashboard"));
+                app.MapGet("/net-tracker", () => Results.Redirect("/Dashboard"));
             }
 
             app.MapControllerRoute(
