@@ -139,7 +139,7 @@ namespace Stock_Exchange
                 });
             });
 
-            builder.Services.AddControllers()
+            builder.Services.AddControllersWithViews()
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.Converters.Add(new IsoUtcDateTimeConverter());
