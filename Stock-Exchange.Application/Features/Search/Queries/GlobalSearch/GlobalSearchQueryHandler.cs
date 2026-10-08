@@ -32,7 +32,6 @@ public class GlobalSearchQueryHandler : IRequestHandler<GlobalSearchQuery, Resul
         var isArabic = _currentLanguageService.Language == Language.ar;
         var lowerTerm = term.ToLower();
 
-        // 1. Articles
         var articles = await _dbContext.Articles
             .AsNoTracking()
             .Where(a => !a.IsDeleted && (
@@ -59,7 +58,6 @@ public class GlobalSearchQueryHandler : IRequestHandler<GlobalSearchQuery, Resul
             })
             .ToListAsync(cancellationToken);
 
-        // 2. Videos
         var videos = await _dbContext.Videos
             .AsNoTracking()
             .Where(v => !v.IsDeleted && (
@@ -86,7 +84,6 @@ public class GlobalSearchQueryHandler : IRequestHandler<GlobalSearchQuery, Resul
             })
             .ToListAsync(cancellationToken);
 
-        // 3. News
         var news = await _dbContext.News
             .AsNoTracking()
             .Where(n => !n.IsDeleted && (
@@ -113,7 +110,6 @@ public class GlobalSearchQueryHandler : IRequestHandler<GlobalSearchQuery, Resul
             })
             .ToListAsync(cancellationToken);
 
-        // 4. Users
         var users = await _dbContext.Users
             .AsNoTracking()
             .Where(u => !u.IsDeleted && (

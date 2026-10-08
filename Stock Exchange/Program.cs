@@ -104,15 +104,27 @@ namespace Stock_Exchange
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
 
-            var netTrackerConn = builder.Configuration.GetConnectionString("DefaultConnection")
+            var netTrackerConn = builder.Configuration.GetConnectionString("StockExchangeConnectionString")
+                ?? builder.Configuration.GetConnectionString("DefaultConnection")
+                ?? builder.Configuration["ConnectionStrings:StockExchangeConnectionString"]
                 ?? builder.Configuration["NetTracker:Storage:ConnectionString"]
                 ?? builder.Configuration["HttpRequestResponseLogging:Storage:ConnectionString"];
+
             var isNetTrackerEnabled = builder.Configuration.GetValue<bool?>("NetTracker:Enabled") ?? true;
             var hasNetTracker = isNetTrackerEnabled && !string.IsNullOrWhiteSpace(netTrackerConn);
 
             if (hasNetTracker)
             {
+                // Ensure NetTracker finds its expected connection string key
+                builder.Configuration["ConnectionStrings:DefaultConnection"] ??= netTrackerConn;
+                builder.Configuration["NetTracker:Storage:ConnectionString"] ??= netTrackerConn;
+
                 builder.Services.AddNetTracker(builder.Configuration);
+                builder.Services.Configure<NET_Tracker.Configuration.HttpLoggingOptions>(options =>
+                {
+                    options.EnableDashboardUI = true;
+                    options.AllowRemoteDashboardAccess = true;
+                });
             }
             else
             {
