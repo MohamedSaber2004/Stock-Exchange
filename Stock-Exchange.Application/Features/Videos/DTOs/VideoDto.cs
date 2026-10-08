@@ -1,4 +1,4 @@
-﻿using Stock_Exchange.Domain.Enums;
+using Stock_Exchange.Domain.Enums;
 
 namespace Stock_Exchange.Application.Features.Videos.DTOs
 {
@@ -29,6 +29,8 @@ namespace Stock_Exchange.Application.Features.Videos.DTOs
         public string Description => !string.IsNullOrEmpty(DescriptionEn) ? DescriptionEn : DescriptionAr;
         public string Category => !string.IsNullOrEmpty(CategoryEnName) ? CategoryEnName : (!string.IsNullOrEmpty(CategoryEn) ? CategoryEn : CategoryAr);
 
+        public List<VideoDto> RelatedVideos { get; set; } = new();
+
         public void ApplyLanguageFilter(Language language)
         {
             if (language == Language.en)
@@ -37,13 +39,22 @@ namespace Stock_Exchange.Application.Features.Videos.DTOs
                 DescriptionAr = string.Empty;
                 CategoryAr = string.Empty;
                 CategoryArName = null;
-                return;
+            }
+            else
+            {
+                TitleEn = string.Empty;
+                DescriptionEn = string.Empty;
+                CategoryEn = string.Empty;
+                CategoryEnName = null;
             }
 
-            TitleEn = string.Empty;
-            DescriptionEn = string.Empty;
-            CategoryEn = string.Empty;
-            CategoryEnName = null;
+            if (RelatedVideos != null && RelatedVideos.Count > 0)
+            {
+                foreach (var rel in RelatedVideos)
+                {
+                    rel.ApplyLanguageFilter(language);
+                }
+            }
         }
     }
 }
