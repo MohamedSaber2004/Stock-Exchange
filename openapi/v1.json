@@ -4052,6 +4052,207 @@
         ]
       }
     },
+    "/api/v1/authentication/upload-photo-profile": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Uploads and updates the profile picture for the authenticated user.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Place": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "MediaType": {
+                    "$ref": "#/components/schemas/MediaType"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "Place": {
+                  "style": "form"
+                },
+                "MediaType": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Profile picture uploaded and updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": "string",
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error occurred or file upload failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User is not authenticated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "missingOrMalformed": {
+                    "summary": "Missing or malformed token",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "You are not authorized to perform this action."
+                        ]
+                      },
+                      "data": null,
+                      "message": "You are not authorized to perform this action.",
+                      "statusCode": 401
+                    }
+                  },
+                  "expiredOrRevokedSession": {
+                    "summary": "Expired session — log in (or refresh) again",
+                    "description": "The access token expired, was killed by logout/refresh rotation, or belongs to a deactivated account. Obtain a new token via login or refresh-token.",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "You are not authorized to perform this action."
+                        ]
+                      },
+                      "data": null,
+                      "message": "You are not authorized to perform this action.",
+                      "statusCode": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Not found",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "The requested resource was not found."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The requested resource was not found.",
+                      "statusCode": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/authentication/my-profile": {
       "get": {
         "tags": [
