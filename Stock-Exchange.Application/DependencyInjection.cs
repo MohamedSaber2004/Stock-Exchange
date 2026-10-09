@@ -31,6 +31,7 @@ using Stock_Exchange.Application.Features.Auth.Commands.RefreshToken;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo;
+using Stock_Exchange.Application.Features.Auth.Commands.UploadProfilePicture;
 using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
 using Stock_Exchange.Application.Features.Auth.Queries.GetUserProfile;
 using Stock_Exchange.Application.Features.PrivacyPolicy.Commands.DeletePrivacy;
@@ -89,6 +90,7 @@ namespace Stock_Exchange.Application
             services.AddTransient<IValidator<LogoutCommand>, LogoutCommandValidator>();
             services.AddTransient<IValidator<DeleteAccountCommand>, DeleteAccountCommandValidator>();
             services.AddTransient<IValidator<UpdateUserInfoCommand>, UpdateUserInfoCommandValidator>();
+            services.AddTransient<IValidator<UploadProfilePictureCommand>, UploadProfilePictureCommandValidator>();
             services.AddTransient<IValidator<GetUserProfileQuery>, GetUserProfileQueryValidator>();
             services.AddTransient<IValidator<UpdateAboutUsCommand>, UpdateAboutUsCommandValidator>();
             services.AddTransient<IValidator<AddHelpCenterCommand>, AddHelpCenterCommandValidator>();

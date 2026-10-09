@@ -29,6 +29,7 @@ namespace Stock_Exchange.Routes.V1
             public const string ChangePassword = "change-password";
             public const string GetUserProfile = "my-profile";
             public const string UpdateProfile = "update/myprofile";
+            public const string UploadProfilePicture = "upload-photo-profile";
             public const string DeleteAccount = "delete-account";
         }
 

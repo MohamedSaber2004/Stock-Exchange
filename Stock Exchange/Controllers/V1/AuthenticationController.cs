@@ -11,6 +11,7 @@ using Stock_Exchange.Application.Features.Auth.Commands.RefreshToken;
 using Stock_Exchange.Application.Features.Auth.Commands.Register;
 using Stock_Exchange.Application.Features.Auth.Commands.ResetPassword;
 using Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo;
+using Stock_Exchange.Application.Features.Auth.Commands.UploadProfilePicture;
 using Stock_Exchange.Application.Features.Auth.Commands.VerifyOtp;
 using Stock_Exchange.Application.Features.Auth.DTOs;
 using Stock_Exchange.Application.Features.Auth.Queries.GetUserProfile;
@@ -229,6 +230,29 @@ public class AuthenticationController : BaseController
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateProfile([FromBody] UpdateUserInfoCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return OkResult(result, LocalizationKeys.ActionResults.Updated);
+    }
+
+    /// <summary>
+    /// Uploads and updates the profile picture for the authenticated user.
+    /// </summary>
+    /// <param name="command">The profile picture upload request (file, place, and media type) sent as multipart/form-data.</param>
+    /// <returns>The uploaded profile picture file name or URL.</returns>
+    /// <response code="200">Profile picture uploaded and updated successfully.</response>
+    /// <response code="400">Validation error occurred or file upload failed.</response>
+    /// <response code="401">User is not authenticated.</response>
+    /// <response code="404">User not found.</response>
+    [HttpPost]
+    [RoleAuthorize]
+    [Route(ApiRoutes.Authentication.UploadProfilePicture)]
+    [Consumes("multipart/form-data")]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> UploadProfilePicture([FromForm] UploadProfilePictureCommand command)
     {
         var result = await Mediator.Send(command);
         return OkResult(result, LocalizationKeys.ActionResults.Updated);
