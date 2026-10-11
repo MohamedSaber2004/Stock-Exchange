@@ -71,6 +71,8 @@ namespace Stock_Exchange.Domain.Entities
         {
             IsActive = true;
             IsDeleted = false;
+            DeletedAt = null;
+            DeletedBy = null;
         }
 
         public void Deactivate()

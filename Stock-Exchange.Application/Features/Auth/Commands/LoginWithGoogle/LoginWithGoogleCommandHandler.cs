@@ -78,28 +78,38 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
                 throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.GoogleEmailNotVerified]);
 
             var email = profile.Email.Trim().ToLowerInvariant();
+            var normalizedEmail = email.ToUpperInvariant();
 
             var user = await _userManager.Users
+                .IgnoreQueryFilters()
                 .FirstOrDefaultAsync(x => x.GoogleUserId == profile.Subject, cancellationToken);
 
             var isNewUser = false;
             if (user is null)
             {
-                user = await _userManager.FindByEmailAsync(email);
+                user = await _userManager.Users
+                    .IgnoreQueryFilters()
+                    .FirstOrDefaultAsync(x => x.NormalizedEmail == normalizedEmail, cancellationToken);
 
                 if (user is null)
                 {
-                    await EnsureEmailIsNotRetiredAsync(email, cancellationToken);
                     user = await CreateUserFromGoogleAsync(profile, email);
                     isNewUser = true;
                 }
             }
 
-            if (user.IsDeleted)
-                throw new ForbiddenException(_localizer[LocalizationKeys.AuthMessages.AccountDeleted]);
+            if (user.IsDeleted || !user.IsActive)
+            {
+                user.Activate();
+                user.ConfirmEmail();
+                user.MarkAsUpdated(user.Email ?? user.Id.ToString());
 
-            if (!user.IsActive)
-                throw new ForbiddenException(_localizer[LocalizationKeys.AuthMessages.AccountDeactivated]);
+                var updateResult = await _userManager.UpdateAsync(user);
+                if (!updateResult.Succeeded)
+                {
+                    throw new BadRequestException(ToErrors(updateResult), _localizer[LocalizationKeys.AuthMessages.GoogleUserCreationFailed]);
+                }
+            }
 
             if (!string.IsNullOrEmpty(user.GoogleUserId)
                 && !string.Equals(user.GoogleUserId, profile.Subject, StringComparison.Ordinal))
@@ -113,7 +123,17 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
             await StoreGoogleProfilePictureAsync(user, profile, cancellationToken);
 
             if (isNewUser)
+            {
                 await AssignDefaultRoleAsync(user);
+            }
+            else
+            {
+                var existingRoles = await _userManager.GetRolesAsync(user);
+                if (!existingRoles.Any())
+                {
+                    await AssignDefaultRoleAsync(user);
+                }
+            }
 
             var roles = await _userManager.GetRolesAsync(user);
             var accessToken = _jwtTokenService.GenerateAccessToken(user, roles);
@@ -181,14 +201,6 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
             Uri.TryCreate(value, UriKind.Absolute, out var uri)
             && (uri.Scheme == Uri.UriSchemeHttps || uri.Scheme == Uri.UriSchemeHttp);
 
-        private async Task EnsureEmailIsNotRetiredAsync(string email, CancellationToken cancellationToken)        {
-            var retiredUser = await _userManager.Users
-                .IgnoreQueryFilters()
-                .AnyAsync(x => x.Email == email && x.IsDeleted, cancellationToken);
-
-            if (retiredUser)
-                throw new ForbiddenException(_localizer[LocalizationKeys.AuthMessages.AccountDeleted]);
-        }
 
         private async Task<ApplicationUser> CreateUserFromGoogleAsync(GoogleUserProfile profile, string email)
         {
