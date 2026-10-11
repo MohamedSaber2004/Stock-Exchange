@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Stock_Exchange.Application.Common.Interfaces;
 
 namespace Stock_Exchange.Application.Common.Exceptions.Base
@@ -11,6 +11,14 @@ namespace Stock_Exchange.Application.Common.Exceptions.Base
 
         protected BaseCustomException(string localizationKey, int statusCode = StatusCodes.Status400BadRequest, params object[] args)
             : base(localizationKey)
+        {
+            LocalizationKey = localizationKey;
+            StatusCode = statusCode;
+            Args = args.Length > 0 ? args : null;
+        }
+
+        protected BaseCustomException(string message, string localizationKey, int statusCode = StatusCodes.Status400BadRequest, params object[] args)
+            : base(message)
         {
             LocalizationKey = localizationKey;
             StatusCode = statusCode;

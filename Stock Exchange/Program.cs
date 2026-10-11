@@ -313,10 +313,7 @@ namespace Stock_Exchange
             forwardedHeadersOptions.KnownProxies.Clear();
             app.UseForwardedHeaders(forwardedHeadersOptions);
 
-            app.UseCustomExceptionHandler();
             app.UseSecurityHeaders();
-
-            app.UseRequestLocalization();
 
             if (app.Environment.EnvironmentName == "Production")
             {
@@ -340,6 +337,10 @@ namespace Stock_Exchange
                                     && !context.Request.Path.StartsWithSegments("/net-tracker"),
                     subApp => subApp.UseNetTracker(app.Configuration));
             }
+
+            app.UseCustomExceptionHandler();
+
+            app.UseRequestLocalization();
 
             app.UseRouting();
 

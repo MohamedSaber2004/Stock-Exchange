@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Stock_Exchange.Application.Common.Exceptions.Base;
 using Stock_Exchange.Application.Localization;
@@ -27,17 +27,42 @@ namespace Stock_Exchange.Application.Common.Exceptions
         }
 
         public ValidationException(IEnumerable<ValidationFailure> failures, string localizationKey = LocalizationKeys.ExceptionMessages.Validation)
-            : base(localizationKey, StatusCodes.Status400BadRequest)
+            : base(
+                BuildErrorMessage(failures, localizationKey),
+                localizationKey,
+                StatusCodes.Status400BadRequest)
         {
-            Errors = failures
+            Errors = failures?
                 .GroupBy(e => e.PropertyName, e => e.ErrorMessage)
-                .ToDictionary(failureGroup => failureGroup.Key, failureGroup => failureGroup.ToArray());
+                .ToDictionary(failureGroup => failureGroup.Key, failureGroup => failureGroup.ToArray())
+                ?? new Dictionary<string, string[]>();
         }
 
         public ValidationException(IDictionary<string, string[]> errors, string localizationKey = LocalizationKeys.ExceptionMessages.Validation)
-            : base(localizationKey, StatusCodes.Status400BadRequest)
+            : base(
+                BuildErrorMessage(errors, localizationKey),
+                localizationKey,
+                StatusCodes.Status400BadRequest)
         {
-            Errors = errors;
+            Errors = errors ?? new Dictionary<string, string[]>();
+        }
+
+        private static string BuildErrorMessage(IEnumerable<ValidationFailure>? failures, string localizationKey)
+        {
+            if (failures == null || !failures.Any())
+                return localizationKey;
+
+            var details = string.Join("; ", failures.Select(f => $"{f.PropertyName}: {f.ErrorMessage}"));
+            return $"{localizationKey} ({details})";
+        }
+
+        private static string BuildErrorMessage(IDictionary<string, string[]>? errors, string localizationKey)
+        {
+            if (errors == null || !errors.Any())
+                return localizationKey;
+
+            var details = string.Join("; ", errors.Select(kv => $"{kv.Key}: [{string.Join(", ", kv.Value)}]"));
+            return $"{localizationKey} ({details})";
         }
     }
 }
