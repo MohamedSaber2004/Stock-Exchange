@@ -61,7 +61,75 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetVideoById
             {
                 var categoryId = video.CategoryId.Value;
                 relatedVideos = await _videoRepository
-                    .GetAllAsync(v => v.Id != request.Id && v.IsActive && v.CategoryId == categoryId)
+                    .GetAllAsync(v => v.Id != request.Id && v.IsActive && (v.Category == null || v.Category.IsActive) && v.CategoryId == categoryId)
+                    .AsNoTracking()
+                    .OrderBy(v => v.DisplayOrder)
+                    .ThenByDescending(v => v.CreatedAt)
+                    .Take(6)
+                    .Select(v => new VideoDto
+                    {
+                        Id = v.Id,
+                        TitleEn = v.TitleEn,
+                        TitleAr = v.TitleAr,
+                        DescriptionEn = v.DescriptionEn,
+                        DescriptionAr = v.DescriptionAr,
+                        ThumbnailUrl = v.ThumbnailUrl,
+                        VideoUrl = v.VideoUrl,
+                        DurationSeconds = v.DurationSeconds,
+                        InstructorName = v.InstructorName,
+                        CategoryEn = v.CategoryEn,
+                        CategoryAr = v.CategoryAr,
+                        CategoryId = v.CategoryId,
+                        VideoCategoryId = v.CategoryId,
+                        CategoryEnName = v.Category != null ? v.Category.CategoryEnName : null,
+                        CategoryArName = v.Category != null ? v.Category.CategoryArName : null,
+                        IsPreviewable = v.IsPreviewable,
+                        IsFeaturedOnHome = v.IsFeaturedOnHome,
+                        DisplayOrder = v.DisplayOrder,
+                        IsActive = v.IsActive,
+                        CreatedAt = v.CreatedAt
+                    })
+                    .ToListAsync(cancellationToken);
+            }
+            else if (!string.IsNullOrWhiteSpace(video.CategoryEn))
+            {
+                var categoryEn = video.CategoryEn;
+                relatedVideos = await _videoRepository
+                    .GetAllAsync(v => v.Id != request.Id && v.IsActive && (v.Category == null || v.Category.IsActive) && v.CategoryEn == categoryEn)
+                    .AsNoTracking()
+                    .OrderBy(v => v.DisplayOrder)
+                    .ThenByDescending(v => v.CreatedAt)
+                    .Take(6)
+                    .Select(v => new VideoDto
+                    {
+                        Id = v.Id,
+                        TitleEn = v.TitleEn,
+                        TitleAr = v.TitleAr,
+                        DescriptionEn = v.DescriptionEn,
+                        DescriptionAr = v.DescriptionAr,
+                        ThumbnailUrl = v.ThumbnailUrl,
+                        VideoUrl = v.VideoUrl,
+                        DurationSeconds = v.DurationSeconds,
+                        InstructorName = v.InstructorName,
+                        CategoryEn = v.CategoryEn,
+                        CategoryAr = v.CategoryAr,
+                        CategoryId = v.CategoryId,
+                        VideoCategoryId = v.CategoryId,
+                        CategoryEnName = v.Category != null ? v.Category.CategoryEnName : null,
+                        CategoryArName = v.Category != null ? v.Category.CategoryArName : null,
+                        IsPreviewable = v.IsPreviewable,
+                        IsFeaturedOnHome = v.IsFeaturedOnHome,
+                        DisplayOrder = v.DisplayOrder,
+                        IsActive = v.IsActive,
+                        CreatedAt = v.CreatedAt
+                    })
+                    .ToListAsync(cancellationToken);
+            }
+            else if (!string.IsNullOrWhiteSpace(video.CategoryAr))
+            {
+                var categoryAr = video.CategoryAr;
+                relatedVideos = await _videoRepository
+                    .GetAllAsync(v => v.Id != request.Id && v.IsActive && (v.Category == null || v.Category.IsActive) && v.CategoryAr == categoryAr)
                     .AsNoTracking()
                     .OrderBy(v => v.DisplayOrder)
                     .ThenByDescending(v => v.CreatedAt)
