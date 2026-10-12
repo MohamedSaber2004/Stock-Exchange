@@ -1,4 +1,4 @@
-﻿using Asp.Versioning;
+using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Identity;
@@ -146,7 +146,9 @@ namespace Stock_Exchange
                         "/net-tracker",
                         "/api/Statistics",
                         "/api/HttpTransactions",
-                        "/files"
+                        "/files",
+                        "/attachments/upload-chunk",
+                        "/api/v1/attachments/upload-chunk"
                     };
 
                     foreach (var path in exclusions)
@@ -187,14 +189,16 @@ namespace Stock_Exchange
                     policy.SetIsOriginAllowed(_ => true)
                           .AllowAnyMethod()
                           .AllowAnyHeader()
-                          .AllowCredentials();
+                          .AllowCredentials()
+                          .SetPreflightMaxAge(TimeSpan.FromHours(24));
                 });
                 options.AddPolicy(policyName, policy =>
                 {
                     policy.SetIsOriginAllowed(_ => true)
                           .AllowAnyMethod()
                           .AllowAnyHeader()
-                          .AllowCredentials();
+                          .AllowCredentials()
+                          .SetPreflightMaxAge(TimeSpan.FromHours(24));
                 });
             });
 
@@ -445,7 +449,7 @@ namespace Stock_Exchange
                 }
             }
 
-            // ØªØ´ØªØºÙ„ Ø¨Ø³ Ù„Ùˆ Ø´ØºÙ‘Ù„Øª Ø§Ù„Ø¨Ø±ÙˆØ¬ÙŠÙƒØª Ø¨Ù€: dotnet run --seed
+            // تشتغل بس لو شغّلت البروجيكت بـ: dotnet run --seed
             if (args.Contains("--seed"))
             {
                 Log.Information("=== Running Database Seeding ===");

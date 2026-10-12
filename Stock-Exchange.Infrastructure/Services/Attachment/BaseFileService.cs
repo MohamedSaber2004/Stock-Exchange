@@ -128,9 +128,32 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
 
             try
             {
-                var tempFolder = Path.Combine(WebRootPath, "temp_chunks", safeUploadId);
+                var baseTempFolder = Path.Combine(WebRootPath, "temp_chunks");
+                var tempFolder = Path.Combine(baseTempFolder, safeUploadId);
                 if (!Directory.Exists(tempFolder))
+                {
                     Directory.CreateDirectory(tempFolder);
+
+                    // Background cleanup of abandoned uploads older than 12 hours to prevent disk quota exhaustion
+                    _ = Task.Run(() =>
+                    {
+                        try
+                        {
+                            var baseDir = new DirectoryInfo(baseTempFolder);
+                            if (baseDir.Exists)
+                            {
+                                foreach (var sub in baseDir.GetDirectories())
+                                {
+                                    if (sub.LastWriteTimeUtc < DateTime.UtcNow.AddHours(-12))
+                                    {
+                                        sub.Delete(true);
+                                    }
+                                }
+                            }
+                        }
+                        catch { }
+                    });
+                }
 
                 var chunkPath = Path.Combine(tempFolder, $"{chunkIndex}.part");
                 await using (var fileStream = new FileStream(chunkPath, FileMode.Create, FileAccess.Write, FileShare.None))

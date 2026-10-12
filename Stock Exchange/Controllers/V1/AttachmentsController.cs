@@ -52,6 +52,7 @@ public class AttachmentsController : BaseController
     [Route(ApiRoutes.Attachments.UploadChunk)]
     [Consumes("multipart/form-data")]
     [DisableRequestSizeLimit]
+    [RequestFormLimits(MultipartBodyLengthLimit = 4294967295L)]
     [ProducesResponseType(typeof(ApiResponse<UploadChunkResultDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<UploadChunkResultDto>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
