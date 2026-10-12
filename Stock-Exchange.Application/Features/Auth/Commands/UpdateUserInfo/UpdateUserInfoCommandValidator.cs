@@ -115,6 +115,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
 
                     RuleFor(x => x.Language)
                         .IsInEnum()
+                        .WithMessage(LocalizationKeys.AuthMessages.InvalidLanguage)
                         .When(x => x.Language.HasValue, ApplyConditionTo.AllValidators);
                 });
         }

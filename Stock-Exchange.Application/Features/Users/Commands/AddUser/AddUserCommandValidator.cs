@@ -16,7 +16,8 @@ namespace Stock_Exchange.Application.Features.Users.Commands.AddUser
             RuleFor(x => x.FullName)
                 .NotEmpty()
                 .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired)
-                .MaximumLength(150);
+                .MaximumLength(150)
+                .WithMessage(LocalizationKeys.AuthMessages.FullNameTooLong);
 
             RuleFor(x => x.Email)
                 .NotEmpty()
@@ -41,7 +42,8 @@ namespace Stock_Exchange.Application.Features.Users.Commands.AddUser
             RuleFor(x => x.Password)
                 .NotEmpty()
                 .WithMessage(LocalizationKeys.AuthMessages.PasswordRequired)
-                .MinimumLength(6);
+                .MinimumLength(6)
+                .WithMessage(LocalizationKeys.AuthMessages.PasswordTooShort);
 
             RuleFor(x => x.ConfirmPassword)
                 .NotEmpty()

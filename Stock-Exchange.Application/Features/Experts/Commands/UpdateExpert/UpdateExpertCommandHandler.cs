@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -32,7 +32,7 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
 
             var expert = await _expertRepository.GetFirstAsync(e => e.Id == request.Id, cancellationToken);
             if (expert is null)
-                throw new NotFoundException("Expert not found");
+                throw new NotFoundException(LocalizationKeys.ExpertMessages.ExpertNotFound);
 
             expert.FullNameEn = request.FullNameEn.Trim();
             expert.FullNameAr = request.FullNameAr.Trim();

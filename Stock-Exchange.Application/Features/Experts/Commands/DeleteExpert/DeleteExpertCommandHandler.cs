@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -31,7 +31,7 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.DeleteExpert
 
             var expert = await _expertRepository.GetFirstAsync(e => e.Id == request.Id, cancellationToken);
             if (expert is null)
-                throw new NotFoundException("Expert not found");
+                throw new NotFoundException(LocalizationKeys.ExpertMessages.ExpertNotFound);
 
             _expertRepository.Delete(expert);
             await _unitOfWork.SaveChangesAsync();

@@ -6,6 +6,13 @@
     "Deleted": "تم حذف المورد بنجاح.",
     "Updated": "تم تحديث المورد بنجاح."
   },
+  "CommonMessages": {
+    "IdRequired": "المُعرّف مطلوب.",
+    "PageNumberInvalid": "يجب أن يكون رقم الصفحة أكبر من 0.",
+    "PageSizeInvalid": "يجب أن يكون حجم الصفحة أكبر من 0.",
+    "PageSizeTooLarge": "يجب ألا يتجاوز حجم الصفحة 100.",
+    "SearchTooLong": "يجب ألا يتجاوز نص البحث 100 حرف."
+  },
   "Attachments": {
     "FileEmpty": "الملف المرفوع فارغ.",
     "FileNotFound": "الملف المطلوب غير موجود.",
@@ -88,10 +95,19 @@
     "PasswordChangeFailed": "فشل تغيير كلمة المرور. يرجى التحقق من كلمة المرور الحالية.",
     "PasswordChangeSuccess": "تم تغيير كلمة المرور بنجاح.",
     "CannotDeleteSelf": "لا يمكنك حذف حسابك الشخصي المسجل به حالياً.",
-    "CannotModifyOtherAdmin": "لا يمكنك تعديل بيانات أو تغيير كلمة مرور أو إدارة حساب مسؤول آخر."
+    "CannotModifyOtherAdmin": "لا يمكنك تعديل بيانات أو تغيير كلمة مرور أو إدارة حساب مسؤول آخر.",
+    "UserIdRequired": "مُعرّف المستخدم مطلوب.",
+    "FullNameTooLong": "يجب ألا يزيد طول الاسم الكامل عن 150 حرف.",
+    "PasswordTooShort": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
+    "InvalidLanguage": "اللغة المحددة غير صالحة."
   },
   "ActivityLogMessages": {
-    "ActivityLogNotFound": "سجل النشاط المطلوب غير موجود."
+    "ActivityLogNotFound": "سجل النشاط المطلوب غير موجود.",
+    "IdRequired": "مُعرّف سجل النشاط مطلوب.",
+    "PageNumberInvalid": "يجب أن يكون رقم الصفحة أكبر من 0.",
+    "PageSizeInvalid": "يجب أن يكون حجم الصفحة أكبر من 0.",
+    "PageSizeTooLarge": "يجب ألا يتجاوز حجم الصفحة 100.",
+    "SearchTooLong": "يجب ألا يتجاوز نص البحث 100 حرف."
   },
   "CountryMessages": {
     "CountryNotFound": "رمز الدولة المحدد غير موجود.",
@@ -99,7 +115,11 @@
     "CountryArNameRequired": "اسم الدولة بالعربية مطلوب.",
     "CountryEnNameRequired": "اسم الدولة بالإنجليزية مطلوب.",
     "CountryAlreadyExists": "توجد دولة مسجلة بالفعل بهذا الكود أو الاسم.",
-    "CountryCannotBeDeleted": "لا يمكن حذف هذه الدولة لارتباطها بمستخدمين مسجلين في النظام."
+    "CountryCannotBeDeleted": "لا يمكن حذف هذه الدولة لارتباطها بمستخدمين مسجلين في النظام.",
+    "CountryIdRequired": "مُعرّف الدولة مطلوب.",
+    "CountryArNameTooLong": "يجب ألا يزيد طول اسم الدولة بالعربية عن 100 حرف.",
+    "CountryEnNameTooLong": "يجب ألا يزيد طول اسم الدولة بالإنجليزية عن 100 حرف.",
+    "CountryCodeTooLong": "يجب ألا يزيد طول رمز الدولة عن 10 أحرف."
   },
   "AboutUsMessages": {
     "AboutUsNotFound": "محتوى من نحن غير موجود.",
@@ -245,6 +265,67 @@
     "IdRequired": "مُعرف الفيديو مطلوب.",
     "SearchTooLong": "يجب ألا يتجاوز نص البحث 100 حرف.",
     "DurationSecondsInvalid": "يجب أن تكون مدة الفيديو أكبر من 0.",
+    "DisplayOrderInvalid": "يجب أن يكون ترتيب العرض 0 أو أكبر.",
+    "PageNumberInvalid": "يجب أن يكون رقم الصفحة أكبر من 0.",
+    "PageSizeInvalid": "يجب أن يكون حجم الصفحة أكبر من 0.",
+    "PageSizeTooLarge": "يجب ألا يتجاوز حجم الصفحة 100."
+  },
+  "ArticleCategoryMessages": {
+    "CategoryNotFound": "تصنيف المقال غير موجود.",
+    "IdRequired": "مُعرّف التصنيف مطلوب.",
+    "CategoryArNameRequired": "اسم التصنيف بالعربية مطلوب.",
+    "CategoryArNameTooLong": "يجب ألا يزيد طول اسم التصنيف بالعربية عن 150 حرف.",
+    "CategoryEnNameRequired": "اسم التصنيف بالإنجليزية مطلوب.",
+    "CategoryEnNameTooLong": "يجب ألا يزيد طول اسم التصنيف بالإنجليزية عن 150 حرف."
+  },
+  "VideoCategoryMessages": {
+    "CategoryNotFound": "تصنيف الفيديو غير موجود.",
+    "IdRequired": "مُعرّف التصنيف مطلوب.",
+    "CategoryArNameRequired": "اسم التصنيف بالعربية مطلوب.",
+    "CategoryArNameTooLong": "يجب ألا يزيد طول اسم التصنيف بالعربية عن 150 حرف.",
+    "CategoryEnNameRequired": "اسم التصنيف بالإنجليزية مطلوب.",
+    "CategoryEnNameTooLong": "يجب ألا يزيد طول اسم التصنيف بالإنجليزية عن 150 حرف."
+  },
+  "ExpertMessages": {
+    "ExpertNotFound": "الخبير غير موجود.",
+    "IdRequired": "مُعرّف الخبير مطلوب.",
+    "FullNameEnRequired": "الاسم الكامل بالإنجليزية مطلوب.",
+    "FullNameEnTooLong": "يجب ألا يزيد طول الاسم الكامل بالإنجليزية عن 200 حرف.",
+    "FullNameArRequired": "الاسم الكامل بالعربية مطلوب.",
+    "FullNameArTooLong": "يجب ألا يزيد طول الاسم الكامل بالعربية عن 200 حرف.",
+    "TitleEnRequired": "المسمى الوظيفي/التخصص بالإنجليزية مطلوب.",
+    "TitleEnTooLong": "يجب ألا يزيد طول المسمى الوظيفي بالإنجليزية عن 200 حرف.",
+    "TitleArRequired": "المسمى الوظيفي/التخصص بالعربية مطلوب.",
+    "TitleArTooLong": "يجب ألا يزيد طول المسمى الوظيفي بالعربية عن 200 حرف.",
+    "AvatarUrlTooLong": "يجب ألا يزيد طول رابط الصورة الشخصية عن 1024 حرف.",
+    "DisplayOrderInvalid": "يجب أن يكون ترتيب العرض 0 أو أكبر."
+  },
+  "NewsMessages": {
+    "NewsNotFound": "الخبر غير موجود.",
+    "IdRequired": "مُعرّف الخبر مطلوب.",
+    "TitleEnRequired": "عنوان الخبر بالإنجليزية مطلوب.",
+    "TitleEnTooLong": "يجب ألا يزيد طول عنوان الخبر بالإنجليزية عن 500 حرف.",
+    "TitleArRequired": "عنوان الخبر بالعربية مطلوب.",
+    "TitleArTooLong": "يجب ألا يزيد طول عنوان الخبر بالعربية عن 500 حرف.",
+    "SummaryEnTooLong": "يجب ألا يزيد طول موجز الخبر بالإنجليزية عن 4000 حرف.",
+    "SummaryArTooLong": "يجب ألا يزيد طول موجز الخبر بالعربية عن 4000 حرف.",
+    "CategoryEnTooLong": "يجب ألا يزيد طول تصنيف الخبر بالإنجليزية عن 100 حرف.",
+    "CategoryArTooLong": "يجب ألا يزيد طول تصنيف الخبر بالعربية عن 100 حرف.",
+    "ImageUrlTooLong": "يجب ألا يزيد طول رابط الصورة عن 1024 حرف.",
+    "DisplayOrderInvalid": "يجب أن يكون ترتيب العرض 0 أو أكبر."
+  },
+  "ServiceMessages": {
+    "ServiceNotFound": "الخدمة غير موجودة.",
+    "IdRequired": "مُعرّف الخدمة مطلوب.",
+    "TitleEnRequired": "عنوان الخدمة بالإنجليزية مطلوب.",
+    "TitleEnTooLong": "يجب ألا يزيد طول عنوان الخدمة بالإنجليزية عن 500 حرف.",
+    "TitleArRequired": "عنوان الخدمة بالعربية مطلوب.",
+    "TitleArTooLong": "يجب ألا يزيد طول عنوان الخدمة بالعربية عن 500 حرف.",
+    "DescriptionEnTooLong": "يجب ألا يزيد طول وصف الخدمة بالإنجليزية عن 4000 حرف.",
+    "DescriptionArTooLong": "يجب ألا يزيد طول وصف الخدمة بالعربية عن 4000 حرف.",
+    "IconNameTooLong": "يجب ألا يزيد طول اسم الأيقونة عن 100 حرف.",
+    "ImageUrlTooLong": "يجب ألا يزيد طول رابط الصورة عن 1024 حرف.",
+    "LinkRouteTooLong": "يجب ألا يزيد طول مسار الرابط عن 500 حرف.",
     "DisplayOrderInvalid": "يجب أن يكون ترتيب العرض 0 أو أكبر."
   },
   "EmailMessages": {

@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -34,7 +34,7 @@ namespace Stock_Exchange.Application.Features.VideoCategories.Commands.DeleteVid
                 cancellationToken);
 
             if (category is null)
-                throw new NotFoundException("Video category not found.");
+                throw new NotFoundException(LocalizationKeys.VideoCategoryMessages.CategoryNotFound);
 
             _categoryRepository.Delete(category);
             await _unitOfWork.SaveChangesAsync();

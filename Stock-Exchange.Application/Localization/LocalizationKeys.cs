@@ -11,6 +11,15 @@ namespace Stock_Exchange.Application.Localization
             public const string Updated = "ActionResults.Updated";
         }
 
+        public static class CommonMessages
+        {
+            public const string IdRequired = "CommonMessages.IdRequired";
+            public const string PageNumberInvalid = "CommonMessages.PageNumberInvalid";
+            public const string PageSizeInvalid = "CommonMessages.PageSizeInvalid";
+            public const string PageSizeTooLarge = "CommonMessages.PageSizeTooLarge";
+            public const string SearchTooLong = "CommonMessages.SearchTooLong";
+        }
+
         public static class Attachments
         {
             public const string FileEmpty = "Attachments.FileEmpty";
@@ -99,11 +108,20 @@ namespace Stock_Exchange.Application.Localization
             public const string PasswordChangeSuccess = "AuthMessages.PasswordChangeSuccess";
             public const string CannotDeleteSelf = "AuthMessages.CannotDeleteSelf";
             public const string CannotModifyOtherAdmin = "AuthMessages.CannotModifyOtherAdmin";
+            public const string UserIdRequired = "AuthMessages.UserIdRequired";
+            public const string FullNameTooLong = "AuthMessages.FullNameTooLong";
+            public const string PasswordTooShort = "AuthMessages.PasswordTooShort";
+            public const string InvalidLanguage = "AuthMessages.InvalidLanguage";
         }
 
         public static class ActivityLogMessages
         {
             public const string ActivityLogNotFound = "ActivityLogMessages.ActivityLogNotFound";
+            public const string IdRequired = "ActivityLogMessages.IdRequired";
+            public const string PageNumberInvalid = "ActivityLogMessages.PageNumberInvalid";
+            public const string PageSizeInvalid = "ActivityLogMessages.PageSizeInvalid";
+            public const string PageSizeTooLarge = "ActivityLogMessages.PageSizeTooLarge";
+            public const string SearchTooLong = "ActivityLogMessages.SearchTooLong";
         }
 
         public static class CountryMessages
@@ -114,6 +132,10 @@ namespace Stock_Exchange.Application.Localization
             public const string CountryEnNameRequired = "CountryMessages.CountryEnNameRequired";
             public const string CountryAlreadyExists = "CountryMessages.CountryAlreadyExists";
             public const string CountryCannotBeDeleted = "CountryMessages.CountryCannotBeDeleted";
+            public const string CountryIdRequired = "CountryMessages.CountryIdRequired";
+            public const string CountryArNameTooLong = "CountryMessages.CountryArNameTooLong";
+            public const string CountryEnNameTooLong = "CountryMessages.CountryEnNameTooLong";
+            public const string CountryCodeTooLong = "CountryMessages.CountryCodeTooLong";
         }
 
         public static class AboutUsMessages
@@ -280,6 +302,77 @@ namespace Stock_Exchange.Application.Localization
             public const string SearchTooLong = "VideoMessages.SearchTooLong";
             public const string DurationSecondsInvalid = "VideoMessages.DurationSecondsInvalid";
             public const string DisplayOrderInvalid = "VideoMessages.DisplayOrderInvalid";
+            public const string PageNumberInvalid = "VideoMessages.PageNumberInvalid";
+            public const string PageSizeInvalid = "VideoMessages.PageSizeInvalid";
+            public const string PageSizeTooLarge = "VideoMessages.PageSizeTooLarge";
+        }
+
+        public static class ArticleCategoryMessages
+        {
+            public const string CategoryNotFound = "ArticleCategoryMessages.CategoryNotFound";
+            public const string IdRequired = "ArticleCategoryMessages.IdRequired";
+            public const string CategoryArNameRequired = "ArticleCategoryMessages.CategoryArNameRequired";
+            public const string CategoryArNameTooLong = "ArticleCategoryMessages.CategoryArNameTooLong";
+            public const string CategoryEnNameRequired = "ArticleCategoryMessages.CategoryEnNameRequired";
+            public const string CategoryEnNameTooLong = "ArticleCategoryMessages.CategoryEnNameTooLong";
+        }
+
+        public static class VideoCategoryMessages
+        {
+            public const string CategoryNotFound = "VideoCategoryMessages.CategoryNotFound";
+            public const string IdRequired = "VideoCategoryMessages.IdRequired";
+            public const string CategoryArNameRequired = "VideoCategoryMessages.CategoryArNameRequired";
+            public const string CategoryArNameTooLong = "VideoCategoryMessages.CategoryArNameTooLong";
+            public const string CategoryEnNameRequired = "VideoCategoryMessages.CategoryEnNameRequired";
+            public const string CategoryEnNameTooLong = "VideoCategoryMessages.CategoryEnNameTooLong";
+        }
+
+        public static class ExpertMessages
+        {
+            public const string ExpertNotFound = "ExpertMessages.ExpertNotFound";
+            public const string IdRequired = "ExpertMessages.IdRequired";
+            public const string FullNameEnRequired = "ExpertMessages.FullNameEnRequired";
+            public const string FullNameEnTooLong = "ExpertMessages.FullNameEnTooLong";
+            public const string FullNameArRequired = "ExpertMessages.FullNameArRequired";
+            public const string FullNameArTooLong = "ExpertMessages.FullNameArTooLong";
+            public const string TitleEnRequired = "ExpertMessages.TitleEnRequired";
+            public const string TitleEnTooLong = "ExpertMessages.TitleEnTooLong";
+            public const string TitleArRequired = "ExpertMessages.TitleArRequired";
+            public const string TitleArTooLong = "ExpertMessages.TitleArTooLong";
+            public const string AvatarUrlTooLong = "ExpertMessages.AvatarUrlTooLong";
+            public const string DisplayOrderInvalid = "ExpertMessages.DisplayOrderInvalid";
+        }
+
+        public static class NewsMessages
+        {
+            public const string NewsNotFound = "NewsMessages.NewsNotFound";
+            public const string IdRequired = "NewsMessages.IdRequired";
+            public const string TitleEnRequired = "NewsMessages.TitleEnRequired";
+            public const string TitleEnTooLong = "NewsMessages.TitleEnTooLong";
+            public const string TitleArRequired = "NewsMessages.TitleArRequired";
+            public const string TitleArTooLong = "NewsMessages.TitleArTooLong";
+            public const string SummaryEnTooLong = "NewsMessages.SummaryEnTooLong";
+            public const string SummaryArTooLong = "NewsMessages.SummaryArTooLong";
+            public const string CategoryEnTooLong = "NewsMessages.CategoryEnTooLong";
+            public const string CategoryArTooLong = "NewsMessages.CategoryArTooLong";
+            public const string ImageUrlTooLong = "NewsMessages.ImageUrlTooLong";
+            public const string DisplayOrderInvalid = "NewsMessages.DisplayOrderInvalid";
+        }
+
+        public static class ServiceMessages
+        {
+            public const string ServiceNotFound = "ServiceMessages.ServiceNotFound";
+            public const string IdRequired = "ServiceMessages.IdRequired";
+            public const string TitleEnRequired = "ServiceMessages.TitleEnRequired";
+            public const string TitleEnTooLong = "ServiceMessages.TitleEnTooLong";
+            public const string TitleArRequired = "ServiceMessages.TitleArRequired";
+            public const string TitleArTooLong = "ServiceMessages.TitleArTooLong";
+            public const string DescriptionEnTooLong = "ServiceMessages.DescriptionEnTooLong";
+            public const string DescriptionArTooLong = "ServiceMessages.DescriptionArTooLong";
+            public const string IconNameTooLong = "ServiceMessages.IconNameTooLong";
+            public const string ImageUrlTooLong = "ServiceMessages.ImageUrlTooLong";
+            public const string LinkRouteTooLong = "ServiceMessages.LinkRouteTooLong";
+            public const string DisplayOrderInvalid = "ServiceMessages.DisplayOrderInvalid";
         }
 
         public static class EmailMessages

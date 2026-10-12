@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -34,7 +34,7 @@ namespace Stock_Exchange.Application.Features.ArticleCategories.Commands.DeleteA
                 cancellationToken);
 
             if (category is null)
-                throw new NotFoundException("Article category not found.");
+                throw new NotFoundException(LocalizationKeys.ArticleCategoryMessages.CategoryNotFound);
 
             _categoryRepository.Delete(category);
             await _unitOfWork.SaveChangesAsync();

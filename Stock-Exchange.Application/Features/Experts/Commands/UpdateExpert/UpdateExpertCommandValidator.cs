@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+using FluentValidation;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
 {
@@ -6,13 +7,31 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
     {
         public UpdateExpertCommandValidator()
         {
-            RuleFor(x => x.Id).NotEmpty().WithMessage("Id is required");
-            RuleFor(x => x.FullNameEn).NotEmpty().WithMessage("Full name in English is required").MaximumLength(200);
-            RuleFor(x => x.FullNameAr).NotEmpty().WithMessage("Full name in Arabic is required").MaximumLength(200);
-            RuleFor(x => x.TitleEn).NotEmpty().WithMessage("Title/Specialty in English is required").MaximumLength(200);
-            RuleFor(x => x.TitleAr).NotEmpty().WithMessage("Title/Specialty in Arabic is required").MaximumLength(200);
-            RuleFor(x => x.AvatarUrl).MaximumLength(1024);
-            RuleFor(x => x.DisplayOrder).GreaterThanOrEqualTo(0);
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage(LocalizationKeys.ExpertMessages.IdRequired);
+
+            RuleFor(x => x.FullNameEn)
+                .NotEmpty().WithMessage(LocalizationKeys.ExpertMessages.FullNameEnRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.ExpertMessages.FullNameEnTooLong);
+
+            RuleFor(x => x.FullNameAr)
+                .NotEmpty().WithMessage(LocalizationKeys.ExpertMessages.FullNameArRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.ExpertMessages.FullNameArTooLong);
+
+            RuleFor(x => x.TitleEn)
+                .NotEmpty().WithMessage(LocalizationKeys.ExpertMessages.TitleEnRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.ExpertMessages.TitleEnTooLong);
+
+            RuleFor(x => x.TitleAr)
+                .NotEmpty().WithMessage(LocalizationKeys.ExpertMessages.TitleArRequired)
+                .MaximumLength(200).WithMessage(LocalizationKeys.ExpertMessages.TitleArTooLong);
+
+            RuleFor(x => x.AvatarUrl)
+                .MaximumLength(1024).WithMessage(LocalizationKeys.ExpertMessages.AvatarUrlTooLong)
+                .When(x => !string.IsNullOrEmpty(x.AvatarUrl));
+
+            RuleFor(x => x.DisplayOrder)
+                .GreaterThanOrEqualTo(0).WithMessage(LocalizationKeys.ExpertMessages.DisplayOrderInvalid);
         }
     }
 }

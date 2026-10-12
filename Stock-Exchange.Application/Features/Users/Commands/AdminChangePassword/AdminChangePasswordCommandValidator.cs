@@ -8,12 +8,14 @@ namespace Stock_Exchange.Application.Features.Users.Commands.AdminChangePassword
         public AdminChangePasswordCommandValidator()
         {
             RuleFor(x => x.UserId)
-                .NotEmpty();
+                .NotEmpty()
+                .WithMessage(LocalizationKeys.AuthMessages.UserIdRequired);
 
             RuleFor(x => x.NewPassword)
                 .NotEmpty()
                 .WithMessage(LocalizationKeys.AuthMessages.PasswordRequired)
-                .MinimumLength(6);
+                .MinimumLength(6)
+                .WithMessage(LocalizationKeys.AuthMessages.PasswordTooShort);
 
             RuleFor(x => x.ConfirmNewPassword)
                 .NotEmpty()

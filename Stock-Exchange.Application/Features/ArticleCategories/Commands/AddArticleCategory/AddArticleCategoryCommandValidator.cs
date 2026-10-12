@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+using FluentValidation;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.ArticleCategories.Commands.AddArticleCategory
 {
@@ -7,12 +8,12 @@ namespace Stock_Exchange.Application.Features.ArticleCategories.Commands.AddArti
         public AddArticleCategoryCommandValidator()
         {
             RuleFor(x => x.CategoryArName)
-                .NotEmpty().WithMessage("Arabic category name is required.")
-                .MaximumLength(150);
+                .NotEmpty().WithMessage(LocalizationKeys.ArticleCategoryMessages.CategoryArNameRequired)
+                .MaximumLength(150).WithMessage(LocalizationKeys.ArticleCategoryMessages.CategoryArNameTooLong);
 
             RuleFor(x => x.CategoryEnName)
-                .NotEmpty().WithMessage("English category name is required.")
-                .MaximumLength(150);
+                .NotEmpty().WithMessage(LocalizationKeys.ArticleCategoryMessages.CategoryEnNameRequired)
+                .MaximumLength(150).WithMessage(LocalizationKeys.ArticleCategoryMessages.CategoryEnNameTooLong);
         }
     }
 }

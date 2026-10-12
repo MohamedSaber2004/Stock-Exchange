@@ -9,12 +9,14 @@ namespace Stock_Exchange.Application.Features.Users.Commands.UpdateUser
         public UpdateUserCommandValidator(ICountryRepository countryRepository)
         {
             RuleFor(x => x.Id)
-                .NotEmpty();
+                .NotEmpty()
+                .WithMessage(LocalizationKeys.AuthMessages.UserIdRequired);
 
             RuleFor(x => x.FullName)
                 .NotEmpty()
                 .WithMessage(LocalizationKeys.AuthMessages.FullNameRequired)
-                .MaximumLength(150);
+                .MaximumLength(150)
+                .WithMessage(LocalizationKeys.AuthMessages.FullNameTooLong);
 
             RuleFor(x => x.Email)
                 .NotEmpty()

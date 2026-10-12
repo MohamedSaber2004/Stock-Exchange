@@ -6,6 +6,13 @@
     "Deleted": "Resource deleted successfully.",
     "Updated": "Resource updated successfully."
   },
+  "CommonMessages": {
+    "IdRequired": "ID is required.",
+    "PageNumberInvalid": "Page number must be greater than 0.",
+    "PageSizeInvalid": "Page size must be greater than 0.",
+    "PageSizeTooLarge": "Page size cannot exceed 100.",
+    "SearchTooLong": "Search term cannot exceed 100 characters."
+  },
   "Attachments": {
     "FileEmpty": "The uploaded file is empty.",
     "FileNotFound": "The requested file was not found.",
@@ -88,10 +95,19 @@
     "PasswordChangeFailed": "Failed to change password. Please check your current password.",
     "PasswordChangeSuccess": "Password changed successfully.",
     "CannotDeleteSelf": "You cannot delete your own account while logged in.",
-    "CannotModifyOtherAdmin": "You cannot modify, change password, or manage another administrator account."
+    "CannotModifyOtherAdmin": "You cannot modify, change password, or manage another administrator account.",
+    "UserIdRequired": "User ID is required.",
+    "FullNameTooLong": "Full name cannot exceed 150 characters.",
+    "PasswordTooShort": "Password must be at least 6 characters.",
+    "InvalidLanguage": "Invalid language selected."
   },
   "ActivityLogMessages": {
-    "ActivityLogNotFound": "The requested activity log was not found."
+    "ActivityLogNotFound": "The requested activity log was not found.",
+    "IdRequired": "Activity log ID is required.",
+    "PageNumberInvalid": "Page number must be greater than 0.",
+    "PageSizeInvalid": "Page size must be greater than 0.",
+    "PageSizeTooLarge": "Page size cannot exceed 100.",
+    "SearchTooLong": "Search term cannot exceed 100 characters."
   },
   "CountryMessages": {
     "CountryNotFound": "The specified country code was not found.",
@@ -99,7 +115,11 @@
     "CountryArNameRequired": "Country Arabic name is required.",
     "CountryEnNameRequired": "Country English name is required.",
     "CountryAlreadyExists": "A country with this code or name already exists.",
-    "CountryCannotBeDeleted": "Cannot delete this country because it is linked to registered users."
+    "CountryCannotBeDeleted": "Cannot delete this country because it is linked to registered users.",
+    "CountryIdRequired": "Country ID is required.",
+    "CountryArNameTooLong": "Country Arabic name cannot exceed 100 characters.",
+    "CountryEnNameTooLong": "Country English name cannot exceed 100 characters.",
+    "CountryCodeTooLong": "Country code cannot exceed 10 characters."
   },
   "AboutUsMessages": {
     "AboutUsNotFound": "About us content was not found.",
@@ -245,6 +265,67 @@
     "IdRequired": "Video id cannot be empty when provided.",
     "SearchTooLong": "Search term cannot exceed 100 characters.",
     "DurationSecondsInvalid": "Duration must be greater than 0.",
+    "DisplayOrderInvalid": "Display order must be 0 or greater.",
+    "PageNumberInvalid": "Page number must be greater than 0.",
+    "PageSizeInvalid": "Page size must be greater than 0.",
+    "PageSizeTooLarge": "Page size must not exceed 100."
+  },
+  "ArticleCategoryMessages": {
+    "CategoryNotFound": "Article category not found.",
+    "IdRequired": "Category ID is required.",
+    "CategoryArNameRequired": "Arabic category name is required.",
+    "CategoryArNameTooLong": "Arabic category name cannot exceed 150 characters.",
+    "CategoryEnNameRequired": "English category name is required.",
+    "CategoryEnNameTooLong": "English category name cannot exceed 150 characters."
+  },
+  "VideoCategoryMessages": {
+    "CategoryNotFound": "Video category not found.",
+    "IdRequired": "Category ID is required.",
+    "CategoryArNameRequired": "Arabic category name is required.",
+    "CategoryArNameTooLong": "Arabic category name cannot exceed 150 characters.",
+    "CategoryEnNameRequired": "English category name is required.",
+    "CategoryEnNameTooLong": "English category name cannot exceed 150 characters."
+  },
+  "ExpertMessages": {
+    "ExpertNotFound": "Expert not found.",
+    "IdRequired": "Expert ID is required.",
+    "FullNameEnRequired": "Full name in English is required.",
+    "FullNameEnTooLong": "Full name in English cannot exceed 200 characters.",
+    "FullNameArRequired": "Full name in Arabic is required.",
+    "FullNameArTooLong": "Full name in Arabic cannot exceed 200 characters.",
+    "TitleEnRequired": "Title/Specialty in English is required.",
+    "TitleEnTooLong": "Title/Specialty in English cannot exceed 200 characters.",
+    "TitleArRequired": "Title/Specialty in Arabic is required.",
+    "TitleArTooLong": "Title/Specialty in Arabic cannot exceed 200 characters.",
+    "AvatarUrlTooLong": "Avatar URL cannot exceed 1024 characters.",
+    "DisplayOrderInvalid": "Display order must be 0 or greater."
+  },
+  "NewsMessages": {
+    "NewsNotFound": "News item not found.",
+    "IdRequired": "News ID is required.",
+    "TitleEnRequired": "Title in English is required.",
+    "TitleEnTooLong": "Title in English cannot exceed 500 characters.",
+    "TitleArRequired": "Title in Arabic is required.",
+    "TitleArTooLong": "Title in Arabic cannot exceed 500 characters.",
+    "SummaryEnTooLong": "Summary in English cannot exceed 4000 characters.",
+    "SummaryArTooLong": "Summary in Arabic cannot exceed 4000 characters.",
+    "CategoryEnTooLong": "Category in English cannot exceed 100 characters.",
+    "CategoryArTooLong": "Category in Arabic cannot exceed 100 characters.",
+    "ImageUrlTooLong": "Image URL cannot exceed 1024 characters.",
+    "DisplayOrderInvalid": "Display order must be 0 or greater."
+  },
+  "ServiceMessages": {
+    "ServiceNotFound": "Service not found.",
+    "IdRequired": "Service ID is required.",
+    "TitleEnRequired": "Title in English is required.",
+    "TitleEnTooLong": "Title in English cannot exceed 500 characters.",
+    "TitleArRequired": "Title in Arabic is required.",
+    "TitleArTooLong": "Title in Arabic cannot exceed 500 characters.",
+    "DescriptionEnTooLong": "Description in English cannot exceed 4000 characters.",
+    "DescriptionArTooLong": "Description in Arabic cannot exceed 4000 characters.",
+    "IconNameTooLong": "Icon name cannot exceed 100 characters.",
+    "ImageUrlTooLong": "Image URL cannot exceed 1024 characters.",
+    "LinkRouteTooLong": "Link route cannot exceed 500 characters.",
     "DisplayOrderInvalid": "Display order must be 0 or greater."
   },
   "EmailMessages": {

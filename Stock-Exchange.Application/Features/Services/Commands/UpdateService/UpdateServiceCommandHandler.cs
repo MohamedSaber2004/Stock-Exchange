@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -32,7 +32,7 @@ namespace Stock_Exchange.Application.Features.Services.Commands.UpdateService
 
             var service = await _serviceRepository.GetFirstAsync(s => s.Id == request.Id, cancellationToken);
             if (service is null)
-                throw new NotFoundException("Service not found");
+                throw new NotFoundException(LocalizationKeys.ServiceMessages.ServiceNotFound);
 
             service.TitleEn = request.TitleEn.Trim();
             service.TitleAr = request.TitleAr.Trim();

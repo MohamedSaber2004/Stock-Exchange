@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+using FluentValidation;
+using Stock_Exchange.Application.Localization;
 
 namespace Stock_Exchange.Application.Features.VideoCategories.Commands.AddVideoCategory
 {
@@ -7,12 +8,12 @@ namespace Stock_Exchange.Application.Features.VideoCategories.Commands.AddVideoC
         public AddVideoCategoryCommandValidator()
         {
             RuleFor(x => x.CategoryArName)
-                .NotEmpty().WithMessage("Arabic category name is required.")
-                .MaximumLength(150);
+                .NotEmpty().WithMessage(LocalizationKeys.VideoCategoryMessages.CategoryArNameRequired)
+                .MaximumLength(150).WithMessage(LocalizationKeys.VideoCategoryMessages.CategoryArNameTooLong);
 
             RuleFor(x => x.CategoryEnName)
-                .NotEmpty().WithMessage("English category name is required.")
-                .MaximumLength(150);
+                .NotEmpty().WithMessage(LocalizationKeys.VideoCategoryMessages.CategoryEnNameRequired)
+                .MaximumLength(150).WithMessage(LocalizationKeys.VideoCategoryMessages.CategoryEnNameTooLong);
         }
     }
 }

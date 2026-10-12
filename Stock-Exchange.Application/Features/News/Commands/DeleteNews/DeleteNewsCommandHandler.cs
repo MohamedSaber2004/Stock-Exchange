@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -31,7 +31,7 @@ namespace Stock_Exchange.Application.Features.News.Commands.DeleteNews
 
             var news = await _newsRepository.GetFirstAsync(n => n.Id == request.Id, cancellationToken);
             if (news is null)
-                throw new NotFoundException("News item not found");
+                throw new NotFoundException(LocalizationKeys.NewsMessages.NewsNotFound);
 
             _newsRepository.Delete(news);
             await _unitOfWork.SaveChangesAsync();
