@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
@@ -37,8 +38,21 @@ namespace Stock_Exchange.Application.Features.VideoCategories.Commands.UpdateVid
             if (category is null)
                 throw new NotFoundException(LocalizationKeys.VideoCategoryMessages.CategoryNotFound);
 
-            category.CategoryArName = request.CategoryArName.Trim();
-            category.CategoryEnName = request.CategoryEnName.Trim();
+            var cleanArName = request.CategoryArName.Trim();
+            var cleanEnName = request.CategoryEnName.Trim();
+
+            var exists = await _categoryRepository.GetAllAsync(c => !c.IsDeleted && c.Id != request.Id &&
+                (c.CategoryArName.ToLower() == cleanArName.ToLower() ||
+                 c.CategoryEnName.ToLower() == cleanEnName.ToLower()))
+                .AnyAsync(cancellationToken);
+
+            if (exists)
+            {
+                throw new ConflictException(LocalizationKeys.VideoCategoryMessages.CategoryAlreadyExists);
+            }
+
+            category.CategoryArName = cleanArName;
+            category.CategoryEnName = cleanEnName;
 
             _categoryRepository.Update(category);
             await _unitOfWork.SaveChangesAsync();

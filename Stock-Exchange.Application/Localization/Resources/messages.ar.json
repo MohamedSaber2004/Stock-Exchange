@@ -284,7 +284,8 @@
     "CategoryArNameRequired": "اسم التصنيف بالعربية مطلوب.",
     "CategoryArNameTooLong": "يجب ألا يزيد طول اسم التصنيف بالعربية عن 150 حرف.",
     "CategoryEnNameRequired": "اسم التصنيف بالإنجليزية مطلوب.",
-    "CategoryEnNameTooLong": "يجب ألا يزيد طول اسم التصنيف بالإنجليزية عن 150 حرف."
+    "CategoryEnNameTooLong": "يجب ألا يزيد طول اسم التصنيف بالإنجليزية عن 150 حرف.",
+    "CategoryAlreadyExists": "تصنيف الفيديو موجود بالفعل."
   },
   "ExpertMessages": {
     "ExpertNotFound": "الخبير غير موجود.",

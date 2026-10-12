@@ -90,14 +90,14 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
                     .ToList();
 
                 var categoryEns = pagedVideos.Items
-                    .Where(v => !v.CategoryId.HasValue && !string.IsNullOrWhiteSpace(v.CategoryEn))
-                    .Select(v => v.CategoryEn)
+                    .Select(v => !string.IsNullOrWhiteSpace(v.CategoryEnName) ? v.CategoryEnName : v.CategoryEn)
+                    .Where(c => !string.IsNullOrWhiteSpace(c))
                     .Distinct()
                     .ToList();
 
                 var categoryArs = pagedVideos.Items
-                    .Where(v => !v.CategoryId.HasValue && string.IsNullOrWhiteSpace(v.CategoryEn) && !string.IsNullOrWhiteSpace(v.CategoryAr))
-                    .Select(v => v.CategoryAr)
+                    .Select(v => !string.IsNullOrWhiteSpace(v.CategoryArName) ? v.CategoryArName : v.CategoryAr)
+                    .Where(c => !string.IsNullOrWhiteSpace(c))
                     .Distinct()
                     .ToList();
 
@@ -109,25 +109,10 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
                 {
                     var relatedQuery = _videoRepository.GetAllAsync(v => v.IsActive && (v.Category == null || v.Category.IsActive));
 
-                    if (hasCategoryIds && !hasCategoryEns && !hasCategoryArs)
-                    {
-                        relatedQuery = relatedQuery.Where(v => v.CategoryId.HasValue && categoryIds.Contains(v.CategoryId.Value));
-                    }
-                    else if (!hasCategoryIds && hasCategoryEns && !hasCategoryArs)
-                    {
-                        relatedQuery = relatedQuery.Where(v => categoryEns.Contains(v.CategoryEn));
-                    }
-                    else if (!hasCategoryIds && !hasCategoryEns && hasCategoryArs)
-                    {
-                        relatedQuery = relatedQuery.Where(v => categoryArs.Contains(v.CategoryAr));
-                    }
-                    else
-                    {
-                        relatedQuery = relatedQuery.Where(v =>
-                            (hasCategoryIds && v.CategoryId.HasValue && categoryIds.Contains(v.CategoryId.Value)) ||
-                            (hasCategoryEns && categoryEns.Contains(v.CategoryEn)) ||
-                            (hasCategoryArs && categoryArs.Contains(v.CategoryAr)));
-                    }
+                    relatedQuery = relatedQuery.Where(v =>
+                        (hasCategoryIds && v.CategoryId.HasValue && categoryIds.Contains(v.CategoryId.Value)) ||
+                        (hasCategoryEns && (categoryEns.Contains(v.CategoryEn) || (v.Category != null && categoryEns.Contains(v.Category.CategoryEnName)))) ||
+                        (hasCategoryArs && (categoryArs.Contains(v.CategoryAr) || (v.Category != null && categoryArs.Contains(v.Category.CategoryArName)))));
 
                     var relatedCandidates = await relatedQuery
                         .AsNoTracking()
@@ -160,23 +145,16 @@ namespace Stock_Exchange.Application.Features.Videos.Queries.GetAllVideos
 
                     foreach (var video in pagedVideos.Items)
                     {
-                        IEnumerable<VideoDto> matching;
-                        if (video.CategoryId.HasValue)
-                        {
-                            matching = relatedCandidates.Where(r => r.Id != video.Id && r.CategoryId == video.CategoryId.Value);
-                        }
-                        else if (!string.IsNullOrWhiteSpace(video.CategoryEn))
-                        {
-                            matching = relatedCandidates.Where(r => r.Id != video.Id && r.CategoryEn == video.CategoryEn);
-                        }
-                        else if (!string.IsNullOrWhiteSpace(video.CategoryAr))
-                        {
-                            matching = relatedCandidates.Where(r => r.Id != video.Id && r.CategoryAr == video.CategoryAr);
-                        }
-                        else
-                        {
-                            matching = Enumerable.Empty<VideoDto>();
-                        }
+                        var videoCatEn = !string.IsNullOrWhiteSpace(video.CategoryEnName) ? video.CategoryEnName : video.CategoryEn;
+                        var videoCatAr = !string.IsNullOrWhiteSpace(video.CategoryArName) ? video.CategoryArName : video.CategoryAr;
+
+                        var matching = relatedCandidates.Where(r =>
+                            r.Id != video.Id &&
+                            (
+                                (video.CategoryId.HasValue && r.CategoryId.HasValue && r.CategoryId.Value == video.CategoryId.Value) ||
+                                (!string.IsNullOrWhiteSpace(videoCatEn) && (r.CategoryEn == videoCatEn || r.CategoryEnName == videoCatEn)) ||
+                                (!string.IsNullOrWhiteSpace(videoCatAr) && (r.CategoryAr == videoCatAr || r.CategoryArName == videoCatAr))
+                            ));
 
                         video.RelatedVideos = matching
                             .Take(6)

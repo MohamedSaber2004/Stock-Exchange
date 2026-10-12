@@ -284,7 +284,8 @@
     "CategoryArNameRequired": "Arabic category name is required.",
     "CategoryArNameTooLong": "Arabic category name cannot exceed 150 characters.",
     "CategoryEnNameRequired": "English category name is required.",
-    "CategoryEnNameTooLong": "English category name cannot exceed 150 characters."
+    "CategoryEnNameTooLong": "English category name cannot exceed 150 characters.",
+    "CategoryAlreadyExists": "A video category with this name already exists."
   },
   "ExpertMessages": {
     "ExpertNotFound": "Expert not found.",

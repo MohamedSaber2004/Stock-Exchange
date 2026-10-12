@@ -325,6 +325,7 @@ namespace Stock_Exchange.Application.Localization
             public const string CategoryArNameTooLong = "VideoCategoryMessages.CategoryArNameTooLong";
             public const string CategoryEnNameRequired = "VideoCategoryMessages.CategoryEnNameRequired";
             public const string CategoryEnNameTooLong = "VideoCategoryMessages.CategoryEnNameTooLong";
+            public const string CategoryAlreadyExists = "VideoCategoryMessages.CategoryAlreadyExists";
         }
 
         public static class ExpertMessages
