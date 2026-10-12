@@ -9,6 +9,7 @@ namespace Stock_Exchange.Routes.V1
             public const string Base = BaseRoutes.Base + "/attachments";
 
             public const string Upload = "upload";
+            public const string UploadChunk = "upload-chunk";
             public const string UploadMultiple = "upload-multiple";
             public const string Download = "download";
             public const string Update = "update";

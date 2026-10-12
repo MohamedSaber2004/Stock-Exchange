@@ -1,3 +1,4 @@
+using Stock_Exchange.Application.Features.Attachments.Commands.UploadChunk;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
@@ -40,6 +41,31 @@ public class AttachmentsController : BaseController
             return FromResult(result);
 
         return CreatedResult(result.Data, LocalizationKeys.ActionResults.Created);
+    }
+
+    /// <summary>
+    /// Uploads a single chunk of an attachment file for large/resumable upload.
+    /// </summary>
+    /// <param name="command">The chunk upload request.</param>
+    /// <returns>The chunk upload status and stored file name if completed.</returns>
+    [HttpPost]
+    [Route(ApiRoutes.Attachments.UploadChunk)]
+    [Consumes("multipart/form-data")]
+    [DisableRequestSizeLimit]
+    [ProducesResponseType(typeof(ApiResponse<UploadChunkResultDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<UploadChunkResultDto>), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> UploadChunk([FromForm] UploadChunkCommand command)
+    {
+        var result = await Mediator.Send(command);
+
+        if (!result.IsSuccess)
+            return FromResult(result);
+
+        if (result.Data?.IsCompleted == true)
+            return CreatedResult(result.Data, LocalizationKeys.ActionResults.Created);
+
+        return OkResult(result.Data, LocalizationKeys.ActionResults.Ok);
     }
 
     /// <summary>

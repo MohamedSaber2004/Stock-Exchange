@@ -76,6 +76,7 @@ namespace Stock_Exchange.Application
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
             services.AddTransient<IValidator<UploadFileCommand>, UploadFileCommandValidator>();
+            services.AddTransient<IValidator<Stock_Exchange.Application.Features.Attachments.Commands.UploadChunk.UploadChunkCommand>, Stock_Exchange.Application.Features.Attachments.Commands.UploadChunk.UploadChunkCommandValidator>();
             services.AddTransient<IValidator<UploadMultipleFilesCommand>, UploadMultipleFilesCommandValidator>();
             services.AddTransient<IValidator<DownloadFileCommand>, DownloadFileCommandValidator>();
             services.AddTransient<IValidator<UpdateFileCommand>, UpdateFileCommandValidator>();

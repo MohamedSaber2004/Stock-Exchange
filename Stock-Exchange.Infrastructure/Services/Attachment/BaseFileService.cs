@@ -114,5 +114,136 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
 
             return Task.FromResult((false, _localizer[LocalizationKeys.Attachments.FileNotFound].Value));
         }
+
+        private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, SemaphoreSlim> _mergeLocks = new();
+
+        public async Task<(bool Saved, string TempPath)> SaveChunkAsync(string uploadId, int chunkIndex, IFormFile chunk)
+        {
+            if (chunk == null || chunk.Length == 0)
+                return (false, string.Empty);
+
+            var safeUploadId = Path.GetFileName(uploadId);
+            if (string.IsNullOrWhiteSpace(safeUploadId))
+                return (false, string.Empty);
+
+            try
+            {
+                var tempFolder = Path.Combine(WebRootPath, "temp_chunks", safeUploadId);
+                if (!Directory.Exists(tempFolder))
+                    Directory.CreateDirectory(tempFolder);
+
+                var chunkPath = Path.Combine(tempFolder, $"{chunkIndex}.part");
+                await using (var fileStream = new FileStream(chunkPath, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    await chunk.CopyToAsync(fileStream);
+                }
+
+                return (true, chunkPath);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to save chunk {ChunkIndex} for upload {UploadId}: {Message}", chunkIndex, uploadId, ex.Message);
+                return (false, string.Empty);
+            }
+        }
+
+        public bool AreAllChunksUploaded(string uploadId, int totalChunks)
+        {
+            var safeUploadId = Path.GetFileName(uploadId);
+            if (string.IsNullOrWhiteSpace(safeUploadId)) return false;
+
+            var tempFolder = Path.Combine(WebRootPath, "temp_chunks", safeUploadId);
+            if (!Directory.Exists(tempFolder)) return false;
+
+            for (int i = 0; i < totalChunks; i++)
+            {
+                if (!File.Exists(Path.Combine(tempFolder, $"{i}.part")))
+                    return false;
+            }
+            return true;
+        }
+
+        public async Task<(bool Merged, string Result)> MergeChunksAsync(string uploadId, int totalChunks, string fileName, string folderPath)
+        {
+            var safeUploadId = Path.GetFileName(uploadId);
+            if (string.IsNullOrWhiteSpace(safeUploadId))
+                return (false, _localizer[LocalizationKeys.Attachments.UploadFailed].Value);
+
+            var tempFolder = Path.Combine(WebRootPath, "temp_chunks", safeUploadId);
+            if (!Directory.Exists(tempFolder))
+                return (false, _localizer[LocalizationKeys.Attachments.UploadFailed].Value);
+
+            var sem = _mergeLocks.GetOrAdd(safeUploadId, _ => new SemaphoreSlim(1, 1));
+            await sem.WaitAsync();
+
+            try
+            {
+                for (int i = 0; i < totalChunks; i++)
+                {
+                    var partPath = Path.Combine(tempFolder, $"{i}.part");
+                    if (!File.Exists(partPath))
+                    {
+                        return (false, _localizer[LocalizationKeys.Attachments.UploadFailed].Value);
+                    }
+                }
+
+                string sanitizedFolder = folderPath.TrimStart('/', '\\');
+                string uploadsFolder = Path.Combine(WebRootPath, sanitizedFolder);
+                if (!Directory.Exists(uploadsFolder))
+                    Directory.CreateDirectory(uploadsFolder);
+
+                string uniqueFileName = GetUniqueFileName(fileName);
+                string finalPath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                await using (var outputStream = new FileStream(finalPath, FileMode.Create, FileAccess.Write, FileShare.None, 65536, true))
+                {
+                    for (int i = 0; i < totalChunks; i++)
+                    {
+                        var partPath = Path.Combine(tempFolder, $"{i}.part");
+                        await using (var partStream = new FileStream(partPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                        {
+                            await partStream.CopyToAsync(outputStream);
+                        }
+                    }
+                }
+
+                try
+                {
+                    Directory.Delete(tempFolder, true);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to delete temp chunk folder {TempFolder}: {Message}", tempFolder, ex.Message);
+                }
+
+                return (true, Path.Combine(sanitizedFolder, uniqueFileName).Replace("\\", "/"));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to merge chunks for upload {UploadId}: {Message}", uploadId, ex.Message);
+                return (false, _localizer[LocalizationKeys.Attachments.UploadFailed].Value);
+            }
+            finally
+            {
+                sem.Release();
+                _mergeLocks.TryRemove(safeUploadId, out _);
+            }
+        }
+
+        public bool DeleteTempChunks(string uploadId)
+        {
+            try
+            {
+                var safeUploadId = Path.GetFileName(uploadId);
+                var tempFolder = Path.Combine(WebRootPath, "temp_chunks", safeUploadId);
+                if (Directory.Exists(tempFolder))
+                {
+                    Directory.Delete(tempFolder, true);
+                    return true;
+                }
+            }
+            catch { }
+            return false;
+        }
     }
 }
