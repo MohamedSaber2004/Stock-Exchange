@@ -1,4 +1,4 @@
-using Asp.Versioning;
+﻿using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Identity;
@@ -250,6 +250,10 @@ namespace Stock_Exchange
             builder.WebHost.ConfigureKestrel(options =>
             {
                 options.Limits.MaxRequestBodySize = 4294967295L; // 4GB
+                options.Limits.KeepAliveTimeout = TimeSpan.FromHours(1);
+                options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(30);
+                options.Limits.MinRequestBodyDataRate = null;
+                options.Limits.MinResponseDataRate = null;
             });
 
             builder.Services.AddEndpointsApiExplorer();
@@ -441,7 +445,7 @@ namespace Stock_Exchange
                 }
             }
 
-            // تشتغل بس لو شغّلت البروجيكت بـ: dotnet run --seed
+            // ØªØ´ØªØºÙ„ Ø¨Ø³ Ù„Ùˆ Ø´ØºÙ‘Ù„Øª Ø§Ù„Ø¨Ø±ÙˆØ¬ÙŠÙƒØª Ø¨Ù€: dotnet run --seed
             if (args.Contains("--seed"))
             {
                 Log.Information("=== Running Database Seeding ===");
@@ -495,3 +499,4 @@ namespace Stock_Exchange
         }
     }
 }
+
