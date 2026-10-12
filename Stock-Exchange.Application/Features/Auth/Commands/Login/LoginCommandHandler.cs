@@ -53,11 +53,8 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
                 .IgnoreQueryFilters()
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == request.Email.Trim().ToUpperInvariant(), cancellationToken);
 
-            if (user is null)
+            if (user is null || user.IsDeleted)
                 throw new UnAuthorizedException(_localizer[LocalizationKeys.AuthMessages.InvalidCredentials]);
-
-            if (user.IsDeleted)
-                throw new ForbiddenException(_localizer[LocalizationKeys.AuthMessages.AccountDeleted]);
 
             if (!user.IsActive)
                 throw new ForbiddenException(_localizer[LocalizationKeys.AuthMessages.AccountDeactivated]);

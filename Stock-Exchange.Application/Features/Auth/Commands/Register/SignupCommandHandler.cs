@@ -56,43 +56,116 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
                 throw new NotFoundException(_localizer[LocalizationKeys.CountryMessages.CountryNotFound]);
 
             var normalizedEmail = request.Email.Trim().ToUpperInvariant();
-            var emailExists = await _userManager.Users
-                .IgnoreQueryFilters()
-                .AnyAsync(u => u.NormalizedEmail == normalizedEmail, cancellationToken);
+            var activeEmailExists = await _userManager.Users
+                .AnyAsync(u => !u.IsDeleted && u.NormalizedEmail == normalizedEmail, cancellationToken);
 
-            if (emailExists)
+            if (activeEmailExists)
                 throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.EmailAlreadyExists]);
 
             var cleanPhone = CleanPhoneNumber(request.PhoneNumber);
             var rawPhone = request.PhoneNumber.Trim();
 
-            var phoneExists = await _userManager.Users
-                .IgnoreQueryFilters()
-                .AnyAsync(u => u.PhoneNumber == rawPhone || u.PhoneNumber == cleanPhone,
+            var activePhoneExists = await _userManager.Users
+                .AnyAsync(u => !u.IsDeleted && (u.PhoneNumber == rawPhone || u.PhoneNumber == cleanPhone),
                           cancellationToken);
 
-            if (phoneExists)
+            if (activePhoneExists)
                 throw new ConflictException(_localizer[LocalizationKeys.AuthMessages.PhoneNumberAlreadyExists]);
 
-            var user = new ApplicationUser
-            {
-                UserName = request.Email.Trim(),
-                Email = request.Email.Trim(),
-                PhoneNumber = cleanPhone,
-                CountryId = country.Id
-            };
-            user.UpdateFullName(request.FullName);
+            var deletedUser = await _userManager.Users
+                .IgnoreQueryFilters()
+                .FirstOrDefaultAsync(u => u.IsDeleted && u.NormalizedEmail == normalizedEmail, cancellationToken);
 
-            var createResult = await _userManager.CreateAsync(user, request.Password);
-            if (!createResult.Succeeded)
+            ApplicationUser user;
+            if (deletedUser != null)
             {
-                var errors = createResult.Errors
-                    .GroupBy(e => e.Code)
-                    .ToDictionary(g => g.Key, g => g.Select(e => e.Description).ToArray());
+                user = deletedUser;
+                user.UserName = request.Email.Trim();
+                user.NormalizedUserName = normalizedEmail;
+                user.Email = request.Email.Trim();
+                user.NormalizedEmail = normalizedEmail;
+                user.PhoneNumber = cleanPhone;
+                user.CountryId = country.Id;
+                user.UpdateFullName(request.FullName);
+                user.Activate();
+                user.IncrementTokenVersion();
+                user.MarkAsUpdated(user.Email ?? "System");
 
-                throw new BadRequestException(
-                    errors,
-                    LocalizationKeys.AuthMessages.UserCreationFailed);
+                if (await _userManager.HasPasswordAsync(user))
+                {
+                    var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var resetResult = await _userManager.ResetPasswordAsync(user, resetToken, request.Password);
+                    if (!resetResult.Succeeded)
+                    {
+                        var errors = resetResult.Errors
+                            .GroupBy(e => e.Code)
+                            .ToDictionary(g => g.Key, g => g.Select(e => e.Description).ToArray());
+
+                        throw new BadRequestException(
+                            errors,
+                            LocalizationKeys.AuthMessages.UserCreationFailed);
+                    }
+                }
+                else
+                {
+                    var addPasswordResult = await _userManager.AddPasswordAsync(user, request.Password);
+                    if (!addPasswordResult.Succeeded)
+                    {
+                        var errors = addPasswordResult.Errors
+                            .GroupBy(e => e.Code)
+                            .ToDictionary(g => g.Key, g => g.Select(e => e.Description).ToArray());
+
+                        throw new BadRequestException(
+                            errors,
+                            LocalizationKeys.AuthMessages.UserCreationFailed);
+                    }
+                }
+
+                var updateResult = await _userManager.UpdateAsync(user);
+                if (!updateResult.Succeeded)
+                {
+                    var errors = updateResult.Errors
+                        .GroupBy(e => e.Code)
+                        .ToDictionary(g => g.Key, g => g.Select(e => e.Description).ToArray());
+
+                    throw new BadRequestException(
+                        errors,
+                        LocalizationKeys.AuthMessages.UserCreationFailed);
+                }
+
+                var oldTokens = await _refreshTokenRepository
+                    .GetAllAsync(x => x.UserId == user.Id && !x.IsRevoked)
+                    .ToListAsync(cancellationToken);
+
+                foreach (var token in oldTokens)
+                {
+                    token.Revoke();
+                }
+
+                await _unitOfWork.SaveChangesAsync();
+            }
+            else
+            {
+                user = new ApplicationUser
+                {
+                    UserName = request.Email.Trim(),
+                    Email = request.Email.Trim(),
+                    PhoneNumber = cleanPhone,
+                    CountryId = country.Id
+                };
+                user.UpdateFullName(request.FullName);
+
+                var createResult = await _userManager.CreateAsync(user, request.Password);
+                if (!createResult.Succeeded)
+                {
+                    var errors = createResult.Errors
+                        .GroupBy(e => e.Code)
+                        .ToDictionary(g => g.Key, g => g.Select(e => e.Description).ToArray());
+
+                    throw new BadRequestException(
+                        errors,
+                        LocalizationKeys.AuthMessages.UserCreationFailed);
+                }
             }
 
             var customerRole = UserType.Customer.ToString();
@@ -101,7 +174,19 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
                 await _roleManager.CreateAsync(new IdentityRole<Guid>(customerRole));
             }
 
-            await _userManager.AddToRoleAsync(user, customerRole);
+            var existingRoles = await _userManager.GetRolesAsync(user);
+            foreach (var role in existingRoles)
+            {
+                if (!string.Equals(role, customerRole, StringComparison.OrdinalIgnoreCase))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, role);
+                }
+            }
+
+            if (!await _userManager.IsInRoleAsync(user, customerRole))
+            {
+                await _userManager.AddToRoleAsync(user, customerRole);
+            }
 
             var roles = new List<string> { customerRole };
             var accessToken = _jwtTokenService.GenerateAccessToken(user, roles);

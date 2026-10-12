@@ -47,9 +47,8 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
 
                     var normalizedEmail = email.Trim().ToUpperInvariant();
                     var emailExists = await userManager.Users
-                        .IgnoreQueryFilters()
                         .AsNoTracking()
-                        .AnyAsync(u => u.NormalizedEmail == normalizedEmail, cancellationToken);
+                        .AnyAsync(u => !u.IsDeleted && u.NormalizedEmail == normalizedEmail, cancellationToken);
 
                     return !emailExists;
                 })
@@ -79,9 +78,8 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
                     var cleanPhone = CleanPhoneNumber(rawPhone);
 
                     var phoneExists = await userManager.Users
-                        .IgnoreQueryFilters()
                         .AsNoTracking()
-                        .AnyAsync(u => u.PhoneNumber == rawPhone || u.PhoneNumber == cleanPhone,
+                        .AnyAsync(u => !u.IsDeleted && (u.PhoneNumber == rawPhone || u.PhoneNumber == cleanPhone),
                                   cancellationToken);
 
                     return !phoneExists;
