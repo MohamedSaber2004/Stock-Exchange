@@ -3747,6 +3747,352 @@
           ]
         },
         {
+          "name": "Uploads a single chunk of an attachment file for large/resumable upload.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "ar",
+                "description": "Preferred language for the response. Supported values: `ar`, `en`."
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data",
+                "description": ""
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/attachments/upload-chunk",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "attachments",
+                "upload-chunk"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "description": "Uploads a single chunk of an attachment file for large/resumable upload.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"UploadId\": \"string\",\n  \"ChunkIndex\": 0,\n  \"TotalChunks\": 0,\n  \"FileName\": \"string\",\n  \"MediaType\": 0,\n  \"Place\": 0,\n  \"Chunk\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK - success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/attachments/upload-chunk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "attachments",
+                    "upload-chunk"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Uploads a single chunk of an attachment file for large/resumable upload.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UploadId\": \"string\",\n  \"ChunkIndex\": 0,\n  \"TotalChunks\": 0,\n  \"FileName\": \"string\",\n  \"MediaType\": 0,\n  \"Place\": 0,\n  \"Chunk\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"isCompleted\": true,\n    \"storedFileName\": \"string\",\n    \"chunkIndex\": 0,\n    \"totalChunks\": 0\n  },\n  \"message\": \"Operation completed successfully.\",\n  \"statusCode\": 200\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "201 Created - success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/attachments/upload-chunk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "attachments",
+                    "upload-chunk"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Uploads a single chunk of an attachment file for large/resumable upload.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UploadId\": \"string\",\n  \"ChunkIndex\": 0,\n  \"TotalChunks\": 0,\n  \"FileName\": \"string\",\n  \"MediaType\": 0,\n  \"Place\": 0,\n  \"Chunk\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"isSuccess\": true,\n  \"errors\": {},\n  \"data\": {\n    \"isCompleted\": true,\n    \"storedFileName\": \"string\",\n    \"chunkIndex\": 0,\n    \"totalChunks\": 0\n  },\n  \"message\": \"Resource created successfully.\",\n  \"statusCode\": 201\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - validationError",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/attachments/upload-chunk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "attachments",
+                    "upload-chunk"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Uploads a single chunk of an attachment file for large/resumable upload.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UploadId\": \"string\",\n  \"ChunkIndex\": 0,\n  \"TotalChunks\": 0,\n  \"FileName\": \"string\",\n  \"MediaType\": 0,\n  \"Place\": 0,\n  \"Chunk\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"email\": [\n      \"Invalid email address format.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"One or more validation errors occurred.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "400 Bad Request - businessError",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/attachments/upload-chunk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "attachments",
+                    "upload-chunk"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Uploads a single chunk of an attachment file for large/resumable upload.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UploadId\": \"string\",\n  \"ChunkIndex\": 0,\n  \"TotalChunks\": 0,\n  \"FileName\": \"string\",\n  \"MediaType\": 0,\n  \"Place\": 0,\n  \"Chunk\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"isSuccess\": false,\n  \"errors\": {\n    \"General\": [\n      \"Invalid refresh token.\"\n    ]\n  },\n  \"data\": null,\n  \"message\": \"The request is invalid.\",\n  \"statusCode\": 400\n}",
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "401 Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/attachments/upload-chunk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "attachments",
+                    "upload-chunk"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Uploads a single chunk of an attachment file for large/resumable upload.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UploadId\": \"string\",\n  \"ChunkIndex\": 0,\n  \"TotalChunks\": 0,\n  \"FileName\": \"string\",\n  \"MediaType\": 0,\n  \"Place\": 0,\n  \"Chunk\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one.",
+              "code": 401,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "name": "403 Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "description": "Preferred language for the response. Supported values: `ar`, `en`."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data",
+                    "description": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/attachments/upload-chunk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "attachments",
+                    "upload-chunk"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "description": "Uploads a single chunk of an attachment file for large/resumable upload.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UploadId\": \"string\",\n  \"ChunkIndex\": 0,\n  \"TotalChunks\": 0,\n  \"FileName\": \"string\",\n  \"MediaType\": 0,\n  \"Place\": 0,\n  \"Chunk\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated.",
+              "code": 403,
+              "header": [],
+              "body": "",
+              "_postman_previewlanguage": "text"
+            }
+          ]
+        },
+        {
           "name": "Uploads multiple attachment files of the same media type.",
           "request": {
             "method": "POST",

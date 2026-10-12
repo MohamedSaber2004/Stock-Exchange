@@ -1951,6 +1951,199 @@
         ]
       }
     },
+    "/api/v1/attachments/upload-chunk": {
+      "post": {
+        "tags": [
+          "Attachments"
+        ],
+        "summary": "Uploads a single chunk of an attachment file for large/resumable upload.",
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language for the response. Supported values: `ar`, `en`.",
+            "schema": {
+              "enum": [
+                "ar",
+                "en"
+              ],
+              "type": "string",
+              "default": "ar"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "UploadId": {
+                    "type": "string"
+                  },
+                  "ChunkIndex": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "TotalChunks": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "FileName": {
+                    "type": "string"
+                  },
+                  "MediaType": {
+                    "$ref": "#/components/schemas/MediaType"
+                  },
+                  "Place": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Chunk": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "UploadId": {
+                  "style": "form"
+                },
+                "ChunkIndex": {
+                  "style": "form"
+                },
+                "TotalChunks": {
+                  "style": "form"
+                },
+                "FileName": {
+                  "style": "form"
+                },
+                "MediaType": {
+                  "style": "form"
+                },
+                "Place": {
+                  "style": "form"
+                },
+                "Chunk": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadChunkResultDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "isCompleted": true,
+                        "storedFileName": "string",
+                        "chunkIndex": 0,
+                        "totalChunks": 0
+                      },
+                      "message": "Operation completed successfully.",
+                      "statusCode": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadChunkResultDtoApiResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Success",
+                    "value": {
+                      "success": true,
+                      "isSuccess": true,
+                      "errors": {},
+                      "data": {
+                        "isCompleted": true,
+                        "storedFileName": "string",
+                        "chunkIndex": 0,
+                        "totalChunks": 0
+                      },
+                      "message": "Resource created successfully.",
+                      "statusCode": 201
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                },
+                "examples": {
+                  "validationError": {
+                    "summary": "Validation error (field-level)",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "email": [
+                          "Invalid email address format."
+                        ]
+                      },
+                      "data": null,
+                      "message": "One or more validation errors occurred.",
+                      "statusCode": 400
+                    }
+                  },
+                  "businessError": {
+                    "summary": "Business rule violation",
+                    "value": {
+                      "success": false,
+                      "isSuccess": false,
+                      "errors": {
+                        "General": [
+                          "Invalid refresh token."
+                        ]
+                      },
+                      "data": null,
+                      "message": "The request is invalid.",
+                      "statusCode": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — missing, malformed, expired or revoked access token. Log in (or refresh) to obtain a new one."
+          },
+          "403": {
+            "description": "Forbidden — valid token, but the account lacks the required role/permission or is deactivated."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/attachments/upload-multiple": {
       "post": {
         "tags": [
@@ -17959,6 +18152,61 @@
             "type": "string",
             "format": "uuid",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UploadChunkResultDto": {
+        "type": "object",
+        "properties": {
+          "isCompleted": {
+            "type": "boolean"
+          },
+          "storedFileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "chunkIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalChunks": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UploadChunkResultDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UploadChunkResultDto"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
