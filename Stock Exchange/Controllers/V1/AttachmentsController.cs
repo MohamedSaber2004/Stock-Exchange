@@ -28,6 +28,8 @@ public class AttachmentsController : BaseController
     [HttpPost]
     [Route(ApiRoutes.Attachments.Upload)]
     [Consumes("multipart/form-data")]
+    [DisableRequestSizeLimit]
+    [RequestFormLimits(MultipartBodyLengthLimit = 4294967295L)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Upload([FromForm] UploadFileCommand command)
@@ -50,6 +52,8 @@ public class AttachmentsController : BaseController
     [HttpPost]
     [Route(ApiRoutes.Attachments.UploadMultiple)]
     [Consumes("multipart/form-data")]
+    [DisableRequestSizeLimit]
+    [RequestFormLimits(MultipartBodyLengthLimit = 4294967295L)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> UploadMultiple([FromForm] UploadMultipleFilesCommand command)
