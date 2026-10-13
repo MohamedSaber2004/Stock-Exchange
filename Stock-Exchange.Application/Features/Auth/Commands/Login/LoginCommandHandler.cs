@@ -112,7 +112,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Login
                 user.PhoneNumber ?? string.Empty,
                 string.Join(",", roles),
                 user.Id,
-                user.ProfilePictureUrl);
+                !string.IsNullOrWhiteSpace(user.ProfilePictureUrl) ? user.ProfilePictureUrl : ApplicationUser.DefaultProfilePicture);
         }
     }
 }

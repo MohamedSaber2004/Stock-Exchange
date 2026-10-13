@@ -4,6 +4,7 @@ using Stock_Exchange.Application.Common.Extensions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Users.DTOs;
+using Stock_Exchange.Domain.Entities;
 using Stock_Exchange.Domain.Enums;
 
 namespace Stock_Exchange.Application.Features.Users.Queries.GetAllUsers
@@ -73,7 +74,7 @@ namespace Stock_Exchange.Application.Features.Users.Queries.GetAllUsers
                     FullName = x.User.FullName,
                     Email = x.User.Email ?? string.Empty,
                     PhoneNumber = x.User.PhoneNumber,
-                    ProfilePictureUrl = x.User.ProfilePictureUrl,
+                    ProfilePictureUrl = !string.IsNullOrEmpty(x.User.ProfilePictureUrl) ? x.User.ProfilePictureUrl : ApplicationUser.DefaultProfilePicture,
                     UserType = x.RoleName == "Admin" ? UserType.Admin : UserType.Customer,
                     IsActive = x.User.IsActive,
                     CreatedAt = x.User.CreatedAt,

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -71,7 +71,7 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
 
         public async Task<bool> DeleteImage(string? fileName, int place)
         {
-            if (string.IsNullOrWhiteSpace(fileName))
+            if (string.IsNullOrWhiteSpace(fileName) || fileName.Contains("default-avatar", StringComparison.OrdinalIgnoreCase))
                 return false;
 
             if (fileName.Contains('_'))

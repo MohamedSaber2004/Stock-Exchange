@@ -17,6 +17,8 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
 {
     public sealed class SignupCommandHandler : IRequestHandler<SignupCommand, AuthResponseDto>
     {
+        private const int ProfilePicturePlace = 0;
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private readonly ICountryRepository _countryRepository;
@@ -25,6 +27,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
         private readonly IUnitOfWork _unitOfWork;
         private readonly JwtSettings _jwtSettings;
         private readonly IStringLocalizer<Messages> _localizer;
+        private readonly IImageValidator _imageValidator;
 
         public SignupCommandHandler(
             UserManager<ApplicationUser> userManager,
@@ -34,7 +37,8 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
             IUserRefreshTokenRepository refreshTokenRepository,
             IUnitOfWork unitOfWork,
             IOptions<JwtSettings> jwtSettings,
-            IStringLocalizer<Messages> localizer)
+            IStringLocalizer<Messages> localizer,
+            IImageValidator imageValidator)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -44,6 +48,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
             _unitOfWork = unitOfWork;
             _jwtSettings = jwtSettings.Value;
             _localizer = localizer;
+            _imageValidator = imageValidator;
         }
 
         public async Task<AuthResponseDto> Handle(SignupCommand request, CancellationToken cancellationToken)
@@ -87,6 +92,15 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
                 user.PhoneNumber = cleanPhone;
                 user.CountryId = country.Id;
                 user.UpdateFullName(request.FullName);
+
+                if (!string.IsNullOrWhiteSpace(user.ProfilePictureUrl) &&
+                    !user.ProfilePictureUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                    !user.ProfilePictureUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                {
+                    await _imageValidator.DeleteImage(user.ProfilePictureUrl, ProfilePicturePlace);
+                }
+                user.UpdateProfilePicture(null);
+
                 user.Activate();
                 user.IncrementTokenVersion();
                 user.MarkAsUpdated(user.Email ?? "System");
@@ -208,7 +222,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.Register
                 user.PhoneNumber ?? string.Empty,
                 customerRole,
                 user.Id,
-                user.ProfilePictureUrl);
+                !string.IsNullOrWhiteSpace(user.ProfilePictureUrl) ? user.ProfilePictureUrl : ApplicationUser.DefaultProfilePicture);
         }
 
         private static string CleanPhoneNumber(string phoneNumber)

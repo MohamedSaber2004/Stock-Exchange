@@ -155,7 +155,7 @@ namespace Stock_Exchange.Application.Features.Users.Commands.UpdateUser
                 FullName = user.FullName,
                 Email = user.Email ?? string.Empty,
                 PhoneNumber = user.PhoneNumber,
-                ProfilePictureUrl = user.ProfilePictureUrl,
+                ProfilePictureUrl = !string.IsNullOrWhiteSpace(user.ProfilePictureUrl) ? user.ProfilePictureUrl : ApplicationUser.DefaultProfilePicture,
                 UserType = request.UserType,
                 IsActive = user.IsActive,
                 CreatedAt = user.CreatedAt,

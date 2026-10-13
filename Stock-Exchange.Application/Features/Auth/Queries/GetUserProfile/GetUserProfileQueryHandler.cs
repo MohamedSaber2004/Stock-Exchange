@@ -39,7 +39,7 @@ namespace Stock_Exchange.Application.Features.Auth.Queries.GetUserProfile
                     u.Email ?? string.Empty,
                     u.PhoneNumber ?? string.Empty,
                     u.CountryId,
-                    u.ProfilePictureUrl,
+                    !string.IsNullOrEmpty(u.ProfilePictureUrl) ? u.ProfilePictureUrl : ApplicationUser.DefaultProfilePicture,
                     u.Language))
                 .FirstOrDefaultAsync(cancellationToken);
 

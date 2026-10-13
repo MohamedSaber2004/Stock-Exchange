@@ -14,21 +14,26 @@ namespace Stock_Exchange.Application.Features.Users.Commands.DeleteUser
 {
     public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Result<bool>>
     {
+        private const int ProfilePicturePlace = 0;
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserRefreshTokenRepository _refreshTokenRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICurrentUserService _currentUserService;
+        private readonly IImageValidator _imageValidator;
 
         public DeleteUserCommandHandler(
             UserManager<ApplicationUser> userManager,
             IUserRefreshTokenRepository refreshTokenRepository,
             IUnitOfWork unitOfWork,
-            ICurrentUserService currentUserService)
+            ICurrentUserService currentUserService,
+            IImageValidator imageValidator)
         {
             _userManager = userManager;
             _refreshTokenRepository = refreshTokenRepository;
             _unitOfWork = unitOfWork;
             _currentUserService = currentUserService;
+            _imageValidator = imageValidator;
         }
 
         public async Task<Result<bool>> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
@@ -53,6 +58,14 @@ namespace Stock_Exchange.Application.Features.Users.Commands.DeleteUser
             var deletedBy = _currentUserService.UserId != Guid.Empty
                 ? _currentUserService.UserId.ToString()
                 : "Admin";
+
+            if (!string.IsNullOrWhiteSpace(user.ProfilePictureUrl) &&
+                !user.ProfilePictureUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                !user.ProfilePictureUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                await _imageValidator.DeleteImage(user.ProfilePictureUrl, ProfilePicturePlace);
+            }
+            user.UpdateProfilePicture(null);
 
             user.MarkAsDeleted(deletedBy);
             user.IncrementTokenVersion();

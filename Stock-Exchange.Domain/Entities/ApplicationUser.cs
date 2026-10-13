@@ -19,6 +19,8 @@ namespace Stock_Exchange.Domain.Entities
         public bool IsDeleted { get; set; }
         public bool IsActive { get; set; } = true;
 
+        public const string DefaultProfilePicture = "0_default-avatar.jpg";
+
         public string FullName { get; private set; } = null!;
         public string? ProfilePictureUrl { get; private set; }
         public string? PasswordResetToken { get; private set; }

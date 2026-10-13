@@ -1,8 +1,9 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Search.DTOs;
+using Stock_Exchange.Domain.Entities;
 using Stock_Exchange.Domain.Enums;
 
 namespace Stock_Exchange.Application.Features.Search.Queries.GlobalSearch;
@@ -125,7 +126,7 @@ public class GlobalSearchQueryHandler : IRequestHandler<GlobalSearchQuery, Resul
                 Title = u.FullName,
                 Subtitle = u.Email,
                 Category = u.PhoneNumber,
-                ImageUrl = u.ProfilePictureUrl,
+                ImageUrl = !string.IsNullOrEmpty(u.ProfilePictureUrl) ? u.ProfilePictureUrl : ApplicationUser.DefaultProfilePicture,
                 Type = "user",
                 TargetRoute = $"/users/{u.Id}",
                 Date = u.CreatedAt,

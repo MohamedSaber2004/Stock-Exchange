@@ -100,6 +100,14 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
 
             if (user.IsDeleted || !user.IsActive)
             {
+                if (user.IsDeleted && !string.IsNullOrWhiteSpace(user.ProfilePictureUrl) &&
+                    !user.ProfilePictureUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                    !user.ProfilePictureUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                {
+                    await _imageValidator.DeleteImage(user.ProfilePictureUrl, ProfilePicturePlace);
+                    user.UpdateProfilePicture(null);
+                }
+
                 user.Activate();
                 user.ConfirmEmail();
                 user.MarkAsUpdated(user.Email ?? user.Id.ToString());
@@ -147,7 +155,7 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.LoginWithGoogle
                 user.PhoneNumber ?? string.Empty,
                 string.Join(",", roles),
                 user.Id,
-                user.ProfilePictureUrl);
+                !string.IsNullOrWhiteSpace(user.ProfilePictureUrl) ? user.ProfilePictureUrl : ApplicationUser.DefaultProfilePicture);
         }
 
         private async Task StoreGoogleProfilePictureAsync(ApplicationUser user, GoogleUserProfile profile, CancellationToken cancellationToken)
