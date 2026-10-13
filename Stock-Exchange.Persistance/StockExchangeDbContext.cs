@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -112,7 +112,7 @@ namespace Stock_Exchange.Persistance
                 }
             }
 
-            // 3. ApplicationUser auditing & soft-delete transformation
+            // 3. ApplicationUser auditing (allow hard delete for Deleted state)
             foreach (var entry in ChangeTracker.Entries().Where(e => e.Entity is ApplicationUser && e.State != EntityState.Detached))
             {
                 var user = (ApplicationUser)entry.Entity;
@@ -126,13 +126,6 @@ namespace Stock_Exchange.Persistance
                     case EntityState.Modified:
                         user.UpdatedAt = DateTime.UtcNow;
                         user.UpdatedBy = userId;
-                        break;
-                    case EntityState.Deleted:
-                        entry.State = EntityState.Modified;
-                        user.IsDeleted = true;
-                        user.DeletedAt = DateTime.UtcNow;
-                        user.DeletedBy = userId;
-                        user.IsActive = false;
                         break;
                 }
             }
