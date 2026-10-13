@@ -9,6 +9,7 @@ namespace Stock_Exchange.Services
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
+
         public CurrentLanguageService(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
