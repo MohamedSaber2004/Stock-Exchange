@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -267,6 +267,14 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
             }
             catch { }
             return false;
+        }
+
+        public string GetPhysicalPath(string relativePath)
+        {
+            if (string.IsNullOrWhiteSpace(relativePath))
+                return string.Empty;
+
+            return Path.Combine(WebRootPath, relativePath.TrimStart('/', '\\').Replace('/', Path.DirectorySeparatorChar));
         }
     }
 }

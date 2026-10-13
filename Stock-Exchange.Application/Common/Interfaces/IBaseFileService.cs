@@ -14,5 +14,6 @@ namespace Stock_Exchange.Application.Common.Interfaces
         bool AreAllChunksUploaded(string uploadId, int totalChunks);
         Task<(bool Merged, string Result)> MergeChunksAsync(string uploadId, int totalChunks, string fileName, string folderPath);
         bool DeleteTempChunks(string uploadId);
+        string GetPhysicalPath(string relativePath);
     }
 }
