@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -12,20 +12,25 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
 {
     public class UpdateUserInfoCommandHandler : IRequestHandler<UpdateUserInfoCommand, string>
     {
+        private const int ProfilePicturePlace = 0;
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ICurrentUserService _currentUserService;
         private readonly ICountryRepository _countryRepository;
+        private readonly IImageValidator _imageValidator;
         private readonly IStringLocalizer<Messages> _localizer;
 
         public UpdateUserInfoCommandHandler(
             UserManager<ApplicationUser> userManager,
             ICurrentUserService currentUserService,
             ICountryRepository countryRepository,
+            IImageValidator imageValidator,
             IStringLocalizer<Messages> localizer)
         {
             _userManager = userManager;
             _currentUserService = currentUserService;
             _countryRepository = countryRepository;
+            _imageValidator = imageValidator;
             _localizer = localizer;
         }
 
@@ -88,9 +93,23 @@ namespace Stock_Exchange.Application.Features.Auth.Commands.UpdateUserInfo
                 user.UpdateFullName(request.FullName);
             }
 
-            if (request.ProfilePictureUrl != null)
+            if (request.IsProfilePictureUrlSpecified)
             {
-                user.UpdateProfilePicture(string.IsNullOrWhiteSpace(request.ProfilePictureUrl) ? null : request.ProfilePictureUrl.Trim());
+                var newProfilePicture = string.IsNullOrWhiteSpace(request.ProfilePictureUrl)
+                    ? null
+                    : request.ProfilePictureUrl.Trim();
+
+                if (!string.Equals(user.ProfilePictureUrl, newProfilePicture, StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrWhiteSpace(user.ProfilePictureUrl) &&
+                        !user.ProfilePictureUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                        !user.ProfilePictureUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                    {
+                        await _imageValidator.DeleteImage(user.ProfilePictureUrl, ProfilePicturePlace);
+                    }
+
+                    user.UpdateProfilePicture(newProfilePicture);
+                }
             }
 
             if (request.Language.HasValue)
