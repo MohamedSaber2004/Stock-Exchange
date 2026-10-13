@@ -136,6 +136,8 @@ namespace Stock_Exchange.Application
 
             services.AddSingleton<ILocalizationProvider, JsonLocalizationProvider>();
 
+            services.AddScoped<IUserPurgeService, UserPurgeService>();
+
             UploadPaths.Configure(configuration);
 
             return services;
