@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -43,6 +43,8 @@ namespace Stock_Exchange.Infrastructure
             services.AddScoped<IFileValidator, FileValidator>();
             services.AddScoped<IImageValidator, ImageValidator>();
             services.AddScoped<IVideoValidator, VideoValidator>();
+            services.AddScoped<IVideoCompressorService, VideoCompressorService>();
+            services.Configure<VideoCompressionOptions>(configuration.GetSection("VideoCompression"));
             services.AddScoped<IJwtTokenService, JwtTokenService>();
             services.AddScoped<IGoogleAuth, GoogleAuth>();
             services.AddSingleton<GoogleIdTokenValidator>();
