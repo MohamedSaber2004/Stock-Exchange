@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Domain.Entities;
@@ -208,10 +208,10 @@ namespace Stock_Exchange.Persistance.Services
                     $"Deleted user account: {userDisplayName}",
                     $"تم حذف حساب المستخدم {userDisplayName} ({user.Email})",
                     $"Deleted user account for {userDisplayName} ({user.Email})",
-                    LogUserId: user.Id,
-                    LogUserName: userDisplayName,
-                    LogUserEmail: user.Email,
-                    UserProfilePictureUrl: user.ProfilePictureUrl);
+                    LogUserId: currentUserId,
+                    LogUserName: currentUserName,
+                    LogUserEmail: null,
+                    UserProfilePictureUrl: null);
             }
 
             // Modified
