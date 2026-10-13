@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Services;
@@ -11,11 +11,16 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
         private static readonly string[] AllowedExtensions = [".mp4", ".avi", ".mkv", ".mov", ".wmv"];
 
         private readonly IBaseFileService _baseFileService;
+        private readonly IVideoCompressorService _videoCompressorService;
         private readonly IStringLocalizer<Messages> _localizer;
 
-        public VideoValidator(IBaseFileService baseFileService, IStringLocalizer<Messages> localizer)
+        public VideoValidator(
+            IBaseFileService baseFileService,
+            IVideoCompressorService videoCompressorService,
+            IStringLocalizer<Messages> localizer)
         {
             _baseFileService = baseFileService;
+            _videoCompressorService = videoCompressorService;
             _localizer = localizer;
         }
 
@@ -27,7 +32,10 @@ namespace Stock_Exchange.Infrastructure.Services.Attachment
             var (uploaded, result) = await _baseFileService.UploadFileAsync(file, GetFolderPath(place));
             if (uploaded)
             {
-                return (true, $"{place}_{Path.GetFileName(result)}");
+                var physicalPath = _baseFileService.GetPhysicalPath(result);
+                var (_, finalFilePath) = await _videoCompressorService.CompressVideoAsync(physicalPath);
+                var finalFileName = Path.GetFileName(finalFilePath);
+                return (true, $"{place}_{finalFileName}");
             }
             return (false, result);
         }

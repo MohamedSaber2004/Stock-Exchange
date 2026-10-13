@@ -16,13 +16,16 @@ namespace Stock_Exchange.Application.Features.Attachments.Commands.UploadChunk
         private static readonly string[] AllowedAudioExtensions = [".mp3", ".wav", ".ogg", ".aac", ".m4a"];
 
         private readonly IBaseFileService _baseFileService;
+        private readonly IVideoCompressorService _videoCompressorService;
         private readonly IStringLocalizer<Messages> _localizer;
 
         public UploadChunkCommandHandler(
             IBaseFileService baseFileService,
+            IVideoCompressorService videoCompressorService,
             IStringLocalizer<Messages> localizer)
         {
             _baseFileService = baseFileService;
+            _videoCompressorService = videoCompressorService;
             _localizer = localizer;
         }
 
@@ -90,7 +93,15 @@ namespace Stock_Exchange.Application.Features.Attachments.Commands.UploadChunk
                 return Result<UploadChunkResultDto>.Failure(finalResult, StatusCodes.Status400BadRequest);
             }
 
-            var storedFileName = $"{request.Place}_{Path.GetFileName(finalResult)}";
+            var finalFileName = Path.GetFileName(finalResult);
+            if (request.MediaType == MediaType.Video)
+            {
+                var physicalPath = _baseFileService.GetPhysicalPath(finalResult);
+                var (_, finalFilePath) = await _videoCompressorService.CompressVideoAsync(physicalPath, cancellationToken);
+                finalFileName = Path.GetFileName(finalFilePath);
+            }
+
+            var storedFileName = $"{request.Place}_{finalFileName}";
             return Result<UploadChunkResultDto>.Success(new UploadChunkResultDto
             {
                 IsCompleted = true,
