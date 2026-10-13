@@ -35,8 +35,7 @@ namespace Stock_Exchange.Application.Features.Users.Commands.DeleteUser
             var user = await _userManager.FindByIdAsync(request.Id.ToString());
             if (user == null || user.IsDeleted)
                 throw new NotFoundException(LocalizationKeys.AuthMessages.UserNotFound);
-
-            // Security Rule: An admin cannot delete another admin
+                
             var targetRoles = await _userManager.GetRolesAsync(user);
             var isTargetAdmin = targetRoles.Contains(UserType.Admin.ToString());
             if (isTargetAdmin)
