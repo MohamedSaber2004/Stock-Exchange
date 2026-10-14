@@ -68,6 +68,8 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
                     item.MarkAsDeleted(_currentUserService.UserId.ToString());
                 }
 
+                var areaRepo = _unitOfWork.GetRepository<ExpertConsultationArea, Guid>();
+
                 var order = 1;
                 foreach (var area in request.ConsultationAreas)
                 {
@@ -87,12 +89,15 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
                     }
                     else
                     {
-                        expert.ConsultationAreas.Add(new ExpertConsultationArea
+                        var newArea = new ExpertConsultationArea
                         {
+                            ExpertId = expert.Id,
                             TextEn = (area.TextEn ?? string.Empty).Trim(),
                             TextAr = (area.TextAr ?? string.Empty).Trim(),
                             DisplayOrder = area.DisplayOrder > 0 ? area.DisplayOrder : order++
-                        });
+                        };
+                        await areaRepo.AddAsync(newArea);
+                        expert.ConsultationAreas.Add(newArea);
                     }
                 }
             }

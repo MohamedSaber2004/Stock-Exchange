@@ -1,3 +1,4 @@
+﻿using Microsoft.EntityFrameworkCore;
 using MediatR;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -29,9 +30,17 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.DeleteExpert
             if (!_currentUserService.IsAuthenticated || _currentUserService.UserId == Guid.Empty)
                 throw new UnAuthorizedException(LocalizationKeys.ExceptionMessages.Unauthorized);
 
-            var expert = await _expertRepository.GetFirstAsync(e => e.Id == request.Id, cancellationToken);
+            var expert = await _expertRepository
+                .GetAllWithIncluding(e => e.Id == request.Id, e => e.ConsultationAreas)
+                .FirstOrDefaultAsync(cancellationToken);
+
             if (expert is null)
                 throw new NotFoundException(LocalizationKeys.ExpertMessages.ExpertNotFound);
+
+            foreach (var area in expert.ConsultationAreas.Where(c => !c.IsDeleted))
+            {
+                area.MarkAsDeleted(_currentUserService.UserId.ToString());
+            }
 
             _expertRepository.Delete(expert);
             await _unitOfWork.SaveChangesAsync();
