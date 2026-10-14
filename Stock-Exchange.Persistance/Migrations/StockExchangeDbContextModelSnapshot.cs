@@ -865,6 +865,70 @@ namespace Stock_Exchange.Persistance.Migrations
                     b.ToTable("Experts", (string)null);
                 });
 
+            modelBuilder.Entity("Stock_Exchange.Domain.Entities.ExpertConsultationArea", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ExpertId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("TextAr")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("TextEn")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExpertId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("ExpertConsultationAreas", (string)null);
+                });
+
             modelBuilder.Entity("Stock_Exchange.Domain.Entities.HelpCenter", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1987,6 +2051,17 @@ namespace Stock_Exchange.Persistance.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Stock_Exchange.Domain.Entities.ExpertConsultationArea", b =>
+                {
+                    b.HasOne("Stock_Exchange.Domain.Entities.Expert", "Expert")
+                        .WithMany("ConsultationAreas")
+                        .HasForeignKey("ExpertId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Expert");
+                });
+
             modelBuilder.Entity("Stock_Exchange.Domain.Entities.HelpCenter", b =>
                 {
                     b.HasOne("Stock_Exchange.Domain.Entities.HelpCenterCategory", "Category")
@@ -2069,6 +2144,11 @@ namespace Stock_Exchange.Persistance.Migrations
             modelBuilder.Entity("Stock_Exchange.Domain.Entities.Country", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Stock_Exchange.Domain.Entities.Expert", b =>
+                {
+                    b.Navigation("ConsultationAreas");
                 });
 
             modelBuilder.Entity("Stock_Exchange.Domain.Entities.HelpCenterCategory", b =>

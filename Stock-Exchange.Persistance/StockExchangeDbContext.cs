@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Interfaces;
@@ -35,6 +35,7 @@ namespace Stock_Exchange.Persistance
         public DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
         public DbSet<PlanFeature> PlanFeatures { get; set; }
         public DbSet<Expert> Experts { get; set; }
+        public DbSet<ExpertConsultationArea> ExpertConsultationAreas { get; set; }
         public DbSet<ActivityLog> ActivityLogs { get; set; }
 
         public StockExchangeDbContext(
@@ -144,4 +145,3 @@ namespace Stock_Exchange.Persistance
         }
     }
 }
-

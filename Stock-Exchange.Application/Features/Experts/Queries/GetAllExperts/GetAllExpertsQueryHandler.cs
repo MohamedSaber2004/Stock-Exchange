@@ -64,7 +64,16 @@ namespace Stock_Exchange.Application.Features.Experts.Queries.GetAllExperts
                     DisplayOrder = e.DisplayOrder,
                     IsFeaturedOnHome = e.IsFeaturedOnHome,
                     IsActive = e.IsActive,
-                    CreatedAt = e.CreatedAt
+                    CreatedAt = e.CreatedAt,
+                    ConsultationAreas = e.ConsultationAreas
+                        .OrderBy(c => c.DisplayOrder)
+                        .Select(c => new ExpertConsultationAreaDto
+                        {
+                            Id = c.Id,
+                            TextEn = c.TextEn,
+                            TextAr = c.TextAr,
+                            DisplayOrder = c.DisplayOrder
+                        }).ToList()
                 })
                 .AsPagginatedListAsync(safePageNumber, safePageSize, cancellationToken);
 

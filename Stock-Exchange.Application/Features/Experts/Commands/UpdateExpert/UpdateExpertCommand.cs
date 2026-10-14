@@ -15,5 +15,6 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
         public int DisplayOrder { get; set; }
         public bool IsFeaturedOnHome { get; set; } = true;
         public bool IsActive { get; set; } = true;
+        public List<ExpertConsultationAreaInputDto> ConsultationAreas { get; set; } = new();
     }
 }

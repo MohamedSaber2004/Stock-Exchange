@@ -1,4 +1,4 @@
-using Stock_Exchange.Domain.Common;
+﻿using Stock_Exchange.Domain.Common;
 
 namespace Stock_Exchange.Domain.Entities
 {
@@ -11,5 +11,7 @@ namespace Stock_Exchange.Domain.Entities
         public string? AvatarUrl { get; set; }
         public int DisplayOrder { get; set; }
         public bool IsFeaturedOnHome { get; set; } = true;
+
+        public virtual ICollection<ExpertConsultationArea> ConsultationAreas { get; set; } = new List<ExpertConsultationArea>();
     }
 }

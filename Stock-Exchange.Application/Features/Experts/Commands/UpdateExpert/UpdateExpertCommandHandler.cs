@@ -1,9 +1,11 @@
-using MediatR;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Stock_Exchange.Application.Common.Exceptions;
 using Stock_Exchange.Application.Common.Interfaces;
 using Stock_Exchange.Application.Common.Models;
 using Stock_Exchange.Application.Features.Experts.DTOs;
 using Stock_Exchange.Application.Localization;
+using Stock_Exchange.Domain.Entities;
 using Stock_Exchange.Domain.Repositories.Interfaces;
 using Stock_Exchange.Domain.Repositories.Interfaces.Base;
 
@@ -30,7 +32,10 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
             if (!_currentUserService.IsAuthenticated || _currentUserService.UserId == Guid.Empty)
                 throw new UnAuthorizedException(LocalizationKeys.ExceptionMessages.Unauthorized);
 
-            var expert = await _expertRepository.GetFirstAsync(e => e.Id == request.Id, cancellationToken);
+            var expert = await _expertRepository
+                .GetAllWithIncluding(e => e.Id == request.Id, e => e.ConsultationAreas)
+                .FirstOrDefaultAsync(cancellationToken);
+
             if (expert is null)
                 throw new NotFoundException(LocalizationKeys.ExpertMessages.ExpertNotFound);
 
@@ -47,6 +52,51 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
                 expert.SetActiveState(request.IsActive, _currentUserService.UserId.ToString());
             }
 
+            if (request.ConsultationAreas != null)
+            {
+                var requestIds = request.ConsultationAreas
+                    .Where(a => a.Id.HasValue && a.Id.Value != Guid.Empty)
+                    .Select(a => a.Id!.Value)
+                    .ToHashSet();
+
+                var toRemove = expert.ConsultationAreas
+                    .Where(c => !c.IsDeleted && !requestIds.Contains(c.Id))
+                    .ToList();
+
+                foreach (var item in toRemove)
+                {
+                    item.MarkAsDeleted(_currentUserService.UserId.ToString());
+                }
+
+                var order = 1;
+                foreach (var area in request.ConsultationAreas)
+                {
+                    if (string.IsNullOrWhiteSpace(area.TextAr) && string.IsNullOrWhiteSpace(area.TextEn))
+                        continue;
+
+                    var existing = area.Id.HasValue && area.Id.Value != Guid.Empty
+                        ? expert.ConsultationAreas.FirstOrDefault(c => c.Id == area.Id.Value && !c.IsDeleted)
+                        : null;
+
+                    if (existing != null)
+                    {
+                        existing.TextEn = (area.TextEn ?? string.Empty).Trim();
+                        existing.TextAr = (area.TextAr ?? string.Empty).Trim();
+                        existing.DisplayOrder = area.DisplayOrder > 0 ? area.DisplayOrder : order++;
+                        existing.MarkAsUpdated(_currentUserService.UserId.ToString());
+                    }
+                    else
+                    {
+                        expert.ConsultationAreas.Add(new ExpertConsultationArea
+                        {
+                            TextEn = (area.TextEn ?? string.Empty).Trim(),
+                            TextAr = (area.TextAr ?? string.Empty).Trim(),
+                            DisplayOrder = area.DisplayOrder > 0 ? area.DisplayOrder : order++
+                        });
+                    }
+                }
+            }
+
             _expertRepository.Update(expert);
             await _unitOfWork.SaveChangesAsync();
 
@@ -61,7 +111,17 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
                 DisplayOrder = expert.DisplayOrder,
                 IsFeaturedOnHome = expert.IsFeaturedOnHome,
                 IsActive = expert.IsActive,
-                CreatedAt = expert.CreatedAt
+                CreatedAt = expert.CreatedAt,
+                ConsultationAreas = expert.ConsultationAreas
+                    .Where(c => !c.IsDeleted)
+                    .OrderBy(c => c.DisplayOrder)
+                    .Select(c => new ExpertConsultationAreaDto
+                    {
+                        Id = c.Id,
+                        TextEn = c.TextEn,
+                        TextAr = c.TextAr,
+                        DisplayOrder = c.DisplayOrder
+                    }).ToList()
             });
         }
     }

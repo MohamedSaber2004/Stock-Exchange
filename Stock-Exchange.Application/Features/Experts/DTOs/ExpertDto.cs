@@ -15,6 +15,8 @@ namespace Stock_Exchange.Application.Features.Experts.DTOs
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
 
+        public List<ExpertConsultationAreaDto> ConsultationAreas { get; set; } = new();
+
         public string FullName => !string.IsNullOrEmpty(FullNameEn) ? FullNameEn : FullNameAr;
         public string Title => !string.IsNullOrEmpty(TitleEn) ? TitleEn : TitleAr;
 
@@ -24,11 +26,20 @@ namespace Stock_Exchange.Application.Features.Experts.DTOs
             {
                 FullNameAr = string.Empty;
                 TitleAr = string.Empty;
-                return;
+            }
+            else
+            {
+                FullNameEn = string.Empty;
+                TitleEn = string.Empty;
             }
 
-            FullNameEn = string.Empty;
-            TitleEn = string.Empty;
+            if (ConsultationAreas != null)
+            {
+                foreach (var area in ConsultationAreas)
+                {
+                    area.ApplyLanguageFilter(language);
+                }
+            }
         }
     }
 }

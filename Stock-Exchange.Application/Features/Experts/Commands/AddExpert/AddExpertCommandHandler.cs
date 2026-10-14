@@ -47,6 +47,23 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.AddExpert
                 expert.SetActiveState(false, _currentUserService.UserId.ToString());
             }
 
+            if (request.ConsultationAreas != null && request.ConsultationAreas.Count > 0)
+            {
+                var order = 1;
+                foreach (var area in request.ConsultationAreas)
+                {
+                    if (string.IsNullOrWhiteSpace(area.TextAr) && string.IsNullOrWhiteSpace(area.TextEn))
+                        continue;
+
+                    expert.ConsultationAreas.Add(new ExpertConsultationArea
+                    {
+                        TextEn = (area.TextEn ?? string.Empty).Trim(),
+                        TextAr = (area.TextAr ?? string.Empty).Trim(),
+                        DisplayOrder = area.DisplayOrder > 0 ? area.DisplayOrder : order++
+                    });
+                }
+            }
+
             await _expertRepository.AddAsync(expert);
             await _unitOfWork.SaveChangesAsync();
 
@@ -61,7 +78,14 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.AddExpert
                 DisplayOrder = expert.DisplayOrder,
                 IsFeaturedOnHome = expert.IsFeaturedOnHome,
                 IsActive = expert.IsActive,
-                CreatedAt = expert.CreatedAt
+                CreatedAt = expert.CreatedAt,
+                ConsultationAreas = expert.ConsultationAreas.Select(c => new ExpertConsultationAreaDto
+                {
+                    Id = c.Id,
+                    TextEn = c.TextEn,
+                    TextAr = c.TextAr,
+                    DisplayOrder = c.DisplayOrder
+                }).OrderBy(c => c.DisplayOrder).ToList()
             });
         }
     }
