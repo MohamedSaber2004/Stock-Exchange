@@ -32,6 +32,7 @@ namespace Stock_Exchange.Application.Features.ActivityLogs.Queries.GetActivityLo
                     (isGuid ? a.Id == guidId : a.FormattedId == request.Id),
                     cancellationToken);
 
+
             if (log == null)
                 throw new NotFoundException(LocalizationKeys.ActivityLogMessages.ActivityLogNotFound);
 
