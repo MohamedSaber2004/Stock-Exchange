@@ -5531,6 +5531,9 @@
                             "isFeaturedOnHome": true,
                             "isActive": true,
                             "createdAt": "09/26/2026 22:32:00",
+                            "consultationAreas": [
+                              "..."
+                            ],
                             "fullName": "string",
                             "title": "string"
                           }
@@ -5627,6 +5630,15 @@
                         "isFeaturedOnHome": true,
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
+                        "consultationAreas": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "textEn": "string",
+                            "textAr": "string",
+                            "displayOrder": 0,
+                            "text": "string"
+                          }
+                        ],
                         "fullName": "string",
                         "title": "string"
                       },
@@ -5714,6 +5726,15 @@
                         "isFeaturedOnHome": true,
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
+                        "consultationAreas": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "textEn": "string",
+                            "textAr": "string",
+                            "displayOrder": 0,
+                            "text": "string"
+                          }
+                        ],
                         "fullName": "string",
                         "title": "string"
                       },
@@ -5811,6 +5832,15 @@
                         "isFeaturedOnHome": true,
                         "isActive": true,
                         "createdAt": "09/26/2026 22:32:00",
+                        "consultationAreas": [
+                          {
+                            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                            "textEn": "string",
+                            "textAr": "string",
+                            "displayOrder": 0,
+                            "text": "string"
+                          }
+                        ],
                         "fullName": "string",
                         "title": "string"
                       },
@@ -13777,6 +13807,13 @@
           },
           "isActive": {
             "type": "boolean"
+          },
+          "consultationAreas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpertConsultationAreaInputDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -14745,6 +14782,56 @@
         },
         "additionalProperties": false
       },
+      "ExpertConsultationAreaDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "textEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "textAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpertConsultationAreaInputDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "textEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "textAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ExpertDto": {
         "type": "object",
         "properties": {
@@ -14785,6 +14872,13 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "consultationAreas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpertConsultationAreaDto"
+            },
+            "nullable": true
           },
           "fullName": {
             "type": "string",
@@ -17673,6 +17767,13 @@
           },
           "isActive": {
             "type": "boolean"
+          },
+          "consultationAreas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpertConsultationAreaInputDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
