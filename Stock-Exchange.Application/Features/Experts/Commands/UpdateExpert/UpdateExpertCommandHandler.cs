@@ -96,8 +96,6 @@ namespace Stock_Exchange.Application.Features.Experts.Commands.UpdateExpert
                     }
                 }
             }
-
-            _expertRepository.Update(expert);
             await _unitOfWork.SaveChangesAsync();
 
             return Result<ExpertDto>.Success(new ExpertDto
