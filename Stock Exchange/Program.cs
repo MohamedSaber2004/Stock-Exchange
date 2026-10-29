@@ -449,7 +449,6 @@ namespace Stock_Exchange
                 }
             }
 
-            // تشتغل بس لو شغّلت البروجيكت بـ: dotnet run --seed
             if (args.Contains("--seed"))
             {
                 Log.Information("=== Running Database Seeding ===");
